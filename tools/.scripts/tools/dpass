@@ -1,8 +1,15 @@
 #!/bin/sh
 # dmenu script for password input
 # compatible with sudo_askpass
+# thanks to https://ncoop.github.io/2017/01/02/enter-passwords-from-dmenu
 
-calling="$(ps -o comm= $PPID)"
+calling="$(ps -o comm= -p $PPID)"
+if [ "$calling" = "sudo" ]; then
+	calling="$(ps -o comm= -p $(ps -o ppid= -p $PPID))" # we get the parent of sudo
+	text="$calling would like sudo. password?"
+else
+	text="$([ -z "$1" ] && echo "password?" || echo "$1")"
+fi
 
-dmenu -p "$calling would like sudo. password? (input hidden)" \
+dmenu -p "$text (input hidden)" \
 	-nb "red" -nf "red" -sb "red" -sf "white" <&-
