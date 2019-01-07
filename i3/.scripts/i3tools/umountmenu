@@ -1,0 +1,17 @@
+#!/bin/sh
+
+pgrep -x dmenu && exit
+
+# uMount device selection
+# -----
+devices="$(lsblk -rpno "name,type,mountpoint" \
+	| awk '$2 == "part" && $3 != "" && $3 !~ /\/boot|\/home$|SWAP|\/$/ {print $1 " (at " $3 ")"}')"
+[ "$devices" = "" ] && notify-send "umountmenu" "No devices detected to unmount." && exit 1
+
+device="$(echo "$devices" \
+	| dmenu -i -p "device to unmount?" \
+	| awk '{print $1}')"
+[ "$device" = "" ] && exit 0
+
+sudo -A umount "$device" \
+	&& notify-send "umountmenu" "Unmounted $device." && exit 0

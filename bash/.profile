@@ -2,7 +2,7 @@
 # ~/.bash_profile
 #
 
-export PATH=$PATH:~/.scripts/tools:~/.local/bin
+export PATH=$PATH:~/.scripts/tools:~/.scripts/i3tools:~/.local/bin
 
 # Programs
 export EDITOR="vim"
@@ -13,6 +13,7 @@ export READER="zathura"
 
 # Other
 export BATTERY="BAT0"
+export SUDO_ASKPASS="$HOME/.scripts/tools/dpass"
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 

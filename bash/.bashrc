@@ -20,6 +20,13 @@ alias vim="nvim"
 # alias
 alias p="sudo pacman"
 alias pS="sudo pacman -S"
+alias sy="systemctl"
+alias ssy="sudo systemctl"
+alias tz="trizen"
+alias tzS="trizen -S"
+
+alias rcp="rsync -vzrh --times --stats --progress --itemize-changes"
+
 alias v="nvim"
 alias e="$FILE"
 alias r="ranger"

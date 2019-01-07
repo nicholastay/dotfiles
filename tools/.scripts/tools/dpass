@@ -1,0 +1,8 @@
+#!/bin/sh
+# dmenu script for password input
+# compatible with sudo_askpass
+
+calling="$(ps -o comm= $PPID)"
+
+dmenu -p "$calling would like sudo. password? (input hidden)" \
+	-nb "red" -nf "red" -sb "red" -sf "white" <&-

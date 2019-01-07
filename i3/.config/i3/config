@@ -93,6 +93,9 @@ bindsym $mod+e	exec $term -e $FILE
 bindsym $mod+Shift+p	exec $term -e htop
 bindsym $mod+n	exec --no-startup-id $term -e ncmpcpp
 bindsym $mod+p	exec --no-startup-id keepassxc
+bindsym $mod+Shift+c	exec --no-startup-id $term -e weechat
+bindsym $mod+m	exec --no-startup-id mountmenu
+bindsym $mod+Shift+m	exec --no-startup-id umountmenu
 
 # Music
 bindsym $mod+Left	exec --no-startup-id mpc prev
@@ -103,6 +106,8 @@ bindsym $mod+Down	exec --no-startup-id mpc volume -5
 
 # Lock
 bindsym $mod+Control+l	exec --no-startup-id i3lock-fancy -f NanumGothic -- maim
+# Off
+bindsym $mod+Shift+e	exec --no-startup-id sdmenu
 
 # i3 Focus/Window mgmt
 # focus stuff
@@ -123,9 +128,8 @@ bindsym $mod+semicolon split h
 bindsym $mod+apostrophe split v
 
 # gaps
-bindsym $mod+z gaps inner current plus 5
-bindsym $mod+Shift+z gaps inner current minus 5
-bindsym $mod+Control+z gaps inner current set 15
+bindsym $mod+Shift+z gaps inner current plus 5
+bindsym $mod+Control+z gaps inner current minus 15
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -172,10 +176,8 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Control+r reload
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

@@ -4,7 +4,7 @@ sstype="$(printf "rect\\nwindow\\nscreen" | dmenu -l 6 -i -p "screenshot type?")
 ssargs=""
 case $sstype in
 	"rect") ssargs="-s" ;;
-	"window") ssargs="-i \"$(xdotool getactivewindow)\"" ;;
+	"window") ssargs="-i $(xdotool getactivewindow)" ;;
 esac
 
 maim $ssargs | tee ~/Screenshots/"$(date '+%y%m%d-%H%M%S')-$sstype.png" | xclip -selection clipboard -t image/png && notify-send "Screenshot ($sstype)" "Screenshot copied to clipboard, and saved to folder."

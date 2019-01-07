@@ -1,0 +1,38 @@
+#!/bin/sh
+
+pgrep -x dmenu && exit
+
+# Mount device selection
+# -----
+devices="$(lsblk -rpno "name,type,size,mountpoint" \
+	| awk '$2 == "part" && $4 == "" {print $1 " (" $3 ")"}')"
+[ "$devices" = "" ] && notify-send "mountmenu" "No devices found to mount." && exit 0
+
+device="$(echo "$devices" \
+	| dmenu -i -p "device to mount?" \
+	| awk '{print $1}')"
+[ "$device" = "" ] && exit 1
+
+sudo -A mount "$device" \
+	&& notify-send "mountmenu" "Mounted $device as per fstab." && exit 0
+
+
+
+# Mount-point selection
+# -----
+mountto="$(find /mnt -mindepth 1 -maxdepth 1 -type d \
+	| dmenu -i -p "where to mount?")"
+[ "$mountto" = "" ] && exit 1
+
+mount | grep $mountto >/dev/null \
+	&& notify-send "mountmenu" "Invalid mount point: already mounted." && exit 1
+
+if [ ! -d "$mountto" ]; then
+	mkdiryn=$(printf "No\\nYes" | dmenu -i -p "$mountto does not exist. Create it?")
+	[ "$mkdiryn" != "Yes" ] && exit 0
+	mkdir -p "$mountto" || sudo -A mkdir -p "$mountto"
+fi
+
+
+sudo -A mount "$device" "$mountto" \\
+	&& notify-send "mountmenu" "$device successfully mounted to $mountto."

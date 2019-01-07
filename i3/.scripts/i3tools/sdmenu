@@ -1,0 +1,10 @@
+#!/bin/sh
+
+pgrep -x dmenu && exit
+
+case "$(printf "shutdown\\nreboot\\nsuspend\\nlogout" | dmenu -l 4 -i -p "time to leave?")" in
+	"shutdown") shutdown now ;;
+	"reboot") reboot ;;
+	"suspend") systemctl suspend ;;
+	"logout") i3-msg exit ;;
+esac
