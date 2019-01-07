@@ -1,0 +1,32 @@
+command=~/.scripts/i3blocks/$BLOCK_NAME
+separator_block_width=15
+markup=pango
+
+[music]
+label=♫
+signal=11
+interval=once
+
+[network]
+interval=10
+
+[diskroot]
+command=~/.scripts/i3blocks/disk /
+label=🖫
+interval=60
+
+[diskhome]
+command=~/.scripts/i3blocks/disk /home
+label=🏡
+interval=60
+
+[volume]
+interval=once
+signal=10
+
+[battery]
+label=🔋
+interval=5
+
+[datetime]
+interval=30

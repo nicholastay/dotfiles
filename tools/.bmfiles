@@ -1,0 +1,7 @@
+bf ~/.bmfiles
+bd ~/.bmdirs
+cfb ~/.bashrc
+cfv ~/.vimrc
+cfi ~/.config/i3/config
+cfo ~/.config/i3blocks/config
+cfp ~/.profile

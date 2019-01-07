@@ -1,0 +1,5 @@
+#!/bin/sh
+
+! pgrep -x "mpd" > /dev/null && echo "No MPD" && exit
+
+mpc status | tac | sed -e "s/^volume:/(/;s/%.*/%) /;s/\[playing\].*//;s/\[paused\].*/[#] /" | tr -d '\n'

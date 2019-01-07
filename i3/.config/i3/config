@@ -1,0 +1,204 @@
+# nick's i3 config
+# pretty much based off luke smith's (what of my setup isnt)
+
+# -------------- INITIAL SETUP -----------------
+# i3-gaps gaps
+for_window [class="^.*"] border pixel 2
+gaps inner 15
+gaps outer 10
+
+# Basic config
+set $mod Mod4
+floating_modifier $mod
+# Use Mouse+$mod to drag floating windows to their wanted position
+set $term --no-startup-id $TERMINAL
+font pango:Inconsolata 12
+
+# Popup toolbox type windows - dont tile those
+for_window [instance="dropdown_*"] floating enable
+for_window [instance="dropdown_*"] move scratchpad
+for_window [instance="dropdown_*"] sticky enable
+for_window [instance="dropdown_*"] scratchpad show
+for_window [instance="dropdown_tmuxdd"] resize set 625 450
+for_window [instance="dropdown_dropdowncalc"] resize set 800 300
+for_window [instance="dropdown_tmuxdd"] border pixel 3
+for_window [instance="dropdown_dropdowncalc"] border pixel 2
+for_window [instance="dropdown_*"] move position center
+
+
+# -------------- EXTERNALS ---------------
+# wallpaper
+exec --no-startup-id feh --bg-fill ~/.config/wallpaper.jpg
+# compositor
+exec --no-startup-id xcompmgr
+# unclutter: hides mouse after a bit
+exec --no-startup-id unclutter
+# sounds
+#exec --no-startup-id pulseaudio --start
+# dunst for notifs
+exec --no-startup-id dunst
+# mpd
+exec --no-startup-id mpd
+# mpd for bar
+exec_always --no-startup-id mpd_watcher
+
+# Bar
+bar {
+  status_command i3blocks
+  position top
+  mode dock
+  modifier None
+  colors {
+    background $darkblack
+    statusline $darkwhite
+  }
+}
+
+
+# ------------ COLORS ----------------
+# set Xresources colors:
+set_from_resource $darkblack	color0  #000000
+set_from_resource $black	color8  #000000
+set_from_resource $darkred	color1  #000000
+set_from_resource $red		color9  #000000
+set_from_resource $darkgreen	color2  #000000
+set_from_resource $green	color10 #000000
+set_from_resource $darkyellow	color3  #000000
+set_from_resource $yellow	color11 #000000
+set_from_resource $darkblue	color4  #000000
+set_from_resource $blue		color12 #000000
+set_from_resource $darkmagenta	color5  #000000
+set_from_resource $magenta	color13 #000000
+set_from_resource $darkcyan	color6  #000000
+set_from_resource $cyan		color14 #000000
+set_from_resource $darkwhite	color7  #000000
+set_from_resource $white	color15 #000000
+set $transparent		#00000000
+
+#                       BORDER		BACKGROUND	TEXT		INDICATOR   CHILD_BORDER
+client.focused		$red		$red		$magenta	$darkmagenta		$darkblue
+client.unfocused	$transparent	$blue		$white		$darkblue		$darkblack
+client.focused_inactive	$transparent	$blue		$white		$darkblue		$darkblack
+client.urgent		$darkred	$darkred	$black		$darkred		$darkred
+client.background $black
+
+# --------------- i3 BINDINGS --------------
+# Programs
+bindsym $mod+Return	 exec $term
+bindsym $mod+space	exec --no-startup-id dmenu_run
+bindsym $mod+Shift+q	 kill
+bindsym $mod+w	 exec --no-startup-id $BROWSER
+bindsym $mod+f	fullscreen toggle
+bindsym $mod+e	exec $term -e $FILE
+bindsym $mod+Shift+p	exec $term -e htop
+bindsym $mod+n	exec --no-startup-id $term -e ncmpcpp
+bindsym $mod+p	exec --no-startup-id keepassxc
+
+# Music
+bindsym $mod+Left	exec --no-startup-id mpc prev
+bindsym $mod+Right	exec --no-startup-id mpc next
+bindsym $mod+slash	exec --no-startup-id mpc toggle
+bindsym $mod+Up	exec --no-startup-id mpc volume +5
+bindsym $mod+Down	exec --no-startup-id mpc volume -5
+
+# Lock
+bindsym $mod+Control+l	exec --no-startup-id i3lock-fancy -f NanumGothic -- maim
+
+# i3 Focus/Window mgmt
+# focus stuff
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+s split toggle
+# split in horizontal orientation
+bindsym $mod+semicolon split h
+# split in vertical orientation
+bindsym $mod+apostrophe split v
+
+# gaps
+bindsym $mod+z gaps inner current plus 5
+bindsym $mod+Shift+z gaps inner current minus 5
+bindsym $mod+Control+z gaps inner current set 15
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+# change focus between tiling / floating windows
+bindsym $mod+control+space focus mode_toggle
+
+# screenshotting
+bindsym Print exec --no-startup-id screenshot
+
+# Workspace stuffs
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Function type of keys (xf86)
+bindsym $mod+Control+Left	exec --no-startup-id xbacklight -dec 10
+bindsym $mod+Control+Right	exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown	exec --no-startup-id xbacklight -dec 10
+bindsym XF86MonBrightnessUp	exec --no-startup-id xbacklight -inc 10
+bindsym XF86AudioMute		exec --no-startup-id pactl set-sink-mute 0 toggle && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume	exec --no-startup-id pactl set-sink-volume 0 -5% && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume	exec --no-startup-id pactl set-sink-volume 0 +5% && pkill -RTMIN+10 i3blocks

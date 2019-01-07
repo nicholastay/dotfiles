@@ -1,0 +1,6 @@
+#!/bin/sh
+
+percent=$(cat /sys/class/power_supply/"$BATTERY"/capacity) || exit
+status=$(cat /sys/class/power_supply/"$BATTERY"/status)
+
+echo $percent% \($status\)

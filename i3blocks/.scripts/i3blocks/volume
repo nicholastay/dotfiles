@@ -1,0 +1,5 @@
+#!/bin/sh
+
+[ "$(pulsemixer --get-mute)" = "1" ] && printf "🔇\\n" && exit
+
+echo 🔊 $(pulsemixer --get-volume | awk '{print $1}')%

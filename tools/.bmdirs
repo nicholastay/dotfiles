@@ -1,0 +1,10 @@
+# bookmark directories
+h ~/
+d ~/Documents
+D ~/Downloads
+m ~/Music
+cf ~/.config
+sc ~/.scripts
+mn /mnt
+c ~/Dropbox
+cs ~/Dropbox/Study

@@ -1,0 +1,2 @@
+#!/bin/sh
+LC_ALL=ko_KR.utf8 date '+%Y-%m-%d (%a) %p %I:%M'
