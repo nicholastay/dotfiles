@@ -7,8 +7,8 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 
-*.font: Inconsolata-13;
-*.alpha: 230
+!*.alpha: 230
+st.font: mono-13;
 
 ! coloring
 ! Custom
