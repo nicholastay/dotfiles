@@ -5,3 +5,4 @@ cfv ~/.vimrc
 cfi ~/.config/i3/config
 cfo ~/.config/i3blocks/config
 cfp ~/.profile
+cfr ~/.config/ranger/rc.conf
