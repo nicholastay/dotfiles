@@ -28,7 +28,7 @@ for_window [instance="dropdown_*"] move position center
 
 # -------------- EXTERNALS ---------------
 # wallpaper
-exec --no-startup-id feh --bg-fill ~/.config/wallpaper.jpg
+exec --no-startup-id feh --bg-fill ~/.config/wall.jpg
 # compositor
 exec --no-startup-id xcompmgr
 # unclutter: hides mouse after a bit
@@ -114,7 +114,7 @@ bindsym $mod+Up	exec --no-startup-id mpc volume +5
 bindsym $mod+Down	exec --no-startup-id mpc volume -5
 
 # Lock
-bindsym $mod+Delete	exec --no-startup-id i3lock-fancy -f NanumGothic -- maim
+bindsym $mod+Delete	exec --no-startup-id betterlockscreen -l dimblur -t "$USER@$HOSTNAME: locked~"
 # Off
 bindsym $mod+Shift+e	exec --no-startup-id sdmenu
 

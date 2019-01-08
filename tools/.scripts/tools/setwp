@@ -1,4 +1,7 @@
 #!/bin/sh
 
-[ -f "$1" ] && cp -f "$1" "$HOME/.config/wall.jpg"
-feh --bg-fill "$HOME/.config/wall.jpg"
+wall="$HOME/.config/wall.jpg"
+
+[ -f "$1" ] && cp -f "$1" "$wall"
+feh --bg-fill "$wall"
+betterlockscreen -u "$wall"
