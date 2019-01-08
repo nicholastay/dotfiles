@@ -30,7 +30,8 @@ for_window [instance="dropdown_*"] move position center
 # wallpaper
 exec --no-startup-id feh --bg-fill ~/.config/wall.jpg
 # compositor
-exec --no-startup-id xcompmgr
+#exec --no-startup-id xcompmgr
+exec --no-startup-id compton -b -f
 # unclutter: hides mouse after a bit
 exec --no-startup-id unclutter
 # sounds
