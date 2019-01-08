@@ -8,4 +8,4 @@ esac
 
 wifiicon=$(grep "^\s*w" /proc/net/wireless | awk '{ print "📶", int($3 * 100 / 70) "%" }')
 
-printf "%s (%s)" "$wifiicon" "$(hostname -i | xargs echo)"
+echo "$wifiicon"

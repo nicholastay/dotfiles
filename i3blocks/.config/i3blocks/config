@@ -7,6 +7,10 @@ label=♫
 signal=11
 interval=once
 
+[vpn]
+interval=10
+signal=12
+
 [network]
 interval=10
 
