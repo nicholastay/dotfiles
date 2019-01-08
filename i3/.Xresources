@@ -8,7 +8,7 @@ Xft.antialias: 1
 Xft.rgba: rgb
 
 !*.alpha: 230
-st.font: mono-13;
+st.font: Inconsolata Nerd Font-13;
 
 ! coloring
 ! Custom
