@@ -1,0 +1,4 @@
+#!/bin/sh
+
+[ -f "$1" ] && cp -f "$1" "$HOME/.config/wall.jpg"
+feh --bg-fill "$HOME/.config/wall.jpg"
