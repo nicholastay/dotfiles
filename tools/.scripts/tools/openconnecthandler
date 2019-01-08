@@ -1,0 +1,19 @@
+#!/usr/bin/expect -f
+# Absolute subpar-quality openconnect connection handler.
+# Uses 'expect' to wait for prompts and handle the connection.
+# HACK until I find another way
+#
+# Notes:
+# Make sure cert is installed + trusted or the prompt will never show up and this script will fail
+# To do so: sudo trust anchor --store [pem file]
+# 
+# To create the nm connection:
+# nmcli c add type vpn con-name "[name]" vpn-type openconnect ifname "*" vpn.data "gateway=[vpn gateway]"
+
+# lindex thing is first cmd line arg
+spawn nmcli --ask c up [lindex $argv 0]
+expect "Username:"
+send "[lindex $argv 1]\r"
+expect "Password:"
+send "[lindex $argv 2]\r"
+expect "$ "

@@ -1,0 +1,48 @@
+#!/bin/sh
+# VPN menu - for now only openconnect
+# Should update with i3blocks
+
+# $vpnocprofile shoudl be the networkmanager profile name
+# put secrets here as $vpnocuser, $vpnocprofile, $vpnocpassword
+[ ! -f ~/.nexenv ] && echo "No VPN Setup" && exit
+source ~/.nexenv
+[ -z "$vpnocprofile" ] && echo "No VPN Setup" && exit
+
+vpnstatus=0 # disconected
+case "$(nmcli c show $vpnocprofile | grep "GENERAL.STATE")" in
+	*activated) vpnstatus=1 ;;
+	*activating) vpnstatus=2 ;; # connecting
+esac
+
+
+case $BLOCK_BUTTON in
+	1) if [ $vpnstatus != 0 ]; then
+			# already connected - disconnect instead!
+			[ "$(printf "Yes\\nNo" | dmenu -i -p "Disconnect from $vpnocprofile?")" != "Yes" ] && exit 1
+			nmcli c down $vpnocprofile
+			notify-send "vpn (oc)" "Disconnected from $vpnocprofile."
+			vpnstatus=0
+		else
+			[ "$(printf "Yes\\nNo" | dmenu -i -p "Connect to $vpnocprofile?")" != "Yes" ] && exit 1
+			[ -z "$vpnocuser" ] && vpnocuser="$(dmenu -p "vpn username?")"
+			[ -z "$vpnocuser" ] && exit 1
+			[ -z "$vpnocpass" ] && vpnocpass="$(dpass "vpn password?")"
+			[ -z "$vpnocpass" ] && exit 1
+			notify-send "vpn (oc)" "Connecting to $vpnocprofile..."
+			vpnstatus=2
+			openconnecthandler $vpnocprofile $vpnocuser $vpnocpass 
+			vpnstatus=1
+			notify-send "vpn (oc)" "Connected to $vpnocprofile."	
+		fi
+		statusDisp
+		;;
+esac
+
+function statusDisp() {
+	# command will return if connected... so if empty no conn
+	[ $vpnstatus = 0 ] && echo "🔓 No VPN" && exit
+	[ $vpnstatus = 2 ] && echo "🔑 VPN'ing to $vpnocprofile..." && exit
+	echo "🔒 VPN'd to $vpnocprofile"
+}
+
+statusDisp
