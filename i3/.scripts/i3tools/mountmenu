@@ -34,5 +34,5 @@ if [ ! -d "$mountto" ]; then
 fi
 
 
-sudo -A mount "$device" "$mountto" \\
+sudo -A mount "$device" "$mountto" \
 	&& notify-send "mountmenu" "$device successfully mounted to $mountto."
