@@ -1,0 +1,7 @@
+betterlockscreen-git
+bitlbee-discord-git
+bitlbee-facebook-git
+nerd-fonts-inconsolata
+texlive-localmanager-git
+trizen
+wine
