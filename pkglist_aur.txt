@@ -1,7 +1,8 @@
 betterlockscreen-git
 bitlbee-discord-git
 bitlbee-facebook-git
+dropbox
+mpdscribble
 nerd-fonts-inconsolata
-texlive-localmanager-git
 trizen
-wine
+ttf-nanum
