@@ -1,0 +1,18 @@
+# Text editor crap
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Node
+node_modules/
+
+# OS crap
+.DS_Store
+Thumbs.db
+
+# Other
+*.log

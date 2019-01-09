@@ -1,0 +1,31 @@
+directory: ~/Music
+library: ~/Music/beets.db
+pluginpath: ~/.config/beets/plugins
+
+plugins: nexfields fetchart embedart mbsync web
+import:
+    move: yes
+    languages: ko ja zh en
+match:
+    preferred:
+        countries: ['KR', 'JP']
+        media: ['CD', 'Digital Media|File']
+        original_year: yes
+
+# http://docs.beets.io/en/v1.3.16/faq.html#create-disc-n-directories-for-multi-disc-albums
+per_disc_numbering: yes
+item_fields:
+    multidisc: 1 if disctotal > 1 else 0
+paths:
+    default: %if{$nex_storage,$nex_storage,Unclassified}/$albumartist/$album%aunique{}/%if{$multidisc,$disc-}$track $title
+    singleton: %if{$nex_storage,$nex_storage,Unclassified}/$albumartist/[non-album]/$title
+    comp: %if{$nex_storage,$nex_storage,Unclassified}/Compilations/$album%aunique{}/%if{$multidisc,$disc-}$track $title
+    nex_storage::^GAME/.*: GAME/%rmFirst{$nex_storage,5}/$albumartist/$album%aunique{}/%if{$multidisc,$disc-}$track $title
+format_item: $artist - $title ($album)
+ignore: ._* .DS_Store
+
+ui:
+    color: yes
+
+embedart:
+    remove_art_file: yes
