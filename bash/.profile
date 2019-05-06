@@ -5,7 +5,7 @@
 export PATH=$PATH:~/.scripts/tools:~/.scripts/i3tools:~/.local/bin
 
 # Programs
-export EDITOR="vim"
+export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="firefox"
 export FILE="ranger"
