@@ -1,0 +1,3 @@
+#!/bin/sh
+xset r rate 200 50 # repeat rate
+setxkbmap -option caps:escape # caps is escape

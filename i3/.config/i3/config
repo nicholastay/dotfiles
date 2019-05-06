@@ -27,6 +27,8 @@ for_window [instance="dropdown_*"] move position center
 
 
 # -------------- EXTERNALS ---------------
+# keyboard settings
+exec --no-startup-id remapkb
 # wallpaper
 exec --no-startup-id feh --bg-fill ~/.config/wall.jpg
 # compositor
@@ -91,6 +93,7 @@ client.background $black
 # Programs
 bindsym $mod+Return	 exec $term
 bindsym $mod+space	exec --no-startup-id dmenu_run
+bindsym $mod+Shift+Return	exec --no-startup-id termdir
 bindsym $mod+Shift+q	 kill
 bindsym $mod+w	 exec --no-startup-id $BROWSER
 bindsym $mod+f	fullscreen toggle
@@ -99,8 +102,9 @@ bindsym $mod+Shift+p	exec $term -e htop
 bindsym $mod+n	exec --no-startup-id $term -e ncmpcpp
 bindsym $mod+p	exec --no-startup-id keepassxc
 bindsym $mod+Shift+w	exec --no-startup-id $term -e weechat
-bindsym $mod+m	exec --no-startup-id mountmenu
-bindsym $mod+Shift+m	exec --no-startup-id umountmenu
+bindsym $mod+m	exec --no-startup-id $term -e neomutt
+bindsym $mod+Shift+m	exec --no-startup-id mountmenu
+bindsym $mod+Control+m	exec --no-startup-id umountmenu
 bindsym $mod+c	exec --no-startup-id $term -e bc -l
 
 # Wine programs (dont kill me, its only calculators for education...)
