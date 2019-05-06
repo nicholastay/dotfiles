@@ -1,3 +1,25 @@
 #!/bin/sh
 #LC_ALL=ko_KR.utf8 
-date '+%Y-%m-%d (%a) %p %I:%M'
+
+# Put the timezones you're interested in here
+# (excluding local)
+tzs=("Asia/Seoul" 
+     "Asia/Hong_Kong"
+     "America/Los_Angeles"
+     )
+
+tz_format="+%Y-%m-%d (%a) %p %I:%M"
+
+case $BLOCK_BUTTON in
+	1)
+		dt="Local: $(date "$tz_format")"
+		for tz in "${tzs[@]}"
+		do
+			dt="$dt\n$tz: $(TZ=":$tz" date "$tz_format")"
+		done
+		notify-send "⏰ Date/Times" "$dt"
+		;;
+esac
+
+
+date "$tz_format"
