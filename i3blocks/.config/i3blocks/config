@@ -16,12 +16,12 @@ interval=10
 
 [diskroot]
 command=~/.scripts/i3blocks/disk /
-label=🖫
+label=
 interval=60
 
 [diskhome]
 command=~/.scripts/i3blocks/disk /home
-label=🏡
+label=
 interval=60
 
 [volume]

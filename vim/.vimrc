@@ -14,7 +14,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/goyo.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'lervag/vimtex'
+Plug 'dylanaraps/wal.vim'
 call plug#end()
+colorscheme wal
 
 " -------------------------------------------------------------------------
 "  Let's go!
@@ -71,8 +73,8 @@ nnoremap S :%s//g<Left><Left>
 
 "  LaTeX
 "  Compilation
-autocmd FileType tex inoremap <F5> <Esc>:w<Enter>:!latexmk<space>-pdf<space><c-r>%<Enter><Enter>
-autocmd FileType tex nnoremap <F5> :w<Enter>:!pdflatex<space><c-r>%<Enter><Enter>
+autocmd FileType tex inoremap <F5> <Esc>:w<Enter>:!latexmk<space>-pdf<space><c-r>%<Enter>
+autocmd FileType tex nnoremap <F5> :w<Enter>:!pdflatex<space><c-r>%<Enter>
 "  Code
 autocmd FileType tex inoremap ;eq <Enter>\begin{equation*}<Enter><Enter>\end{equation*}<Enter><++><Esc>2ki<Tab>
 autocmd FileType tex inoremap ;al <Enter>\begin{align*}<Enter><Enter>\end{align*}<Enter><++><Esc>2ki<Tab>
@@ -94,3 +96,7 @@ autocmd FileType tex inoremap ;li <Enter>\item<Space>
 autocmd FileType tex inoremap ;ref \ref{}<Space><++><Esc>T{i
 autocmd FileType tex inoremap ;env \begin{}<Enter><++><Enter>\end{<++>}<Enter><++><Esc>3k$i
 autocmd FileType tex inoremap <C-J> <space>\\<CR>
+
+"  Python
+autocmd FileType python inoremap <F5> <Esc>:w<Enter>:!python<space><c-r>%<Enter>
+autocmd FileType python nnoremap <F5> :w<Enter>:!python<space><c-r>%<Enter>
