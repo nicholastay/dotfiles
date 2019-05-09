@@ -59,6 +59,7 @@ which
 wine
 xclip
 xdotool
+xorg-xprop
 xorg-server
 xorg-xinit
 xorg-xinput
