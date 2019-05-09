@@ -31,6 +31,8 @@ for_window [instance="dropdown_*"] move position center
 exec --no-startup-id remapkb
 # wallpaper
 exec --no-startup-id feh --bg-fill ~/.config/wall.jpg
+# pywal
+exec --no-startup-id wal -R
 # compositor
 #exec --no-startup-id xcompmgr
 exec --no-startup-id compton -b -f
@@ -51,15 +53,16 @@ exec --no-startup-id dropbox
 
 # Bar
 bar {
-  status_command i3blocks
-  position top
-  mode dock
-  modifier None
-  colors {
-    background $darkblack
-    statusline $darkwhite
-  }
-}
+   status_command i3blocks
+   position top
+   mode dock
+   modifier None
+   colors {
+     background $darkblack
+     statusline $darkwhite
+   }
+ }
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 
 # ------------ COLORS ----------------
