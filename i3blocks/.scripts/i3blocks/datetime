@@ -17,7 +17,7 @@ case $BLOCK_BUTTON in
 		do
 			dt="$dt\n$tz: $(TZ=":$tz" date "$tz_format")"
 		done
-		notify-send "⏰ Date/Times" "$dt"
+		notify-send "🕒 Date/Times" "$dt"
 		;;
 esac
 

@@ -2,10 +2,10 @@ command=~/.scripts/i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=pango
 
-[music]
-label=♫
-signal=11
-interval=once
+#[music]
+#label=♫
+#signal=11
+#interval=once
 
 #[vpn]
 #interval=10
@@ -16,12 +16,7 @@ interval=10
 
 [diskroot]
 command=~/.scripts/i3blocks/disk /
-label=💾
-interval=60
-
-[diskhome]
-command=~/.scripts/i3blocks/disk /home
-label=🏠
+label=🖴
 interval=60
 
 [volume]
@@ -29,7 +24,7 @@ interval=once
 signal=10
 
 [battery]
-label=🔋
+label=⚡
 interval=5
 
 [datetime]

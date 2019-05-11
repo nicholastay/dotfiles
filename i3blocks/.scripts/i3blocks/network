@@ -4,8 +4,9 @@ case $BLOCK_BUTTON in
 	1) $TERMINAL -e nmtui ;;
 esac
 
-[ "$(cat /sys/class/net/w*/operstate)" = 'down' ] && echo "📡 (D/C)" && exit
+[ "$(cat /sys/class/net/w*/operstate)" = 'down' ] && echo "🖧  (D/C)" && exit
 
-wifiicon=$(grep "^\s*w" /proc/net/wireless | awk '{ print "📶", int($3 * 100 / 70) "%" }')
+strength=$(grep "^\s*w" /proc/net/wireless | awk '{ print int($3 * 100 / 70) "%" }')
+name=$(nmcli -t -f NAME connection show --active)
 
-echo "$wifiicon"
+echo "🖧  $name ($strength)"

@@ -1,6 +1,12 @@
 #!/bin/sh
 
+case $BLOCK_BUTTON in
+	1) $TERMINAL -e powertop ;;
+esac
+
 percent=$(cat /sys/class/power_supply/"$BATTERY"/capacity) || exit
 status=$(cat /sys/class/power_supply/"$BATTERY"/status)
+
+#[ "$status" != "Charging" ] && [ "$percent" -lt 20 ] && notify-send -u critical "Battery" "Low battery!"
 
 echo $percent% \($status\)
