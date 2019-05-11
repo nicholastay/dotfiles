@@ -1,10 +1,10 @@
 # bookmark directories
 h ~/
-d ~/Documents
+dc ~/Documents
 D ~/Downloads
-m ~/Music
+mu ~/Music
 cf ~/.config
 sc ~/.scripts
 mn /mnt
 c ~/Dropbox
-cs ~/Dropbox/Study
+s ~/Dropbox/Study

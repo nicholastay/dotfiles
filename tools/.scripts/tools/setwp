@@ -4,5 +4,6 @@ wall="$HOME/.config/wall.jpg"
 
 [ -f "$1" ] && cp -f "$1" "$wall"
 feh --bg-fill "$wall"
-wal -n -i ~/.config/wall.jpg
+rm ~/.cache/wal/schemes/*__config_wall_jpg*.json
+wal -n -t -i ~/.config/wall.jpg
 betterlockscreen -u "$wall"

@@ -8,4 +8,4 @@ case $sstype in
 esac
 
 sleep .5s
-maim $ssargs | tee ~/Screenshots/"$(date '+%y%m%d-%H%M%S')-$sstype.png" | xclip -selection clipboard -t image/png && notify-send "Screenshot ($sstype)" "Screenshot copied to clipboard, and saved to folder."
+maim --hidecursor $ssargs | tee ~/Screenshots/"$(date '+%y%m%d-%H%M%S')-$sstype.png" | xclip -selection clipboard -t image/png && notify-send "Screenshot ($sstype)" "Screenshot copied to clipboard, and saved to folder."
