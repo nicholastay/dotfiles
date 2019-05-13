@@ -20,10 +20,13 @@ alias vim="nvim"
 # alias
 alias p="sudo pacman"
 alias pS="sudo pacman -S"
+alias pR="sudo pacman -R"
+alias pQ="pacman -Q"
 alias sy="systemctl"
 alias ssy="sudo systemctl"
 alias tz="trizen"
 alias tzS="trizen -S"
+alias tzR="trizen -R"
 
 alias rcp="rsync -vzrh --times --stats --progress --itemize-changes"
 
@@ -43,6 +46,20 @@ alias reb="reboot"
 
 texpkg() { tllocalmgr install $1 && sudo texhash ;}
 
+# copy a template and edit it
+templateEdit() {
+	[ ! -f "$2" ] && cp "$HOME/Templates/$1" "$2"
+	$EDITOR "$2"
+}
+alias thw="templateEdit mathhw.tex"
+alias txm="templateEdit math.tex"
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# IBus (zh/kr) ime
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus

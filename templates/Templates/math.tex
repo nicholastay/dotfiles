@@ -1,0 +1,56 @@
+\documentclass{article}
+
+% ------------------- Preamble --------------------
+\usepackage[a4paper, margin=2cm, top=3cm, bottom=2cm]{geometry} % A4 paper with my standard margins
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage[shortlabels]{enumitem}
+
+
+% Document metadata
+\newcommand{\metatitle}{<++>}
+\newcommand{\shorttitle}{<++>}
+\newcommand{\metaauthor}{Tay, Nicholas}
+\newcommand{\metaemail}{<++>}
+\newcommand{\metadate}{<++>}
+
+
+% Back to more config
+\title{\textbf{\metatitle{}}}
+\date{\metadate{}}
+\author{\metaauthor{} \\
+	\href{mailto:\metaemail{}}{\small \textit{\metaemail{}}}}
+
+% Header settings
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\metaauthor{}}
+\chead{\shorttitle{}}
+\rhead{\metadate{}}
+\cfoot{\thepage}
+
+% Math macros
+% abs/norm
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiterX{\norm}[1]{\lvert}{\rvert}{#1}
+
+% vectors - use bold, \veca is the old one
+\let\veca\vec
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+% more shortcuts
+\newcommand{\Real}{\mathbb{R}}
+
+% ------------------- End Preamble --------------------
+
+
+\begin{document}
+\maketitle
+
+<++>
+
+\end{document}
+
