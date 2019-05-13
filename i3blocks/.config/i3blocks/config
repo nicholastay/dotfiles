@@ -12,6 +12,7 @@ markup=pango
 #signal=12
 
 [network]
+label=🖧 
 interval=10
 
 [diskroot]
