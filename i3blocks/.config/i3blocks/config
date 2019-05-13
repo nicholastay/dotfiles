@@ -30,3 +30,6 @@ interval=5
 
 [datetime]
 interval=30
+
+[powerblock]
+interval=once
