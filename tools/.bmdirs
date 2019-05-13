@@ -6,5 +6,5 @@ mu ~/Music
 cf ~/.config
 sc ~/.scripts
 mn /mnt
-c ~/Dropbox
-s ~/Dropbox/Study
+c ~/Cloud
+s ~/Cloud/Study
