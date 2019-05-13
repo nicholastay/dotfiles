@@ -8,6 +8,8 @@
 shopt -s autocd # cd by dirname
 export PS1="\[\033[38;5;14m\]\u\[$(tput sgr0)\]\[\033[38;5;243m\]@\[$(tput sgr0)\]\[\033[38;5;194m\]\h\[$(tput sgr0)\]\[\033[38;5;243m\]:\[$(tput sgr0)\]\[\033[38;5;15m\]\w » \[$(tput sgr0)\]"
 
+export RANGER_LOAD_DEFAULT_RC=FALSE
+
 alias ls='ls --color=auto --group-directories-first'
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
@@ -39,12 +41,19 @@ alias cl="clear"
 alias ltp="latexmk -pdf"
 alias ltc="latexmk -c"
 
+alias wscan="nmcli device wifi rescan"
+
+# vi fuzzy file
+export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
+vf() { fzf | xargs -r -I % $EDITOR % ;}
+
 alias sdn="shutdown now"
 alias reb="reboot"
 
 [ -f "$HOME/.shortcuts" ] && source "$HOME/.shortcuts"
 
-texpkg() { tllocalmgr install $1 && sudo texhash ;}
+# Install latex package
+texpkg() { tllocalmgr install $@ && sudo texhash ;}
 
 # copy a template and edit it
 templateEdit() {
