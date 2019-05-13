@@ -1,5 +1,5 @@
 ! hidpi settings
-Xft.dpi: 135
+Xft.dpi: 125.37
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault
 Xft.hintstyle: hintfull
@@ -8,7 +8,7 @@ Xft.antialias: 1
 Xft.rgba: rgb
 
 !*.alpha: 230
-st.font: Inconsolata Nerd Font-13;
+!st.font: Inconsolata-9;
 
 ! coloring
 ! Custom

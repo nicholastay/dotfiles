@@ -8,3 +8,4 @@ sc ~/.scripts
 mn /mnt
 c ~/Cloud
 s ~/Cloud/Study
+df ~/.dotfiles

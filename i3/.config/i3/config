@@ -4,26 +4,25 @@
 # -------------- INITIAL SETUP -----------------
 # i3-gaps gaps
 for_window [class="^.*"] border pixel 2
-gaps inner 15
-gaps outer 10
+gaps inner 5
+gaps outer 5
 
 # Basic config
 set $mod Mod4
 floating_modifier $mod
 # Use Mouse+$mod to drag floating windows to their wanted position
 set $term --no-startup-id $TERMINAL
-font pango:Inconsolata 12
+font pango:Inconsolata 8
 
-# Popup toolbox type windows - dont tile those
-for_window [instance="dropdown_*"] floating enable
-for_window [instance="dropdown_*"] move scratchpad
-for_window [instance="dropdown_*"] sticky enable
-for_window [instance="dropdown_*"] scratchpad show
-for_window [instance="dropdown_tmuxdd"] resize set 625 450
-for_window [instance="dropdown_dropdowncalc"] resize set 800 300
-for_window [instance="dropdown_tmuxdd"] border pixel 3
-for_window [instance="dropdown_dropdowncalc"] border pixel 2
-for_window [instance="dropdown_*"] move position center
+# Scratchpad terminal with tmux
+for_window [instance="dropdown"] floating enable
+for_window [instance="dropdown"] move scratchpad
+for_window [instance="dropdown"] sticky enable
+#for_window [instance="dropdown"] scratchpad show
+for_window [instance="dropdown"] resize set 625 450
+for_window [instance="dropdown"] move position center
+
+for_window [instance="keepassxc"] floating enable
 
 
 # -------------- EXTERNALS ---------------
@@ -32,7 +31,7 @@ exec --no-startup-id remapkb
 # wallpaper
 exec --no-startup-id feh --bg-fill ~/.config/wall.jpg
 # pywal
-exec --no-startup-id wal -R
+exec --no-startup-id wal -R -t
 # compositor
 #exec --no-startup-id xcompmgr
 exec --no-startup-id compton -b -f
@@ -50,6 +49,8 @@ exec_always --no-startup-id mpd_watcher
 exec --no-startup-id mpdscribble
 # dropbox
 exec --no-startup-id dropbox
+# cjk ime
+exec --no-startup-id ibus-daemon -drx
 
 # Bar
 bar {
@@ -95,20 +96,28 @@ client.background $black
 # --------------- i3 BINDINGS --------------
 # Programs
 bindsym $mod+Return	 exec $term
-bindsym $mod+space	exec --no-startup-id dmenu_run
+bindsym $mod+space	exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+y	exec --no-startup-id dmenu_run
 bindsym $mod+Shift+Return	exec --no-startup-id termdir
-bindsym $mod+Shift+q	 kill
+bindsym $mod+Shift+q	 [con_id="__focused__" instance="^(?!dropdown).*$"] kill
 bindsym $mod+w	 exec --no-startup-id $BROWSER
 bindsym $mod+f	fullscreen toggle
 bindsym $mod+e	exec --no-startup-id $term -e $FILE
 bindsym $mod+Shift+p	exec $term -e htop
-bindsym $mod+n	exec --no-startup-id $term -e ncmpcpp
+bindsym $mod+Ctrl+p	exec $term -e sudo powertop
+bindsym $mod+n	exec --no-startup-id cherrytree
+bindsym $mod+Shift+n	exec --no-startup-id $term -e ncmpcpp
 bindsym $mod+p	exec --no-startup-id keepassxc
-bindsym $mod+Shift+w	exec --no-startup-id $term -e weechat
+bindsym $mod+Shift+w	exec --no-startup-id qutebrowser
 bindsym $mod+m	exec --no-startup-id $term -e neomutt
 bindsym $mod+Shift+m	exec --no-startup-id mountmenu
 bindsym $mod+Control+m	exec --no-startup-id umountmenu
 bindsym $mod+c	exec --no-startup-id $term -e bc -l
+
+# Startup scratchpad stuff, backup bind incase of tmux crash
+exec --no-startup-id $term -n dropdown -e tmux
+bindsym $mod+u [instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
+bindsym $mod+Ctrl+u exec --no-startup-id $term -n dropdown -e tmux
 
 # Wine programs (dont kill me, its only calculators for education...)
 bindsym $mod+Shift+c	exec --no-startup-id wine ~/.wine/drive_c/Program\ Files\ \(x86\)/TI\ Education/TI-Nspire\ CX\ CAS\ Student\ Software/TI-Nspire\ CX\ CAS\ Student\ Software.exe

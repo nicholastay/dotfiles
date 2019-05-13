@@ -17,6 +17,7 @@ Plug 'lervag/vimtex'
 Plug 'dylanaraps/wal.vim'
 call plug#end()
 colorscheme wal
+let g:deoplete#enable_at_startup = 1
 
 " -------------------------------------------------------------------------
 "  Let's go!
@@ -39,6 +40,9 @@ set shiftwidth=4
 
 "  Autocomplete
 set wildmode=longest,list,full
+
+" dont kill me pls
+set mouse=a
 
 " ----------------------
 "  Bindings
@@ -66,36 +70,15 @@ set pastetoggle=<F12>
 
 map <F6> :!$READER<space>%:r.pdf<space>&<CR><CR>
 
+
 " ---------------------
 "  'Macros'
 "  Replace All
 nnoremap S :%s//g<Left><Left>
 
 "  LaTeX
-"  Compilation
 autocmd FileType tex inoremap <F5> <Esc>:w<Enter>:!latexmk<space>-pdf<space><c-r>%<Enter>
 autocmd FileType tex nnoremap <F5> :w<Enter>:!pdflatex<space><c-r>%<Enter>
-"  Code
-autocmd FileType tex inoremap ;eq <Enter>\begin{equation*}<Enter><Enter>\end{equation*}<Enter><++><Esc>2ki<Tab>
-autocmd FileType tex inoremap ;al <Enter>\begin{align*}<Enter><Enter>\end{align*}<Enter><++><Esc>2ki<Tab>
-autocmd FileType tex inoremap ;eqn <Enter>\begin{align}<Enter><Enter>\end{align}<Enter><++><Esc>2ki<Tab>
-autocmd FileType tex inoremap ;aln <Enter>\begin{align}<Enter><Enter>\end{align}<Enter><++><Esc>2ki<Tab>
-autocmd FileType tex inoremap ;it \textit{}<++><Esc>T{i
-autocmd FileType tex inoremap ;em \emph{}<++><Esc>T{i
-autocmd FileType tex inoremap ;bf \textbf{}<++><Esc>T{i
-autocmd FileType tex inoremap ;mx \begin{bmatrix*}<Enter><Enter><++><Esc>2k$i<Tab>
-autocmd FileType tex inoremap ;chap \chapter{}<Enter><++><Esc>2kf}i
-autocmd FileType tex inoremap ;sec \section{}<Enter><++><Esc>2kf}i
-autocmd FileType tex inoremap ;ssec \subsection{}<Enter><++><Esc>2kf}i
-autocmd FileType tex inoremap ;sssec \subsubsection{}<Enter><++><Esc>2kf}i
-autocmd FileType tex inoremap ;tt \texttt{}<Space><++><Esc>T{i
-autocmd FileType tex inoremap ;nc \newcommand{}[<++>]{<++>}<Esc>2T{i
-autocmd FileType tex inoremap ;ol \begin{enumerate}<Enter><Enter>\end{enumerate}<Enter><Enter><++><Esc>3kA\item<Space>
-autocmd FileType tex inoremap ;ul \begin{itemize}<Enter><Enter>\end{itemize}<Enter><Enter><++><Esc>3kA\item<Space>
-autocmd FileType tex inoremap ;li <Enter>\item<Space>
-autocmd FileType tex inoremap ;ref \ref{}<Space><++><Esc>T{i
-autocmd FileType tex inoremap ;env \begin{}<Enter><++><Enter>\end{<++>}<Enter><++><Esc>3k$i
-autocmd FileType tex inoremap <C-J> <space>\\<CR>
 
 "  Python
 autocmd FileType python inoremap <F5> <Esc>:w<Enter>:!python<space><c-r>%<Enter>
