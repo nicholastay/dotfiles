@@ -7,9 +7,6 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 
-!*.alpha: 230
-!st.font: Inconsolata-9;
-
 ! coloring
 ! Custom
 ! Original theme https://github.com/nathanbuchar/atom-one-dark-terminal

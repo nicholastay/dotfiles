@@ -1,14 +1,14 @@
 #!/bin/sh
 
 case $BLOCK_BUTTON in
-	1) $TERMINAL -e nmtui ;;
+	1) $TERMINAL -n floater -e nmtui ;;
 esac
 
-[ "$(cat /sys/class/net/e[tn]*/operstate)" = 'up' ] && echo "connected (eth)" && exit
+[ "$(cat /sys/class/net/e[tn]*/operstate)" = 'up' ] && echo "🔗 connected (eth)" && exit
 
-[ "$(cat /sys/class/net/w*/operstate)" = 'down' ] && echo "offline" && exit
+[ "$(cat /sys/class/net/w*/operstate)" = 'down' ] && echo "❌ offline" && exit
 
 strength=$(grep "^\s*w" /proc/net/wireless | awk '{ print int($3 * 100 / 70) "%" }')
 name=$(nmcli -t -f NAME connection show --active)
 
-echo "$name ($strength)"
+echo "📶 $name ($strength)"

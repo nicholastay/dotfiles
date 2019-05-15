@@ -24,8 +24,11 @@ alias p="sudo pacman"
 alias pS="sudo pacman -S"
 alias pR="sudo pacman -R"
 alias pQ="pacman -Q"
-alias sy="systemctl"
-alias ssy="sudo systemctl"
+
+alias scl="systemctl"
+alias sscl="sudo systemctl"
+alias scs="systemctl status"
+
 alias tz="trizen"
 alias tzS="trizen -S"
 alias tzR="trizen -R"
