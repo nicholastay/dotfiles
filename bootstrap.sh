@@ -20,15 +20,15 @@ echo ""
 echo ""
 echo ""
 
-echo " --> Installing trizen (AUR manager)..."
+echo " --> Installing yay (AUR manager)..."
 mkdir ~/tmp
 cd ~/tmp
 echo " --> Cloning git repo..."
-git clone https://aur.archlinux.org/trizen.git
-cd trizen
+git clone https://aur.archlinux.org/yay.git
+cd yay
 echo " --> Building..."
 makepkg -si
-echo " <-- Installed trizen."
+echo " <-- Installed yay."
 
 echo ""
 echo ""

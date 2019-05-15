@@ -5,6 +5,7 @@ acpilight
 android-tools
 bc
 compton
+cronie
 dmenu
 dunst
 expect
@@ -12,6 +13,7 @@ feh
 firefox
 fuse2
 fzf
+go
 groff
 highlight
 htop
