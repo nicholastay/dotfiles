@@ -4,8 +4,8 @@
 # -------------- INITIAL SETUP -----------------
 # i3-gaps gaps
 for_window [class="^.*"] border pixel 2
-gaps inner 5
-gaps outer 5
+#gaps inner 5
+#gaps outer 5
 
 # Basic config
 set $mod Mod4
@@ -19,10 +19,15 @@ for_window [instance="dropdown"] floating enable
 for_window [instance="dropdown"] move scratchpad
 for_window [instance="dropdown"] sticky enable
 #for_window [instance="dropdown"] scratchpad show
-for_window [instance="dropdown"] resize set 625 450
+for_window [instance="dropdown"] resize set 625 400
 for_window [instance="dropdown"] move position center
 
 for_window [instance="keepassxc"] floating enable
+for_window [instance="keepassxc"] sticky enable
+
+for_window [instance="floater"] floating enable
+for_window [instance="floater"] resize set 625 400
+for_window [instance="floater"] move position center
 
 
 # -------------- EXTERNALS ---------------
@@ -30,8 +35,10 @@ for_window [instance="keepassxc"] floating enable
 exec --no-startup-id remapkb
 # wallpaper
 exec --no-startup-id feh --bg-fill ~/.config/wall.jpg
+# term
+exec --no-startup-id urxvtd -f
 # pywal
-exec --no-startup-id wal -R -t
+#exec --no-startup-id wal -R -t
 # compositor
 #exec --no-startup-id xcompmgr
 exec --no-startup-id compton -b -f
@@ -57,9 +64,10 @@ bar {
    status_command i3blocks
    position top
    mode dock
+   separator_symbol "〉"
    modifier None
    colors {
-     background $darkblack
+     background #000000
      statusline $darkwhite
    }
  }
@@ -87,7 +95,7 @@ set_from_resource $white	color15 #000000
 set $transparent		#00000000
 
 #                       BORDER		BACKGROUND	TEXT		INDICATOR   CHILD_BORDER
-client.focused		$red		$red		$magenta	$darkmagenta		$darkblue
+client.focused		$red		$red		$magenta	$darkmagenta		$magenta
 client.unfocused	$transparent	$blue		$white		$darkblue		$darkblack
 client.focused_inactive	$transparent	$blue		$white		$darkblue		$darkblack
 client.urgent		$darkred	$darkred	$black		$darkred		$darkred
@@ -100,24 +108,28 @@ bindsym $mod+space	exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+y	exec --no-startup-id dmenu_run
 bindsym $mod+Shift+Return	exec --no-startup-id termdir
 bindsym $mod+Shift+q	 [con_id="__focused__" instance="^(?!dropdown).*$"] kill
+bindsym $mod+Shift+Ctrl+q	[con_id="__focused__" instance="^(?!dropdown_).*$"] exec --no-startup-id kill -9 `xdotool getwindowfocus getwindowpid`
 bindsym $mod+w	 exec --no-startup-id $BROWSER
 bindsym $mod+f	fullscreen toggle
-bindsym $mod+e	exec --no-startup-id $term -e $FILE
-bindsym $mod+Shift+p	exec $term -e htop
-bindsym $mod+Ctrl+p	exec $term -e sudo powertop
+# bindsym $mod+e	exec --no-startup-id $term -e $FILE
+bindsym $mod+e	exec --no-startup-id $term -e bash --rcfile "$HOME/.scripts/i3tools/rangerbash" -i # wow this is bad
+bindsym $mod+Shift+p	exec $term -name floater -e htop
+bindsym $mod+Ctrl+p	exec $term -name floater -e sudo powertop
 bindsym $mod+n	exec --no-startup-id cherrytree
-bindsym $mod+Shift+n	exec --no-startup-id $term -e ncmpcpp
+bindsym $mod+Shift+n	exec --no-startup-id $term -name floater -e ncmpcpp
 bindsym $mod+p	exec --no-startup-id keepassxc
 bindsym $mod+Shift+w	exec --no-startup-id qutebrowser
 bindsym $mod+m	exec --no-startup-id $term -e neomutt
 bindsym $mod+Shift+m	exec --no-startup-id mountmenu
 bindsym $mod+Control+m	exec --no-startup-id umountmenu
-bindsym $mod+c	exec --no-startup-id $term -e bc -l
+bindsym $mod+c	exec --no-startup-id $term -name floater -e bc -l
+bindsym $mod+b	exec --no-startup-id barrier
+bindsym $mod+t	exec --no-startup-id transset-df -m 0.85 -a
 
 # Startup scratchpad stuff, backup bind incase of tmux crash
-exec --no-startup-id $term -n dropdown -e tmux
+#exec --no-startup-id $term -name dropdown -e tmux
 bindsym $mod+u [instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
-bindsym $mod+Ctrl+u exec --no-startup-id $term -n dropdown -e tmux
+bindsym $mod+Ctrl+u exec --no-startup-id $term -name dropdown -e tmux
 
 # Wine programs (dont kill me, its only calculators for education...)
 bindsym $mod+Shift+c	exec --no-startup-id wine ~/.wine/drive_c/Program\ Files\ \(x86\)/TI\ Education/TI-Nspire\ CX\ CAS\ Student\ Software/TI-Nspire\ CX\ CAS\ Student\ Software.exe
@@ -153,17 +165,31 @@ bindsym $mod+semicolon split h
 # split in vertical orientation
 bindsym $mod+apostrophe split v
 
-# gaps
-bindsym $mod+Shift+z gaps inner current plus 5
-bindsym $mod+Control+z gaps inner current minus 15
+# gaps - https://www.reddit.com/r/i3wm/comments/3xcvy0/help_with_code_to_toggle_i3_gaps/cy3izw0/
+set $mode_gaps Toggle gaps: (1) on (2) off (3) plus (4) minus
+bindsym $mod+Shift+z mode "$mode_gaps"
+mode "$mode_gaps" {
+    bindsym 1 mode "default", gaps inner all set 5, gaps outer all set 5
+    bindsym 2 mode "default", gaps inner all set 0, gaps outer all set 0
+	bindsym 3 mode "default", gaps inner current plus 5
+	bindsym 4 mode "default", gaps inner current minus 5
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Shift+s	layout split
+bindsym $mod+Shift+t	layout tabbed
+bindsym $mod+Ctrl+t	layout stacking
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
-bindsym $mod+control+space focus mode_toggle
+bindsym $mod+Ctrl+space focus mode_toggle
 
 # screenshotting
 bindsym Print exec --no-startup-id screenshot
+bindsym Shift+Print exec --no-startup-id screenshot rect
+bindsym Ctrl+Shift+Print exec --no-startup-id screenshot window
 
 # Workspace stuffs
 set $ws1 "1"

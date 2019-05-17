@@ -13,24 +13,28 @@ markup=pango
 
 [network]
 #label=🖧 
+label=net:
 interval=10
 
 [diskroot]
 command=~/.scripts/i3blocks/disk /
-label=💾
+#label=💾
+label=/:
 interval=60
 
 [volume]
+label=vol:
 interval=once
 signal=10
 
 [battery]
 #label=🔋
-interval=5
-
-[datetime]
-label=📅
+label=bat:
 interval=30
 
-[powerblock]
-interval=once
+[datetime]
+#label=📅
+interval=30
+
+# [powerblock]
+# interval=once

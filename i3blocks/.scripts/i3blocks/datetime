@@ -8,7 +8,7 @@ tzs=("Asia/Seoul"
      "America/Los_Angeles"
      )
 
-tz_format="+%Y-%m-%d (%a) %p %I:%M"
+tz_format="+%Y-%m-%d %a %H:%M"
 
 case $BLOCK_BUTTON in
 	1)

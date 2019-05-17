@@ -1,10 +1,13 @@
 #!/bin/sh
 
-sstype="$(printf "rect\\nwindow\\nscreen" | dmenu -l 6 -i -p "screenshot type?")"
+sstype="$1" 
+[ -z "$sstype" ] && sstype="$(printf "rect\\nwindow\\nscreen" | dmenu -l 6 -i -p "screenshot type?")"
 ssargs=""
 case $sstype in
 	"rect") ssargs="-s" ;;
 	"window") ssargs="-i $(xdotool getactivewindow)" ;;
+	"screen") ;;
+	*) exit ;;
 esac
 
 sleep .5s

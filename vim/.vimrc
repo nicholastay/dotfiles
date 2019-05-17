@@ -14,16 +14,18 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/goyo.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'lervag/vimtex'
-Plug 'dylanaraps/wal.vim'
+" Plug 'dylanaraps/wal.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 call plug#end()
-colorscheme wal
-let g:deoplete#enable_at_startup = 1
+" colorscheme wal
 
 " -------------------------------------------------------------------------
 "  Let's go!
 "  ---------------------
 "  Basics
-let mapleader=" "
+let mapleader=";"
 
 set nocompatible
 filetype plugin on
@@ -31,6 +33,7 @@ syntax on
 set encoding=utf-8
 set number relativenumber
 
+set nohlsearch
 set splitbelow splitright " why isn't this the default?
 
 "  Tabs - 4 wide
@@ -39,10 +42,14 @@ set softtabstop=0 noexpandtab
 set shiftwidth=4
 
 "  Autocomplete
-set wildmode=longest,list,full
+"set wildmode=longest,list,full
 
 " dont kill me pls
 set mouse=a
+
+" Autowrites
+autocmd BufWritePost ~/.config/bmdirs,~/.config/bmfiles !shortcuts
+autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
 
 " ----------------------
 "  Bindings
@@ -50,9 +57,16 @@ set mouse=a
 map <leader>f :Goyo \| set linebreak<CR>
 
 " Jump to a placeholder character
-map <Space><Tab> <Esc>/<++><Enter>"_c4l
-nnoremap ;; <Esc>/<++><Enter>"_c4l
-inoremap ;; <Esc>/<++><Enter>"_c4l
+map <leader><leader> <Esc>/<++><Enter>"_c4l
+nnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
+inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
+
+" EasyMotion binds
+let g:EasyMotion_do_mapping = 0
+nmap s <Plug>(easymotion-overwin-f)
+let g:EasyMotion_smartcase = 1
+map <leader>j <Plug>(easymotion-j)
+map <leader>k <Plug>(easymotion-k)
 
 "  Splits
 map <C-h> <C-w>h
@@ -83,3 +97,4 @@ autocmd FileType tex nnoremap <F5> :w<Enter>:!pdflatex<space><c-r>%<Enter>
 "  Python
 autocmd FileType python inoremap <F5> <Esc>:w<Enter>:!python<space><c-r>%<Enter>
 autocmd FileType python nnoremap <F5> :w<Enter>:!python<space><c-r>%<Enter>
+autocmd FileType python setlocal tabstop=4

@@ -4,7 +4,7 @@ case $BLOCK_BUTTON in
 	1) pactl set-sink-mute 0 toggle ;;
 esac
 
-icon=🔊
-[ "$(pulsemixer --get-mute)" = "1" ] && icon=🔇
+#icon=🔊
+[ "$(pulsemixer --get-mute)" = "1" ] && echo "mute" && exit #icon=🔇
 
 echo $icon $(pulsemixer --get-volume | awk '{print $1}')%

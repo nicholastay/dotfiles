@@ -7,35 +7,65 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 
-! coloring
-! Custom
-! Original theme https://github.com/nathanbuchar/atom-one-dark-terminal
-*.foreground:    #ABB2BF
-*.background:    #1E2127
-*.cursorColor:   #5C6370
-*.highlightColor:#3A3F4B
 
-! Negro y gris
-*.color0:        #1E2127
-*.color8:        #5C6370
-! Rojos
-*.color1:        #E06C75
-*.color9:        #E06C75
-! Verde
-*.color2:        #98C379
-*.color10:       #98C379
-! Amarillo
-*.color3:        #D19A66
-*.color11:       #D19A66
-! Azul
-*.color4:        #61AFEF
-*.color12:       #61AFEF
-! Magenta
-*.color5:        #C678DD
-*.color13:       #C678DD
-! Cyan
-*.color6:        #56B6C2
-*.color14:       #56B6C2
-! Blanco
-*.color7:        #ABB2BF
-*.color15: #FFFFFF
+! urxvt settings
+URxvt.depth: 32
+URxvt.background: [85]#000000
+URxvt.scrollBar: false
+URxvt.font: xft:mono:size=8
+URxvt.letterSpace: -1
+
+
+
+
+! Misc XTerm settings just as a fallback term
+! Use truetype in XTerm
+XTerm*faceName: Inconsolata
+XTerm*faceSize: 8
+XTerm*renderFont: true
+
+! Xterm font binds
+XTerm*translations: #override \
+Super <Key> minus: smaller-vt-font() \n\
+Super <Key> plus: larger-vt-font() \n\
+
+XTerm*locale: true
+
+
+! special
+*.foreground:   #ffffff
+*.background:   #000000
+*.cursorColor:  #ffffff
+
+! black
+*.color0:       #2e3436
+*.color8:       #555753
+
+! red
+*.color1:       #a31604
+*.color9:       #c60001
+
+! green
+*.color2:       #447241
+*.color10:      #27a343
+
+! yellow
+*.color3:       #c1951a
+*.color11:      #d5a30e
+
+! blue
+*.color4:       #425387
+*.color12:      #4a5a8d
+
+! magenta
+*.color5:       #965d98
+*.color13:      #893c8c
+
+! cyan
+*.color6:       #06989a
+*.color14:      #12bccb
+
+! white
+*.color7:       #d3d7cf
+*.color15:      #eeeeec
+

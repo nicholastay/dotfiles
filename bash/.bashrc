@@ -14,6 +14,7 @@ alias ls='ls --color=auto --group-directories-first'
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias ccat="highlight --out-format=ansi"
+alias cl="clear"
 
 # replace vim with nvim
 alias vi="nvim"
@@ -37,9 +38,10 @@ alias rcp="rsync -vzrh --times --stats --progress --itemize-changes"
 
 alias v="nvim"
 alias e="$FILE"
-alias r="ranger"
 alias g="git"
 alias cl="clear"
+
+r() { ranger --choosedir="$HOME/.rangerdir" && cd "$(cat "$HOME/.rangerdir")" ;}
 
 alias ltp="latexmk -pdf"
 alias ltc="latexmk -c"
@@ -53,8 +55,6 @@ vf() { fzf | xargs -r -I % $EDITOR % ;}
 alias sdn="shutdown now"
 alias reb="reboot"
 
-[ -f "$HOME/.shortcuts" ] && source "$HOME/.shortcuts"
-
 # Install latex package
 texpkg() { tllocalmgr install $@ && sudo texhash ;}
 
@@ -66,10 +66,19 @@ templateEdit() {
 alias thw="templateEdit mathhw.tex"
 alias txm="templateEdit math.tex"
 
+alias cds="cd ~/.scripts"
+alias cdf="cd ~/.dotfiles"
+alias cfv="$EDITOR ~/.vimrc"
+alias cfb="$EDITOR ~/.bashrc"
+alias cfi="$EDITOR ~/.config/i3/config"
+alias cfo="$EDITOR ~/.config/i3blocks/config"
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# xterm transparency
+[ -n "$XTERM_VERSION" ] && transset-df -m 0.85 --id "$WINDOWID" >/dev/null
 
 # IBus (zh/kr) ime
 export GTK_IM_MODULE=ibus
