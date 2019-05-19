@@ -5,7 +5,7 @@
 # $vpnocprofile shoudl be the networkmanager profile name
 # put secrets here as $vpnocuser, $vpnocprofile, $vpnocpassword
 [ ! -f ~/.nexenv ] && echo "No VPN Setup" && exit
-source ~/.nexenv
+. ~/.nexenv
 [ -z "$vpnocprofile" ] && echo "No VPN Setup" && exit
 
 vpnstatus=0 # disconected
@@ -38,7 +38,7 @@ case $BLOCK_BUTTON in
 		;;
 esac
 
-function statusDisp() {
+statusDisp() {
 	# command will return if connected... so if empty no conn
 	[ $vpnstatus = 0 ] && echo "🔓 No VPN" && exit
 	[ $vpnstatus = 2 ] && echo "🔑 VPN'ing to $vpnocprofile..." && exit

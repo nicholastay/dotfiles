@@ -3,9 +3,11 @@ adobe-source-han-sans-otc-fonts
 adobe-source-han-serif-otc-fonts
 acpilight
 android-tools
+atool
 bc
 compton
 cronie
+dash
 dmenu
 dunst
 expect
@@ -49,6 +51,7 @@ ranger
 rclone
 rsync
 ruby
+rxvt-unicode
 samba
 stow
 sxiv
@@ -68,3 +71,4 @@ xorg-xinput
 zathura
 zathura-djvu
 zathura-pdf-poppler
+zip

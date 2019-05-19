@@ -1,7 +1,7 @@
 betterlockscreen-git
+dashbinsh
 mpdscribble
 mutt-wizard-git
 nerd-fonts-inconsolata
-st-luke-git
 ttf-font-awesome
 ttf-nanum

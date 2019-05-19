@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #LC_ALL=ko_KR.utf8 
 
 # Put the timezones you're interested in here
