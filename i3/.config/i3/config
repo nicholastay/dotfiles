@@ -31,33 +31,8 @@ for_window [instance="floater"] move position center
 
 
 # -------------- EXTERNALS ---------------
-# keyboard settings
-exec --no-startup-id remapkb
-# wallpaper
-exec --no-startup-id feh --bg-fill ~/.config/wall.jpg
-# term
-exec --no-startup-id urxvtd -f
-# pywal
-#exec --no-startup-id wal -R -t
-# compositor
-#exec --no-startup-id xcompmgr
-exec --no-startup-id compton -b -f
-# unclutter: hides mouse after a bit
-exec --no-startup-id unclutter
-# sounds
-#exec --no-startup-id pulseaudio --start
-# dunst for notifs
-exec --no-startup-id dunst
-# mpd
-exec --no-startup-id mpd
 # mpd for bar
 exec_always --no-startup-id mpd_watcher
-# mpd last.fm scrobbling
-exec --no-startup-id mpdscribble
-# dropbox
-exec --no-startup-id dropbox
-# cjk ime
-exec --no-startup-id ibus-daemon -drx
 
 # Bar
 bar {
@@ -102,45 +77,20 @@ client.urgent		$darkred	$darkred	$black		$darkred		$darkred
 client.background $black
 
 # --------------- i3 BINDINGS --------------
-# Programs
-bindsym $mod+Return	 exec $term
-bindsym $mod+space	exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+y	exec --no-startup-id dmenu_run
-bindsym $mod+Shift+Return	exec --no-startup-id termdir
+# Basics
+bindsym $mod+y	exec --no-startup-id i3-dmenu-desktop
+
 bindsym $mod+Shift+q	 [con_id="__focused__" instance="^(?!dropdown).*$"] kill
 bindsym $mod+Shift+Ctrl+q	[con_id="__focused__" instance="^(?!dropdown_).*$"] exec --no-startup-id kill -9 `xdotool getwindowfocus getwindowpid`
-bindsym $mod+w	 exec --no-startup-id $BROWSER
+
 bindsym $mod+f	fullscreen toggle
-# bindsym $mod+e	exec --no-startup-id $term -e $FILE
-bindsym $mod+e	exec --no-startup-id $term -e bash --rcfile "$HOME/.scripts/i3tools/rangerbash" -i # wow this is bad
-bindsym $mod+Shift+p	exec $term -name floater -e htop
-bindsym $mod+Ctrl+p	exec $term -name floater -e sudo powertop
-bindsym $mod+n	exec --no-startup-id cherrytree
-bindsym $mod+Shift+n	exec --no-startup-id $term -name floater -e ncmpcpp
-bindsym $mod+p	exec --no-startup-id keepassxc
-bindsym $mod+Shift+w	exec --no-startup-id qutebrowser
-bindsym $mod+m	exec --no-startup-id $term -e neomutt
-bindsym $mod+Shift+m	exec --no-startup-id mountmenu
-bindsym $mod+Control+m	exec --no-startup-id umountmenu
-bindsym $mod+c	exec --no-startup-id $term -name floater -e bc -l
-bindsym $mod+b	exec --no-startup-id barrier
-bindsym $mod+t	exec --no-startup-id transset-df -m 0.85 -a
+
+bindsym $mod+Tab workspace back_and_forth
 
 # Startup scratchpad stuff, backup bind incase of tmux crash
 #exec --no-startup-id $term -name dropdown -e tmux
 bindsym $mod+u [instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
 bindsym $mod+Ctrl+u exec --no-startup-id $term -name dropdown -e tmux
-
-# Wine programs (dont kill me, its only calculators for education...)
-bindsym $mod+Shift+c	exec --no-startup-id wine ~/.wine/drive_c/Program\ Files\ \(x86\)/TI\ Education/TI-Nspire\ CX\ CAS\ Student\ Software/TI-Nspire\ CX\ CAS\ Student\ Software.exe
-bindsym $mod+Shift+v	exec --no-startup-id wine ~/Tools/ClassPad\ Manager\ v3\ Basic/ClassPad300_v3_Basic.exe
-
-# Music
-bindsym $mod+Left	exec --no-startup-id mpc prev
-bindsym $mod+Right	exec --no-startup-id mpc next
-bindsym $mod+slash	exec --no-startup-id mpc toggle
-bindsym $mod+Up	exec --no-startup-id mpc volume +5
-bindsym $mod+Down	exec --no-startup-id mpc volume -5
 
 # Lock
 bindsym $mod+Delete	exec --no-startup-id betterlockscreen -l dimblur
@@ -185,11 +135,6 @@ bindsym $mod+Ctrl+t	layout stacking
 bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+Ctrl+space focus mode_toggle
-
-# screenshotting
-bindsym Print exec --no-startup-id screenshot
-bindsym Shift+Print exec --no-startup-id screenshot rect
-bindsym Ctrl+Shift+Print exec --no-startup-id screenshot window
 
 # Workspace stuffs
 set $ws1 "1"
@@ -236,12 +181,3 @@ bindsym $mod+Control+h	exec --no-startup-id i3resize left
 bindsym $mod+Control+j	exec --no-startup-id i3resize down
 bindsym $mod+Control+k	exec --no-startup-id i3resize up
 bindsym $mod+Control+l	exec --no-startup-id i3resize right
-
-# Function type of keys (xf86)
-bindsym $mod+Control+Left	exec --no-startup-id xbacklight -dec 10
-bindsym $mod+Control+Right	exec --no-startup-id xbacklight -inc 10
-bindsym XF86MonBrightnessDown	exec --no-startup-id xbacklight -dec 10
-bindsym XF86MonBrightnessUp	exec --no-startup-id xbacklight -inc 10
-bindsym XF86AudioMute		exec --no-startup-id pactl set-sink-mute 0 toggle && pkill -RTMIN+10 i3blocks
-bindsym XF86AudioLowerVolume	exec --no-startup-id pactl set-sink-volume 0 -5% && pkill -RTMIN+10 i3blocks
-bindsym XF86AudioRaiseVolume	exec --no-startup-id pactl set-sink-volume 0 +5% && pkill -RTMIN+10 i3blocks

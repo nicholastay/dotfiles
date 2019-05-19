@@ -72,6 +72,7 @@ alias cfv="$EDITOR ~/.vimrc"
 alias cfb="$EDITOR ~/.bashrc"
 alias cfi="$EDITOR ~/.config/i3/config"
 alias cfo="$EDITOR ~/.config/i3blocks/config"
+alias cfs="$EDITOR ~/.config/sxhkd/sxhkdrc"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

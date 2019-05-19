@@ -1,0 +1,59 @@
+# General bindings
+super + Return
+	$TERMINAL
+super + shift + Return
+	termdir # same dir term spawn
+super + e # uses a hack to spawn interative bash that starts in ranger
+	$TERMINAL -e bash --rcfile "$HOME/.scripts/tools/rangerbash" -i
+super + Space
+	dmenu_run
+super + w
+	$BROWSER
+super + shift + control + q # hard force quit
+	kill -9 `xdotool getwindowfocus getwindowpid`
+super + shift + w
+	qutebrowser
+super + p
+	keepassxc
+super + shift + p
+	$TERMINAL -name floater -e htop
+super + control + p
+	$TERMINAL -name floater -e sudo powertop
+super + shift + n
+	$TERMINAL -name floater -e ncmpcpp
+super + m
+	$TERMINAL -e neomutt
+super + c
+	$TERMINAL -e bc -l
+super + b
+	barrier
+super + t # compositor transparency on any program
+	transset-df -m 0.85 -a
+
+# Reload sxhkd
+super + Escape
+	pkill -USR1 -x sxhkd && notify-send "sxhkd" "Reloaded sxhkd bindings."
+
+# System hotkeys
+{_,shift + ,super + }XF86MonBrightness{Down,Up}
+	xbacklight {-dec 10,-dec 2,-set 0,-inc 10,-inc 2,-set 100}
+{_,shift + }XF86Audio{LowerVolume,RaiseVolume}
+	pactl set-sink-volume 0 {-5%,-1%,+5%,+1%} && pkill -RTMIN+10 i3blocks
+XF86AudioMute
+	pactl set-sink-mute 0 toggle && pkill -RTMIN+10 i3blocks
+
+# Script menus
+super + {shift,control} + m
+	{_,u}mountmenu
+{_,shift + ,control + }Print
+	screenshot {_,rect,window}
+
+
+# Music controls
+super + {left,right}
+	mpc {prev,next}
+super + slash
+	mpc toggle
+super + {up,down}
+	mpc volume {+,-}5
+
