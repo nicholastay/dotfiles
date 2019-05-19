@@ -16,3 +16,8 @@ Thumbs.db
 
 # Other
 *.log
+
+
+# vim stuffs
+vim/.vim/.netrwhist
+vim/.vim/plugged/
