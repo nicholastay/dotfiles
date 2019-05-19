@@ -1,3 +1,58 @@
+# nick's sxhkd config
+
+# ---------------------------
+# i3 specific binds
+# ---------------------------
+# (yeah i know im using sxhkd for i3 lol.)
+super + shift + q
+	i3-msg kill
+super + f
+	i3-msg fullscreen toggle
+
+# basic workspace management
+{_,shift + }super + {h,j,k,l}
+	i3-msg {focus,move} {left,down,up,right}
+super + s
+	i3-msg split toggle
+super + {semicolon,apostrophe}
+	i3-msg split {h,v}
+super + control + {h,j,k,l}
+	i3resize {left,down,up,right}
+
+# window modes
+super + {shift + s,shift + t,control + t}
+	i3-msg layout {split,tabbed,stacking}
+super + shift + space
+	i3-msg floating toggle
+super + control + space # focuses between tiles/floats
+	i3-msg focus mode_toggle
+
+# workspace switches
+{_,shift + }super + {1-9,0}
+	i3-msg {_,move container to }workspace {1-9,10}
+super + Tab
+	i3-msg workspace back_and_forth
+
+# reload
+super + shift + r
+	i3-msg reload
+super + control + r
+	i3-msg restart
+
+# misc
+super + control + u
+	$TERMINAL -name dropdown -e tmux
+super + Delete
+	betterlockscreen -l dimblur
+super + y
+	i3-dmenu-desktop
+
+
+
+# ---------------------------
+# generic binds
+# ---------------------------
+
 # General bindings
 super + Return
 	$TERMINAL
@@ -5,7 +60,9 @@ super + shift + Return
 	termdir # same dir term spawn
 super + e # uses a hack to spawn interative bash that starts in ranger
 	$TERMINAL -e bash --rcfile "$HOME/.scripts/tools/rangerbash" -i
-super + Space
+super + shift + e
+	sdmenu
+super + space
 	dmenu_run
 super + w
 	$BROWSER

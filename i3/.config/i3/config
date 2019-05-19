@@ -1,5 +1,8 @@
+# i3 config file (v4)
+
 # nick's i3 config
-# pretty much based off luke smith's (what of my setup isnt)
+
+
 
 # -------------- INITIAL SETUP -----------------
 # i3-gaps gaps
@@ -13,14 +16,6 @@ floating_modifier $mod
 # Use Mouse+$mod to drag floating windows to their wanted position
 set $term --no-startup-id $TERMINAL
 font pango:Inconsolata 8
-
-# Scratchpad terminal with tmux
-for_window [instance="dropdown"] floating enable
-for_window [instance="dropdown"] move scratchpad
-for_window [instance="dropdown"] sticky enable
-#for_window [instance="dropdown"] scratchpad show
-for_window [instance="dropdown"] resize set 625 400
-for_window [instance="dropdown"] move position center
 
 for_window [instance="keepassxc"] floating enable
 for_window [instance="keepassxc"] sticky enable
@@ -36,16 +31,16 @@ exec_always --no-startup-id mpd_watcher
 
 # Bar
 bar {
-   status_command i3blocks
-   position top
-   mode dock
-   separator_symbol "〉"
-   modifier None
-   colors {
-     background #000000
-     statusline $darkwhite
-   }
- }
+    status_command i3blocks
+    position top
+    mode dock
+    separator_symbol "〉"
+    modifier None
+    colors {
+        background #000000
+        statusline $darkwhite
+    }
+}
 #exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 
@@ -76,108 +71,18 @@ client.focused_inactive	$transparent	$blue		$white		$darkblue		$darkblack
 client.urgent		$darkred	$darkred	$black		$darkred		$darkred
 client.background $black
 
-# --------------- i3 BINDINGS --------------
-# Basics
-bindsym $mod+y	exec --no-startup-id i3-dmenu-desktop
-
-bindsym $mod+Shift+q	 [con_id="__focused__" instance="^(?!dropdown).*$"] kill
-bindsym $mod+Shift+Ctrl+q	[con_id="__focused__" instance="^(?!dropdown_).*$"] exec --no-startup-id kill -9 `xdotool getwindowfocus getwindowpid`
-
-bindsym $mod+f	fullscreen toggle
-
-bindsym $mod+Tab workspace back_and_forth
-
-# Startup scratchpad stuff, backup bind incase of tmux crash
-#exec --no-startup-id $term -name dropdown -e tmux
-bindsym $mod+u [instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
-bindsym $mod+Ctrl+u exec --no-startup-id $term -name dropdown -e tmux
-
-# Lock
-bindsym $mod+Delete	exec --no-startup-id betterlockscreen -l dimblur
-# Off
-bindsym $mod+Shift+e	exec --no-startup-id sdmenu
-
-# i3 Focus/Window mgmt
-# focus stuff
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
-# move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-
-bindsym $mod+s split toggle
-# split in horizontal orientation
-bindsym $mod+semicolon split h
-# split in vertical orientation
-bindsym $mod+apostrophe split v
-
+# --------------- i3 (very specific) BINDINGS --------------
+# Most are handled by sxhkd now.
 # gaps - https://www.reddit.com/r/i3wm/comments/3xcvy0/help_with_code_to_toggle_i3_gaps/cy3izw0/
-set $mode_gaps Toggle gaps: (1) on (2) off (3) plus (4) minus
+set $mode_gaps Toggle gaps: (1) on (2) off (3) plus outer (4) minus outer (5) plus inner (6) minus inner
 bindsym $mod+Shift+z mode "$mode_gaps"
 mode "$mode_gaps" {
     bindsym 1 mode "default", gaps inner all set 5, gaps outer all set 5
     bindsym 2 mode "default", gaps inner all set 0, gaps outer all set 0
-	bindsym 3 mode "default", gaps inner current plus 5
-	bindsym 4 mode "default", gaps inner current minus 5
+	bindsym 3 mode "default", gaps outer current plus 5
+	bindsym 4 mode "default", gaps outer current minus 5
+	bindsym 5 mode "default", gaps inner current plus 5
+	bindsym 6 mode "default", gaps inner current minus 5
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-
-bindsym $mod+Shift+s	layout split
-bindsym $mod+Shift+t	layout tabbed
-bindsym $mod+Ctrl+t	layout stacking
-
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-# change focus between tiling / floating windows
-bindsym $mod+Ctrl+space focus mode_toggle
-
-# Workspace stuffs
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
-
-# switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
-
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
-
-# reload the configuration file
-bindsym $mod+Control+r reload
-bindsym $mod+Shift+r restart
-
-# Resize window setup
-bindsym $mod+Control+h	exec --no-startup-id i3resize left
-bindsym $mod+Control+j	exec --no-startup-id i3resize down
-bindsym $mod+Control+k	exec --no-startup-id i3resize up
-bindsym $mod+Control+l	exec --no-startup-id i3resize right
