@@ -6,4 +6,7 @@ map r reload
 map R rotate
 map = zoom in
 
+set window-title-basename true
+set selection-clipboard clipboard
+
 set recolor true

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# stupid script to swap alt to win so win+l doesnt lock thru barrier
+if setxkbmap -query | grep "altwin:swap_alt_win"; then
+	setxkbmap -option
+	remapkb
+	echo "Disabled alt win swap"
+else
+	setxkbmap -option altwin:swap_alt_win
+	echo "Swapped alt win keys"
+fi

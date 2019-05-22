@@ -15,7 +15,8 @@ status=$(cat /sys/class/power_supply/"$BATTERY"/status)
 icon=""
 if [ "$status" != "Discharging" ]; then
 	[ "$percent" -gt "97" ] && echo "full" && exit
-	icon = "++"
+	icon="+?"
+	[ "$status" = "Charging" ] && icon="++"
 fi
 
 echo $percent%$icon

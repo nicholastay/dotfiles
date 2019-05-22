@@ -56,9 +56,11 @@ super + y
 # General bindings
 super + Return
 	$TERMINAL
+# same dir term spawn
 super + shift + Return
-	termdir # same dir term spawn
-super + e # uses a hack to spawn interative bash that starts in ranger
+	termdir 
+# uses a hack to spawn interative bash that starts in ranger
+super + e
 	$TERMINAL -e bash --rcfile "$HOME/.scripts/tools/rangerbash" -i
 super + shift + e
 	sdmenu
@@ -66,7 +68,8 @@ super + space
 	dmenu_run
 super + w
 	$BROWSER
-super + shift + control + q # hard force quit
+# hard force quit
+super + shift + control + q
 	kill -9 `xdotool getwindowfocus getwindowpid`
 super + shift + w
 	qutebrowser
@@ -76,6 +79,8 @@ super + shift + p
 	$TERMINAL -name floater -e htop
 super + control + p
 	$TERMINAL -name floater -e sudo powertop
+super + n
+	/opt/Zettlr/zettlr
 super + shift + n
 	$TERMINAL -name floater -e ncmpcpp
 super + m
@@ -84,7 +89,10 @@ super + c
 	$TERMINAL -e bc -l
 super + b
 	barrier
-super + t # compositor transparency on any program
+super + d
+	displayselect
+# compositor transparency on any program
+super + t 
 	transset-df -m 0.85 -a
 
 # Reload sxhkd
@@ -93,7 +101,7 @@ super + Escape
 
 # System hotkeys
 {_,shift + ,super + }XF86MonBrightness{Down,Up}
-	xbacklight {-dec 10,-dec 2,-set 0,-inc 10,-inc 2,-set 100}
+	xbacklight {-dec 2,-dec 10,-set 0,-inc 2,-inc 10,-set 100}
 {_,shift + }XF86Audio{LowerVolume,RaiseVolume}
 	pactl set-sink-volume 0 {-5%,-1%,+5%,+1%} && pkill -RTMIN+10 i3blocks
 XF86AudioMute
@@ -107,7 +115,7 @@ super + {shift,control} + m
 
 
 # Music controls
-super + {left,right}
+super + {Left,Right}
 	mpc {prev,next}
 super + slash
 	mpc toggle

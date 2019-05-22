@@ -15,6 +15,10 @@ URxvt.scrollBar: false
 URxvt.font: xft:mono:size=8
 URxvt.letterSpace: -1
 
+! urxvt url opener + clipboard selection
+URxvt.perl-ext-common: default,matcher,selection-to-clipboard
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
 
 
 

@@ -91,8 +91,8 @@ map <F6> :!$READER<space>%:r.pdf<space>&<CR><CR>
 nnoremap S :%s//g<Left><Left>
 
 "  LaTeX
-autocmd FileType tex inoremap <F5> <Esc>:w<Enter>:!latexmk<space>-pdf<space><c-r>%<Enter>
-autocmd FileType tex nnoremap <F5> :w<Enter>:!pdflatex<space><c-r>%<Enter>
+autocmd FileType tex nnoremap <F5> :w<Enter>:!latexmk<space>-pdf<space><c-r>%<Enter>
+autocmd FileType tex nnoremap <F4> :w<Enter>:!latexmk<space>-xelatex<space><c-r>%<Enter>
 
 "  Python
 autocmd FileType python inoremap <F5> <Esc>:w<Enter>:!python<space><c-r>%<Enter>
