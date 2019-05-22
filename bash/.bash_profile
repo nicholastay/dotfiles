@@ -2,7 +2,7 @@
 # ~/.bash_profile
 #
 
-export PATH=$PATH:~/.scripts/tools:~/.scripts/i3tools:~/.local/bin
+export PATH=$PATH:~/.scripts/tools:~/.scripts/i3tools:~/.scripts/thirdparty:~/.local/bin
 
 # Programs
 export EDITOR="nvim"
