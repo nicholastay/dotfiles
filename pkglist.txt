@@ -72,4 +72,5 @@ xorg-xinput
 zathura
 zathura-djvu
 zathura-pdf-poppler
+zim
 zip
