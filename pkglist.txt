@@ -3,6 +3,7 @@ adobe-source-han-sans-otc-fonts
 adobe-source-han-serif-otc-fonts
 acpilight
 android-tools
+arc-gtk-theme
 atool
 bc
 compton
