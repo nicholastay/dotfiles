@@ -43,6 +43,7 @@ openconnect
 openssh
 pavucontrol
 powertop
+pulseaudio-alsa
 pulseaudio
 pulsemixer
 python

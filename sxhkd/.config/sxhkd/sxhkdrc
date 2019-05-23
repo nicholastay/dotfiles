@@ -79,8 +79,10 @@ super + shift + p
 	$TERMINAL -name floater -e htop
 super + control + p
 	$TERMINAL -name floater -e sudo powertop
+super + shift + a
+	$TERMINAL -name floater -e pulsemixer
 super + n
-	/opt/Zettlr/zettlr
+	zim
 super + shift + n
 	$TERMINAL -name floater -e ncmpcpp
 super + m
