@@ -1,11 +1,13 @@
 #!/bin/sh
 
 # stupid script to swap alt to win so win+l doesnt lock thru barrier
+# also have to make the key repeat back to default due to network lags
 if setxkbmap -query | grep "altwin:swap_alt_win"; then
 	setxkbmap -option
 	remapkb
 	echo "Disabled alt win swap"
 else
 	setxkbmap -option altwin:swap_alt_win
+	xset r rate 600 25
 	echo "Swapped alt win keys"
 fi
