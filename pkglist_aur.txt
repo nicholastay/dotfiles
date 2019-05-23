@@ -1,4 +1,4 @@
-betterlockscreen-git
+betterlockscreen
 dashbinsh
 mpdscribble
 mutt-wizard-git

@@ -12,7 +12,6 @@ dash
 dmenu
 dunst
 expect
-feh
 firefox
 fuse2
 fzf
@@ -69,6 +68,7 @@ xorg-xprop
 xorg-server
 xorg-xinit
 xorg-xinput
+xwallpaper
 zathura
 zathura-djvu
 zathura-pdf-poppler
