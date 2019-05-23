@@ -35,8 +35,8 @@ echo ""
 echo ""
 
 cd ~/.dotfiles
-echo " --> Restoring AUR packages with trizen..."
-trizen -S --needed - < ./pkglist_aur.txt
+echo " --> Restoring AUR packages with yay..."
+yay -S --needed - < ./pkglist_aur.txt
 echo " <-- Restored AUR packages."
 
 echo ""
@@ -52,6 +52,16 @@ echo " <-- Restored .dotfiles."
 echo ""
 echo ""
 echo ""
+
+echo " --> Enabling services..."
+sudo systemctl enable NetworkManager
+systemctl --user enable pulseaudio
+echo " <-- Enabled services."
+
+echo ""
+echo ""
+echo ""
+
 
 
 echo "---------------------------------------"
