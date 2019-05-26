@@ -61,7 +61,7 @@ super + shift + Return
 	termdir 
 # uses a hack to spawn interative bash that starts in ranger
 super + e
-	$TERMINAL -e bash --rcfile "$HOME/.scripts/tools/rangerbash" -i
+	$TERMINAL -e bash --rcfile "$HOME/.scripts/tools/rangerbashrc" -i
 super + shift + e
 	sdmenu
 super + space
