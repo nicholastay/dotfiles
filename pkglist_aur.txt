@@ -1,5 +1,6 @@
 betterlockscreen
 dashbinsh
+htop-vim-git
 mpdscribble
 mutt-wizard-git
 nerd-fonts-inconsolata
