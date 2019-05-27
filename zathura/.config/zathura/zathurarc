@@ -5,8 +5,11 @@ map D toggle_page_mode
 map r reload
 map R rotate
 map = zoom in
+map S toggle_statusbar
 
 set window-title-basename true
 set selection-clipboard clipboard
+set statusbar-home-tilde true
+set guioptions vh
 
 set recolor true
