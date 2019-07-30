@@ -40,10 +40,18 @@ super + control + r
 	i3-msg restart
 
 # misc
+# term spawn float for convenience
+super + control + Return
+	$TERMINAL -name floater
+super + u
+	i3-msg scratchpad show
+# scratchpad tmux if ded
 super + control + u
-	$TERMINAL -name dropdown -e tmux
+	$TERMINAL -name quickterm -e tmux
+# lock
 super + Delete
 	betterlockscreen -l dimblur
+# .desktop launches
 super + y
 	i3-dmenu-desktop
 

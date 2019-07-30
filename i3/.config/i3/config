@@ -24,6 +24,13 @@ for_window [instance="floater"] floating enable
 for_window [instance="floater"] resize set 625 400
 for_window [instance="floater"] move position center
 
+for_window [instance="quickterm"] floating enable
+for_window [instance="quickterm"] resize set 625 400
+for_window [instance="quickterm"] move position center
+for_window [instance="quickterm"] move scratchpad
+
+# startup the quickterm
+exec $term -name quickterm -e tmux
 
 # -------------- EXTERNALS ---------------
 # mpd for bar

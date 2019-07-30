@@ -18,8 +18,11 @@ Plug 'lervag/vimtex'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 call plug#end()
-" colorscheme wal
+
+let g:pymode_python = 'python3'
 
 " -------------------------------------------------------------------------
 "  Let's go!
