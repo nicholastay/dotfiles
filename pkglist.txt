@@ -71,6 +71,6 @@ xorg-xinput
 xwallpaper
 zathura
 zathura-djvu
-zathura-pdf-poppler
+zathura-pdf-mupdf
 zim
 zip

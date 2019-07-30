@@ -6,3 +6,4 @@ mutt-wizard-git
 nerd-fonts-inconsolata
 ttf-font-awesome
 ttf-nanum
+urxvt-resize-font-git
