@@ -59,9 +59,8 @@ super + Return
 # same dir term spawn
 super + shift + Return
 	termdir 
-# uses a hack to spawn interative bash that starts in ranger
 super + e
-	$TERMINAL -e bash --rcfile "$HOME/.scripts/tools/rangerbashrc" -i
+	$TERMINAL -e ranger
 super + shift + e
 	sdmenu
 super + space
@@ -96,6 +95,9 @@ super + d
 # compositor transparency on any program
 super + t 
 	transset-df -m 0.85 -a
+# mail
+super + F8
+	notify-send "sxhkd (mail)" "Syncing mail..." && mailsync
 
 # Reload sxhkd
 super + Escape

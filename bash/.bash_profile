@@ -7,7 +7,8 @@ export PATH=$PATH:~/.scripts/tools:~/.scripts/i3tools:~/.scripts/thirdparty:~/.l
 # Programs
 export EDITOR="nvim"
 export TERMINAL="urxvtc"
-export BROWSER="firefox"
+#export BROWSER="firefox"
+export BROWSER="qutebrowser"
 export FILE="ranger"
 export READER="zathura"
 

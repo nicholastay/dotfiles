@@ -41,8 +41,6 @@ alias e="$FILE"
 alias g="git"
 alias cl="clear"
 
-r() { ranger --choosedir="$HOME/.rangerdir" && cd "$(cat "$HOME/.rangerdir")" ;}
-
 alias ltp="latexmk -pdf"
 alias ltc="latexmk -c"
 
@@ -75,6 +73,19 @@ alias cfo="$EDITOR ~/.config/i3blocks/config"
 alias cfs="$EDITOR ~/.config/sxhkd/sxhkdrc"
 alias cfr="$EDITOR ~/.config/ranger/rc.conf"
 
+# ranger cd
+[ -s "/usr/share/doc/ranger/examples/bash_automatic_cd.sh" ] && \. /usr/share/doc/ranger/examples/bash_automatic_cd.sh
+alias r="ranger-cd"
+# ranger no nest
+ranger() {
+    if [ -z "$RANGER_LEVEL" ]; then
+        /usr/bin/ranger "$@"
+    else
+        exit
+    fi
+}
+
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -83,3 +94,7 @@ export NVM_DIR="$HOME/.nvm"
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
+
+
+# if RANGERCD var set, launch ranger auto
+[ ! -z "$RANGERCD" ] && unset RANGERCD && ranger-cd
