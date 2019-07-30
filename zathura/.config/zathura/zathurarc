@@ -6,6 +6,7 @@ map r reload
 map R rotate
 map = zoom in
 map S toggle_statusbar
+map I feedkeys ":info<Return>"
 
 set window-title-basename true
 set selection-clipboard clipboard
