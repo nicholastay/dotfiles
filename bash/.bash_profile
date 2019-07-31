@@ -9,6 +9,7 @@ export EDITOR="nvim"
 export TERMINAL="urxvtc"
 #export BROWSER="firefox"
 export BROWSER="qutebrowser"
+export BROWSER_SEC="firefox"
 export FILE="ranger"
 export READER="zathura"
 

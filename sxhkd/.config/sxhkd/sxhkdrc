@@ -79,7 +79,7 @@ super + w
 super + shift + control + q
 	kill -9 `xdotool getwindowfocus getwindowpid`
 super + shift + w
-	qutebrowser
+	$BROWSER_SEC
 super + p
 	keepassxc
 super + shift + p
