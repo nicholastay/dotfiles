@@ -22,3 +22,7 @@ Thumbs.db
 vim/.vim/.netrwhist
 vim/.vim/plugged/
 vim/.vim/autoload/plug.vim
+
+# qutebrowser
+qutebrowser/.config/qutebrowser/autoconfig.yml
+qutebrowser/.config/qutebrowser/qsettings/
