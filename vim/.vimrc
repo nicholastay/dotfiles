@@ -15,15 +15,14 @@ Plug 'junegunn/goyo.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'lervag/vimtex'
 " Plug 'dylanaraps/wal.vim'
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'harenome/vim-mipssyntax'
 call plug#end()
 
-let g:pymode_python = 'python3'
-let g:pymode_lint_on_write = 0
 
 " -------------------------------------------------------------------------
 "  Let's go!
@@ -66,11 +65,11 @@ nnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 
 " EasyMotion binds
-let g:EasyMotion_do_mapping = 0
-nmap s <Plug>(easymotion-overwin-f)
-let g:EasyMotion_smartcase = 1
-map <leader>j <Plug>(easymotion-j)
-map <leader>k <Plug>(easymotion-k)
+" let g:EasyMotion_do_mapping = 0
+" nmap s <Plug>(easymotion-overwin-f)
+" let g:EasyMotion_smartcase = 1
+" map <leader>j <Plug>(easymotion-j)
+" map <leader>k <Plug>(easymotion-k)
 
 "  Splits
 map <C-h> <C-w>h
@@ -102,3 +101,13 @@ autocmd FileType tex nnoremap <F4> :w<Enter>:!latexmk<space>-xelatex<space><c-r>
 autocmd FileType python inoremap <F5> <Esc>:w<Enter>:!python<space><c-r>%<Enter>
 autocmd FileType python nnoremap <F5> :w<Enter>:!python<space><c-r>%<Enter>
 autocmd FileType python setlocal tabstop=4
+
+
+" ---------------------
+"  Uni config
+
+let g:pymode_python = 'python3'
+let g:pymode_lint_on_write = 0
+
+autocmd BufNewFile,BufRead *.asm set syntax=mips
+autocmd FileType asm setlocal tabstop=8

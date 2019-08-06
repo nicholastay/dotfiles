@@ -2,12 +2,14 @@
 
 % ------------------- Preamble --------------------
 \usepackage[a4paper, margin=2cm, top=3cm, bottom=2cm]{geometry} % A4 paper with my standard margins
+\usepackage{microtype}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{mathtools}
 \usepackage{fancyhdr}
-\usepackage{hyperref}
 \usepackage[shortlabels]{enumitem}
+
+\usepackage{newpxmath, newpxtext}
 
 
 % Document metadata
@@ -23,6 +25,8 @@
 \date{\metadate{}}
 \author{\metaauthor{} \\
 	\href{mailto:\metaemail{}}{\small \textit{\metaemail{}}}}
+
+\usepackage[pdfauthor={\metaauthor{} <\metaemail{}>}, pdftitle={\metatitle{}}]{hyperref}
 
 % Header settings
 \pagestyle{fancy}

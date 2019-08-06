@@ -1,12 +1,29 @@
-from ranger.api.commands import *
+# https://github.com/ranger/ranger/wiki/Custom-Commands
+from ranger.api.commands import Command
 
-import os
 
-# Fuzzy finder locate command
-# https://github.com/gotbletu/shownotes/blob/master/ranger_file_locate_fzf.md 
-class fzf_locate(Command):
+class toggle_flat(Command):
     """
-    :fzf_locate
+    :toggle_flat
+
+    Flattens or unflattens the directory view.
+    """
+
+    def execute(self):
+        if self.fm.thisdir.flat == 0:
+            self.fm.thisdir.unload()
+            self.fm.thisdir.flat = -1
+            self.fm.thisdir.load_content()
+        else:
+            self.fm.thisdir.unload()
+            self.fm.thisdir.flat = 0
+            self.fm.thisdir.load_content()
+
+
+
+class fzf_select(Command):
+    """
+    :fzf_select
 
     Find a file using fzf.
 
@@ -16,14 +33,19 @@ class fzf_locate(Command):
     """
     def execute(self):
         import subprocess
+        import os.path
         if self.quantifier:
-            command="locate home media | fzf -e -i"
+            # match only directories
+            command="find -L . \( -path '*/\.*' -o -fstype 'dev' -o -fstype 'proc' \) -prune \
+            -o -type d -print 2> /dev/null | sed 1d | cut -b3- | fzf +m"
         else:
-            command="locate home media | fzf -e -i"
-        fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
+            # match files and directories
+            command="find -L . \( -path '*/\.*' -o -fstype 'dev' -o -fstype 'proc' \) -prune \
+            -o -print 2> /dev/null | sed 1d | cut -b3- | fzf +m"
+        fzf = self.fm.execute_command(command, universal_newlines=True, stdout=subprocess.PIPE)
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:
-            fzf_file = os.path.abspath(stdout.decode('utf-8').rstrip('\n'))
+            fzf_file = os.path.abspath(stdout.rstrip('\n'))
             if os.path.isdir(fzf_file):
                 self.fm.cd(fzf_file)
             else:

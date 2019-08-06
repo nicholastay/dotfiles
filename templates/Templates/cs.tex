@@ -5,6 +5,9 @@
 \usepackage{fancyhdr}
 \usepackage[shortlabels]{enumitem}
 \usepackage{microtype}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{listings}
+\usepackage{mips}
 
 \usepackage{newpxmath, newpxtext}
 
@@ -32,6 +35,20 @@
 \chead{\shorttitle{}}
 \rhead{\metadate{}}
 \cfoot{\thepage}
+
+% listings setup
+\lstset{%
+	language=[mips]Assembler,
+	basicstyle=\footnotesize\ttfamily,breaklines=true,
+	showstringspaces=false,
+	keywordstyle=[1]\color{Magenta}, % instruction
+	keywordstyle=[2]\color{red}, % directives
+	keywordstyle=[3]\color{Cerulean}, % registers
+	commentstyle=\color{OliveGreen},
+	numbers=left,
+	numberstyle=\tiny,
+	frame=single
+}
 
 
 % ------------------- End Preamble --------------------
