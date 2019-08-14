@@ -1,23 +1,4 @@
-#
-# ~/.bash_profile
-#
-
-export PATH=$PATH:~/.scripts/tools:~/.scripts/i3tools:~/.scripts/thirdparty:~/.local/bin
-
-# Programs
-export EDITOR="nvim"
-export TERMINAL="urxvtc"
-#export BROWSER="firefox"
-export BROWSER="qutebrowser"
-export BROWSER_SEC="firefox"
-export FILE="ranger"
-export READER="zathura"
-
-# Other
-export BATTERY="BAT0"
-export SUDO_ASKPASS="$HOME/.scripts/tools/dpass"
-
+# Basic loading
+# Profile then bashrc
+[[ -f ~/.profile ]] && . ~/.profile
 [[ -f ~/.bashrc ]] && . ~/.bashrc
-
-# startx if tty1 and no i3
-[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx
