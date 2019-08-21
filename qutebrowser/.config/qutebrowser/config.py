@@ -1,6 +1,7 @@
 c.content.pdfjs = False
 c.session.lazy_restore = True
 
+c.url.start_pages = 'https://monash.edu'
 c.url.default_page = 'about:blank'
 c.url.searchengines = {'DEFAULT': 'https://google.com/search?q={}'}
 
