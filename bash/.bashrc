@@ -41,6 +41,7 @@ alias e="$FILE"
 alias g="git"
 alias cl="clear"
 
+alias tli="sudo tlmgr install"
 alias ltp="latexmk -pdf"
 alias ltc="latexmk -c"
 
