@@ -1,6 +1,9 @@
 # nick's .profile
 
-export PATH=$PATH:~/.scripts/tools:~/.scripts/i3tools:~/.scripts/thirdparty:~/.local/bin
+export PATH=$PATH:/usr/local/texlive/2019/bin/x86_64-linux:~/.scripts/tools:~/.scripts/i3tools:~/.scripts/thirdparty:~/.local/bin
+
+export MANPATH=$MANPATH:/usr/local/texlive/2019/texmf-dist/doc/man
+export INFOPATH=$MANPATH:/usr/local/texlive/2019/texmf-dist/doc/info
 
 # Programs
 export EDITOR="nvim"

@@ -4,6 +4,7 @@ htop-vim-git
 mpdscribble
 mutt-wizard-git
 nerd-fonts-inconsolata
+texlive-installer
 ttf-font-awesome
 ttf-nanum
 urxvt-resize-font-git

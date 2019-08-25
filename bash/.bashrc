@@ -53,9 +53,6 @@ vf() { fzf | xargs -r -I % $EDITOR % ;}
 alias sdn="shutdown now"
 alias reb="reboot"
 
-# Install latex package
-texpkg() { tllocalmgr install $@ && sudo texhash ;}
-
 # copy a template and edit it
 templateEdit() {
 	[ ! -f "$2" ] && cp "$HOME/Templates/$1" "$2"

@@ -56,7 +56,6 @@ samba
 stow
 sxiv
 terminus-font
-texlive-core
 tmux
 tree
 unclutter
