@@ -13,4 +13,4 @@ set selection-clipboard clipboard
 set statusbar-home-tilde true
 set guioptions vh
 
-set recolor true
+#set recolor true
