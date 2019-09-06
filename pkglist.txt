@@ -15,6 +15,7 @@ expect
 firefox
 fuse2
 fzf
+gnome-calculator
 go
 groff
 highlight

@@ -19,6 +19,7 @@ font pango:Inconsolata 8
 
 for_window [instance="keepassxc"] floating enable
 for_window [instance="keepassxc"] sticky enable
+for_window [instance="gnome-calculator"] floating enable
 
 for_window [instance="floater"] floating enable
 for_window [instance="floater"] resize set 625 400
