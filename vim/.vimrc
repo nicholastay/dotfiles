@@ -19,7 +19,7 @@ Plug 'lervag/vimtex'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+"Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'harenome/vim-mipssyntax'
 call plug#end()
 

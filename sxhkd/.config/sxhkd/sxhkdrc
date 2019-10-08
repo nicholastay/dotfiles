@@ -21,7 +21,7 @@ super + control + {h,j,k,l}
 
 # window modes
 super + {shift + s,shift + t,control + t}
-	i3-msg layout {split,tabbed,stacking}
+	i3-msg layout {default,tabbed,stacking}
 super + shift + space
 	i3-msg floating toggle
 super + control + space # focuses between tiles/floats
