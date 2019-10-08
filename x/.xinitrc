@@ -1,17 +1,8 @@
 #!/bin/sh
 
-xrdb -merge $HOME/.Xresources
-
-# Autostart stuffs
-compton -b -f & # compositor
-setwp & # wallpaper
-sxhkd & # hotkey daemon
-remapkb & # remap keyboard caps esc thing
-dunst & # notifs
-unclutter & # hides mouse after delay
-mpd & # music
-mpdscribble & # music last.fm
-urxvtd -f & # terminal
-ibus-daemon -drx & # CJK IME
+# Display managers run .xprofile on startup, and
+# skip this file. So we just split into that,
+# but if startx run we still want to run xprofile.
+[ -f ~/.xprofile ] && . ~/.xprofile
 
 exec i3

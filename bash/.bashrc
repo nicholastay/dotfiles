@@ -10,6 +10,8 @@ export PS1="\[\033[38;5;14m\]\u\[$(tput sgr0)\]\[\033[38;5;243m\]@\[$(tput sgr0)
 
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
+alias t="$TERMINAL"
+alias q="exit"
 alias ls='ls --color=auto --group-directories-first'
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
