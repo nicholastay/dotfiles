@@ -24,7 +24,8 @@ super + {shift + s,shift + t,control + t}
 	i3-msg layout {default,tabbed,stacking}
 super + shift + space
 	i3-msg floating toggle
-super + control + space # focuses between tiles/floats
+# focuses between tiles/floats
+super + control + space
 	i3-msg focus mode_toggle
 
 # workspace switches
@@ -55,6 +56,11 @@ super + Delete
 super + y
 	i3-dmenu-desktop
 
+
+# quick master / stack thing
+# https://www.reddit.com/r/i3wm/comments/bgwz85/quickly_make_main_stack_and_side_windows_layout/
+super + shift + s
+	i3mstack
 
 
 # ---------------------------
