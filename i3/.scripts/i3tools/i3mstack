@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Quick master/stack layout for i3 thing
+# https://www.reddit.com/r/i3wm/comments/bgwz85/quickly_make_main_stack_and_side_windows_layout/
+
+i3-msg layout splitv\; move left\; resize grow right 10px or 10 ppt\; split v\; layout stacking
