@@ -57,11 +57,6 @@ super + y
 	i3-dmenu-desktop
 
 
-# quick master / stack thing
-# https://www.reddit.com/r/i3wm/comments/bgwz85/quickly_make_main_stack_and_side_windows_layout/
-super + shift + s
-	i3mstack
-
 
 # ---------------------------
 # generic binds

@@ -16,6 +16,8 @@ floating_modifier $mod
 # Use Mouse+$mod to drag floating windows to their wanted position
 set $term --no-startup-id $TERMINAL
 font pango:Inconsolata 8
+# Don't wrap around when changing focus
+focus_wrapping no
 
 for_window [instance="keepassxc"] floating enable
 for_window [instance="keepassxc"] sticky enable
@@ -87,10 +89,15 @@ bindsym $mod+Shift+z mode "$mode_gaps"
 mode "$mode_gaps" {
     bindsym 1 mode "default", gaps inner all set 5, gaps outer all set 5
     bindsym 2 mode "default", gaps inner all set 0, gaps outer all set 0
-	bindsym 3 mode "default", gaps outer current plus 5
-	bindsym 4 mode "default", gaps outer current minus 5
-	bindsym 5 mode "default", gaps inner current plus 5
-	bindsym 6 mode "default", gaps inner current minus 5
+    bindsym 3 mode "default", gaps outer current plus 5
+    bindsym 4 mode "default", gaps outer current minus 5
+    bindsym 5 mode "default", gaps inner current plus 5
+    bindsym 6 mode "default", gaps inner current minus 5
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
+
+# Master+stack thingy
+# https://www.reddit.com/r/i3wm/comments/bgwz85/quickly_make_main_stack_and_side_windows_layout/ 
+bindsym $mod+Shift+o layout splitv; move left; resize grow right 10 px or 10 ppt; split v; layout stacking
