@@ -13,9 +13,6 @@ super + f
 # basic workspace management
 {_,shift + }super + {h,j,k,l}
 	i3-msg {focus,move} {left,down,up,right}
-# change outputs
-alt + {1-9,0}
-	i3-ws {1-9,10}
 
 super + s
 	i3-msg split toggle
@@ -34,8 +31,8 @@ super + control + space
 	i3-msg focus mode_toggle
 
 # workspace moves on THIS display / control moves to outputs
-{_,shift + ,control + }super + {1-9,0}
-	i3-ws {--ws,--ws --shift,--shift} {1-9,10}
+{_,shift + ,shift + control + ,control + }super + {1-9,0}
+	i3-ws {--ws ,--ws --shift ,--shift ,_}{1-9,10}
 # move monitor relative
 alt + {h,l}
 	i3-ws {prev,next}
