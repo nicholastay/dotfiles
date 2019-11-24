@@ -99,9 +99,9 @@ super + control + p
 	$TERMINAL -name floater -e sudo powertop
 super + shift + a
 	$TERMINAL -name floater -e pulsemixer
-super + n
-	zim
 super + shift + n
+	zim
+super + n
 	$TERMINAL -name floater -e ncmpcpp
 super + m
 	$TERMINAL -e neomutt
@@ -116,7 +116,7 @@ super + d
 	displayselect
 # compositor transparency on any program
 super + t 
-	transset-df -m 0.85 -a
+	transset-df -m 0.95 -a
 # mail
 super + F8
 	notify-send "sxhkd (mail)" "Syncing mail..." && mailsync
@@ -145,6 +145,6 @@ super + {Left,Right}
 	mpc {prev,next}
 super + slash
 	mpc toggle
-super + {up,down}
+super + {Up,Down}
 	mpc volume {+,-}5
 

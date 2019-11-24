@@ -27,12 +27,15 @@ line-size = 2
 line-color = {$xrdb:color1}
 
 font-0 = mono:pixelsize=10;1
-font-1 = FontAwesome5Free:style=Solid:size=8;2
-font-2 = FontAwesome5Free:style=Regular:size=8;2
-font-3 = FontAwesome5Brands:style=Regular:size=8;2
+font-1 = FontAwesome5Free:style=Solid:size=8;1
+font-2 = FontAwesome5Free:style=Regular:size=8;1
+font-3 = FontAwesome5Brands:style=Regular:size=8;1
+font-4 = Noto Sans CJK KR:style=Regular:size=10;1
+font-5 = Noto Sans CJK JP:style=Regular:size=10;1
+font-6 = Noto Sans CJK SC:style=Regular:size=10;1
 
 modules-left = i3 xwindow
-modules-right = pulseaudio disk homedisk eth date
+modules-right = mpd pulseaudio disk homedisk eth date
 
 tray-position = right
 tray-padding = 0
@@ -60,12 +63,15 @@ line-size = 2
 line-color = {$xrdb:color1}
 
 font-0 = mono:pixelsize=10;1
-font-1 = FontAwesome5Free:style=Solid:pixelsize=8;2
-font-2 = FontAwesome5Free:style=Regular:pixelsize=8;2
-font-3 = FontAwesome5Brands:style=Regular:pixelsize=8;2
+font-1 = FontAwesome5Free:style=Solid:size=8;2
+font-2 = FontAwesome5Free:style=Regular:size=8;2
+font-3 = FontAwesome5Brands:style=Regular:size=8;2
+font-4 = Noto Sans CJK KR:style=Regular:size=10;1
+font-5 = Noto Sans CJK JP:style=Regular:size=10;1
+font-6 = Noto Sans CJK SC:style=Regular:size=10;1
 
 modules-left = i3 xwindow
-modules-right = pulseaudio disk homedisk eth date
+modules-right = mpd pulseaudio disk homedisk eth date
 
 tray-position = right
 tray-padding = 0
@@ -152,6 +158,23 @@ format-underline = #0a6cf5
 format-padding = 1
 
 label = %date% %time%
+
+[module/mpd]
+type = internal/mpd
+host = 127.0.0.1
+port = 6600
+
+format-playing =  <label-song>
+format-playing-underline = #eb2f8a
+format-playing-padding = 1
+
+format-paused =  <label-song>
+format-paused-underline = ${self.format-playing-underline}
+format-paused-padding = ${self.format-playing-padding}
+
+format-stopped =  <label-song>
+format-stopped-underline = ${self.format-playing-underline}
+format-stopped-padding = ${self.format-playing-padding}
 
 [module/eth]
 type = internal/network

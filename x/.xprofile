@@ -15,6 +15,7 @@ remapkb & # remap keyboard caps esc thing
 dunst & # notifs
 unclutter & # hides mouse after delay
 redshift -l 37.8136:144.9631 & # f.lux style with melbourne
+numlockx & # numlock ON
 #mpd & # music
 #mpdscribble & # music last.fm
 urxvtd -f & # terminal
