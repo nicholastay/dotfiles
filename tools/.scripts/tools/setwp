@@ -7,4 +7,4 @@ cp -f "$1" "$wall"
 xwallpaper --zoom "$wall"
 #rm ~/.cache/wal/schemes/*__config_wall_jpg*.json
 #wal -n -t -i ~/.config/wall.jpg
-betterlockscreen -u "$wall"
+#betterlockscreen -u "$wall"
