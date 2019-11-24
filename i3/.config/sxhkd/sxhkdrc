@@ -9,9 +9,14 @@ super + shift + q
 super + f
 	i3-msg fullscreen toggle
 
+# USE i3-ws (enzime tool) for multimon!
 # basic workspace management
 {_,shift + }super + {h,j,k,l}
 	i3-msg {focus,move} {left,down,up,right}
+# change outputs
+alt + {1-9,0}
+	i3-ws {1-9,10}
+
 super + s
 	i3-msg split toggle
 super + {semicolon,apostrophe}
@@ -28,9 +33,12 @@ super + shift + space
 super + control + space
 	i3-msg focus mode_toggle
 
-# workspace switches
-{_,shift + }super + {1-9,0}
-	i3-msg {_,move container to }workspace {1-9,10}
+# workspace moves on THIS display / control moves to outputs
+{_,shift + ,control + }super + {1-9,0}
+	i3-ws {--ws,--ws --shift,--shift} {1-9,10}
+# move monitor relative
+alt + {h,l}
+	i3-ws {prev,next}
 super + Tab
 	i3-msg workspace back_and_forth
 
