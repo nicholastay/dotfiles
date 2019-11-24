@@ -7,8 +7,8 @@
 # -------------- INITIAL SETUP -----------------
 # i3-gaps gaps
 for_window [class="^.*"] border pixel 1
-#gaps inner 5
-#gaps outer 5
+gaps inner 5
+gaps outer 5
 
 # Basic config
 set $mod Mod4
@@ -40,18 +40,18 @@ exec $term -name quickterm -e tmux
 exec_always --no-startup-id mpd_watcher
 
 # Bar
-bar {
-    status_command i3blocks
-    position top
-    mode dock
-    separator_symbol "〉"
-    modifier None
-    colors {
-        background #000000
-        statusline $darkwhite
-    }
-}
-#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# bar {
+#     status_command i3blocks
+#     position top
+#     mode dock
+#     separator_symbol "〉"
+#     modifier None
+#     colors {
+#         background #000000
+#         statusline $darkwhite
+#     }
+# }
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 
 # ------------ COLORS ----------------

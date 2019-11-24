@@ -1,10 +1,10 @@
 #!/bin/sh
 
 wall="$HOME/.config/wall.jpg"
-[ -z "$1" ] && xwallpaper --maximize "$wall" && exit
+[ -z "$1" ] && xwallpaper --zoom "$wall" && exit
 
 cp -f "$1" "$wall"
-xwallpaper --maximize "$wall"
+xwallpaper --zoom "$wall"
 #rm ~/.cache/wal/schemes/*__config_wall_jpg*.json
 #wal -n -t -i ~/.config/wall.jpg
 betterlockscreen -u "$wall"

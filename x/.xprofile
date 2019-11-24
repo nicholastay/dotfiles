@@ -4,6 +4,9 @@
 
 xrdb -merge $HOME/.Xresources
 
+# no beep
+xset -b
+
 # Autostart stuffs
 compton -b -f & # compositor
 setwp & # wallpaper
@@ -11,8 +14,9 @@ sxhkd & # hotkey daemon
 remapkb & # remap keyboard caps esc thing
 dunst & # notifs
 unclutter & # hides mouse after delay
-mpd & # music
-mpdscribble & # music last.fm
+redshift -l 37.8136:144.9631 & # f.lux style with melbourne
+#mpd & # music
+#mpdscribble & # music last.fm
 urxvtd -f & # terminal
 ibus-daemon -drx & # CJK IME
 

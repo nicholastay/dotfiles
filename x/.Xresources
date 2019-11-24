@@ -12,7 +12,7 @@ Xft.rgba: rgb
 URxvt.depth: 32
 URxvt.background: [93]#000000
 URxvt.scrollBar: false
-URxvt.font: xft:mono:size=10
+URxvt.font: xft:mono:size=10,xft:FontAwesome5Free:style=Solid:size=10,xft:FontAwesome5Free:style=Regular:size=10,xft:FontAwesome5Brands:style=Regular:size=10,xft:Symbola:size=10
 URxvt.letterSpace: -1
 URxvt.iso14755: false
 URxvt.iso14755_52: false
@@ -26,7 +26,7 @@ URxvt.matcher.button: 1
 
 ! Misc XTerm settings just as a fallback term
 ! Use truetype in XTerm
-XTerm*faceName: Inconsolata
+XTerm*faceName: Dina
 XTerm*faceSize: 10
 XTerm*renderFont: true
 
