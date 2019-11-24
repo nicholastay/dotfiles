@@ -40,7 +40,7 @@ exec --no-startup-id $term -name quickterm -e tmux
 
 # -------------- EXTERNALS ---------------
 # mpd for bar
-exec_always --no-startup-id mpd_watcher
+#exec_always --no-startup-id mpd_watcher
 
 # Bar
 # bar {

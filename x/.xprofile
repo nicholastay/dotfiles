@@ -1,30 +1,23 @@
 #1/bin/sh
 
 # Runs on DM startup if using one
-
 xrdb -merge $HOME/.Xresources
 
-# no beep
-xset -b
-
 # Autostart stuffs
-compton -b -f & # compositor
-setwp & # wallpaper
+picom -b -f & # compositor (compton)
+$HOME/.scripts/tools/setwp & # wallpaper
 sxhkd & # hotkey daemon
-remapkb & # remap keyboard caps esc thing
+$HOME/.scripts/tools/remapkb & # remap keyboard caps esc thing
 dunst & # notifs
 unclutter & # hides mouse after delay
 redshift -l 37.8136:144.9631 & # f.lux style with melbourne
 numlockx & # numlock ON
-#mpd & # music
-#mpdscribble & # music last.fm
+#mpd & # music -- USE systemd --user
+! pgrep -x "mpdscribble" && mpdscribble & # music last.fm
+#ashuffle --queue-buffer 1 & # stream shuffles into mpd, keep 1 in buffer
 urxvtd -f & # terminal
 ibus-daemon -drx & # CJK IME
 
-# Locking - auto after 5min inactivity
+# Locking - auto after 5min inactivity, notify 15s before lock
 light-locker &
-xautolock -detectsleep \
-	-time 5 -locker "light-locker-command -l" \
-	-notify 15 \ # notify 15s before lock
-	-notifier "notify-send -u critical Locker 'Screen will be locked in 15 seconds!'" \
-	-corners # will not sleep if corner
+#xautolock -detectsleep -time 5 -locker "light-locker-command -l" -notify 15	-notifier "notify-send -u critical Locker 'Screen will be locked in 15 seconds!'" -corners &
