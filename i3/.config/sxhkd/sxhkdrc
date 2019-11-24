@@ -58,7 +58,8 @@ super + control + u
 	$TERMINAL -name quickterm -e tmux
 # lock
 super + Delete
-	betterlockscreen -l dimblur
+	light-locker-command -l
+	#betterlockscreen -l dimblur
 # .desktop launches
 super + y
 	i3-dmenu-desktop
@@ -80,7 +81,9 @@ super + e
 super + shift + e
 	sdmenu
 super + space
-	dmenu_run
+	rofi -show run
+super + alt + space
+	rofi -show window
 super + w
 	$BROWSER
 # hard force quit

@@ -26,6 +26,8 @@ ibus-hangul
 ibus-libpinyin
 imagemagick
 keepassxc
+lightdm
+light-locker
 maim
 mpc
 mpd
@@ -51,6 +53,7 @@ python
 python-pip
 ranger
 rclone
+rofi
 rsync
 ruby
 rxvt-unicode
@@ -63,6 +66,7 @@ tree
 unclutter
 unzip
 w3m
+xautolock
 xclip
 xdotool
 xorg-xprop
