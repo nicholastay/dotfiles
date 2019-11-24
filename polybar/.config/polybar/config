@@ -1,11 +1,14 @@
 ; vim:ft=dosini
 [colors]
-;background = #600d0d0d
-background = #00000000
+background = #affadef9
+;background = #00000000
 background-alt = #300fdfdfd
-foreground = ${xrdb:color7:#222}
-foreground-alt = #555
-primary = ${xrdb:color3}
+;foreground = ${xrdb:color7:#222}
+foreground = #1c1c1c
+;foreground-alt = #e0e0e0
+foreground-alt = #808080
+#primary = ${xrdb:color3}
+primary = #f591fa
 secondary = ${xrdb:color5}
 alert = ${xrdb:color1}
 accent = #B4BC67
@@ -80,7 +83,7 @@ border-color = ${colors.background}
 
 [module/xwindow]
 type = internal/xwindow
-label = · %title:0:65:...%
+label = ·  %title:0:65:...%
 
 [module/i3]
 type = internal/i3
@@ -171,29 +174,29 @@ format-disconnected-padding = 1
 type = internal/pulseaudio
 format-volume-underline = #741180
 format-volume-padding = 1
-format-volume = <label-volume> <bar-volume>
+format-volume = <label-volume>
 label-volume =  %percentage%%
 label-volume-foreground = ${root.foreground}
 
 label-muted =  muted
 label-muted-foreground = #666
 
-bar-volume-width = 10
-bar-volume-foreground-0 = #702585
-bar-volume-foreground-1 = #702585
-bar-volume-foreground-2 = #702585
-bar-volume-foreground-3 = #702585
-bar-volume-foreground-4 = #702585
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+; bar-volume-width = 10
+; bar-volume-foreground-0 = #3ae87a
+; bar-volume-foreground-1 = ${self.bar-volume-foreground-0}
+; bar-volume-foreground-2 = ${self.bar-volume-foreground-0}
+; bar-volume-foreground-3 = ${self.bar-volume-foreground-0}
+; bar-volume-foreground-4 = ${self.bar-volume-foreground-0}
+; bar-volume-foreground-5 = #f5a70a
+; bar-volume-foreground-6 = #ff5555
+; bar-volume-gradient = false
+; bar-volume-indicator = |
+; bar-volume-indicator-font = 2
+; bar-volume-fill = ─
+; bar-volume-fill-font = 2
+; bar-volume-empty = ─
+; bar-volume-empty-font = 2
+; bar-volume-empty-foreground = ${colors.foreground}
 
 
 

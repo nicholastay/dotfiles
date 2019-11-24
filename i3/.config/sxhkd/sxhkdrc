@@ -34,7 +34,9 @@ super + control + space
 {_,shift + ,shift + control + ,control + }super + {1-9,0}
 	i3-ws {--ws ,--ws --shift ,--shift ,_}{1-9,10}
 # move monitor relative
-alt + {h,l}
+super + shift + control + {h,l}
+	i3-ws --shift {prev,next}
+super + control + {u,i}
 	i3-ws {prev,next}
 super + Tab
 	i3-msg workspace back_and_forth

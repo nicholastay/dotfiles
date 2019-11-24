@@ -70,6 +70,7 @@ alias cfv="$EDITOR ~/.vimrc"
 alias cfb="$EDITOR ~/.bashrc"
 alias cfi="$EDITOR ~/.config/i3/config"
 alias cfo="$EDITOR ~/.config/i3blocks/config"
+alias cfp="$EDITOR ~/.config/polybar/config"
 alias cfs="$EDITOR ~/.config/sxhkd/sxhkdrc"
 alias cfr="$EDITOR ~/.config/ranger/rc.conf"
 

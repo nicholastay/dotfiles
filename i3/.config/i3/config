@@ -15,7 +15,7 @@ set $mod Mod4
 floating_modifier $mod
 # Use Mouse+$mod to drag floating windows to their wanted position
 set $term --no-startup-id $TERMINAL
-font pango:Inconsolata 8
+font pango:Inconsolata 12
 # Don't wrap around when changing focus
 focus_wrapping no
 
@@ -32,8 +32,11 @@ for_window [instance="quickterm"] resize set 625 400
 for_window [instance="quickterm"] move position center
 for_window [instance="quickterm"] move scratchpad
 
+# i3ws thingo
+exec --no-startup-id i3-ws --init
+
 # startup the quickterm
-exec $term -name quickterm -e tmux
+exec --no-startup-id $term -name quickterm -e tmux
 
 # -------------- EXTERNALS ---------------
 # mpd for bar
