@@ -103,7 +103,8 @@ super + shift + n
 super + m
 	$TERMINAL -e neomutt
 super + c
-	$TERMINAL -e bc -l
+	caprine
+	#$TERMINAL -e bc -l
 super + shift + c
 	gnome-calculator
 super + b
