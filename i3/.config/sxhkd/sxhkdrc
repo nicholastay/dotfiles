@@ -22,7 +22,7 @@ super + alt + {h,j,k,l}
 	i3resize {left,down,up,right}
 
 # window modes
-super + {shift + s,shift + t,control + t}
+super + {alt + t,shift + t,control + t}
 	i3-msg layout {default,tabbed,stacking}
 super + shift + space
 	i3-msg floating toggle
@@ -62,7 +62,7 @@ super + Delete
 	#betterlockscreen -l dimblur
 # .desktop launches
 super + y
-	i3-dmenu-desktop
+	i3-dmenu-desktop --dmenu='rofi -dmenu -i'
 
 
 
@@ -142,6 +142,8 @@ super + {shift,control} + m
 	{_,u}mountmenu
 {_,shift + ,control + }Print
 	screenshot {_,rect,window}
+super + {shift,control,alt} + s
+	screenshot {rect,window,_}
 
 
 # Music controls
