@@ -5,9 +5,9 @@ xrdb -merge $HOME/.Xresources
 
 # Autostart stuffs
 picom -b -f & # compositor (compton)
-$HOME/.scripts/tools/setwp & # wallpaper
+setwp & # wallpaper
 sxhkd & # hotkey daemon
-$HOME/.scripts/tools/remapkb & # remap keyboard caps esc thing
+remapkb & # remap keyboard caps esc thing
 dunst & # notifs
 unclutter & # hides mouse after delay
 redshift -l 37.8136:144.9631 & # f.lux style with melbourne

@@ -33,7 +33,7 @@ for_window [instance="quickterm"] move position center
 for_window [instance="quickterm"] move scratchpad
 
 # i3ws thingo
-exec --no-startup-id $HOME/.local/bin/i3-ws --init
+exec --no-startup-id i3-ws --init
 
 # startup the quickterm
 exec --no-startup-id $term -name quickterm -e tmux

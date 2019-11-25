@@ -1,6 +1,6 @@
 # nick's .profile
 
-export PATH=$PATH:/usr/local/texlive/2019/bin/x86_64-linux:~/.scripts/tools:~/.scripts/i3tools:~/.scripts/thirdparty:~/.local/bin
+export PATH=$PATH:/usr/local/texlive/2019/bin/x86_64-linux:$HOME/.scripts/tools:$HOME/.scripts/i3tools:$HOME/.scripts/thirdparty:$HOME/.local/bin
 
 export MANPATH=$MANPATH:/usr/local/texlive/2019/texmf-dist/doc/man
 export INFOPATH=$MANPATH:/usr/local/texlive/2019/texmf-dist/doc/info

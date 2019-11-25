@@ -33,6 +33,9 @@ super + control + space
 # workspace moves on THIS display / control moves to outputs
 {_,shift + ,shift + control + ,control + }super + {1-9,0}
 	i3-ws {--ws ,--ws --shift ,--shift ,_}{1-9,10}
+# move and switch
+super + alt + {1-9,0}
+	i3-ws --ws --shift {1-9,10}
 # move monitor relative
 super + shift + control + {h,l}
 	i3-ws --shift {prev,next}
