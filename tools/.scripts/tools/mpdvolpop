@@ -1,4 +1,5 @@
 #!/bin/sh
-[ -z "$1" ] && exit
+c="status"
+[ ! -z "$1" ] && c="volume $1"
 
-notify-send -h string:x-canonical-private-synchronous:mpdvolpop "mpdvolume" "$(mpc volume $1 | awk -F'   ' 'NR==3 { print $1 }')"
+notify-send -h string:x-canonical-private-synchronous:mpdvolpop "mpdvolume" "$(mpc $c | awk -F'   ' 'NR==3 { print $1 }')"
