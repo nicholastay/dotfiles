@@ -1,0 +1,4 @@
+#!/bin/sh
+[ -z "$1" ] && exit
+
+notify-send -h string:x-canonical-private-synchronous:mpdvolpop "mpdvolume" "$(mpc volume $1 | awk -F'   ' 'NR==3 { print $1 }')"

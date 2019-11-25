@@ -1,0 +1,5 @@
+#!/bin/sh
+pgrep -x ashuffle >/dev/null && notify-send "mpdshuffle" "Already shuffling!" && exit
+
+ashuffle --queue-buffer 1 &
+notify-send "mpdshuffle" "Starting shuffle!"

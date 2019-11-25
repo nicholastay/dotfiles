@@ -103,6 +103,8 @@ super + shift + n
 	zim
 super + n
 	$TERMINAL -name floater -e ncmpcpp
+super + control + n
+	mpdshuffle
 super + m
 	$TERMINAL -e neomutt
 super + c
@@ -146,5 +148,5 @@ super + {Left,Right}
 super + slash
 	mpc toggle
 super + {Up,Down}
-	mpc volume {+,-}5
+	mpdvolpop {+,-}5
 

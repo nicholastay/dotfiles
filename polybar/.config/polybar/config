@@ -172,7 +172,7 @@ format-paused =  <label-song>
 format-paused-underline = ${self.format-playing-underline}
 format-paused-padding = ${self.format-playing-padding}
 
-format-stopped =  <label-song>
+format-stopped =  Stopped
 format-stopped-underline = ${self.format-playing-underline}
 format-stopped-padding = ${self.format-playing-padding}
 
