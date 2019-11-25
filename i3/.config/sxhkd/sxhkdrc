@@ -103,8 +103,8 @@ super + shift + n
 	zim
 super + n
 	$TERMINAL -name floater -e ncmpcpp
-super + control + n
-	mpdshuffle
+super + {control,alt} + n
+	mpdshuffle{_, stop}
 super + m
 	$TERMINAL -e neomutt
 super + c
@@ -115,6 +115,8 @@ super + shift + c
 super + b
 	barrier
 super + d
+	discord
+super + shift + d
 	displayselect
 # compositor transparency on any program
 super + t 
@@ -131,9 +133,9 @@ super + Escape
 {_,shift + ,super + }XF86MonBrightness{Down,Up}
 	xbacklight {-dec 2,-dec 10,-set 0,-inc 2,-inc 10,-set 100}
 {_,shift + }XF86Audio{LowerVolume,RaiseVolume}
-	pactl set-sink-volume 0 {-5%,-1%,+5%,+1%} && pkill -RTMIN+10 i3blocks
+	pactl set-sink-volume @DEFAULT_SINK@ {-5%,-1%,+5%,+1%}
 XF86AudioMute
-	pactl set-sink-mute 0 toggle && pkill -RTMIN+10 i3blocks
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Script menus
 super + {shift,control} + m
@@ -149,4 +151,5 @@ super + slash
 	mpc toggle
 super + {Up,Down}
 	mpdvolpop {+,-}5
-
+XF86Audio{Play,Stop,Prev,Next}
+	mpc {toggle,stop,prev,next}

@@ -1,5 +1,10 @@
 #!/bin/sh
-pgrep -x ashuffle >/dev/null && notify-send "mpdshuffle" "Already shuffling!" && exit
+if pgrep -x ashuffle >/dev/null; then
+	[ "$1" = "stop" ] && notify-send "mpdshuffle" "Stopping shuffle." && killall ashuffle && exit
+	notify-send "mpdshuffle" "Already shuffling!" && exit
+else
+	[ "$1" = "stop" ] && notify-send "mpdshuffle" "Shuffle was not running!" && exit
+fi
 
 ashuffle --queue-buffer 1 &
 notify-send "mpdshuffle" "Starting shuffle!"
