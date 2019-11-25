@@ -144,6 +144,8 @@ super + {shift,control} + m
 	screenshot {_,rect,window}
 super + {shift,control,alt} + s
 	screenshot {rect,window,_}
+super + alt + shift + s
+	screenshot rect nosave
 
 
 # Music controls

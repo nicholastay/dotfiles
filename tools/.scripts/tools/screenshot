@@ -2,6 +2,7 @@
 
 sstype="$1" 
 [ -z "$sstype" ] && sstype="$(printf "rect\\nwindow\\nscreen" | dmenu -l 6 -i -p "screenshot type?")"
+
 ssargs=""
 sswin=""
 case $sstype in
@@ -17,7 +18,11 @@ case $sstype in
 	*) exit ;;
 esac
 
-p="$HOME/Screenshots/"
-f="$(date '+%y%m%d-%H%M%S')-$sswin-$sstype.png"
-pf="$p$f"
-maim --delay=0.35 --hidecursor $ssargs "$pf" && xclip -selection clipboard -t image/png -i "$pf" && notify-send "Screenshot ($sstype)" "Screenshot $f copied to clipboard, and saved to folder."
+if [ "$2" = "nosave" ]; then
+	maim --delay=0.35 --hidecursor $ssargs | xclip -selection clipboard -t image/png && notify-send "Screenshot ($sstype)" "Screenshot copied to clipboard."
+else
+	p="$HOME/Screenshots/"
+	f="$(date '+%y%m%d-%H%M%S')-$sswin-$sstype.png"
+	pf="$p$f"
+	maim --delay=0.35 --hidecursor $ssargs "$pf" && xclip -selection clipboard -t image/png -i "$pf" && notify-send "Screenshot ($sstype)" "Screenshot $f copied to clipboard, and saved to folder."
+fi
