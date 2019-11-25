@@ -3,12 +3,21 @@
 sstype="$1" 
 [ -z "$sstype" ] && sstype="$(printf "rect\\nwindow\\nscreen" | dmenu -l 6 -i -p "screenshot type?")"
 ssargs=""
+sswin=""
 case $sstype in
-	"rect") ssargs="-s" ;;
-	"window") ssargs="-i $(xdotool getactivewindow)" ;;
+	"rect")
+		ssargs="-s"
+		sswin="$(ps -p $(xdotool getactivewindow getwindowpid) -o comm=)"
+		;;
+	"window")
+		ssargs="-i $(xdotool getactivewindow)"
+		sswin="$(ps -p $(xdotool getactivewindow getwindowpid) -o comm=)"
+		;;
 	"screen") ;;
 	*) exit ;;
 esac
 
-sleep .5s
-maim --hidecursor $ssargs | tee ~/Screenshots/"$(date '+%y%m%d-%H%M%S')-$sstype.png" | xclip -selection clipboard -t image/png && notify-send "Screenshot ($sstype)" "Screenshot copied to clipboard, and saved to folder."
+p="$HOME/Screenshots/"
+f="$(date '+%y%m%d-%H%M%S')-$sswin-$sstype.png"
+pf="$p$f"
+maim --delay=0.35 --hidecursor $ssargs "$pf" && xclip -selection clipboard -t image/png -i "$pf" && notify-send "Screenshot ($sstype)" "Screenshot $f copied to clipboard, and saved to folder."
