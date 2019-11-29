@@ -41,6 +41,7 @@ ntfs-3g
 openconnect
 openssh
 pavucontrol
+peek
 polybar
 powertop
 pulseaudio-alsa
