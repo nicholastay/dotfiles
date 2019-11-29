@@ -12,7 +12,7 @@ Xft.rgba: rgb
 URxvt.depth: 32
 URxvt.background: [83]#050505
 URxvt.scrollBar: false
-URxvt.font: xft:mono:size=12,xft:NanumGothicCoding:size=10,xft:Symbola:size=12
+URxvt.font: xft:mono:size=12,xft:NanumGothicCoding:size=10,xft:WenQuanYi Micro Hei Mono:size=10,xft:Symbola:size=12
 URxvt.letterSpace: -1
 URxvt.iso14755: false
 URxvt.iso14755_52: false
