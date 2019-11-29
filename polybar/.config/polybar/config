@@ -147,8 +147,8 @@ format-mounted-padding = 1
 type = internal/date
 interval = 5
 
-date = " %Y-%m-%d"
-date-alt = " %Y-%m-%d"
+date = " %Y-%m-%d %a"
+date-alt = " %Y-%m-%d %a"
 
 time = %H:%M
 time-alt = %H:%M:%S
@@ -157,7 +157,7 @@ format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 format-padding = 1
 
-label = %date% %time%
+label = "%{A1:notifytimes:}%date% %time%%{A}"
 
 [module/mpd]
 type = internal/mpd
