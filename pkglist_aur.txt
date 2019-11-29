@@ -3,7 +3,7 @@ dashbinsh
 htop-vim-git
 mpdscribble
 mutt-wizard-git
-nerd-fonts-inconsolata
+notekit-git
 texlive-installer
 ttf-font-awesome
 ttf-nanum

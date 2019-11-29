@@ -76,5 +76,4 @@ xwallpaper
 zathura
 zathura-djvu
 zathura-pdf-mupdf
-zim
 zip
