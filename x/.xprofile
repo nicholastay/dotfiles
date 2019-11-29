@@ -1,4 +1,4 @@
-#1/bin/sh
+#!/bin/sh
 
 # Runs on DM startup if using one
 xrdb -merge $HOME/.Xresources
@@ -16,7 +16,13 @@ numlockx & # numlock ON
 ! pgrep -x "mpdscribble" && mpdscribble & # music last.fm
 #ashuffle --queue-buffer 1 & # stream shuffles into mpd, keep 1 in buffer
 urxvtd -f & # terminal
-ibus-daemon -drx & # CJK IME
+
+# IBus (zh/kr) ime
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+export IBUS_ENABLE_SYNC_MODE=0
+ibus-daemon -drx
 
 # Locking - auto after 5min inactivity, notify 15s before lock
 light-locker &
