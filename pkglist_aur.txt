@@ -7,4 +7,5 @@ notekit-git
 texlive-installer
 ttf-font-awesome
 ttf-nanum
+ttf-nanumgothic_coding
 urxvt-resize-font-git

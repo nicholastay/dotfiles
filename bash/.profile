@@ -9,8 +9,6 @@ export INFOPATH=$MANPATH:/usr/local/texlive/2019/texmf-dist/doc/info
 export EDITOR="nvim"
 export TERMINAL="urxvtc"
 export BROWSER="firefox"
-#export BROWSER="qutebrowser"
-export BROWSER_SEC="qutebrowser"
 export FILE="ranger"
 export READER="zathura"
 

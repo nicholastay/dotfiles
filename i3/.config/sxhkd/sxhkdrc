@@ -92,8 +92,6 @@ super + w
 # hard force quit
 super + shift + control + q
 	kill -9 `xdotool getwindowfocus getwindowpid`
-super + shift + w
-	$BROWSER_SEC
 super + p
 	keepassxc
 super + shift + p
