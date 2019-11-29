@@ -3,19 +3,24 @@
 # Runs on DM startup if using one
 xrdb -merge $HOME/.Xresources
 
+
 # Autostart stuffs
+# The basics
 picom -b -f & # compositor (compton)
 setwp & # wallpaper
 sxhkd & # hotkey daemon
 remapkb & # remap keyboard caps esc thing
+
+# More
+urxvtd -f & # terminal
 dunst & # notifs
 unclutter & # hides mouse after delay
-! pgrep -x "redshift" && redshift -l 37.8136:144.9631 & # f.lux style with melbourne
-numlockx & # numlock ON
-#mpd & # music -- USE systemd --user
+numlockx & # numlock ON by default
+
+# Additionals
+! pgrep -x "redshift" && redshift -l 37.8136:144.9631 -t 6500K:2700K & # f.lux style with melbourne and warms
+[ ! -s $HOME/.config/mpd/pid ] && mpd & # music
 ! pgrep -x "mpdscribble" && mpdscribble & # music last.fm
-#ashuffle --queue-buffer 1 & # stream shuffles into mpd, keep 1 in buffer
-urxvtd -f & # terminal
 
 # IBus (zh/kr) ime
 export GTK_IM_MODULE=ibus
@@ -24,7 +29,10 @@ export QT_IM_MODULE=ibus
 export IBUS_ENABLE_SYNC_MODE=0
 ibus-daemon -drx
 
-# Locking - auto after 5min inactivity, notify 15s before lock
+
+# Locking
+# Use lightdm + light-locker
 light-locker &
+# Auto after 5min inactivity, notify 15s before lock
 # Bottom left corner will prevent lock
 xautolock -detectsleep -time 5 -locker "light-locker-command -l" -notify 15	-notifier "notify-send -u critical Locker 'Screen will be locked in 15 seconds!'" -corners 000- &
