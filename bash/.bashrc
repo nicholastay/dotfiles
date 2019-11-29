@@ -18,19 +18,19 @@ alias diff="diff --color=auto"
 alias ccat="highlight --out-format=ansi"
 alias cl="clear"
 
-# replace vim with nvim
-alias vi="nvim"
-alias vim="nvim"
-
 # alias
 alias p="sudo pacman"
 alias pS="sudo pacman -S"
 alias pR="sudo pacman -R"
+alias pU="sudo pacman -Syu"
 alias pQ="pacman -Q"
 
-alias scl="systemctl"
-alias sscl="sudo systemctl"
-alias scs="systemctl status"
+alias s="systemctl"
+alias ss="sudo systemctl"
+alias sst="systemctl status"
+alias ssr="sudo systemctl restart"
+alias sus="systemctl --user status"
+alias sur="systemctl --user restart"
 
 alias y="yay"
 alias yS="yay -S"
@@ -68,11 +68,14 @@ alias cds="cd ~/.scripts"
 alias cdf="cd ~/.dotfiles"
 alias cfv="$EDITOR ~/.vimrc"
 alias cfb="$EDITOR ~/.bashrc"
+alias cfp="$EDITOR ~/.profile"
 alias cfi="$EDITOR ~/.config/i3/config"
-alias cfo="$EDITOR ~/.config/i3blocks/config"
-alias cfp="$EDITOR ~/.config/polybar/config"
+alias cfo="$EDITOR ~/.config/polybar/config"
 alias cfs="$EDITOR ~/.config/sxhkd/sxhkdrc"
 alias cfr="$EDITOR ~/.config/ranger/rc.conf"
+alias cfx="$EDITOR ~/.xprofile"
+alias cfxr="$EDITOR ~/.Xresources"
+
 
 # ranger cd
 [ -s "/usr/share/doc/ranger/examples/bash_automatic_cd.sh" ] && \. /usr/share/doc/ranger/examples/bash_automatic_cd.sh
@@ -87,10 +90,7 @@ ranger() {
 }
 
 
+# NVM (node version manager)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
-# if RANGERCD var set, launch ranger auto
-[ ! -z "$RANGERCD" ] && unset RANGERCD && ranger-cd

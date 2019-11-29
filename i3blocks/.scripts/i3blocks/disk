@@ -1,7 +1,0 @@
-#!/bin/sh
-
-case $BLOCK_BUTTON in
-	1) $TERMINAL -e $FILE $1 ;;
-esac
-
-df -h "$1" | awk '/[0-9]/ {print $3 "/" $2}'

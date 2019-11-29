@@ -1,7 +1,0 @@
-#!/bin/bash
-
-case $BLOCK_BUTTON in
-	1) sdmenu ;;
-esac
-
-echo -e "⏻"

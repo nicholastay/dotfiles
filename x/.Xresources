@@ -10,9 +10,9 @@ Xft.rgba: rgb
 
 ! urxvt settings
 URxvt.depth: 32
-URxvt.background: [85]#050505
+URxvt.background: [83]#050505
 URxvt.scrollBar: false
-URxvt.font: xft:mono:size=12,xft:FontAwesome5Free:style=Solid:size=12,xft:FontAwesome5Free:style=Regular:size=12,xft:FontAwesome5Brands:style=Regular:size=12,xft:Symbola:size=12
+URxvt.font: xft:mono:size=12,xft:Symbola:size=12
 URxvt.letterSpace: -1
 URxvt.iso14755: false
 URxvt.iso14755_52: false
