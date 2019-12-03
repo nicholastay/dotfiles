@@ -12,9 +12,14 @@ export BROWSER="firefox"
 export FILE="ranger"
 export READER="zathura"
 
+# Tool configs
+export SUDO_ASKPASS="$HOME/.scripts/tools/dpass"
+export RANGER_LOAD_DEFAULT_RC=FALSE
+export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
+
 # Other
 export BATTERY="BAT0"
-export SUDO_ASKPASS="$HOME/.scripts/tools/dpass"
+
 
 # Any local no VCS profile includes
 [ -f $HOME/.config/localprofile ] && . $HOME/.config/localprofile
