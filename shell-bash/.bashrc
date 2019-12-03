@@ -11,7 +11,7 @@ PS1="\[\033[38;5;14m\]\u\[$(tput sgr0)\]\[\033[38;5;243m\]@\[$(tput sgr0)\]\[\03
 shopt -s autocd
 
 # Load our aliases
-[ -f $HOME/.config/termalias ] && . $HOME/.config/termalias
+[ -f $HOME/.config/aliasrc ] && . $HOME/.config/aliasrc
 
 # Load any local things if any (not tracked in VCS)
 [ -f $HOME/.config/localrc ] && . $HOME/.config/localrc
