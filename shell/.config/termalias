@@ -1,0 +1,82 @@
+#!/bin/sh
+
+# Nick's aliases for shells
+# Here we go...
+
+# General shell
+alias t="$TERMINAL"
+alias q="exit"
+alias cl="clear"
+
+
+# Some neat general util stuff
+alias ls='ls --color=auto --group-directories-first'
+alias grep="grep --color=auto"
+alias diff="diff --color=auto"
+alias ccat="highlight --out-format=ansi"
+
+
+# Shortcuts for program + option
+# General
+alias v="nvim"
+alias e="$FILE"
+alias g="git"
+alias sdn="shutdown now"
+alias reb="reboot"
+alias mkp="mkdir -p"
+alias rcp="rsync -vzrh --times --stats --progress --itemize-changes"
+
+# Package manager (pacman)
+alias p="sudo pacman"
+alias pS="sudo pacman -S"
+alias pR="sudo pacman -R"
+alias pU="sudo pacman -Syu"
+alias pQ="pacman -Q"
+# yay (AUR)
+alias y="yay"
+alias yS="yay -S"
+alias yR="yay -R"
+
+# Service management
+alias s="systemctl"
+alias ss="sudo systemctl"
+alias sst="systemctl status"
+alias ssr="sudo systemctl restart"
+alias sus="systemctl --user status"
+alias sur="systemctl --user restart"
+
+# (La)TeX
+alias tli="sudo tlmgr install"
+alias ltp="latexmk -pdf"
+alias ltc="latexmk -c"
+
+# Misc
+# Wireless force rescan for APs
+alias wscan="nmcli device wifi rescan"
+
+
+# Config files / directories quick edit/search
+alias cds="cd ~/.scripts"
+alias cdf="cd ~/.dotfiles"
+alias cfv="$EDITOR ~/.vimrc"
+alias cfb="$EDITOR ~/.bashrc"
+alias cfp="$EDITOR ~/.profile"
+alias cfi="$EDITOR ~/.config/i3/config"
+alias cfo="$EDITOR ~/.config/polybar/config"
+alias cfs="$EDITOR ~/.config/sxhkd/sxhkdrc"
+alias cfr="$EDITOR ~/.config/ranger/rc.conf"
+alias cfx="$EDITOR ~/.xprofile"
+alias cfxr="$EDITOR ~/.Xresources"
+
+
+# Template copier thing
+# Copy a template and edit it.
+templateEdit() {
+	[ ! -f "$2" ] && cp "$HOME/Templates/$1" "$2"
+	$EDITOR "$2"
+}
+alias thw="templateEdit mathhw.tex"
+alias txm="templateEdit math.tex"
+
+# Fuzzy find file -> vim
+vf() { fzf | xargs -r -I % $EDITOR % ;}

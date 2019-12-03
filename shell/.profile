@@ -16,6 +16,9 @@ export READER="zathura"
 export BATTERY="BAT0"
 export SUDO_ASKPASS="$HOME/.scripts/tools/dpass"
 
+# Any local no VCS profile includes
+[ -f $HOME/.config/localprofile ] && . $HOME/.config/localprofile
+
 
 # startx if tty1 and no i3
 [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx
