@@ -15,6 +15,11 @@ SAVEHIST=1000
 setopt auto_cd
 setopt share_history
 setopt menu_complete
+setopt cdable_vars
+# Automatically push dirs to stack so we can quickly flip between dirs
+setopt auto_pushd
+# For above, minus should mean reverse (at least to me?)
+setopt pushd_minus
 
 
 # Load zsh completion
