@@ -34,5 +34,14 @@ ibus-daemon -drx
 # Use lightdm + light-locker
 light-locker &
 # Auto after 5min inactivity, notify 15s before lock
-# Bottom left corner will prevent lock
-xautolock -detectsleep -time 5 -locker "light-locker-command -l" -notify 15	-notifier "notify-send -u critical Locker 'Screen will be locked in 15 seconds!'" -corners -00- &
+# But use xidlehook so not when doing things
+xidlehook \
+	--not-when-fullscreen \
+	--not-when-audio \
+	--socket $HOME/.config/xidlehook.lock \
+	--timer normal 285 \
+		"notify-send -u critical 'Locker' 'Screen will be locked in 15 seconds!'" \
+		"" \
+	--timer primary 15 \
+		"light-locker-command -l" \
+		"" &
