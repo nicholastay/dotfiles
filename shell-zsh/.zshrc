@@ -55,6 +55,27 @@ zle-line-init() {
 zle -N zle-line-init
 
 
+# Dynamic xtitle
+# https://wiki.archlinux.org/index.php/Zsh#xterm_title
+autoload -Uz add-zsh-hook
+function xterm_title_precmd () {
+	print -Pn -- '\e]2;%n@%m:%~\a'
+	[[ "$TERM" == 'screen'* ]] && print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-}:\005{B}%~\005{-}\e\\'
+}
+function xterm_title_preexec () {
+	print -Pn -- '\e]2;' && print -n -- "${(q)1}\a"
+	[[ "$TERM" == 'screen'* ]] && { print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-}:\005{B}%~\005{-} %# ' && print -n -- "${(q)1}\e\\"; }
+}
+if [[ "$TERM" == (screen*|xterm*|rxvt*|tmux*|putty*|konsole*|gnome*) ]]; then
+	add-zsh-hook -Uz precmd xterm_title_precmd
+	add-zsh-hook -Uz preexec xterm_title_preexec
+fi
+
+
+# Autosuggestion plugin
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+
 # Load our common aliases
 [ -f $HOME/.config/aliasrc ] && source $HOME/.config/aliasrc
 
@@ -69,3 +90,19 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=114,underline
 ZSH_HIGHLIGHT_STYLES[precommand]=fg=114,underline
 ZSH_HIGHLIGHT_STYLES[arg0]=fg=114
+
+
+# History substring search
+# Must be loaded after the syntax highlighting plugin
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+# Binds
+# Up/down arrows
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+# vi mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+# Reset search formatting - magenta bg is too jarring
+# Instead just use a nice bold
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=bold
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=fg=red,bold
