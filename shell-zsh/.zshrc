@@ -14,6 +14,7 @@ SAVEHIST=1000
 # Some misc options
 setopt auto_cd
 setopt share_history
+setopt menu_complete
 
 
 # Load zsh completion
@@ -27,6 +28,14 @@ autoload -Uz compinit && compinit
 # Use vim keys
 bindkey -v
 KEYTIMEOUT=1
+bindkey -v '^?' backward-delete-char
+
+# vi keys for tab complete
+zmodload zsh/complist
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
 
 # Use beam cursor
 # Code 6 for static (not blinking), also for all new prompts, do this too
@@ -74,6 +83,8 @@ fi
 
 # Autosuggestion plugin
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+bindkey '^ ' autosuggest-accept
 
 
 # Load our common aliases
