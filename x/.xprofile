@@ -35,4 +35,4 @@ ibus-daemon -drx
 light-locker &
 # Auto after 5min inactivity, notify 15s before lock
 # Bottom left corner will prevent lock
-xautolock -detectsleep -time 5 -locker "light-locker-command -l" -notify 15	-notifier "notify-send -u critical Locker 'Screen will be locked in 15 seconds!'" -corners 000- &
+xautolock -detectsleep -time 5 -locker "light-locker-command -l" -notify 15	-notifier "notify-send -u critical Locker 'Screen will be locked in 15 seconds!'" -corners -00- &
