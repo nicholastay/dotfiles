@@ -79,3 +79,5 @@ zathura
 zathura-djvu
 zathura-pdf-mupdf
 zip
+zsh
+zsh-syntax-highlighting
