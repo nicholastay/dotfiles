@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=Neovim (in terminal)
+Exec=/usr/bin/urxvtc -e nvim %u

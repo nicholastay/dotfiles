@@ -24,6 +24,9 @@ alias g="git"
 alias sdn="shutdown now"
 alias reb="reboot"
 alias mkp="mkdir -p"
+alias lsa="ls -a"
+alias lsl="ls -l"
+alias lsla="ls -la"
 alias rcp="rsync -vzrh --times --stats --progress --itemize-changes"
 
 # Package manager (pacman)
