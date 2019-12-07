@@ -35,6 +35,7 @@ ibus-daemon -drx
 light-locker &
 # Auto after 5min inactivity, notify 15s before lock
 # But use xidlehook so not when doing things
+! pgrep -x "xidlehook" && rm $HOME/.config/xidlehook.lock && \
 xidlehook \
 	--not-when-audio \
 	--not-when-fullscreen \

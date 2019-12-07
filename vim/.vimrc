@@ -123,7 +123,10 @@ set pastetoggle=<F12>
 "  Replace All
 nnoremap S :%s//g<Left><Left>
 
-" Read tex files properly
+"  Nice little helper for saving sudo when forget
+cmap w!! w !sudo tee >/dev/null %
+
+"  Read tex files properly
 autocmd BufRead,BufNewFile *.tex set filetype=tex
 
 
