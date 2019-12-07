@@ -3,7 +3,6 @@ android-tools
 arc-gtk-theme
 atool
 bc
-compton
 cronie
 dash
 dmenu
@@ -38,10 +37,12 @@ networkmanager-openconnect
 noto-fonts
 noto-fonts-cjk
 ntfs-3g
+numlockx
 openconnect
 openssh
 pavucontrol
 peek
+picom
 polybar
 powertop
 pulseaudio-alsa
