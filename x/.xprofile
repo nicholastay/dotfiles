@@ -36,12 +36,12 @@ light-locker &
 # Auto after 5min inactivity, notify 15s before lock
 # But use xidlehook so not when doing things
 xidlehook \
-	--not-when-fullscreen \
 	--not-when-audio \
+	--not-when-fullscreen \
 	--socket $HOME/.config/xidlehook.lock \
-	--timer normal 285 \
+	--timer 285 \
 		"notify-send -u critical 'Locker' 'Screen will be locked in 15 seconds!'" \
 		"" \
-	--timer primary 15 \
+	--timer 15 \
 		"light-locker-command -l" \
 		"" &
