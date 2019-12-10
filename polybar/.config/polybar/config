@@ -73,8 +73,8 @@ font-6 = Noto Sans CJK JP:style=Regular:size=10;1
 modules-left = i3 xwindow
 modules-right = mpd pulseaudio disk homedisk eth date
 
-tray-position = right
-tray-padding = 0
+tray-position = none
+;tray-padding = 0
 
 module-margin-left = 2
 module-margin-right = 0

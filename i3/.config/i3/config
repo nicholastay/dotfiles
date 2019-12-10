@@ -18,6 +18,8 @@ set $term --no-startup-id $TERMINAL
 font pango:Inconsolata 12
 # Don't wrap around when changing focus
 focus_wrapping no
+# Do not follow mouse
+focus_follows_mouse no
 
 for_window [instance="keepassxc"] floating enable
 for_window [instance="keepassxc"] sticky enable

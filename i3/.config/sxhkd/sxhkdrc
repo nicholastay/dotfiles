@@ -116,6 +116,8 @@ super + c
 	#$TERMINAL -e bc -l
 super + shift + c
 	gnome-calculator
+super + control + c
+	$TERMINAL -name floater -e octave
 super + shift + o
 	obs
 super + b
