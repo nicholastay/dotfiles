@@ -1,1 +1,3 @@
---verbose --target=$HOME
+--verbose
+--target=$HOME
+--no-folding
