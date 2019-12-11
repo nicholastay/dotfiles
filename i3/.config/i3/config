@@ -40,8 +40,6 @@ exec --no-startup-id i3-ws --init
 # startup the quickterm
 exec --no-startup-id $term -name quickterm -e tmux
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
 
 # ------------ COLORS ----------------
 # set Xresources colors:

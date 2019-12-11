@@ -15,7 +15,7 @@ accent = #B4BC67
 unfocused = #C4C7C5
 
 [bar/main]
-monitor = HDMI-0
+monitor = ${env:MONITOR:HDMI-0}
 width = 100%
 height = 30
 fixed-center = false
@@ -48,43 +48,6 @@ padding-right = 0
 
 border-size = 3
 border-color = ${colors.background}
-
-
-[bar/second]
-monitor = DVI-I-1
-width = 100%
-height = 30
-fixed-center = false
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 2
-line-color = {$xrdb:color1}
-
-font-0 = mono:pixelsize=10;1
-font-1 = FontAwesome5Free:style=Solid:size=8;2
-font-2 = FontAwesome5Free:style=Regular:size=8;2
-font-3 = FontAwesome5Brands:style=Regular:size=8;2
-font-4 = NanumGothicCoding:style=Regular:size=10;1
-font-5 = WenQuanYi Micro Hei Mono:style=Regular:size=10;1
-font-6 = Noto Sans CJK JP:style=Regular:size=10;1
-
-modules-left = i3 xwindow
-modules-right = mpd pulseaudio disk homedisk eth date
-
-tray-position = none
-;tray-padding = 0
-
-module-margin-left = 2
-module-margin-right = 0
-
-padding-left = 0
-padding-right = 0
-
-border-size = 3
-border-color = ${colors.background}
-
 
 
 [module/xwindow]
