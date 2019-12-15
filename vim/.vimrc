@@ -114,7 +114,7 @@ map <C-l> <C-w>l
 "  System clipboard management
 "  Copy + paste
 vnoremap <C-c> "+y
-vnoremap <C-C> "*y
+vnoremap <C-x> "*y
 map <C-v> "+P
 
 "  Paste mode

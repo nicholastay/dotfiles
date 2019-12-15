@@ -77,9 +77,6 @@ super + y
 # General bindings
 super + Return
 	$TERMINAL
-# same dir term spawn
-super + shift + Return
-	termdir 
 super + e
 	$TERMINAL -e ranger
 super + shift + e
@@ -156,6 +153,8 @@ super + {shift,control,alt} + s
 	screenshot {rect,window,_}
 super + alt + shift + s
 	screenshot rect nosave
+super + control + shift + s
+	flameshot gui
 
 
 # Music controls

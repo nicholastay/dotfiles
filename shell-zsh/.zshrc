@@ -90,7 +90,12 @@ fi
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_STRATEGY=(completion history)
-bindkey '^ ' autosuggest-accept
+bindkey '^L' autosuggest-accept
+bindkey '^K' autosuggest-execute
+
+
+# termdir binding
+bindkey -s '^n' 'termdir\n'
 
 
 # Load our common aliases

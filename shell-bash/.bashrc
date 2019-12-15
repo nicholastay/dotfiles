@@ -10,6 +10,9 @@ PS1="\[\033[38;5;14m\]\u\[$(tput sgr0)\]\[\033[38;5;243m\]@\[$(tput sgr0)\]\[\03
 # cd by name only is ok
 shopt -s autocd
 
+# termdir binding
+bind '"\C-n": "termdir\C-m"'
+
 # Load our aliases
 [ -f $HOME/.config/aliasrc ] && . $HOME/.config/aliasrc
 

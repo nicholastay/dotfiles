@@ -28,6 +28,8 @@ alias lsa="ls -a"
 alias lsl="ls -l"
 alias lsla="ls -la"
 alias rcp="rsync -vzrh --times --stats --progress --itemize-changes"
+# Open term in same dir (can't use PID as using daemon)
+alias termdir="(urxvtc)"
 
 # Package manager (pacman)
 alias p="sudo pacman"

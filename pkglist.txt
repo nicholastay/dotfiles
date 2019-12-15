@@ -9,6 +9,7 @@ dmenu
 dunst
 expect
 firefox
+flameshot
 fuse2
 fzf
 gnome-calculator

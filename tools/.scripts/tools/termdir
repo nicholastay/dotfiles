@@ -1,5 +1,0 @@
-#!/bin/sh
-# thanks luke
-PID="$(currwindow)"
-cd "$(readlink /proc/"$PID"/cwd)"
-"$TERMINAL"

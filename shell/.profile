@@ -1,9 +1,13 @@
 # nick's .profile
 
-export PATH=$PATH:/usr/local/texlive/2019/bin/x86_64-linux:$HOME/.scripts/tools:$HOME/.scripts/i3tools:$HOME/.scripts/thirdparty:$HOME/.local/bin
+export PATH=$PATH:/usr/local/texlive/2019/bin/x86_64-linux:$HOME/.scripts/tools:$HOME/.scripts/i3tools:$HOME/.scripts/thirdparty:$HOME/.local/npm/bin:$HOME/.local/bin
 
-export MANPATH=$MANPATH:/usr/local/texlive/2019/texmf-dist/doc/man
+export MANPATH=$MANPATH:/usr/local/texlive/2019/texmf-dist/doc/man:$HOME/.local/npm/share/man
 export INFOPATH=$MANPATH:/usr/local/texlive/2019/texmf-dist/doc/info
+
+# Note for npm/nodejs
+# After install, config with `npm config set prefix "$HOME/.local/npm"`, so global
+# packages go within our .local path instead of having to sudo (bad)
 
 # Programs
 export EDITOR="nvim"
