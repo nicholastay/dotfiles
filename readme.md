@@ -2,7 +2,7 @@
 
 My dotfiles. Probably bad to use, constant WIP for myself. Using GNU Stow.
 
-Don't use the bootstrap files, even I haven't used them.
+If installing from a base Arch system, [NARB](https://github.com/nicholastay/narb) can be used to bootstrap this installation.
 
 ```
 $ git clone git@github.com:nicholastay/dotfiles ~/.dotfiles
