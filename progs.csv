@@ -5,6 +5,7 @@
 ,xorg-xinit,,,starts the graphical server.,
 ,man,,,is the key to Linux for mankind.,
 ,sxhkd,,,binds keys.,
+,firefox,on,,is the web browser of choice for NARB.,
 ,pulseaudio,on,,is the audio server of NARB.,
 ,pulseaudio-alsa,on,,supports PulseAudio.,
 ,rxvt-unicode,,,is the terminal emulator of NARB.,
