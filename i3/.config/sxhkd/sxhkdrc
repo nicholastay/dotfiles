@@ -138,7 +138,7 @@ super + Escape
 
 # System hotkeys
 {_,shift + ,super + }XF86MonBrightness{Down,Up}
-	xbacklight {-dec 2,-dec 10,-set 0,-inc 2,-inc 10,-set 100}
+	xbacklight {-dec 10,-dec 2,-set 0,-inc 10,-inc 2,-set 100}
 {_,shift + }XF86Audio{LowerVolume,RaiseVolume}
 	pactl set-sink-volume @DEFAULT_SINK@ {-5%,-1%,+5%,+1%}
 XF86AudioMute
