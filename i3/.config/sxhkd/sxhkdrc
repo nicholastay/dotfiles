@@ -143,6 +143,8 @@ super + Escape
 	pactl set-sink-volume @DEFAULT_SINK@ {-5%,-1%,+5%,+1%}
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
+XF86AudioMicMute
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Script menus
 super + {shift,control} + m
