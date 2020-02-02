@@ -32,6 +32,8 @@ ibus-daemon -drx
 
 
 # Locking
+# Since using xidlehook, dont use x
+xset s off -dpms
 # Use lightdm + light-locker
 light-locker &
 # Auto after 5min inactivity, notify 15s before lock
