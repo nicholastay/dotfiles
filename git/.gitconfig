@@ -1,6 +1,3 @@
-[user]
-	email = nkt@outlook.kr
-	name = Nicholas Tay
 [alias]
 	c = commit
 	p = push
@@ -13,3 +10,5 @@
 	cm = commit -m
 	d = diff
 	cob = checkout -b
+[include]
+	path = .config/gituser
