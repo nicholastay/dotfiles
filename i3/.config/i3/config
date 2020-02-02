@@ -37,6 +37,9 @@ for_window [instance="quickterm"] move scratchpad
 # i3ws thingo
 exec --no-startup-id i3-ws --init
 
+# start bar
+exec --no-startup-id $HOME/.config/polybar/launch.sh
+
 # startup the quickterm
 exec --no-startup-id $term -name quickterm -e tmux
 

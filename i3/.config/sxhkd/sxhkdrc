@@ -45,10 +45,17 @@ super + Tab
 	i3-msg workspace back_and_forth
 
 # reload
-super + shift + r
+super + shift + F12
 	i3-msg reload
-super + control + r
+super + control + F12
 	i3-msg restart
+super + alt + F12
+	$HOME/.config/polybar/launch.sh
+# reload sxhkd
+super + F12
+	pkill -USR1 -x sxhkd && notify-send "sxhkd" "Reloaded sxhkd bindings."
+
+
 
 # misc
 # term spawn float for convenience
@@ -131,10 +138,6 @@ super + t
 # mail
 super + F8
 	notify-send "sxhkd (mail)" "Syncing mail..." && mailsync
-
-# Reload sxhkd
-super + Escape
-	pkill -USR1 -x sxhkd && notify-send "sxhkd" "Reloaded sxhkd bindings."
 
 # System hotkeys
 {_,shift + ,super + }XF86MonBrightness{Down,Up}

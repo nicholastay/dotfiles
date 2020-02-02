@@ -12,7 +12,7 @@ Xft.dpi: 125
 URxvt.depth: 32
 URxvt.background: [83]#050505
 URxvt.scrollBar: false
-URxvt.font: xft:mono:size=10,xft:NanumGothicCoding:size=8,xft:WenQuanYi Micro Hei Mono:size=8,xft:Symbola:size=10
+URxvt.font: xft:Inconsolata\ Nerd\ Font\ Mono:size=10,xft:NanumGothicCoding:size=8,xft:WenQuanYi\ Micro\ Hei\ Mono:size=8,xft:Symbola:size=10
 URxvt.letterSpace: -1
 URxvt.iso14755: false
 URxvt.iso14755_52: false

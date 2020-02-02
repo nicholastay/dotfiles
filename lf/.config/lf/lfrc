@@ -1,0 +1,35 @@
+# General
+set color256
+set drawbox
+set icons
+
+# Commands
+cmd open ${{
+    case $(file --mime-type "$f" -bL) in
+        text/*|inode/x-empty) $EDITOR "$fx";;
+        *) for f in "$fx"; do setsid xdg-open "$f"> /dev/null 2> /dev/null & done;;
+    esac
+}}
+
+# Binds
+# Clear some
+map c
+map d
+map bg $setwp "$f"
+map D delete
+map a push %mkdir<space>
+map cw rename
+map cW $vidir
+map dd cut
+map <c-space> unselect
+
+# Jumps
+map gh cd ~
+map gr cd /
+map gm cd /media
+map ge cd /etc
+map gu cd /usr
+map gd cd ~/Downloads
+map gD cd ~/Documents
+map gS cd ~/Screenshots
+map gc cd ~/Cloud
