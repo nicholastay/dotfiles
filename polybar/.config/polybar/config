@@ -35,7 +35,7 @@ font-5 = WenQuanYi Micro Hei Mono:style=Regular:size=10;1
 font-6 = Noto Sans CJK JP:style=Regular:size=10;1
 
 modules-left = i3 xwindow
-modules-right = mpd pulseaudio disk homedisk eth date
+modules-right = mpd pulseaudio disk homedisk wifi eth battery date
 
 tray-position = right
 tray-padding = 0
@@ -103,6 +103,7 @@ type = internal/fs
 mount-0 = /home
 interval = 10
 label-mounted =  %used%/%total%
+label-unmounted = 
 format-mounted-underline = #317070
 format-mounted-padding = 1
 
@@ -139,6 +140,32 @@ format-stopped =  Stopped
 format-stopped-underline = ${self.format-playing-underline}
 format-stopped-padding = ${self.format-playing-padding}
 
+[module/wifi]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = #27b830
+format-connected-padding = 1
+label-connected = %essid%
+
+ramp-signal-0 = 0
+ramp-signal-1 = 1
+ramp-signal-2 = 2
+ramp-signal-3 = 3
+ramp-signal-4 = 4
+ramp-signal-5 = 5
+
+format-packetloss = <animation-packetloss> <label-connected>
+format-packetloss-underline = #27b830
+format-packetloss-padding = 1
+animation-packetloss-0 = ⚠
+animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-1 = 📶
+animation-packetloss-1-foreground = #000000
+animation-packetloss-framerate = 500
+
 [module/eth]
 type = internal/network
 interface = enp3s0
@@ -156,6 +183,27 @@ label-disconnected-foreground = ${colors.foreground-alt}
 format-disconnected-padding = 1
 
 
+[module/battery]
+type = internal/battery
+full-at = 99
+
+battery = BAT0
+adapter = AC
+
+format-charging-prefix = " "
+format-charging-underline = #a36b22
+format-charging-padding = 1
+
+format-discharging-prefix = " "
+format-discharging-underline = #a36b22
+format-discharging-padding = 1
+
+label-full = full
+format-full-prefix = " "
+format-full-underline = #a36b22
+format-full-padding = 1
+
+
 [module/pulseaudio]
 type = internal/pulseaudio
 format-volume-underline = #741180
@@ -166,6 +214,9 @@ label-volume-foreground = ${root.foreground}
 
 label-muted =  muted
 label-muted-foreground = #666
+format-muted-underline = #741180
+format-muted-padding = 1
+
 
 ; bar-volume-width = 10
 ; bar-volume-foreground-0 = #3ae87a
