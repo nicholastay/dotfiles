@@ -85,7 +85,7 @@ super + y
 super + Return
 	$TERMINAL
 super + e
-	$TERMINAL -e ranger
+	$TERMINAL -e $FILE
 super + shift + e
 	sdmenu
 super + space
