@@ -148,6 +148,10 @@ XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 XF86AudioMicMute
 	pactl set-source-mute @DEFAULT_SOURCE@ toggle
+XF86Display
+	displayselect
+XF86ScreenSaver
+	light-locker-command -l
 
 # Script menus
 super + {shift,control} + m
