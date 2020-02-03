@@ -41,14 +41,14 @@ fi
 
 pkgnum=$(pacman -Q|wc -l)
 birthd=$(sed -n '1s/^\[\([0-9-]*\).*$/\1/p' /var/log/pacman.log | tr - .)
-
+memuse=$(free -m | awk 'FNR==2 { print $3 " MiB / " $2 " MiB" }')
 
 
 cat << EOF
 ${f0}  ╔════╗	
 ${c16}  ║██  ║ ${c10}OS ${f0}........... $c06$system
 ${c08}  ║  ██║ ${c10}name ${f0}......... $c06$HOSTNAME
-${c01}  ║██  ║ ${c10}birth day${f0}..... $c06$birthd
+${c01}  ║██  ║ ${c10}birthday${f0}...... $c06$birthd
 ${c09}  ║  ██║ ${c10}packages ${f0}..... $c06$pkgnum
 ${c02}  ║██  ║
 ${c10}  ║  ██║ ${c10}wm ${f0}........... $c06$wmname
@@ -59,6 +59,6 @@ ${c12}  ║  ██║ ${c10}system font ${f0}.. $c06$systfn
 ${c05}  ║██  ║
 ${c13}  ║  ██║ ${c10}kernel ${f0}....... $c06$kernel
 ${c06}  ║██  ║ ${c10}processor ${f0}.... $c06$cpuspe
-${c14}  ║  ██║
+${c14}  ║  ██║ ${c10}memory ${f0}....... $c06$memuse
 ${c07}  ╚════╝
 EOF
