@@ -3,6 +3,8 @@ set color256
 set drawbox
 set icons
 
+set previewer ~/.config/lf/preview
+
 # Commands
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
@@ -22,6 +24,8 @@ map cw rename
 map cW $vidir
 map dd cut
 map <c-space> unselect
+map P set preview!
+map <bs2> set hidden!
 
 # Jumps
 map gh cd ~
