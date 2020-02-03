@@ -26,6 +26,7 @@ map dd cut
 map <c-space> unselect
 map P set preview!
 map <bs2> set hidden!
+map - $~/.config/lf/draw_img "$f"
 
 # Jumps
 map gh cd ~
