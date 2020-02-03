@@ -31,20 +31,9 @@ ibus-daemon -drx
 
 
 # Locking
-# Since using xidlehook, dont use x
-xset s off -dpms
 # Use lightdm + light-locker
-light-locker &
-# Auto after 5min inactivity, notify 15s before lock
-# But use xidlehook so not when doing things
-! pgrep -x "xidlehook" && rm $HOME/.config/xidlehook.lock && \
-xidlehook \
-	--not-when-audio \
-	--not-when-fullscreen \
-	--socket $HOME/.config/xidlehook.lock \
-	--timer 285 \
-		"notify-send -u critical 'Locker' 'Screen will be locked in 15 seconds!'" \
-		"" \
-	--timer 15 \
-		"light-locker-command -l" \
-		"" &
+light-locker --no-late-locking &
+# Keep from sleeping
+caffeine &
+# Set screensaver time to 5mins (afk lock)
+xset s 300 300 dpms 300 300 300
