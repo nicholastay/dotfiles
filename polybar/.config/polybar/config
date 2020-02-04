@@ -91,7 +91,7 @@ label-urgent-padding = 2
 type = internal/fs
 mount-0 = /
 interval = 10
-label-mounted =  %used%/%total%
+label-mounted = %{A1:$TERMINAL -e $FILE /:} %used%/%total%%{A}
 format-mounted-underline = #73291c
 format-mounted-padding = 1
 
@@ -99,7 +99,7 @@ format-mounted-padding = 1
 type = internal/fs
 mount-0 = /home
 interval = 10
-label-mounted =  %used%/%total%
+label-mounted = %{A1:$TERMINAL -e $FILE /home:} %used%/%total%%{A}
 label-unmounted = 
 format-mounted-underline = #317070
 format-mounted-padding = 1
@@ -145,7 +145,7 @@ interval = 3.0
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #27b830
 format-connected-padding = 1
-label-connected = %essid%
+label-connected = %{A1:getip wlp3s0 notify:}%{A3:$TERMINAL -name floater -e nmtui:}%essid%%{A}%{A}
 
 ramp-signal-0 = 
 ramp-signal-1 = 
@@ -205,6 +205,8 @@ label-full = full
 format-full-prefix = " "
 format-full-underline = #a36b22
 format-full-padding = 1
+
+label-discharging = %{A1:$TERMINAL -name floater -e sudo powertop:}%percentage%%%{A}
 
 
 [module/pulseaudio]

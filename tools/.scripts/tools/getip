@@ -1,0 +1,5 @@
+#!/bin/sh
+
+ip="$(ip a s dev "$1" | awk '/inet / { print $2 }' | sed 's/\/.*//')"
+[ "$2" = "notify" ] && notify-send "IP address ($1)" "$ip"
+echo "$ip"
