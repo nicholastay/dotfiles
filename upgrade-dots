@@ -13,10 +13,13 @@ echo "  - Detecting stows..."
 stows=""
 cd $HOME/.local/narb/stows
 for s in *; do stows="$stows $s"; done
+cd $HOME/.dotfiles
+echo '' > /tmp/narb-upgrade
+for s in *; do [ -d "$s" ] && echo "$s" > /tmp/narb-upgrade; done
+
 
 echo ""
 echo "  - Unstowing existing modules..."
-cd $HOME/.dotfiles
 eval "stow --verbose=0 -D $stows"
 echo "All existing stows were unstowed."
 
@@ -27,9 +30,19 @@ git pull --rebase
 echo ""
 echo "  - Stowing back modules that still exist..."
 for s in $stows; do
-	[ ! -d "$s" ] && echo "(Module '$s' no longer exists)" && continue
+	[ ! -d "$s" ] && echo "Module '$s' no longer exists" && continue
 	echo "Stowing module '$s'"
-	stow --verbose=0 -S $s
+	stow --verbose=0 -S "$s"
+done
+
+echo ""
+echo "  - Checking for fresh new modules..."
+for s in *; do
+	[ ! -d "$s" ] && continue
+	grep -xq "$s" /tmp/narb-upgrade && continue
+	echo -n "Module '$s' is new. Stow it? [yn] "
+	read myn
+	[ "$myn" = "y" ] && echo "Stowing module '$s'" && stow --verbose=0 -S "$s"
 done
 
 echo ""
