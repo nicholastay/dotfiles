@@ -13,7 +13,7 @@
 ,pulseaudio-alsa,on,,supports PulseAudio.,
 ,pavucontrol,on,,is a front-end for configuring PulseAudio.,
 ,rxvt-unicode,,,is the terminal emulator of NARB.,
-,urxvt-resize-font-git,,,allows the terminal font to be resized on-the-fly.,
+A,urxvt-resize-font-git,on,,allows the terminal font to be resized on-the-fly.,
 ,tlp,off,,is an advanced power management tool.,
 ,powertop,off,,allows viewing of battery consumption per program.,
 ,openssh,,,allows SSH connections.,
