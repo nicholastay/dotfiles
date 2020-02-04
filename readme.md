@@ -14,4 +14,7 @@ $ dconf load / < dconf.ini
 
 # To use texlive profile
 $ sudo /opt/texlive-installer/install-tl -init-from-profile texlive.profile
+
+# When on a different system and changes were made on another
+$ ./upgrade-dots
 ```

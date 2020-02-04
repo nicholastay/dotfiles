@@ -1,0 +1,36 @@
+#!/bin/sh
+
+[ ! -d "$HOME/.local/narb/stows" ] && echo "Stow metadata does not exist. Cannot upgrade." && exit 1
+
+echo ""
+echo "Nick's dotfiles: upgrade"
+echo "  - Fetching git repo..."
+cd $HOME/.dotfiles
+git fetch || { echo "Failed to fetch." && exit 1; }
+
+echo ""
+echo "  - Detecting stows..."
+stows=""
+cd $HOME/.local/narb/stows
+for s in *; do stows="$stows $s"; done
+
+echo ""
+echo "  - Unstowing existing modules..."
+cd $HOME/.dotfiles
+eval "stow --verbose=0 -D $stows"
+echo "All existing stows were unstowed."
+
+echo ""
+echo "  - Upgrading git repo..."
+git pull --rebase
+
+echo ""
+echo "  - Stowing back modules that still exist..."
+for s in $stows; do
+	[ ! -d "$s" ] && echo "(Module '$s' no longer exists)" && continue
+	echo "Stowing module '$s'"
+	stow --verbose=0 -S $s
+done
+
+echo ""
+echo "dotfiles upgrade should be complete!"
