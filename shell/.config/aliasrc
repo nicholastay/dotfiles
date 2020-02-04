@@ -76,6 +76,7 @@ alias cfo="$EDITOR ~/.config/polybar/config"
 alias cfs="$EDITOR ~/.config/sxhkd/sxhkdrc"
 alias cfc="$EDITOR ~/.config/picom.conf"
 alias cfr="$EDITOR ~/.config/ranger/rc.conf"
+alias cfl="$EDITOR ~/.config/lf/lfrc"
 alias cfx="$EDITOR ~/.xprofile"
 alias cfxr="$EDITOR ~/.Xresources"
 

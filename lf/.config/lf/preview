@@ -7,6 +7,7 @@ case "$mimetype" in
 	text/*) highlight --out-format=xterm256 --style=candy --quiet --replace-tabs=4 --force "$1" || cat "$1" ;;
 	image/*) identify -verbose "$1" ;;
 	audio/*) eyeD3 -l critical "$1" ;;
+	application/*tar*|application/zip|application/*7z*|application/*rar*) als "$1" ;;
 	*) stat -L "$1" && echo "" && file --dereference --brief "$1" ;;
 esac
 
