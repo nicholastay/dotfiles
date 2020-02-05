@@ -6,7 +6,7 @@ PS1="%F{014}%n%f%F{243}@%f%F{176}%m%f%F{243}:%f%~ » "
 
 
 # Historys
-HISTFILE=$HOME/.zsh_history
+HISTFILE="$HOME/.local/share/zsh_history"
 HISTSIZE=1000
 SAVEHIST=1000
 

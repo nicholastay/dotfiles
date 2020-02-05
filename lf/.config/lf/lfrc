@@ -3,6 +3,10 @@ set color256
 set drawbox
 set icons
 
+# -eu for safer shell commands
+set shellopts "-eu"
+set ifs "\n"
+
 set previewer ~/.config/lf/preview
 
 # Commands
@@ -14,15 +18,29 @@ cmd open ${{
     esac
 }}
 
+cmd zip ${{
+    set -f
+    fol="$(mktemp -d)"
+    curr="$(pwd)"
+    cp -r $fx $fol
+    zip -r $1.zip .
+    mv $1.zip $curr/
+    rm -rf $fol
+}}
+
+#safer rename
+cmd rename %[ -e $1 ] && printf "File already exists" || mv $f $1
+
 
 # Binds
 # Clear some
 map c
 map d
+map r
 map bg $setwp "$f"
 map D delete
 map a push %mkdir<space>
-map cw rename
+map cw push :rename<space>
 map cW $vidir
 map dd cut
 map <c-space> unselect
@@ -30,7 +48,7 @@ map P set preview!
 map <bs2> set hidden!
 map - $~/.config/lf/draw_img "$f"
 map X $aunpack "$f"
-#map Z push :zip<space>
+map Z push :zip<space>
 
 # Jumps
 map gh cd ~

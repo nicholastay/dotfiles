@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Runs on DM startup if using one
-xrdb -merge $HOME/.Xresources
+xrdb -merge $HOME/.config/X11/Xresources
 
 
 # Autostart stuffs

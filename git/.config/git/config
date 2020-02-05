@@ -11,4 +11,4 @@
 	d = diff
 	cob = checkout -b
 [include]
-	path = .config/gituser
+	path = ~/.config/git/user

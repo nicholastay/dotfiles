@@ -1,12 +1,12 @@
 # nick's .profile
 
-export PATH=$PATH:/usr/local/texlive/2019/bin/x86_64-linux:$HOME/.scripts/tools:$HOME/.scripts/i3tools:$HOME/.scripts/thirdparty:$HOME/.local/npm/bin:$HOME/.local/bin
+export PATH=$PATH:/usr/local/texlive/2019/bin/x86_64-linux:$HOME/.scripts/tools:$HOME/.scripts/i3tools:$HOME/.scripts/thirdparty:$HOME/.local/share/npm/bin:$HOME/.local/bin
 
-export MANPATH=$MANPATH:/usr/local/texlive/2019/texmf-dist/doc/man:$HOME/.local/npm/share/man
+export MANPATH=$MANPATH:/usr/local/texlive/2019/texmf-dist/doc/man:$HOME/.local/share/npm/share/man
 export INFOPATH=$MANPATH:/usr/local/texlive/2019/texmf-dist/doc/info
 
 # Note for npm/nodejs
-# After install, config with `npm config set prefix "$HOME/.local/npm"`, so global
+# After install, config with `npm config set prefix "$HOME/.local/share/npm"`, so global
 # packages go within our .local path instead of having to sudo (bad)
 
 # Programs
@@ -15,6 +15,16 @@ export TERMINAL="urxvtc"
 export BROWSER="firefox"
 export FILE="lf"
 export READER="zathura"
+
+# Home dotfiles cleanup
+export INPUTRC="$HOME/.config/inputrc"
+export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
+export LESSHISTFILE="-"
+export RXVT_SOCKET="$HOME/.cache/urxvtd"
+export WGETRC="$HOME/.config/wget/wgetrc"
+export ZDOTDIR="$HOME/.config/zsh"
+export VIMINIT=":source $HOME/.config/nvim/init.vim"
+export CARGO_HOME="$HOME/.local/share/cargo"
 
 # Tool configs
 export SUDO_ASKPASS="$HOME/.scripts/tools/dpass"

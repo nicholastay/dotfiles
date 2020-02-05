@@ -32,7 +32,7 @@ font-2 = WenQuanYi Micro Hei Mono:style=Regular:size=10;1
 font-3 = Noto Sans CJK JP:style=Regular:size=10;1
 
 modules-left = i3 xwindow
-modules-right = mpd pulseaudio disk homedisk wifi eth battery date
+modules-right = mpd pulseaudio disk wifi eth battery date
 
 tray-position = right
 tray-padding = 0

@@ -66,9 +66,9 @@ alias wscan="nmcli device wifi rescan"
 # Config files / directories quick edit/search
 alias cds="cd ~/.scripts"
 alias cdf="cd ~/.dotfiles"
-alias cfv="$EDITOR ~/.vimrc"
+alias cfv="$EDITOR ~/.config/nvim/init.vim"
 alias cfb="$EDITOR ~/.bashrc"
-alias cfz="$EDITOR ~/.zshrc"
+alias cfz="$EDITOR ~/.config/zsh/.zshrc"
 alias cfp="$EDITOR ~/.profile"
 alias cfa="$EDITOR ~/.config/aliasrc"
 alias cfi="$EDITOR ~/.config/i3/config"
@@ -78,7 +78,7 @@ alias cfc="$EDITOR ~/.config/picom.conf"
 alias cfr="$EDITOR ~/.config/ranger/rc.conf"
 alias cfl="$EDITOR ~/.config/lf/lfrc"
 alias cfx="$EDITOR ~/.xprofile"
-alias cfxr="$EDITOR ~/.Xresources"
+alias cfxr="$EDITOR ~/.config/X11/Xresources"
 
 
 # Template copier thing

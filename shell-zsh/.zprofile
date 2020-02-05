@@ -1,4 +1,4 @@
 # Just like bash_profile
 # Simply basic sourcing
-[ -f ~/.profile ] && . ~/.profile
-[ -f ~/.zshrc ] && . ~/.zshrc
+[ -f $HOME/.profile ] && . $HOME/.profile
+[ -f $ZDOTDIR/.zshrc ] && . $ZDOTDIR/.zshrc
