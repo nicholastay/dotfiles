@@ -108,7 +108,7 @@ super + control + p
 super + shift + a
 	$TERMINAL -name floater -e pulsemixer
 super + shift + n
-	notekit
+	marktext
 super + n
 	$TERMINAL -name floater -e ncmpcpp
 super + {control,alt} + n
