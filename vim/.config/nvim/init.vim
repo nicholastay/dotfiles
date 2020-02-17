@@ -10,6 +10,10 @@
 "  :PlugInstall / :PlugUpdate for stuffs
 "  ---------------------
 
+if !has("nvim")
+  set runtimepath+=~/.config/nvim
+endif
+
 " Auto download for new installs
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
