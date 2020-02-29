@@ -88,6 +88,8 @@ super + e
 	$TERMINAL -e $FILE
 super + shift + e
 	sdmenu
+super + control + e
+	nautilus
 super + space
 	rofi -show run
 super + alt + space
