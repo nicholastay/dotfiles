@@ -34,13 +34,15 @@ autoload -Uz compinit && compinit
 bindkey -v
 KEYTIMEOUT=1
 bindkey -v '^?' backward-delete-char
+# Ctrl-r needs to be rebound when using vim
+bindkey '^R' history-incremental-search-backward
 
 # vi keys for tab complete
 zmodload zsh/complist
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect '^h' vi-backward-char
+bindkey -M menuselect '^k' vi-up-line-or-history
+bindkey -M menuselect '^l' vi-forward-char
+bindkey -M menuselect '^j' vi-down-line-or-history
 
 # Use beam cursor
 # Code 6 for static (not blinking), also for all new prompts, do this too
