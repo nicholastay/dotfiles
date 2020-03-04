@@ -92,3 +92,8 @@ alias txm="templateEdit math.tex"
 
 # Fuzzy find file -> vim
 vf() { fzf | xargs -r -I % $EDITOR % ;}
+
+
+# ...
+# (need to do this to save startup time)
+command -v thefuck >/dev/null 2>&1 && fuck() { eval "$(thefuck --alias)" && fuck ;}
