@@ -31,6 +31,16 @@ cmd zip ${{
 #safer rename
 cmd rename %[ -e $1 ] && printf "File already exists" || mv $f $1
 
+cmd trash %trash-put $fx
+cmd trash_restore $clear && trash-restore
+cmd trash_empty ${{
+    clear
+    trash-list
+    echo -n "\n\nEmpty trash? [y/n] "
+    read tt
+    [ "$tt" = "y" ] && trash-empty
+}}
+cmd trash_list $clear && trash-list && read a
 
 # Binds
 # Clear some
@@ -38,7 +48,11 @@ map c
 map d
 map r
 map bg $setwp "$f"
-map D delete
+map D trash
+map TD trash_empty
+map Tr trash_restore
+map Tl trash_list
+map dX delete
 map a push %mkdir<space>
 map cw push :rename<space>
 map cW $vidir
@@ -61,3 +75,4 @@ map gd cd ~/Downloads
 map gD cd ~/Documents
 map gS cd ~/Screenshots
 map gc cd ~/Cloud
+map gt cd ~/.local/share/Trash/files
