@@ -33,9 +33,12 @@ autoload -Uz compinit && compinit
 # Use vim keys
 bindkey -v
 KEYTIMEOUT=1
+# Fix backspace
 bindkey -v '^?' backward-delete-char
 # Ctrl-r needs to be rebound when using vim
 bindkey '^R' history-incremental-search-backward
+# Fix delete
+bindkey "^[[3~" delete-char
 
 # vi keys for tab complete
 zmodload zsh/complist
