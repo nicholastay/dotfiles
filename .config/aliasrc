@@ -16,6 +16,12 @@ alias diff="diff --color=auto"
 alias ccat="highlight --out-format=ansi"
 
 
+# dotfiles management
+alias dots="git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME"
+alias d="dots"
+alias dott="dots add -f"
+
+
 # Shortcuts for program + option
 # General
 alias v="nvim"
