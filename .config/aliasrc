@@ -17,9 +17,10 @@ alias ccat="highlight --out-format=ansi"
 
 
 # dotfiles management
-alias dots="git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME"
-alias d="dots"
-alias dott="dots add -f"
+alias dott="git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME"
+alias d="dott"
+alias dots="dott status"
+alias dota="dots add -f"
 
 
 # Shortcuts for program + option
