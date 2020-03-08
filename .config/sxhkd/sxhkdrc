@@ -68,7 +68,8 @@ super + control + u
 	$TERMINAL -name quickterm -e tmux
 # lock
 super + Delete
-	light-locker-command -l
+	xscreensaver-command -lock
+	#light-locker-command -l
 	#xidlehook-client --socket $HOME/.config/xidlehook.lock control --action Trigger --timer 1
 	#betterlockscreen -l dimblur
 # .desktop launches

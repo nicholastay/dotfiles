@@ -37,6 +37,5 @@ ibus-daemon -drx
 light-locker --no-late-locking &
 # Keep from sleeping tool
 caffeine &
-# 5 mins -> notify, then 30secs to actual lock
-xset s 300 30
-xss-lock -n $HOME/.scripts/tools/prelock -- light-locker-command -l &
+# Screensaver app
+xscreensaver -no-splash &

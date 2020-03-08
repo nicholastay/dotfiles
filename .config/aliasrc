@@ -86,6 +86,7 @@ alias cfl="$EDITOR ~/.config/lf/lfrc"
 alias cfx="$EDITOR ~/.xprofile"
 alias cfxr="$EDITOR ~/.config/X11/Xresources"
 
+alias cfprogs="$EDITOR ~/.local/narb/progs.csv"
 
 # Template copier thing
 # Copy a template and edit it.
