@@ -2,6 +2,8 @@
 
 # Runs on DM startup if using one
 xrdb -merge $HOME/.config/X11/Xresources
+# Host override for xrdb
+[ -f "$NARB_OVERRIDES/Xresources.$NARB_HOST" ] && xrdb -merge "$NARB_OVERRIDES/Xresources.$NARB_HOST"
 
 
 # Autostart stuffs

@@ -72,6 +72,7 @@ alias wscan="nmcli device wifi rescan"
 # Config files / directories quick edit/search
 alias cds="cd ~/.scripts"
 alias cdn="cd ~/.local/narb"
+alias cdho="cd ~/.local/narb/host-override"
 alias cfv="$EDITOR ~/.config/nvim/init.vim"
 alias cfb="$EDITOR ~/.bashrc"
 alias cfz="$EDITOR ~/.config/zsh/.zshrc"

@@ -9,6 +9,7 @@ export INFOPATH=$MANPATH:/usr/local/texlive/2019/texmf-dist/doc/info
 # After install, config with `npm config set prefix "$HOME/.local/share/npm"`, so global
 # packages go within our .local path instead of having to sudo (bad)
 
+export NARB_OVERRIDES="$HOME/.local/narb/host-override"
 export NARB_HOST="$(hostname -s)"
 
 # Programs
