@@ -21,8 +21,9 @@ numlockx & # numlock ON by default
 killall -q redshift && redshift -l 37.8136:144.9631 -t 6500K:2700K & # f.lux style with melbourne and warms
 [ ! -s $HOME/.config/mpd/pid ] && mpd & # music
 ! pgrep -x "mpdscribble" && mpdscribble & # music last.fm
-# Local overrides
-[ -f $HOME/.config/localxprofile ] && . $HOME/.config/localxprofile
+
+# Host-based runs
+sourcehost xprofile
 
 # IBus (zh/kr) ime
 export GTK_IM_MODULE=ibus

@@ -103,8 +103,8 @@ bindkey -s '^n' 'termdir\n'
 # Load our common aliases
 [ -f $HOME/.config/aliasrc ] && source $HOME/.config/aliasrc
 
-# Finally any local non-VCS configs
-[ -f $HOME/.config/localrc ] && source $HOME/.config/localrc
+# Finally any host-based loads
+. sourcehost zshrc
 
 
 # Syntax highlighting plugin

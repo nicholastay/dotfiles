@@ -18,5 +18,5 @@ bind '"\C-n": "termdir\C-m"'
 # Load our aliases
 [ -f $HOME/.config/aliasrc ] && . $HOME/.config/aliasrc
 
-# Load any local things if any (not tracked in VCS)
-[ -f $HOME/.config/localrc ] && . $HOME/.config/localrc
+# Load any host-based runs
+. sourcehost bashrc

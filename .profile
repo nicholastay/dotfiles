@@ -9,6 +9,8 @@ export INFOPATH=$MANPATH:/usr/local/texlive/2019/texmf-dist/doc/info
 # After install, config with `npm config set prefix "$HOME/.local/share/npm"`, so global
 # packages go within our .local path instead of having to sudo (bad)
 
+export NARB_HOST="$(hostname -s)"
+
 # Programs
 export EDITOR="nvim"
 export TERMINAL="urxvtc"
@@ -36,8 +38,8 @@ export LF_ICONS="di=:fi=:ln=:or=:ex=:*.c=:*.cc=:*.clj=:*
 export BATTERY="BAT0"
 
 
-# Any local no VCS profile includes
-[ -f $HOME/.config/localprofile ] && . $HOME/.config/localprofile
+# Host-based include
+. sourcehost profile
 
 
 # startx if tty1 and no i3

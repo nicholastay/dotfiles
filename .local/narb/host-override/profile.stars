@@ -1,0 +1,3 @@
+#!/bin/sh
+
+export POLYBAR_MODULES_RIGHT="pulseaudio disk wifi eth battery date"
