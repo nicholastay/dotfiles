@@ -1,0 +1,2 @@
+#!/bin/sh
+notify-send -u critical 'Locker' 'Screen will be locked in 30 seconds!' 
