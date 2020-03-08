@@ -31,8 +31,8 @@ font-1 = NanumGothicCoding:style=Regular:size=10;1
 font-2 = WenQuanYi Micro Hei Mono:style=Regular:size=10;1
 font-3 = Noto Sans CJK JP:style=Regular:size=10;1
 
-modules-left = i3 xwindow
-modules-right = mpd pulseaudio disk wifi eth battery date
+modules-left = ${env:POLYBAR_MODULES_LEFT:i3 xwindow}
+modules-right = ${env:POLYBAR_MODULES_RIGHT:mpd pulseaudio homedisk disk wifi eth battery date}
 
 tray-position = right
 tray-padding = 0
@@ -181,7 +181,7 @@ format-disconnected-padding = 1
 
 [module/battery]
 type = internal/battery
-full-at = 99
+full-at = 97
 
 battery = BAT0
 adapter = AC
