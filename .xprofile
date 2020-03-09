@@ -10,8 +10,14 @@ xrdb -merge $HOME/.config/X11/Xresources
 # The basics
 picom -b -f & # compositor (compton)
 setwp & # wallpaper
-sxhkd & # hotkey daemon
 remapkb & # remap keyboard caps esc thing
+
+# Load sxhkd with overrides if wanted
+if [ -f "$NARB_OVERRIDES/sxhkdrc.$NARB_HOST" ]; then
+	sxhkd "$NARB_OVERRIDES/sxhkdrc.$NARB_HOST" &
+else
+	sxhkd &
+fi
 
 # More
 urxvtd -f & # terminal
