@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Sources host-based overrides.
+# $1 is the name in host-override
+
+TO_SOURCE="$NARB_OVERRIDES/$1.$NARB_HOST"
+[ -f "$TO_SOURCE" ] && . "$TO_SOURCE"
