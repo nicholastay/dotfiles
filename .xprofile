@@ -42,3 +42,5 @@ light-locker --no-late-locking &
 caffeine &
 # Screensaver app
 xscreensaver -no-splash &
+# Subscribe to systemd events to start lock
+xss-lock -- xscreensaver-command -lock &

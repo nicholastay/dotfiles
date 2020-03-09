@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.43 for nick on Sun Mar  8 21:02:34 2020.
+# Written by xscreensaver-demo 5.43 for nick on Mon Mar  9 23:24:11 2020.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:05:00
@@ -17,9 +17,9 @@ demoCommand:	xscreensaver-demo
 prefsCommand:	
 nice:		10
 memoryLimit:	0
-fade:		True
-unfade:		True
-fadeSeconds:	0:00:01
+fade:		False
+unfade:		False
+fadeSeconds:	0:00:00
 fadeTicks:	20
 captureStderr:	True
 ignoreUninstalledPrograms:False
