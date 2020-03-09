@@ -7,6 +7,8 @@
 # Our prompt (user@computer: >>)
 PS1="\[\033[38;5;14m\]\u\[$(tput sgr0)\]\[\033[38;5;243m\]@\[$(tput sgr0)\]\[\033[38;5;194m\]\h\[$(tput sgr0)\]\[\033[38;5;243m\]:\[$(tput sgr0)\]\[\033[38;5;15m\]\w » \[$(tput sgr0)\]"
 
+[ ! -z $SSH_CLIENT ] && PS1="(SSH) $PS1"
+
 export HISTFILE="$HOME/.local/share/bash_history"
 
 # cd by name only is ok

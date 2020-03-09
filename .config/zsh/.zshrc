@@ -4,6 +4,8 @@
 # Setup the prompt (PS1)
 PS1="%F{014}%n%f%F{243}@%f%F{176}%m%f%F{243}:%f%~ » "
 
+[ ! -z $SSH_CLIENT ] && PS1="(SSH) $PS1"
+
 
 # Historys
 HISTFILE="$HOME/.local/share/zsh_history"
