@@ -20,7 +20,7 @@ alias ccat="highlight --out-format=ansi"
 alias dott="git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME"
 alias d="dott"
 alias dots="dott status"
-alias dota="dots add -f"
+alias dota="dott add -f"
 
 
 # Shortcuts for program + option
