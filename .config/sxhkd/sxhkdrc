@@ -136,6 +136,8 @@ super + d
 super + shift + d
 	displayselect
 super + r
+	i3renamews
+super + control + r
 	peek
 # compositor transparency on any program
 super + t 
