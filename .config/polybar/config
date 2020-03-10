@@ -27,9 +27,9 @@ line-size = 2
 line-color = {$xrdb:color1}
 
 font-0 = mono:pixelsize=10;1
-font-1 = NanumGothicCoding:style=Regular:size=10;1
-font-2 = WenQuanYi Micro Hei Mono:style=Regular:size=10;1
-font-3 = Noto Sans CJK JP:style=Regular:size=10;1
+font-1 = NanumGothicCoding:style=Regular:pixelsize=10;1
+font-2 = WenQuanYi Micro Hei Mono:style=Regular:pixelsize=10;1
+font-3 = Noto Sans CJK JP:style=Regular:pixelsize=10;1
 
 modules-left = ${env:POLYBAR_MODULES_LEFT:i3 xwindow}
 modules-right = ${env:POLYBAR_MODULES_RIGHT:mpd pulseaudio homedisk disk wifi eth battery date}
@@ -139,7 +139,7 @@ format-stopped-padding = ${self.format-playing-padding}
 
 [module/wifi]
 type = internal/network
-interface = wlp3s0
+interface = ${env:WLAN_IFACE:wlp3s0}
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -164,7 +164,7 @@ animation-packetloss-framerate = 500
 
 [module/eth]
 type = internal/network
-interface = enp3s0
+interface = ${env:ETH_IFACE:enp3s0}
 interval = 3.0
 
 format-connected-underline = ${xrdb:color2}
@@ -183,8 +183,8 @@ format-disconnected-padding = 1
 type = internal/battery
 full-at = 97
 
-battery = BAT0
-adapter = AC
+battery = ${env:BATTERY:BAT0}
+adapter = ${env:BATTERY_ADAPTER:AC}
 
 format-charging = <label-charging>
 format-charging-prefix = " "
