@@ -26,7 +26,7 @@ unclutter & # hides mouse after delay
 numlockx & # numlock ON by default
 
 # Additionals
-killall -q redshift && redshift -l 37.8136:144.9631 -t 6500K:2700K & # f.lux style with melbourne and warms
+killall -q redshift; redshift -l 37.8136:144.9631 -t 6500K:2700K & # f.lux style with melbourne and warms
 [ ! -s $HOME/.config/mpd/pid ] && mpd & # music
 ! pgrep -x "mpdscribble" && mpdscribble & # music last.fm
 
