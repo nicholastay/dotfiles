@@ -138,7 +138,7 @@ super + shift + d
 super + r
 	i3renamews
 super + control + r
-	peek
+	deepin-screen-recorder
 # compositor transparency on any program
 super + t 
 	transset-df -m 0.95 -a
@@ -170,7 +170,7 @@ super + {shift,control,alt} + s
 super + alt + shift + s
 	screenshot rect nosave
 super + control + shift + s
-	flameshot gui
+	deepin-screenshot
 
 
 # Music controls
