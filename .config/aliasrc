@@ -38,6 +38,8 @@ alias lsa="ls -a"
 alias lsl="ls -l"
 alias lsla="ls -la"
 alias rcp="rsync -vzrh --times --stats --progress --itemize-changes"
+alias usbgl="sudo usbguard list-devices -b"
+alias usbga="sudo usbguard allow-device"
 # Open term in same dir (can't use PID as using daemon)
 alias termdir="(urxvtc)"
 

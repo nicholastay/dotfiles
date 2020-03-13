@@ -118,6 +118,8 @@ super + n
 	$TERMINAL -name floater -e ncmpcpp
 super + {control,alt} + n
 	mpdshuffle{_, stop}
+super + shift + u
+	usbguardmenu
 super + m
 	$TERMINAL -e neomutt
 super + c
