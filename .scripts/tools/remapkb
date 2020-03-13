@@ -1,3 +1,6 @@
 #!/bin/sh
 xset r rate 200 50 # repeat rate
-setxkbmap -option caps:escape # caps is escape
+
+# caps is escape
+# menu is superR
+setxkbmap -option caps:escape -option altwin:menu_win
