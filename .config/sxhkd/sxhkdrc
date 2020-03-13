@@ -111,6 +111,8 @@ super + control + p
 super + shift + a
 	$TERMINAL -name floater -e pulsemixer
 super + shift + n
+	p3x-onenote
+super + control + n
 	marktext
 super + n
 	$TERMINAL -name floater -e ncmpcpp
