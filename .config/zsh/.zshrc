@@ -107,9 +107,10 @@ bindkey -s '^n' 'termdir\n'
 
 # Load our common aliases
 [ -f $HOME/.config/aliasrc ] && source $HOME/.config/aliasrc
+source sourcehost aliasrc
 
 # Finally any host-based loads
-. sourcehost zshrc
+source sourcehost zshrc
 
 
 # Syntax highlighting plugin

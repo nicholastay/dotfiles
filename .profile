@@ -37,7 +37,8 @@ export LF_ICONS="di=:fi=:ln=:or=:ex=:*.c=:*.cc=:*.clj=:*
 
 
 # Host-based include
-. sourcehost profile
+#. sourcehost profile
+[ -f "$NARB_OVERRIDES/profile.$NARB_HOST" ] && . "$NARB_OVERRIDES/profile.$NARB_HOST"
 
 
 # startx if tty1 and no i3

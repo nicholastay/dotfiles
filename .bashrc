@@ -21,4 +21,5 @@ bind '"\C-n": "termdir\C-m"'
 [ -f $HOME/.config/aliasrc ] && . $HOME/.config/aliasrc
 
 # Load any host-based runs
-. sourcehost bashrc
+source sourcehost bashrc
+source sourcehost aliasrc

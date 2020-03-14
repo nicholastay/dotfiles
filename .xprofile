@@ -42,8 +42,6 @@ ibus-daemon -drx
 
 
 # Locking
-# Use lightdm + light-locker
-light-locker --no-late-locking &
 # Keep from sleeping tool
 caffeine &
 # Screensaver app
