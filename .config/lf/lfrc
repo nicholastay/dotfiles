@@ -64,6 +64,8 @@ map - $~/.config/lf/draw_img "$f"
 map X $aunpack "$f"
 map Z push :zip<space>
 map dr %dragon-drag-and-drop -x "$f"
+map zp %libreoffice --convert-to pdf "$f" --headless
+map zr &readdoc "$f"
 
 # Jumps
 map gh cd ~

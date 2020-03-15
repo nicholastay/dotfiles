@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Read office files converted through libreoffice as pdf
+[ -z "$1" ] && echo "No input" && exit 1
+[ ! -f "$1" ] && echo "Invalid input file" && exit 1
+
+savedir="$HOME/.cache/pdf-doc"
+[ ! -d "$savedir" ] && mkdir -p "$savedir"
+
+fileext="$(echo "$1" | awk -F'.' '{ print $NF }')"
+cksum="$(cksum "$1" | awk '{ print $1 }')"
+orgname="$(basename "$1" ".$fileext")"
+pdfpath="$savedir/$orgname.$cksum.pdf"
+
+# existing found cached
+[ -f "$pdfpath" ] && echo "Cached open" && $READER "$pdfpath" && exit 0
+
+libreoffice --convert-to pdf "$1" --headless --outdir "$savedir"
+[ ! -f "$savedir/$orgname.pdf" ] && echo "Conversion failed?" && exit 1
+mv "$savedir/$orgname.pdf" "$pdfpath"
+
+$READER "$pdfpath"
