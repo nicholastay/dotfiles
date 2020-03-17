@@ -15,6 +15,9 @@
 #
 
 lfcd () {
+    # for avoiding nest
+    [ ! -z "$LF_LEVEL" ] && exit
+
     tmp="$(mktemp)"
     lf -last-dir-path="$tmp" "$@"
     if [ -f "$tmp" ]; then

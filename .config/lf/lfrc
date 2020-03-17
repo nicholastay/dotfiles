@@ -47,6 +47,7 @@ cmd trash_list $clear && trash-list && read a
 map c
 map d
 map r reload
+map S $"$SHELL"
 map bg $setwp "$f"
 map D trash
 map TD trash_empty
