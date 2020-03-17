@@ -146,7 +146,12 @@ interval = 3.0
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #27b830
 format-connected-padding = 1
-label-connected = %{A1:getip wlp3s0 notify:}%{A3:$TERMINAL -name floater -e nmtui:}%essid%%{A}%{A}
+label-connected = %{A3:getip $WLAN_IFACE notify:}%{A1:$TERMINAL -name floater -e nmtui:}%essid%%{A}%{A}
+
+format-disconnected-foreground = ${colors.foreground-alt}
+label-disconnected = %{A1:$TERMINAL -name floater -e nmtui:}睊 d/c%{A}
+format-disconnected-underline = #27b830
+format-disconnected-padding = 1
 
 ramp-signal-0 = 
 ramp-signal-1 = 
@@ -173,11 +178,12 @@ format-connected-prefix = " "
 format-connected-padding = 1
 label-connected = %local_ip%
 
-format-disconnected = <label-disconnected>
-format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = d/c
-label-disconnected-foreground = ${colors.foreground-alt}
-format-disconnected-padding = 1
+format-disconnected = 
+#format-disconnected = <label-disconnected>
+#format-disconnected-underline = ${self.format-connected-underline}
+#label-disconnected = d/c
+#label-disconnected-foreground = ${colors.foreground-alt}
+#format-disconnected-padding = 1
 
 
 [module/battery]
@@ -217,10 +223,10 @@ format-volume-padding = 1
 
 format-volume = <ramp-volume> <label-volume>
 label-volume = %percentage%%
-label-volume-foreground = ${root.foreground}
+label-volume-foreground = ${colors.foreground}
 
 label-muted = 婢 muted
-label-muted-foreground = ${root.foreground}
+label-muted-foreground = ${colors.foreground-alt}
 format-muted-underline = #741180
 format-muted-padding = 1
 
