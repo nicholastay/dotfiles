@@ -15,7 +15,6 @@ alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias ccat="highlight --out-format=ansi"
 
-
 # dotfiles management
 alias dott="git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME"
 alias d="dott"
@@ -42,6 +41,9 @@ alias usbgl="sudo usbguard list-devices -b"
 alias usbga="sudo usbguard allow-device"
 # Open term in same dir (can't use PID as using daemon)
 alias termdir="(urxvtc)"
+
+# lf with cd
+[ -f "$HOME/.config/lf/lfcd" ] && . "$HOME/.config/lf/lfcd" && alias lf="lfcd"
 
 # Package manager (pacman)
 alias p="sudo pacman"
