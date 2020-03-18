@@ -34,6 +34,8 @@ for_window [instance="quickterm"] resize set 850 550
 for_window [instance="quickterm"] move position center
 for_window [instance="quickterm"] move scratchpad
 
+for_window [workspace=".*-f$"] floating enable
+
 # i3ws thingo
 exec --no-startup-id i3-ws --init
 
