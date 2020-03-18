@@ -16,8 +16,8 @@ super + f
 
 super + s
 	i3-msg split toggle
-super + {semicolon,apostrophe}
-	i3-msg split {h,v}
+#super + {semicolon,apostrophe}
+#	i3-msg split {h,v}
 super + alt + {h,j,k,l}
 	i3resize {left,down,up,right}
 
@@ -108,6 +108,8 @@ super + shift + p
 	$TERMINAL -name floater -e htop
 super + control + p
 	$TERMINAL -name floater -e sudo powertop
+super + alt + p
+	$TERMINAL -name floater -e ytop
 super + shift + a
 	$TERMINAL -name floater -e pulsemixer
 super + shift + n
@@ -143,6 +145,8 @@ super + r
 	i3renamews
 super + control + r
 	deepin-screen-recorder
+super + semicolon
+	notify-send "xmouseless" "xmouseless started" && xmouseless ; notify-send "xmouseless" "xmouseless ended"
 # compositor transparency on any program
 super + t 
 	transset-df -m 0.95 -a
