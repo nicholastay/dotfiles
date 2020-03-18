@@ -4,3 +4,6 @@ xset r rate 200 50 # repeat rate
 # caps is escape
 # menu is superR
 setxkbmap -option caps:escape -option altwin:menu_win
+
+# disable touchpad
+touchpadtoggle off silent

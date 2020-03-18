@@ -167,6 +167,8 @@ XF86Display
 	displayselect
 XF86ScreenSaver
 	light-locker-command -l
+XF86TouchpadToggle
+	touchpadtoggle
 
 # Script menus
 super + {shift,control} + m

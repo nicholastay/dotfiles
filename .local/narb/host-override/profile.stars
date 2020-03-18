@@ -1,3 +1,4 @@
 #!/bin/sh
 
 export POLYBAR_MODULES_RIGHT="pulseaudio disk wifi eth battery date"
+export TOUCHPAD_NAME="SynPS/2 Synaptics TouchPad"
