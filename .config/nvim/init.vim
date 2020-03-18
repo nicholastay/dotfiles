@@ -91,14 +91,6 @@ autocmd BufWritePost *Xresources,*Xdefaults !xrdb -merge %
 set laststatus=2
 let g:lightline = { 'colorscheme': 'jellybeans', }
 
-"  coc.nvim
-"  Tab/S-Tab for completion
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-
-
 " ----------------------
 "  Bindings
 "  Fullscreen for prose
@@ -117,9 +109,9 @@ map <C-l> <C-w>l
 
 "  System clipboard management
 "  Copy + paste
-vnoremap <C-c> "+y
-vnoremap <C-x> "*y
-map <C-v> "+P
+vnoremap <leader>c "+y
+vnoremap <leader>x "*y
+map <leader>v "+P
 
 "  Paste mode
 set pastetoggle=<F12>
