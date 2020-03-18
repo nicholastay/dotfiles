@@ -36,6 +36,7 @@ Plug 'tpope/vim-sleuth' " Indent autodetect
 Plug 'itchyny/lightline.vim' " A light statusline
 Plug 'junegunn/goyo.vim' " Nice centre thing
 Plug 'ctrlpvim/ctrlp.vim' " Use ctrl+p for fuzzy files
+Plug 'scrooloose/nerdtree' " File browsing
 
 " More heavy, IDE-like stuff
 " Autocompletion + snippets (coc) - run the following:
@@ -90,6 +91,9 @@ autocmd BufWritePost *Xresources,*Xdefaults !xrdb -merge %
 "  lightline
 set laststatus=2
 let g:lightline = { 'colorscheme': 'jellybeans', }
+
+"  nerdtree
+map <leader>n :NERDTreeToggle<CR>
 
 " ----------------------
 "  Bindings
