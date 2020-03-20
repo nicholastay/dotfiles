@@ -101,9 +101,9 @@ map <leader>n :NERDTreeToggle<CR>
 map <leader>f :Goyo \| set linebreak<CR>
 
 " Jump to a placeholder character
-map <leader><leader> <Esc>/<++><Enter>"_c4l
-nnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
-inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
+map <leader><leader> <Esc>/<++><Enter>"_d4lzzi
+nnoremap <leader><leader> <Esc>/<++><Enter>"_d4lzzi
+inoremap <leader><leader> <Esc>/<++><Enter>"_d4lzzi
 
 "  Splits
 map <C-h> <C-w>h
