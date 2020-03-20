@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.43 for nick on Mon Mar  9 23:24:11 2020.
+# Written by xscreensaver-demo 5.43 for nick on Thu Mar 19 18:24:35 2020.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:05:00
@@ -35,7 +35,7 @@ chooseRandomImages: False
 imageDirectory:	
 
 mode:		one
-selected:	153
+selected:	168
 
 textMode:	file
 textLiteral:	XScreenSaver
@@ -159,7 +159,7 @@ programs:								      \
   GL: 				endgame -root				    \n\
 				euler2d -root				    \n\
 				fluidballs -root			    \n\
-  GL: 				flurry -root				    \n\
+  GL: 				flurry -root -preset classic		    \n\
 - GL: 				glblur -root				    \n\
   GL: 				glsnake -root				    \n\
 				halftone -root				    \n\
@@ -212,7 +212,7 @@ programs:								      \
   GL: 				polyhedra -root				    \n\
 - GL: 				providence -root			    \n\
 				substrate -root				    \n\
-				wormhole -root -zspeed 7 -stars 21	    \n\
+				wormhole -root -zspeed 15 -stars 35	    \n\
 - GL: 				antmaze -root				    \n\
   GL: 				boing -root				    \n\
 				boxfit -root				    \n\
