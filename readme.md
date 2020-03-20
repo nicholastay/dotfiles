@@ -9,12 +9,14 @@ If installing from a base Arch system, [NARB](https://github.com/nicholastay/nar
 ```
 $ git clone --bare https://github.com/nicholastay/dotfiles.git ~/.dotfiles.git
 $ git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME checkout
+$ git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME config --local status.showUntrackedFiles no
 
 # To add more files (once aliases loaded)
-$ dott ~/.config/...
+# May need to add to gitignore to not use -f (safety)
+$ d a ~/.config/...
 
 # Any other git operations
-$ dots ...
+$ d ...
 
 # To restore dconf settings
 $ dconf load / < ~/.local/narb/dconf.ini

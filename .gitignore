@@ -1,2 +1,24 @@
+# Ignore all
 /*
+
+
+# Exclusions
+# Folders (and their subdirs)
+!/.config/
+!/.scripts/
+!/.local/
+/.local/*
+!/.local/narb/
+!/Templates/
+
+# Specific files
 !/.gitignore
+!/.xinitrc
+!/.xprofile
+!/.xscreensaver
+!/.zprofile
+!/.profile
+!/.bash_profile
+!/.bashrc
+!/readme.md
+!/.tmux.conf
