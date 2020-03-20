@@ -3,5 +3,6 @@
 setwp		# Fix background if screen size/arangement has changed.
 remapkb		# Re-remap keys if keyboard added (for laptop bases)
 pgrep -x dunst >/dev/null && killall dunst && setsid dunst & # Restart dunst to ensure proper location on screen
+pgrep -x keynav >/dev/null && killall keynav && setsid keynav & # Restart keynav to ensure correct overlay size
 $HOME/.config/polybar/launch.sh & # Restart polybar
 type i3-ws &>/dev/null && i3-ws --init >/dev/null # i3-ws reinit
