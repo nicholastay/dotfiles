@@ -26,19 +26,23 @@ URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
 
 
+! st settings
+st.font: Inconsolata\ Nerd\ Font\ Mono:pixelsize=16,NanumGothicCoding:pixelsize=16,WenQuanYi\ Micro\ Hei\ Mono:pixelsize=16,Symbola:pixelsize=16
+st.alpha: 0.83
+
 
 ! Misc XTerm settings just as a fallback term
-! Use truetype in XTerm
-XTerm*faceName: Inconsolata
-XTerm*faceSize: 12
-XTerm*renderFont: true
+XTerm.faceName: Inconsolata\ Nerd\ Font\ Mono
+XTerm.pixelSize: 16
+XTerm.renderFont: true
+XTerm.termName: xterm-256color
+XTerm.locale: true
 
 ! Xterm font binds
-XTerm*translations: #override \
+XTerm.translations: #override \
 Super <Key> minus: smaller-vt-font() \n\
 Super <Key> plus: larger-vt-font() \n\
 
-XTerm*locale: true
 
 
 ! special
