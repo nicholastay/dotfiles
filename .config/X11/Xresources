@@ -27,7 +27,7 @@ URxvt.matcher.button: 1
 
 
 ! st settings
-st.font: Inconsolata\ Nerd\ Font\ Mono:pixelsize=16,NanumGothicCoding:pixelsize=16,WenQuanYi\ Micro\ Hei\ Mono:pixelsize=16,Symbola:pixelsize=16
+st.font: Inconsolata\ Nerd\ Font\ Mono:pixelsize=16:antialias=true:autohint=true,NanumGothicCoding:pixelsize=16,WenQuanYi\ Micro\ Hei\ Mono:pixelsize=16,Symbola:pixelsize=16
 st.alpha: 0.83
 
 
