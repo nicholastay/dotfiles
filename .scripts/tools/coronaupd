@@ -6,4 +6,12 @@
 dl() { echo dl && curl "https://corona-stats.online/AU?format=json" > "$HOME/.config/corona-stats" ;}
 find "$HOME/.cache/corona-stats" -mmin +60 -exec dl \; 2>/dev/null || dl
 
+
+# click action
+case "$1" in
+	show) curl https://corona-stats.online; read a; exit ;;
+	showau) curl https://corona-stats.online/AU; read a; exit ;;
+esac
+
+
 jq -r '.[] | select(.province=="Victoria") | "😷 \(.confirmed)(+\(.confirmedByDay[-1]-.confirmedByDay[-2])) ☠ \(.deaths)(+\(.deathsByDay[-1]-.deathsByDay[-2]))"' "$HOME/.cache/corona-stats"

@@ -244,6 +244,8 @@ interval = 300
 exec = coronaupd
 format-underline = #8c1111
 
+click-left = $TERMINAL -name floater -e coronaupd show
+click-right = $TERMINAL -name floater -e coronaupd showau
 
 
 [settings]
