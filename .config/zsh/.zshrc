@@ -97,7 +97,6 @@ fi
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_STRATEGY=(completion history)
-bindkey '^L' autosuggest-accept
 bindkey '^K' autosuggest-execute
 
 
