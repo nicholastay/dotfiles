@@ -1,0 +1,48 @@
+#!/bin/sh
+
+# Just things that I would occasionally want
+# to be notified about.
+
+title="nnotify ($1)"
+msg="?"
+
+case "$1" in
+	disk)
+		title=" Storage ($2)"
+		msg="$(df -h "$2" | awk '/[0-9]/ { print $3 "/" $2 " (" $5 ")" }')"
+		;;
+	
+	time)
+		title="🕒 Date/Times"
+		tz_format="+%Y-%m-%d %a %H:%M"
+		tzs="Asia/Seoul Asia/Hong_Kong America/Los_Angeles"
+		msg="Local: $(date "$tz_format")"
+		for tz in $tzs
+		do
+			msg="$msg\n$tz: $(TZ=":$tz" date "$tz_format")"
+		done
+		;;
+	
+	eth)
+		ifc="${ETH_IFACE:-enp3s0}"
+		title=" IP address ($ifc)"
+		msg="$(ip a s dev "$ifc" | awk '/inet / { print $2 }' | sed 's/\/.*//')"
+		;;
+
+	wlan)
+		ifc="${WLAN_IFACE:-wlp3s0}"
+		title=" Wireless info ($ifc)"
+		ip="$(ip a s dev "$ifc" | awk '/inet / { print $2 }' | sed 's/\/.*//')"
+		name="$(nmcli -t -f NAME connection show --active)"
+		strength=$(grep "^\s*$ifc" /proc/net/wireless | awk '{ print int($3 * 100 / 70) "%" }')
+		msg="Connected to: $name\nStrength: $strength\nLocal IP: $ip"
+		;;
+
+	batw)
+		title=" Battery discharge"
+		msg="$(awk '{ print $1*10^-6 "W" }' /sys/class/power_supply/${BATTERY:-BAT0}/power_now)"
+		;;
+esac
+
+
+notify-send "$title" "$msg"
