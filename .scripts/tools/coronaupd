@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# corona download update stats for bar...
+
+# if file too old or doesnt exist (1hr)
+dl() { echo dl && curl "https://corona-stats.online/AU?format=json" > "$HOME/.config/corona-stats" ;}
+find "$HOME/.cache/corona-stats" -mmin +60 -exec dl \; 2>/dev/null || dl
+
+jq -r '.[] | select(.province=="Victoria") | "😷 \(.confirmed)(+\(.confirmedByDay[-1]-.confirmedByDay[-2])) ☠ \(.deaths)(+\(.deathsByDay[-1]-.deathsByDay[-2]))"' "$HOME/.cache/corona-stats"
