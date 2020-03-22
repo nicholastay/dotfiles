@@ -31,7 +31,7 @@ font-0 = mono:pixelsize=10;1
 font-1 = NanumGothicCoding:style=Regular:pixelsize=10;1
 font-2 = WenQuanYi Micro Hei Mono:style=Regular:pixelsize=10;1
 font-3 = Noto Sans CJK JP:style=Regular:pixelsize=10;1
-font-4 = Noto Color Emoji:style=Regular:scale=11;2
+font-4 = Noto Color Emoji:style=Regular:scale=11;1
 
 modules-left = ${env:POLYBAR_MODULES_LEFT:i3 xwindow}
 modules-right = ${env:POLYBAR_MODULES_RIGHT:corona mpd pulseaudio homedisk disk wifi eth battery date}
@@ -216,7 +216,7 @@ format-full-prefix = " "
 format-full-underline = #a36b22
 #format-full-padding = 1
 
-label-discharging = %{A1:$TERMINAL -name floater -e sudo powertop:}%percentage%%%{A}
+label-discharging = %{A1:nnotify batw:}%{A3:$TERMINAL -name floater -e sudo powertop:}%percentage%%%{A}%{A}
 
 
 [module/pulseaudio]
