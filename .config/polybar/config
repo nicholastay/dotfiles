@@ -34,7 +34,7 @@ font-3 = Noto Sans CJK JP:style=Regular:pixelsize=10;1
 font-4 = Noto Color Emoji:style=Regular:scale=11;1
 
 modules-left = ${env:POLYBAR_MODULES_LEFT:i3 xwindow}
-modules-right = ${env:POLYBAR_MODULES_RIGHT:mpd pulseaudio homedisk disk wifi eth battery date}
+modules-right = ${env:POLYBAR_MODULES_RIGHT:corona mpd pulseaudio homedisk disk wifi eth battery date}
 
 tray-position = right
 tray-padding = 0

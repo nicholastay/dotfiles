@@ -4,12 +4,12 @@
 
 # click action
 case "$1" in
-	show) curl https://corona-stats.online; read a; exit ;;
-	showau) curl https://corona-stats.online/AU; read a; exit ;;
+	show) curl "https://corona-stats.online?source=1"; read a; exit ;;
+	showau) curl "https://corona-stats.online/AU?source=1"; read a; exit ;;
 esac
 
 # if file too old or doesnt exist (1hr)
-dl() { curl -s "https://corona-stats.online/AU?format=json" > "$HOME/.cache/corona-stats" ;}
+dl() { curl -s "https://corona-stats.online/AU?source=1&format=json" > "$HOME/.cache/corona-stats" ;}
 [ ! -e "$HOME/.cache/corona-stats" ] && dl
 test $(find "$HOME/.cache/corona-stats" -mmin +120) && dl
 
