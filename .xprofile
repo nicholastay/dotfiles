@@ -26,6 +26,12 @@ unclutter & # hides mouse after delay
 numlockx & # numlock ON by default
 keynav & # jump
 
+# gnome-keyring
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
+
+nextcloud --background &
+
 # Additionals
 killall -q redshift; redshift -l 37.8136:144.9631 -t 6500K:2700K & # f.lux style with melbourne and warms
 [ ! -s $HOME/.config/mpd/pid ] && mpd & # music
