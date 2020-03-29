@@ -113,9 +113,9 @@ super + alt + p
 super + shift + a
 	$TERMINAL -name floater -e pulsemixer
 super + shift + n
-	p3x-onenote
+	joplin-desktop
 super + control + n
-	marktext
+	p3x-onenote
 super + n
 	$TERMINAL -name floater -e ncmpcpp
 super + {control,alt} + n
