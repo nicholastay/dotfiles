@@ -10,7 +10,7 @@ esac
 
 # if file too old or doesnt exist (1hr)
 dl() { curl -s "https://corona-stats.online/AU?source=1&format=json" > "$HOME/.cache/corona-stats" ;}
+test $(find "$HOME/.cache/corona-stats" -mmin +120 2>/dev/null) && rm "$HOME/.cache/corona-stats"
 [ ! -e "$HOME/.cache/corona-stats" ] && dl
-test $(find "$HOME/.cache/corona-stats" -mmin +120) && dl
 
-jq -r '.[] | select(.province=="Victoria") | "😷 \(.confirmed)(+\(.confirmedByDay[-1]-.confirmedByDay[-2])) ☠ \(.deaths)(+\(.deathsByDay[-1]-.deathsByDay[-2]))"' "$HOME/.cache/corona-stats"
+jq -r '.[] | select(.province=="Victoria") | "😷 \(.confirmed)(+\(.confirmedByDay[-1]-.confirmedByDay[-2])) ☠ \(.deaths)(+\(.deathsByDay[-1]-.deathsByDay[-2]))"' "$HOME/.cache/corona-stats" 2>/dev/null
