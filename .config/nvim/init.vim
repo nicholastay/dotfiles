@@ -37,6 +37,7 @@ Plug 'itchyny/lightline.vim' " A light statusline
 Plug 'junegunn/goyo.vim' " Nice centre thing
 Plug 'ctrlpvim/ctrlp.vim' " Use ctrl+p for fuzzy files
 Plug 'scrooloose/nerdtree' " File browsing
+Plug 'unblevable/quick-scope' " 420 noscope (press f)
 
 " More heavy, IDE-like stuff
 " Autocompletion + snippets (coc) - run the following:
@@ -58,7 +59,7 @@ call plug#end()
 "  Let's go!
 "  ---------------------
 "  Basics
-let mapleader=";"
+let mapleader="\\"
 
 set nocompatible
 filetype plugin on
