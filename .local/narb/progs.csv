@@ -7,6 +7,7 @@
 ,sxhkd,,binds keys.,
 ,wmctrl,,allows control of a window manager via a CLI.,
 ,moreutils,,gives more goodies in the command line.,
+A,i3-ws-nick-git,,makes multimonitor workspace switching easier in i3.,
 ,firefox,on,is the web browser of choice for NARB.,
 ,pulseaudio,on,is the audio server of NARB.,
 ,pulseaudio-alsa,on,supports PulseAudio.,
