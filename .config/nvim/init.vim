@@ -37,7 +37,7 @@ Plug 'itchyny/lightline.vim' " A light statusline
 Plug 'junegunn/goyo.vim' " Nice centre thing
 Plug 'ctrlpvim/ctrlp.vim' " Use ctrl+p for fuzzy files
 Plug 'scrooloose/nerdtree' " File browsing
-Plug 'unblevable/quick-scope' " 420 noscope (press f)
+"Plug 'unblevable/quick-scope' " 420 noscope (press f)
 
 " More heavy, IDE-like stuff
 " Autocompletion + snippets (coc) - run the following:
@@ -137,7 +137,8 @@ autocmd BufRead,BufNewFile *.tex set filetype=tex
 
 "  LaTeX
 autocmd FileType tex nnoremap <F5> :w<Enter>:!latexmk<space>-pdf<space><c-r>%<Enter>
-autocmd FileType tex nnoremap <F4> :w<Enter>:!latexmk<space>-xelatex<space><c-r>%<Enter>
+autocmd FileType tex nnoremap <S-F5> :w<Enter>:!latexmk<space>-xelatex<space><c-r>%<Enter>
+autocmd FileType tex nnoremap <F4> :w<Enter>:!texliveonfly<space>--terminal_only<space>-c<space>latexmk<space>-a<space>'-pdf'<space>%<Enter>
 autocmd FileType tex nnoremap <F6> :!$READER<space>%:r.pdf<space>&<CR><CR>
 
 
