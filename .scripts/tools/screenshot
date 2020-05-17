@@ -3,8 +3,6 @@
 sstype="$1" 
 [ -z "$sstype" ] && sstype="$(printf "rect\\nwindow\\nscreen" | dmenu -l 6 -i -p "screenshot type?")"
 
-ssargs=""
-sswin=""
 case $sstype in
 	"rect")
 		ssargs="-s"
@@ -14,9 +12,14 @@ case $sstype in
 		ssargs="-i $(xdotool getactivewindow)"
 		sswin="$(ps -p $(xdotool getactivewindow getwindowpid) -o comm=)"
 		;;
-	"screen") ;;
+	"screen")
+		sswin="screen"
+		;;
 	*) exit ;;
 esac
+
+# cleanse window name
+sswin="$(echo "$sswin" | sed -e 's/[^A-Za-z0-9._-]/_/g')"
 
 if [ "$2" = "nosave" ]; then
 	maim --delay=0.35 --hidecursor $ssargs | xclip -selection clipboard -t image/png && notify-send "Screenshot ($sstype)" "Screenshot copied to clipboard."
