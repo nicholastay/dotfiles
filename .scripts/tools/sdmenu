@@ -6,5 +6,5 @@ case "$(printf "shutdown\\nreboot\\nsuspend\\nlogout" | dmenu -l 4 -i -p "time t
 	"shutdown") shutdown now ;;
 	"reboot") reboot ;;
 	"suspend") systemctl suspend ;;
-	"logout") i3-msg exit ;;
+	"logout") killall dwm ;;
 esac

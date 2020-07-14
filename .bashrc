@@ -19,7 +19,3 @@ bind '"\C-n": "termdir\C-m"'
 
 # Load our aliases
 [ -f $HOME/.config/aliasrc ] && . $HOME/.config/aliasrc
-
-# Load any host-based runs
-source sourcehost bashrc
-source sourcehost aliasrc

@@ -1,88 +1,15 @@
 # nick's sxhkd config
+# basically just use this for wm independent stuffs!
 
-# ---------------------------
-# i3 specific binds
-# ---------------------------
-# (yeah i know im using sxhkd for i3 lol.)
-super + shift + q
-	i3-msg kill
-super + f
-	i3-msg fullscreen toggle
-
-# USE i3-ws (enzime tool) for multimon!
-# basic workspace management
-{_,shift + }super + {h,j,k,l}
-	i3-msg {focus,move} {left,down,up,right}
-
-super + s
-	i3-msg split toggle
-#super + {semicolon,apostrophe}
-#	i3-msg split {h,v}
-super + alt + {h,j,k,l}
-	i3resize {left,down,up,right}
-
-# window modes
-super + {alt,shift,control} + t
-	i3-msg layout {default,tabbed,stacking}
-super + shift + space
-	i3-msg floating toggle
-# focuses between tiles/floats
-super + control + space
-	i3-msg focus mode_toggle
-
-# workspace moves on THIS display / control moves to outputs
-{_,shift + ,shift + control + ,control + }super + {1-9,0}
-	i3-ws {--ws ,--ws --shift ,--shift ,_}{1-9,10}
-# move and switch
-super + alt + {1-9,0}
-	i3wsmoveswitch {1-9,10}
-# move monitor relative
-super + shift + control + {h,l}
-	i3-ws --shift {prev,next}
-super + control + {h,l}
-	i3-ws {prev,next}
-super + {shift + ,_}Tab
-	i3-msg workspace {prev,next}
-
-# reload
-super + shift + F12
-	i3-msg reload
-super + control + F12
-	i3-msg restart
-super + alt + F12
-	$HOME/.config/polybar/launch.sh
 # reload sxhkd
 super + F12
 	pkill -USR1 -x sxhkd && notify-send "sxhkd" "Reloaded sxhkd bindings."
 
-
-
-# misc
-# term spawn float for convenience
-super + control + Return
-	$TERMINAL -name floater
-super + u
-	i3-msg scratchpad show
-# scratchpad tmux if ded
-super + control + u
-	$TERMINAL -name quickterm -e tmux
 # lock
 super + Delete
 	xscreensaver-command -lock
-	#light-locker-command -l
-	#xidlehook-client --socket $HOME/.config/xidlehook.lock control --action Trigger --timer 1
-	#betterlockscreen -l dimblur
-# .desktop launches
-super + y
-	i3-dmenu-desktop --dmenu='rofi -dmenu -i'
 
-
-
-# ---------------------------
-# generic binds
-# ---------------------------
-
-# General bindings
+# programs
 super + Return
 	$TERMINAL
 super + e
@@ -136,18 +63,12 @@ super + shift + o
 	libreoffice
 super + control + o
 	obs
-super + b
-	barrier
 super + d
 	discord
 super + shift + d
 	displayselect
-super + r
-	i3renamews
 super + control + r
 	deepin-screen-recorder
-super + semicolon
-	notify-send "xmouseless" "xmouseless started" && xmouseless ; notify-send "xmouseless" "xmouseless ended"
 # compositor transparency on any program
 super + t 
 	transset-df -m 0.95 -a

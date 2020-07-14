@@ -5,4 +5,4 @@
 # but if startx run we still want to run xprofile.
 [ -f ~/.xprofile ] && . ~/.xprofile
 
-exec i3
+exec dwm
