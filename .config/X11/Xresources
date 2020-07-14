@@ -7,27 +7,7 @@
 !Xft.antialias: 1
 !Xft.rgba: rgb
 
-
-! urxvt settings
-URxvt.depth: 32
-URxvt.background: [83]#050505
-URxvt.scrollBar: false
-URxvt.font: xft:Inconsolata\ Nerd\ Font\ Mono:pixelsize=17,xft:NanumGothicCoding:pixelsize=16,xft:WenQuanYi\ Micro\ Hei\ Mono:pixelsize=16
-URxvt.letterSpace: -1
-URxvt.iso14755: false
-URxvt.iso14755_52: false
-! cjk
-URxvt.inputMethod: ibus
-URxvt.preeditType: OverTheSpot
-
-! urxvt url opener + clipboard selection
-URxvt.perl-ext-common: default,matcher,selection-to-clipboard,resize-font
-URxvt.url-launcher: /usr/bin/xdg-open
-URxvt.matcher.button: 1
-
-
 ! st settings
-st.font: Inconsolata\ Nerd\ Font\ Mono:pixelsize=16:antialias=true:autohint=true,NanumGothicCoding:pixelsize=16,WenQuanYi\ Micro\ Hei\ Mono:pixelsize=16
 st.alpha: 0.83
 
 

@@ -14,7 +14,7 @@ export NARB_HOST="$(hostname -s)"
 
 # Programs
 export EDITOR="nvim"
-export TERMINAL="urxvtc"
+export TERMINAL="st"
 export BROWSER="firefox"
 export FILE="lf"
 export READER="zathura"
@@ -42,4 +42,4 @@ export LF_ICONS="di=:fi=:ln=:or=:ex=:*.c=:*.cc=:*.clj=:*
 
 
 # startx if tty1 and no i3
-[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx
+[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx &> $HOME/.xoutput
