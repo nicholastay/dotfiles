@@ -43,4 +43,4 @@ export LF_ICONS="di=:fi=:ln=:or=:ex=:*.c=:*.cc=:*.clj=:*
 
 
 # startx if tty1 and no i3
-[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx &> $HOME/.xoutput
+[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x dwm >/dev/null && exec startx &> $HOME/.xoutput
