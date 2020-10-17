@@ -4,6 +4,7 @@
 # reload sxhkd
 super + F12
 	pkill -USR1 -x sxhkd && notify-send "sxhkd" "Reloaded sxhkd bindings."
+# super + shift + F12 is relaunching the wm itself, handled in it
 
 # lock
 super + Delete
@@ -12,6 +13,8 @@ super + Delete
 # programs
 super + Return
 	$TERMINAL
+super + shift + Return
+	termdir
 super + e
 	$TERMINAL -e $FILE
 super + shift + e
@@ -19,9 +22,9 @@ super + shift + e
 super + control + e
 	nautilus
 super + space
-	rofi -show run
+	dmenu_run
 super + alt + space
-	rofi -show window
+	j4-dmenu-desktop
 super + w
 	$BROWSER
 # hard force quit
@@ -32,19 +35,19 @@ super + a
 super + p
 	keepassxc
 super + shift + p
-	$TERMINAL -name floater -e htop
+	$TERMINAL -n floater -g 120x34 -e htop
 super + control + p
-	$TERMINAL -name floater -e sudo powertop
+	$TERMINAL -n floater -g 120x34 -e sudo powertop
 super + alt + p
-	$TERMINAL -name floater -e ytop
+	$TERMINAL -n floater -g 120x34 -e bashtop
 super + shift + a
-	$TERMINAL -name floater -e pulsemixer
+	$TERMINAL -n floater -g 120x34 -e pulsemixer
 super + shift + n
 	joplin-desktop
 super + control + n
 	p3x-onenote
 super + n
-	$TERMINAL -name floater -e ncmpcpp
+	$TERMINAL -n floater -g 120x34 -e ncmpcpp
 super + {control,alt} + n
 	mpdshuffle{_, stop}
 super + shift + u
@@ -58,7 +61,7 @@ super + c
 super + shift + c
 	gnome-calculator
 super + control + c
-	$TERMINAL -name floater -e octave
+	$TERMINAL -n floater -g 120x34 -e octave
 super + shift + o
 	libreoffice
 super + control + o
@@ -70,19 +73,21 @@ super + shift + d
 super + control + r
 	deepin-screen-recorder
 # compositor transparency on any program
-super + t 
-	transset-df -m 0.95 -a
+super + F4
+	transset-df -m 0.87 -a
 # mail
 super + F8
 	notify-send "sxhkd (mail)" "Syncing mail..." && mailsync
+super + F3
+	launchpersonal
 
 # System hotkeys
 {_,shift + ,super + }XF86MonBrightness{Down,Up}
 	xbacklight {-dec 10,-dec 2,-set 0,-inc 10,-inc 2,-set 100}
 {_,shift + }XF86Audio{LowerVolume,RaiseVolume}
-	pactl set-sink-volume @DEFAULT_SINK@ {-5%,-1%,+5%,+1%}
+	pactl set-sink-volume @DEFAULT_SINK@ {-5%,-1%,+5%,+1%}; kill -43 $(pidof dwmblocks)
 XF86AudioMute
-	pactl set-sink-mute @DEFAULT_SINK@ toggle
+	pactl set-sink-mute @DEFAULT_SINK@ toggle; kill -43 $(pidof dwmblocks)
 XF86AudioMicMute
 	pactl set-source-mute @DEFAULT_SOURCE@ toggle
 XF86Display
