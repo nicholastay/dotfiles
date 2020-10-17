@@ -2,7 +2,7 @@
 # idk what i'm doing so yeah.
 
 # Setup the prompt (PS1)
-PS1="%F{014}%n%f%F{243}@%f%F{176}%m%f%F{243}:%f%~ » "
+PS1="%F{014}%n%f%F{243}@%f%F{176}%m%f%F{243}:%f%(5~|%-1~/…/%3~|%4~) » "
 
 [ ! -z $SSH_CLIENT ] && PS1="(SSH) $PS1"
 
@@ -87,7 +87,7 @@ function xterm_title_preexec () {
 	print -Pn -- '\e]2;' && print -n -- "${(q)1}\a"
 	[[ "$TERM" == 'screen'* ]] && { print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-}:\005{B}%~\005{-} %# ' && print -n -- "${(q)1}\e\\"; }
 }
-if [[ "$TERM" == (screen*|xterm*|rxvt*|tmux*|putty*|konsole*|gnome*) ]]; then
+if [[ "$TERM" == (screen*|xterm*|rxvt*|tmux*|putty*|konsole*|gnome*|st*) ]]; then
 	add-zsh-hook -Uz precmd xterm_title_precmd
 	add-zsh-hook -Uz preexec xterm_title_preexec
 fi
@@ -100,16 +100,8 @@ ZSH_AUTOSUGGEST_STRATEGY=(completion history)
 bindkey '^K' autosuggest-execute
 
 
-# termdir binding
-bindkey -s '^n' 'termdir\n'
-
-
 # Load our common aliases
 [ -f $HOME/.config/aliasrc ] && source $HOME/.config/aliasrc
-source sourcehost aliasrc
-
-# Finally any host-based loads
-source sourcehost zshrc
 
 
 # Syntax highlighting plugin
