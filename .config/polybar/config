@@ -6,9 +6,8 @@ background = ${xrdb:color7:#affadef9}
 background-alt = ${self.background}
 ;foreground = ${xrdb:color7:#222}
 foreground = ${xrdb:color0:#1c1c1c}
-;foreground-alt = #e0e0e0
 foreground-alt = #808080
-#primary = ${xrdb:color3}
+;primary = ${xrdb:color3}
 primary = ${xrdb:color3:#f591fa}
 secondary = ${xrdb:color5}
 alert = ${xrdb:color2:#ff0000}
@@ -28,11 +27,9 @@ foreground = ${colors.foreground}
 line-size = 2
 line-color = {$xrdb:color1}
 
-font-0 = mono:pixelsize=10;1
-font-1 = Symbols Nerd Font:style=Regular:pixelsize=10;1
-font-2 = Symbola:style=Regular:scale=11;1
-font-3 = WenQuanYi Micro Hei Mono:style=Regular:pixelsize=10;1
-font-4 = Noto Sans CJK JP:style=Regular:pixelsize=10;1
+font-0 = mono:size=10;1
+font-1 = Noto Color Emoji:style=Regular:scale=10;2
+font-2 = Symbols Nerd Font:size=10;1
 
 modules-left = ${env:POLYBAR_MODULES_LEFT:bspwm xwindow}
 modules-right = ${env:POLYBAR_MODULES_RIGHT:corona mpd pulseaudio disk wifi eth battery date}
@@ -70,6 +67,7 @@ label-occupied = %name%
 label-occupied-padding = ${self.label-focused-padding}
 label-empty = %name%
 label-empty-padding = ${self.label-focused-padding}
+label-empty-foreground = ${colors.foreground-alt}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %name%
@@ -270,7 +268,7 @@ format-underline = #8c1111
 click-left = $TERMINAL -name floater -e coronaupd show
 click-right = $TERMINAL -name floater -e coronaupd showau
 
-label=⚕ %output%
+label=😷 %output%
 
 
 [settings]
