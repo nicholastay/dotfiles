@@ -1,14 +1,58 @@
 # nick's sxhkd config
-# basically just use this for wm independent stuffs!
 
 # reload sxhkd
 super + F12
 	pkill -USR1 -x sxhkd && notify-send "sxhkd" "Reloaded sxhkd bindings."
 # super + shift + F12 is relaunching the wm itself, handled in it
 
+# BSPWM
+# Focus/move ws
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# Focus window/move
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# Quit
+super + shift + q
+	bspc node -c
+
+# Fullscreen
+super + f
+	bspc node -t '~fullscreen'
+
+# Select direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# Resize window
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0 || bspc node -z right -20 0, \
+				  bottom 0 20 || bspc node -z top 0 20,\
+				  top 0 -20 || bspc node -z bottom 0 -20,\
+				  right 20 0 || bspc node -z left 20 0}
+
+# Move floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Toggle float
+super + shift + space
+	bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
+
+
+
+# --------------------------------
+# WM independent
+
 # lock
 super + Delete
 	xscreensaver-command -lock
+
+# reload polybar
+super + F11
+	$HOME/.config/polybar/launch.sh
 
 # programs
 super + Return

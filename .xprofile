@@ -9,7 +9,8 @@ picom -b & # compositor (compton)
 setwp & # wallpaper
 remapkb & # remap keyboard caps esc thing
 sxhkd &
-dwmblocks &
+#dwmblocks &
+$HOME/.config/polybar/launch.sh & 
 
 # More
 #urxvtd -f & # terminal

@@ -2,10 +2,18 @@
 
 pgrep -x dmenu && exit
 
+if pgrep -x dwm; then
+	refreshwm="kill -HUP $(pidof -s dwm)" 
+	exitwm="kill -TERM $(pidof -s dwm)"
+elif pgrep -x bspwm; then
+	refreshwm="bspc wm -r"
+	exitwm="bspc quit"
+fi
+
 case "$(printf "shutdown\\nreboot\\nsuspend\\nrefresh\\nlogout" | dmenu -i -p "time to leave?")" in
 	"shutdown") shutdown now ;;
 	"reboot") reboot ;;
 	"suspend") systemctl suspend ;;
-	"refresh") kill -HUP $(pidof -s dwm) ;;
-	"logout") kill -TERM $(pidof -s dwm) ;;
+	"refresh") `echo $refreshwm` ;;
+	"logout") `echo $exitwm` ;;
 esac

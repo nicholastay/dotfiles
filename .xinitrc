@@ -13,4 +13,5 @@ fi
 # but if startx run we still want to run xprofile.
 [ -f ~/.xprofile ] && . ~/.xprofile
 
-exec dwm
+#exec dwm
+exec bspwm

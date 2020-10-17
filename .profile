@@ -42,5 +42,5 @@ export LF_ICONS="di=:fi=:ln=:or=:ex=:*.c=:*.cc=:*.clj=:*
 [ -f "$NARB_OVERRIDES/profile.$NARB_HOST" ] && . "$NARB_OVERRIDES/profile.$NARB_HOST"
 
 
-# startx if tty1 and no i3
-[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x dwm >/dev/null && exec startx &> $HOME/.xoutput
+# startx if tty1 and no wm
+[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x bspwm >/dev/null && exec startx &> $HOME/.xoutput
