@@ -29,7 +29,7 @@ setopt pushd_minus
 zstyle ':completion:*' menu select
 eval "$(dircolors)"
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit -d "$HOME/.cache/zcompdump"
 
 
 # Use vim keys

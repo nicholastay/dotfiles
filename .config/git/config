@@ -2,6 +2,8 @@
 	c = commit
 	p = push
 	s = status
+	su = status --untracked-files=normal
+	sua = status -u
 	rv = remote -v
 	a = add
 	aa = add .

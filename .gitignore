@@ -6,6 +6,7 @@
 # Folders (and their subdirs)
 !/.config/
 !/.scripts/
+/.scripts/personal
 !/.local/
 /.local/*
 !/.local/narb/
