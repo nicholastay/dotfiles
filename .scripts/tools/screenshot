@@ -24,7 +24,7 @@ sswin="$(echo "$sswin" | sed -e 's/[^A-Za-z0-9._-]/_/g')"
 if [ "$2" = "nosave" ]; then
 	maim --delay=0.35 --hidecursor $ssargs | xclip -selection clipboard -t image/png && notify-send "Screenshot ($sstype)" "Screenshot copied to clipboard."
 else
-	p="$HOME/Screenshots/"
+	p="$HOME/screenshots/"
 	f="$(date '+%y%m%d-%H%M%S')-$sswin-$sstype.png"
 	pf="$p$f"
 	maim --delay=0.35 --hidecursor $ssargs "$pf" && xclip -selection clipboard -t image/png -i "$pf" && notify-send "Screenshot ($sstype)" "Screenshot $f copied to clipboard, and saved to folder."

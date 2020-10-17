@@ -1,7 +1,0 @@
-configuration {
-	theme: "flat";
-	kb-row-up: "Up,ISO_Left_Tab,Control+k";
-	kb-row-down: "Down,Control+j";
-	kb-remove-to-eol: "";
-	kb-accept-entry: "Return,KP_Enter,Control+l";
-}

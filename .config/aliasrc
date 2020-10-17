@@ -40,8 +40,6 @@ alias dr="dragon-drag-and-drop -x"
 alias rcp="rsync -vzrh --times --stats --progress --itemize-changes"
 alias usbgl="sudo usbguard list-devices -b"
 alias usbga="sudo usbguard allow-device"
-# Open term in same dir (can't use PID as using daemon)
-alias termdir="(urxvtc)"
 
 # lf with cd
 [ -f "$HOME/.config/lf/lfcd" ] && . "$HOME/.config/lf/lfcd" && alias lf="lfcd"

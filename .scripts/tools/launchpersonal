@@ -1,0 +1,4 @@
+#!/bin/sh
+
+s="$(find "$HOME/.scripts/personal" -mindepth 1 -maxdepth 1 -type f -exec basename {} \; | dmenu -i -p "exec personal?")"
+[ -f "$HOME/.scripts/personal/$s" ] && $HOME/.scripts/personal/$s

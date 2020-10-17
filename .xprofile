@@ -9,6 +9,7 @@ picom -b & # compositor (compton)
 setwp & # wallpaper
 remapkb & # remap keyboard caps esc thing
 sxhkd &
+dwmblocks &
 
 # More
 #urxvtd -f & # terminal
@@ -18,7 +19,7 @@ numlockx & # numlock ON by default
 #keynav & # jump
 
 # gnome-keyring
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets)
 export SSH_AUTH_SOCK
 
 nextcloud --background &

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+[ "$BLOCK_BUTTON" = "1" ] && $TERMINAL -n floater -e sudo powertop
+
+batc="$(cat /sys/class/power_supply/BAT0/capacity)"
+[ "$batc" -gt 97 ] && batc="full"
+[ "$(cat /sys/class/power_supply/BAT0/status)" = "Charging" ] && batc="${batc}+"
+
+echo "$batc"

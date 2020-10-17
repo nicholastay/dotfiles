@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# wifi: use rssi_to_perc from slstatus
+[ "$(cat /sys/class/net/w*/operstate 2>/dev/null)" = "up" ] && \
+	wperc="w$(awk '/^\s*w/ { print $4 >= -50 ? 100 : ($4 <= -100 ? 0 : (2 * ($4 + 100))) }' /proc/net/wireless)"
+
+# eth: just if link is up
+[ "$(cat /sys/class/net/e*/operstate 2>/dev/null)" = "up" ] && \
+	estatus="e"
+
+[ -z $wperc ] && [ -z $estatus ] && echo "down" && exit 1
+echo "$wperc$estatus"

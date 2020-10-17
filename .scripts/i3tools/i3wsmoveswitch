@@ -1,6 +1,0 @@
-#!/bin/sh
-
-# This script is for moving a window to a new workspace on the SAME MONITOR with
-# i3-ws, then straight away focusing on the workspace it moved to.
-
-i3-msg workspace "$(i3-ws --ws --shift "$1" | sed "s/.\$/$1/")"

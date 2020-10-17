@@ -1,7 +1,0 @@
-#!/bin/sh
-
-curr_num="$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).num')"
-new_name="$(dmenu -p "New name for $curr_num:" <&-)"
-
-[ -z "$new_name" ] && new_name="$curr_num" || new_name="$curr_num:$new_name"
-i3-msg rename workspace to "$new_name"

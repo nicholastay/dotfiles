@@ -8,11 +8,11 @@
 !Xft.rgba: rgb
 
 ! st settings
-st.alpha: 0.83
+St.alpha: 0.87
 
 
 ! Misc XTerm settings just as a fallback term
-XTerm.faceName: Inconsolata\ Nerd\ Font\ Mono
+XTerm.faceName: Terminus\ (TTF)
 XTerm.pixelSize: 16
 XTerm.renderFont: true
 XTerm.termName: xterm-256color

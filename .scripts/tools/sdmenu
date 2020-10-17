@@ -2,9 +2,10 @@
 
 pgrep -x dmenu && exit
 
-case "$(printf "shutdown\\nreboot\\nsuspend\\nlogout" | dmenu -l 4 -i -p "time to leave?")" in
+case "$(printf "shutdown\\nreboot\\nsuspend\\nrefresh\\nlogout" | dmenu -i -p "time to leave?")" in
 	"shutdown") shutdown now ;;
 	"reboot") reboot ;;
 	"suspend") systemctl suspend ;;
-	"logout") killall dwm ;;
+	"refresh") kill -HUP $(pidof -s dwm) ;;
+	"logout") kill -TERM $(pidof -s dwm) ;;
 esac
