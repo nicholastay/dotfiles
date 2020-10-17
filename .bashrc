@@ -14,8 +14,12 @@ export HISTFILE="$HOME/.local/share/bash_history"
 # cd by name only is ok
 shopt -s autocd
 
-# termdir binding
-bind '"\C-n": "termdir\C-m"'
+# Dynamic window title
+function settitle () {
+    echo -ne "\033]0;$1\007"
+}
+trap 'settitle "$BASH_COMMAND"' DEBUG
+PROMPT_COMMAND='settitle "${USER}@${HOSTNAME}:${PWD/#$HOME/"~"}"'";$PROMPT_COMMAND"
 
 # Load our aliases
 [ -f $HOME/.config/aliasrc ] && . $HOME/.config/aliasrc
