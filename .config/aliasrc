@@ -116,3 +116,12 @@ _Z_DATA=$HOME/.local/share/z
 
 # wal colors for alacritty
 [ "$TERM" = "alacritty" ] && [ -r "$HOME/.cache/wal/sequences" ] && (cat $HOME/.cache/wal/sequences &)
+
+# tmux ssh rename
+if [ "$TERM" = "tmux-256color" ] && [ -n "$TMUX" ]; then
+	ssh() {
+		tmux rename-window "ssh($(echo $* | cut -d . -f 1))"
+		command ssh "$@"
+		tmux set-window-option automatic-rename "on" 1>/dev/null
+	}
+fi
