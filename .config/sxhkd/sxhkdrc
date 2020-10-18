@@ -9,6 +9,9 @@ super + F12
 # Focus/move ws
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
+# Follow move ws
+super + shift + ctrl + {1-9,0}
+	bspc node -d '^{1-9,10}' --follow
 
 # Focus window/move
 super + {_,shift + }{h,j,k,l}
@@ -18,13 +21,28 @@ super + {_,shift + }{h,j,k,l}
 super + shift + q
 	bspc node -c
 
+# Reload
+super + shift + F10
+	bspc wm -r
+
 # Fullscreen
 super + f
 	bspc node -t '~fullscreen'
 
-# Select direction
+# Preselects
 super + ctrl + {h,j,k,l}
 	bspc node -p {west,south,north,east}
+super + s
+	bspc node -p south
+# Cancel preselect
+super + ctrl + space
+	bspc node -p cancel
+# Preselect size
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+# Move to preselected
+super + m
+        bspc node -n last.!automatic
 
 # Resize window
 super + alt + {h,j,k,l}
@@ -41,6 +59,9 @@ super + {Left,Down,Up,Right}
 super + shift + space
 	bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
 
+# Reload desknamer
+super + shift + F11
+	pkill -f desknamer && setsid desknamer && notify-send "desknamer (sxhkd)" "desknamer reloaded."
 
 
 # --------------------------------
@@ -96,7 +117,7 @@ super + {control,alt} + n
 	mpdshuffle{_, stop}
 super + shift + u
 	usbguardmenu
-super + m
+super + shift + m
 	thunderbird
 	#$TERMINAL -e neomutt
 super + c
