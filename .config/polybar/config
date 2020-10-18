@@ -10,7 +10,8 @@ foreground-alt = #808080
 ;primary = ${xrdb:color3}
 primary = ${xrdb:color3:#f591fa}
 secondary = ${xrdb:color5}
-alert = ${xrdb:color2:#ff0000}
+#alert = ${xrdb:color2:#ff0000}
+alert = #dd0000
 accent = #B4BC67
 unfocused = #C4C7C5
 
@@ -30,13 +31,15 @@ line-color = {$xrdb:color1}
 font-0 = mono:size=10;1
 font-1 = Noto Color Emoji:style=Regular:scale=10;2
 font-2 = Symbols Nerd Font:size=10;1
+font-3 = NanumGothicCoding:size=10;1
+font-5 = Noto Sans CJK SC:size=10;1
+font-4 = Noto Sans CJK JP:size=10;1
 
 modules-left = ${env:POLYBAR_MODULES_LEFT:bspwm xwindow}
-modules-right = ${env:POLYBAR_MODULES_RIGHT:corona mpd pulseaudio disk wifi eth battery date}
+modules-right = ${env:POLYBAR_MODULES_RIGHT:corona pulseaudio disk wifi eth battery date}
 
 tray-position = right
 tray-padding = 0
-tray-transparent = true
 tray-background = ${colors.background}
 
 module-margin-left = 1
@@ -70,9 +73,19 @@ label-empty-padding = ${self.label-focused-padding}
 label-empty-foreground = ${colors.foreground-alt}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %name%
+label-urgent = %icon%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = ${self.label-focused-padding}
+
+; ws-icon-0 = 1;一
+; ws-icon-1 = 2;二
+; ws-icon-2 = 3;三
+; ws-icon-3 = 4;四
+; ws-icon-4 = 5;五
+; ws-icon-5 = 6;六
+; ws-icon-6 = 7;七
+; ws-icon-7 = 8;八
+; ws-icon-8 = 9;九
 
 [module/i3]
 type = internal/i3
@@ -170,10 +183,10 @@ interval = 3.0
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #27b830
 #format-connected-padding = 1
-label-connected = %{A1:nnotify wlan:}%{A3:$TERMINAL -name floater -e nmtui:}%signal%%%{A}%{A}
+label-connected = %{A1:nnotify wlan:}%{A3:$TERMINAL -n floater -e nmtui:}%signal%%%{A}%{A}
 
 format-disconnected-foreground = ${colors.foreground-alt}
-label-disconnected = %{A1:$TERMINAL -name floater -e nmtui:}睊 d/c%{A}
+label-disconnected = %{A1:$TERMINAL -n floater -e nmtui:}睊 d/c%{A}
 format-disconnected-underline = #27b830
 #format-disconnected-padding = 1
 
@@ -237,7 +250,7 @@ format-full-prefix = " "
 format-full-underline = #a36b22
 #format-full-padding = 1
 
-label-discharging = %{A1:nnotify batw:}%{A3:$TERMINAL -name floater -e sudo powertop:}%percentage%%%{A}%{A}
+label-discharging = %{A1:nnotify batw:}%{A3:$TERMINAL -n floater -e sudo powertop:}%percentage%%%{A}%{A}
 
 
 [module/pulseaudio]
@@ -265,8 +278,9 @@ interval = 300
 exec = $HOME/.scripts/bar/coronaupd
 format-underline = #8c1111
 
-click-left = $TERMINAL -name floater -e coronaupd show
-click-right = $TERMINAL -name floater -e coronaupd showau
+click-left = BLOCK_BUTTON=1 $HOME/.scripts/bar/coronaupd
+click-right = BLOCK_BUTTON=2 $HOME/.scripts/bar/coronaupd
+click-middle = BLOCK_BUTTON=3 $HOME/.scripts/bar/coronaupd
 
 label=😷 %output%
 
