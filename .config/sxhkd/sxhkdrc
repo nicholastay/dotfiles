@@ -138,7 +138,7 @@ super + shift + d
 super + control + r
 	deepin-screen-recorder
 # compositor transparency on any program
-super + F4
+super + t
 	transset-df -m 0.87 -a
 # mail
 super + F8
