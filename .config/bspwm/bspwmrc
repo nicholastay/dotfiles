@@ -13,4 +13,10 @@ bspc config normal_border_color "$color15"
 bspc config active_border_color "$color2"
 bspc config focused_border_color "$color1"
 
+# rules
+# floater
+bspc rule -a 'St:floater' state=floating
+
 xsetroot -cursor_name left_ptr &
+pgrep -f desknamer || desknamer &
+pgrep bspswallow || bspswallow &
