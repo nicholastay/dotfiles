@@ -15,7 +15,7 @@ bspc config focused_border_color "$color1"
 
 # rules
 # floater
-bspc rule -a 'St:floater' state=floating
+bspc rule -a 'St:floater' state=floating rectangle=850x500+0+0 center=true
 
 xsetroot -cursor_name left_ptr &
 pgrep -f desknamer || desknamer &
