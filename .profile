@@ -43,4 +43,4 @@ export LF_ICONS="di=:fi=:ln=:or=:ex=:*.c=:*.cc=:*.clj=:*
 
 
 # startx if tty1 and no wm
-[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x bspwm >/dev/null && exec startx &> $HOME/.xoutput
+[ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ] && exec startx 2&> $HOME/.xoutput
