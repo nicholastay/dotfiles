@@ -1,0 +1,40 @@
+{
+	"applications": {
+		"firefox": "Firefox",
+		"Caprine": "InstantMessaging",
+		"St": "TerminalEmulator",
+		"Zathura": "Viewer",
+		"Sxiv": "Graphics",
+		"ranger": "FileManager",
+		"lf": "FileManager",
+		"nvim": "IDE",
+		"mpv": "Player"
+	},
+	"categories": {
+		"default": ["", 0],
+		"WebBrowser": ["", 12],
+		"Firefox": ["", 12],
+		"Viewer": ["", 22],
+		"Office": ["", 24],
+		"Game": ["", 28],
+		"Engineering": ["", 30],
+		"Graphics": ["", 32],
+		"Player": ["", 33],
+		"Audio": ["", 34],
+		"InstantMessaging": ["", 40],
+		"FileManager": ["", 76],
+		"IDE": ["", 90],
+		"TerminalEmulator": ["", 99]
+	},
+	"indexes": {
+		"1": "一",
+		"2": "二",
+		"3": "三",
+		"4": "四",
+		"5": "五",
+		"6": "六",
+		"7": "七",
+		"8": "八",
+		"9": "九"
+	}
+}
