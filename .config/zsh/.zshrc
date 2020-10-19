@@ -57,21 +57,21 @@ precmd_functions+=(_beam_cursor)
 # Update correct cursors for zsh vi editing (from luke's)
 # Except use 2 & 6 for statics
 function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[2 q'
+	if [[ ${KEYMAP} == vicmd ]] ||
+		 [[ $1 = 'block' ]]; then
+		echo -ne '\e[2 q'
 
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[6 q'
-  fi
+	elif [[ ${KEYMAP} == main ]] ||
+			 [[ ${KEYMAP} == viins ]] ||
+			 [[ ${KEYMAP} = '' ]] ||
+			 [[ $1 = 'beam' ]]; then
+		echo -ne '\e[6 q'
+	fi
 }
 zle -N zle-keymap-select
 zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[6 q"
+	zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+	echo -ne "\e[6 q"
 }
 zle -N zle-line-init
 
@@ -94,19 +94,21 @@ fi
 
 
 # Autosuggestion plugin
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+	|| source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null # fedora
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_STRATEGY=(completion history)
 bindkey '^K' autosuggest-execute
 
 
 # Load our common aliases
-[ -f $HOME/.config/aliasrc ] && source $HOME/.config/aliasrc
+source $HOME/.config/aliasrc
 
 
 # Syntax highlighting plugin
 # Must be loaded last
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null \
+	|| source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null # fedora
 # Add some color changes from the default green (to lighter)
 ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=114,underline
 ZSH_HIGHLIGHT_STYLES[precommand]=fg=114,underline
@@ -115,7 +117,7 @@ ZSH_HIGHLIGHT_STYLES[arg0]=fg=114
 
 # History substring search
 # Must be loaded after the syntax highlighting plugin
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh 2>/dev/null
 # Binds
 # Up/down arrows
 bindkey '^[[A' history-substring-search-up
