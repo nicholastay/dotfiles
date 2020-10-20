@@ -1,0 +1,9 @@
+#!/bin/sh
+
+[ "$(cat /sys/class/power_supply/BAT0/status)" = "Charging" ] && exit 0
+
+# Need set dbus uid here!!
+capacity="$(cat /sys/class/power_supply/BAT0/capacity)"
+[ "$capacity" -lt 25 ] && \
+	export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus && \
+	notify-send -u critical "Battery low" "Capacity remaining: $capacity%"
