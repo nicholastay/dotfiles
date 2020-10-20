@@ -45,6 +45,8 @@ alias usbga="sudo usbguard allow-device"
 
 # lf with cd
 [ -f "$HOME/.config/lf/lfcd" ] && . "$HOME/.config/lf/lfcd" && alias lf="lfcd"
+# ranger_cd
+[ -f "$HOME/.config/ranger/shell_automatic_cd.sh" ] && . "$HOME/.config/ranger/shell_automatic_cd.sh" && alias ranger="ranger_cd"
 
 # Package manager (pacman)
 alias p="sudo pacman"
