@@ -94,7 +94,7 @@ fi
 
 
 # Autosuggestion plugin
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null \
 	|| source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null # fedora
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_STRATEGY=(completion history)

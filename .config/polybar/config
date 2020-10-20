@@ -22,6 +22,7 @@ height = 30
 fixed-center = false
 wm-restack = bspwm
 enable-ipc = true
+locale = zh_CN.UTF-8
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -33,7 +34,7 @@ font-0 = mono:size=10;1
 font-1 = Noto Color Emoji:style=Regular:scale=10;2
 font-2 = Symbols Nerd Font:size=10;1
 font-3 = NanumGothicCoding:size=10;1
-font-5 = Noto Sans CJK SC:size=10;1
+font-5 = Noto Sans CJK SC:size=8;1
 font-4 = Noto Sans CJK JP:size=10;1
 
 modules-left = ${env:POLYBAR_MODULES_LEFT:bspwm xwindow}
@@ -55,7 +56,7 @@ border-color = ${colors.background}
 
 [module/xwindow]
 type = internal/xwindow
-label = · %title:0:65:...%
+label = · %title:0:35:...%
 
 [module/bspwm]
 type = internal/bspwm
@@ -147,17 +148,17 @@ format-mounted-underline = #317070
 type = internal/date
 interval = 5
 
-date = " %Y-%m-%d %a"
-date-alt = " %Y-%m-%d %a"
+date = 
+date-alt = " %Y-%m-%d(%a)"
 
-time = %H:%M
-time-alt = %H:%M:%S
+time = %p %I:%M
+time-alt = %H:%M
 
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 #format-padding = 1
 
-label = "%{A1:nnotify time:}%date% %time%%{A}"
+label = "%{A3:nnotify time:}%date% %time%%{A}"
 
 [module/mpd]
 type = internal/mpd
@@ -263,7 +264,7 @@ format-volume = <ramp-volume> <label-volume>
 label-volume = %percentage%%
 label-volume-foreground = ${colors.foreground}
 
-label-muted = 婢 muted
+label-muted = 婢 %percentage%%
 label-muted-foreground = ${colors.foreground-alt}
 format-muted-underline = #741180
 #format-muted-padding = 1

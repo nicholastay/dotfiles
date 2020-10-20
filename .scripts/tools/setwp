@@ -2,7 +2,11 @@
 
 wall="$HOME/.config/wall.jpg"
 
-[ -f "$1" ] && cp -f "$1" "$wall" && xwallpaper --zoom "$wall" && rm $HOME/.cache/wal/schemes/*__config_wall_jpg*.json
+if [ -f "$1" ]; then
+	cp -f "$1" "$wall"
+	[ -d $HOME/.cache/wal ] && rm $HOME/.cache/wal/schemes/*__config_wall_jpg*.json
+	[ -d $HOME/.cache/thumbnails/neofetch ] && rm $HOME/.cache/thumbnails/neofetch/*.jpg
+fi
 
 xwallpaper --zoom "$wall"
-wal -n -t -b "#060204" -i "$wall" -o $HOME/.config/wal/postrun
+command -v wal >/dev/null && wal -n -t -b "#060204" -i "$wall" -o $HOME/.config/wal/postrun

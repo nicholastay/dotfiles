@@ -1,7 +1,9 @@
 {
 	"applications": {
 		"firefox": "Firefox",
+		"Firefox": "Firefox",
 		"Caprine": "InstantMessaging",
+		"Slack": "Slack",
 		"St": "TerminalEmulator",
 		"Zathura": "Viewer",
 		"Sxiv": "Graphics",
@@ -19,9 +21,10 @@
 		"Game": ["", 28],
 		"Engineering": ["", 30],
 		"Graphics": ["", 32],
-		"Player": ["", 33],
-		"Audio": ["", 34],
-		"InstantMessaging": ["", 40],
+		"Slack": ["", 43],
+		"InstantMessaging": ["", 45],
+		"Player": ["", 53],
+		"Audio": ["", 54],
 		"FileManager": ["", 76],
 		"IDE": ["", 90],
 		"TerminalEmulator": ["", 99]

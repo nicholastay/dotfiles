@@ -44,6 +44,10 @@ super + ctrl + {1-9}
 super + m
         bspc node -n last.!automatic
 
+# Rotate window on parent
+super + shift + m
+	bspc node @parent -R 90
+
 # Resize window
 super + alt + {h,j,k,l}
 	bspc node -z {left -20 0 || bspc node -z right -20 0, \
@@ -58,6 +62,14 @@ super + {Left,Down,Up,Right}
 # Toggle float
 super + shift + space
 	bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
+
+# Change layout monocle/tiled
+super + grave
+	bspc desktop -l next
+super + Tab
+	bspc node -f next.local
+super + shift + Tab
+	bspc node -f prev.local
 
 # Reload desknamer
 super + shift + F11

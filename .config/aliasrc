@@ -112,7 +112,7 @@ command -v thefuck >/dev/null 2>&1 && fuck() { eval "$(thefuck --alias)" && fuck
 
 # z util
 _Z_DATA=$HOME/.local/share/z
-[ -r "/usr/share/z/z.sh" ] && source /usr/share/z/z.sh
+[ -r "/usr/share/z/z.sh" ] && . /usr/share/z/z.sh
 
 # wal colors for alacritty
 [ "$TERM" = "alacritty" ] && [ -r "$HOME/.cache/wal/sequences" ] && (cat $HOME/.cache/wal/sequences &)
