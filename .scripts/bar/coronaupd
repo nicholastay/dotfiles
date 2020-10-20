@@ -6,19 +6,19 @@
 case "$1" in
 	show) curl -s "https://corona-stats.online" | less -r && exit ;;
 	showau) curl -s "https://corona-stats.online/AU?source=1" | less -r && exit ;;
-	aujq) curl -s "http://covid-tracker-us.herokuapp.com/v2/locations?source=jhu&country_code=AU" | jq '.' -C | less -r && exit ;;
 	*)
 		case "$BLOCK_BUTTON" in
 			1) $TERMINAL -n floater -g 165x35 -e $0 show ;;
-			2) $TERMINAL -n floater -g 165x35 -e $0 showau ;;
-			3) $TERMINAL -n floater -g 135x35 -e $0 aujq ;;
+			2) $BROWSER "https://www.dhhs.vic.gov.au/victorian-coronavirus-covid-19-data" && exit ;;
+			3) $BROWSER "https://www.dhhs.vic.gov.au/victorian-coronavirus-covid-19-data" && exit ;;
 		esac
 		;;
 esac
 
 # if file too old or doesnt exist (6hr)
-dl() { curl -s "https://covid-tracker-us.herokuapp.com/v2/locations/14?source=jhu&timelines=true" > "$HOME/.cache/corona-stats" ;}
+dl() { curl -s "https://www.dhhs.vic.gov.au/victorian-coronavirus-covid-19-data" | grep -A50 'lvn-body' > "$HOME/.cache/corona-stats" ;}
 test $(find "$HOME/.cache/corona-stats" -mmin +360 2>/dev/null) && rm "$HOME/.cache/corona-stats"
 [ ! -s "$HOME/.cache/corona-stats" ] && dl
 
-jq -r '.location | [.timelines.confirmed.timeline[]] as $ct | [.timelines.deaths.timeline[]] as $dt | "\($ct[-1])(+\($ct[-1]-$ct[-2])),\($dt[-1])(+\($dt[-1]-$dt[-2]))"' "$HOME/.cache/corona-stats" 2>/dev/null || { echo "noapi" && rm ~/.cache/corona-stats ;}
+grab() { grep -B1 "$1" "$HOME/.cache/corona-stats" | sed 1q | tr -d '[:blank:],' | sed 's/<\/h4>//;s/<h4>//'; }
+echo "$(grab 'total cases')(+$(grab 'new cases<br>(last')),$(grab 'total lives lost')(+$(grab 'lives lost<br>(last'))"
