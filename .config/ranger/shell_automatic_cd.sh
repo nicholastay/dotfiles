@@ -11,6 +11,8 @@
 # original directory.
 
 ranger_cd() {
+    [ ! -z "$RANGER_LEVEL" ] && exit # prevent nest
+
     temp_file="$(mktemp -t "ranger_cd.XXXXXXXXXX")"
     ranger --choosedir="$temp_file" -- "${@:-$PWD}"
     if chosen_dir="$(cat -- "$temp_file")" && [ -n "$chosen_dir" ] && [ "$chosen_dir" != "$PWD" ]; then
