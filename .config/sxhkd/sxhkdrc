@@ -71,10 +71,6 @@ super + Tab
 super + shift + Tab
 	bspc node -f prev.local
 
-# Reload desknamer
-super + shift + F11
-	pkill -f desknamer && setsid desknamer && notify-send "desknamer (sxhkd)" "desknamer reloaded."
-
 
 # --------------------------------
 # WM independent

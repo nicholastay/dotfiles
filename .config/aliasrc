@@ -107,6 +107,10 @@ alias txm="templateEdit math.tex"
 # Fuzzy find file -> vim
 vf() { fzf | xargs -r -I % $EDITOR % ;}
 
+# Host-based include
+[ -f "$NARB_OVERRIDES/aliasrc.$NARB_HOST" ] && . "$NARB_OVERRIDES/aliasrc.$NARB_HOST"
+
+
 
 # ...
 # (need to do this to save startup time)
@@ -126,4 +130,10 @@ if [ "$TERM" = "tmux-256color" ] && [ -n "$TMUX" ]; then
 		command ssh "$@"
 		tmux set-window-option automatic-rename "on" 1>/dev/null
 	}
+fi
+
+# pidswallow thing
+if pgrep -fl 'pidswallow -gl' >/dev/null 2>&1; then
+	[ -n "$DISPLAY" ]  && command -v xdo >/dev/null 2>&1 && xdo id > /tmp/term-wid-"$$"
+	trap "( rm -f /tmp/term-wid-"$$" )" EXIT HUP
 fi
