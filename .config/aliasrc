@@ -16,11 +16,7 @@ alias diff="diff --color=auto"
 alias ccat="highlight --out-format=ansi"
 
 # dotfiles management
-alias dott="git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME"
-alias d="dott"
-alias dots="dott status"
-alias dota="dott add -f"
-
+alias d="git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME"
 
 # Shortcuts for program + option
 # General
@@ -43,6 +39,12 @@ alias rcp="rsync -vzrh --times --stats --progress --itemize-changes"
 alias usbgl="sudo usbguard list-devices -b"
 alias usbga="sudo usbguard allow-device"
 
+jg() {
+	jumptool generate && echo "Generated new jump aliases."
+	. $HOME/.config/shortcutrc && echo "Reloaded shell shortcut aliases."
+	ps -p $$ 2>/dev/null | grep -q zsh && source $HOME/.config/zshnameddirs && echo "Reloaded zsh named dirs."
+}
+
 # lf with cd
 [ -f "$HOME/.config/lf/lfcd" ] && . "$HOME/.config/lf/lfcd" && alias lf="lfcd"
 # ranger_cd
@@ -61,7 +63,7 @@ alias yR="yay -R"
 
 # Service management
 alias s="systemctl"
-alias ss="sudo systemctl"
+#alias ss="sudo systemctl"
 alias sst="systemctl status"
 alias ssr="sudo systemctl restart"
 alias sus="systemctl --user status"
@@ -77,45 +79,27 @@ alias ltc="latexmk -c"
 alias wscan="nmcli device wifi rescan"
 
 
-# Config files / directories quick edit/search
-alias cds="cd ~/.scripts"
-alias cdn="cd ~/.local/narb"
-alias cfv="$EDITOR ~/.config/nvim/init.vim"
-alias cfb="$EDITOR ~/.bashrc"
-alias cfz="$EDITOR ~/.config/zsh/.zshrc"
-alias cfp="$EDITOR ~/.profile"
-alias cfa="$EDITOR ~/.config/aliasrc"
-alias cfw="$EDITOR ~/.config/bspwm/bspwmrc"
-alias cfo="$EDITOR ~/.config/polybar/config"
-alias cfs="$EDITOR ~/.config/sxhkd/sxhkdrc"
-alias cfr="$EDITOR ~/.config/ranger/rc.conf"
-alias cfl="$EDITOR ~/.config/lf/lfrc"
-alias cfx="$EDITOR ~/.xprofile"
-alias cfxr="$EDITOR ~/.config/X11/Xresources"
-
-alias cfprogs="$EDITOR ~/.local/narb/progs.csv"
-
 # Template copier thing
 # Copy a template and edit it.
 templateEdit() {
-	[ ! -f "$2" ] && cp "$HOME/Templates/$1" "$2"
+	[ ! -f "$2" ] && cp "$HOME/template/$1" "$2"
 	$EDITOR "$2"
 }
-alias thw="templateEdit mathhw.tex"
-alias txm="templateEdit math.tex"
+alias txa="templateEdit assignment.tex"
+alias txt="templateEdit tutorial.tex"
+alias txT="templateEdit tutorial.md"
+alias txg="templateEdit general.tex"
 
 # Fuzzy find file -> vim
 vf() { fzf | xargs -r -I % $EDITOR % ;}
 
 # Host-based include
 [ -f "$NARB_OVERRIDES/aliasrc.$NARB_HOST" ] && . "$NARB_OVERRIDES/aliasrc.$NARB_HOST"
+[ -f "$HOME/.config/shortcutrc" ] && . "$HOME/.config/shortcutrc"
 
 
 
-# ...
-# (need to do this to save startup time)
-command -v thefuck >/dev/null 2>&1 && fuck() { eval "$(thefuck --alias)" && fuck ;}
-
+# Other bloat stuff :)
 # z util
 _Z_DATA=$HOME/.local/share/z
 [ -r "/usr/share/z/z.sh" ] && . /usr/share/z/z.sh

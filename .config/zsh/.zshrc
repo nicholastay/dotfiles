@@ -22,6 +22,8 @@ setopt cdable_vars
 setopt auto_pushd
 # For above, minus should mean reverse (at least to me?)
 setopt pushd_minus
+# Don't auto tab complete fill
+setopt nomenucomplete
 
 
 # Load zsh completion
@@ -39,6 +41,7 @@ KEYTIMEOUT=1
 bindkey -v '^?' backward-delete-char
 # Ctrl-r needs to be rebound when using vim
 bindkey '^R' history-incremental-search-backward
+bindkey '^[[R' history-incremental-search-forward
 # Fix delete
 bindkey "^[[3~" delete-char
 
@@ -103,6 +106,7 @@ bindkey '^K' autosuggest-execute
 
 # Load our common aliases
 source $HOME/.config/aliasrc
+source $HOME/.config/zshnameddirs 2>/dev/null
 
 
 # Syntax highlighting plugin

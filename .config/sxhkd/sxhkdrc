@@ -151,6 +151,11 @@ super + t
 # mail
 super + F8
 	notify-send "sxhkd (mail)" "Syncing mail..." && mailsync
+
+super + F2
+	jumptool config
+super + shift + F2
+	jumptool dir
 super + F3
 	launchpersonal
 
