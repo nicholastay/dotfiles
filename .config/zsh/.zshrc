@@ -37,13 +37,20 @@ autoload -Uz compinit && compinit -d "$HOME/.cache/zcompdump"
 # Use vim keys
 bindkey -v
 KEYTIMEOUT=1
-# Fix backspace
+
+# Vim key fixes
+# Backspace in viins
 bindkey -v '^?' backward-delete-char
-# Ctrl-r needs to be rebound when using vim
+# Ctrl-r
 bindkey '^R' history-incremental-search-backward
-bindkey '^[[R' history-incremental-search-forward
-# Fix delete
-bindkey "^[[3~" delete-char
+bindkey '^S' history-incremental-search-forward
+# Delete
+bindkey '^[[3~' delete-char # xterm
+bindkey '^[[P' delete-char # st
+# Home/End in vicmd
+bindkey -a '^[[H' beginning-of-line
+bindkey -a '^[[F' end-of-line # xterm
+bindkey -a '^[[4~' end-of-line # st
 
 # vi keys for tab complete
 zmodload zsh/complist
