@@ -2,8 +2,9 @@
 # idk what i'm doing so yeah.
 
 # Setup the prompt (PS1)
-PS1="%F{014}%n%f%F{243}@%f%F{176}%m%f%F{243}:%f%(5~|%-1~/…/%3~|%4~) » "
+PS1="%F{015}%n%f%F{243}@%f%F{176}%m%f%F{243}:%f%(5~|%-1~/…/%3~|%4~) » "
 
+[ "$TERM" = "linux" ] && PS1="%F{cyan}%n%f%F{white}@%f%F{magenta}%m%f%F{white}:%f%(5~|%-1~/…/%3~|%4~)$ "
 [ ! -z $SSH_CLIENT ] && PS1="(SSH) $PS1"
 
 
@@ -24,14 +25,6 @@ setopt auto_pushd
 setopt pushd_minus
 # Don't auto tab complete fill
 setopt nomenucomplete
-
-
-# Load zsh completion
-# Use menu driven tab completion
-zstyle ':completion:*' menu select
-eval "$(dircolors)"
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-autoload -Uz compinit && compinit -d "$HOME/.cache/zcompdump"
 
 
 # Use vim keys
@@ -58,6 +51,18 @@ bindkey -M menuselect '^h' vi-backward-char
 bindkey -M menuselect '^k' vi-up-line-or-history
 bindkey -M menuselect '^l' vi-forward-char
 bindkey -M menuselect '^j' vi-down-line-or-history
+
+
+# Load zsh completion
+# Use menu driven tab completion
+zstyle ':completion:*' menu select
+eval "$(dircolors)"
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+autoload -Uz compinit && compinit -d "$HOME/.cache/zcompdump"
+
+
+# just for tty
+if [ "$TERM" != "linux" ]; then
 
 # Use beam cursor
 # Code 6 for static (not blinking), also for all new prompts, do this too
@@ -109,6 +114,8 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_STRATEGY=(completion history)
 bindkey '^K' autosuggest-execute
+
+fi
 
 
 # Load our common aliases
