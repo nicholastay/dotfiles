@@ -10,7 +10,7 @@
 !/.local/
 /.local/*
 !/.local/narb/
-!/Templates/
+!/template/
 
 # Specific files
 !/.gitignore
@@ -25,3 +25,16 @@
 !/readme.md
 !/.tmux.conf
 !/.latexmkrc
+
+
+# Ignore back again
+/.config/naver-whale
+/.config/Caprine
+/.config/Joplin
+/.config/Nextcloud
+/.config/configstore
+/.config/joplin-desktop
+/.config/ibus
+/.config/pulse
+/.config/nvim/autoload
+/.config/nvim/plugged

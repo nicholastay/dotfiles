@@ -14,6 +14,7 @@ export NARB_HOST="$(hostname -s)"
 
 # Programs
 export EDITOR="nvim"
+export VISUAL="$EDITOR"
 export TERMINAL="st"
 export BROWSER="firefox"
 export FILE="ranger"
@@ -44,3 +45,7 @@ export LF_ICONS="di=:fi=:ln=:or=:ex=:*.c=:*.cc=:*.clj=:*
 
 # startx if tty1 and no wm
 [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ] && exec startx 2&> $HOME/.xoutput
+
+
+# swap caps on tty if allowed
+sudo -n loadkeys $HOME/.local/narb/ttymaps.kmap 2>/dev/null
