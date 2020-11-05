@@ -10,6 +10,10 @@
 !/.local/
 /.local/*
 !/.local/narb/
+!/.local/bin
+!/.local/share
+/.local/share/*
+!/.local/share/applications
 !/template/
 
 # Specific files
