@@ -5,7 +5,7 @@ wall="$HOME/.config/wall.jpg"
 if [ -f "$1" ]; then
 	cp -f "$1" "$wall"
 	[ -d $HOME/.cache/wal ] && rm $HOME/.cache/wal/schemes/*__config_wall_jpg*.json
-	[ -d $HOME/.cache/thumbnails/neofetch ] && rm $HOME/.cache/thumbnails/neofetch/*.jpg
+	[ -d $HOME/.cache/thumbnails/neofetch ] && rm $HOME/.cache/thumbnails/neofetch/*.jpg 2>/dev/null
 fi
 
 xwallpaper --zoom "$wall"
