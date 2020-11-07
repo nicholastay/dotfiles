@@ -58,6 +58,7 @@ bindkey -M menuselect '^j' vi-down-line-or-history
 zstyle ':completion:*' menu select
 eval "$(dircolors)"
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 autoload -Uz compinit && compinit -d "$HOME/.cache/zcompdump"
 
 
