@@ -15,6 +15,8 @@ $HOME/.config/wal/applybspwm
 # floater
 bspc rule -a 'St:floater' state=floating rectangle=850x500+0+0 center=true
 bspc rule -a 'KeePassXC' state=floating rectangle=900x550+0+0 center=true
+# firefox pip
+bspc rule -a 'firefox:Toolkit' state=floating sticky=on
 
 # cursor to left
 xsetroot -cursor_name left_ptr &
