@@ -15,7 +15,7 @@ export NARB_HOST="$(hostname -s)"
 # Programs
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
-export TERMINAL="st"
+export TERMINAL="alacritty"
 export BROWSER="firefox"
 export FILE="ranger"
 export READER="zathura"

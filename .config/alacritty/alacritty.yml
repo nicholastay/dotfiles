@@ -1,3 +1,13 @@
 background_opacity: 0.87
 font:
-    size: 10
+    size: 9
+window:
+    padding:
+        x: 3
+        y: 3
+key_bindings:
+    - { key: Escape, mode: Vi, action: ToggleViMode }
+mouse:
+    hide_when_typing: true
+cursor:
+    vi_mode_style: Block
