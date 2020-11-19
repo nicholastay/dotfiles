@@ -11,7 +11,6 @@ fi
 # Display managers run .xprofile on startup, and
 # skip this file. So we just split into that,
 # but if startx run we still want to run xprofile.
-[ -f ~/.xprofile ] && . ~/.xprofile
+[ -f $HOME/.xprofile ] && . $HOME/.xprofile
 
-#exec dwm
-exec bspwm
+exec "$(cat $HOME/.config/wm)"

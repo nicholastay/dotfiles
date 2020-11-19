@@ -11,6 +11,7 @@ x	xprofile	$HOME/.xprofile
 p	profile	$HOME/.profile
 o	polybar	$HOME/.config/polybar/config
 s	sxhkd	$HOME/.config/sxhkd/sxhkdrc
+sb	sxhkd.bspwm	$HOME/.config/sxhkd/sxhkdrc.bspwm
 c	picom	$HOME/.config/picom.conf
 a	aliasrc	$HOME/.config/aliasrc
 i	inputrc	$HOME/.config/inputrc
