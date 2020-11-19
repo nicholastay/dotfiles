@@ -8,9 +8,6 @@ xrdb -merge $HOME/.config/X11/Xresources
 picom -b & # compositor (compton)
 setwp & # wallpaper
 remapkb & # remap keyboard caps esc thing
-sxhkd &
-#dwmblocks &
-$HOME/.config/polybar/launch.sh & 
 
 # More
 #urxvtd -f & # terminal

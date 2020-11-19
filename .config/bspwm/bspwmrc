@@ -8,7 +8,8 @@ bspc config window_gap           5
 
 bspc config focus_follows_pointer true
 
-pgrep 'sxhkd' || sxhkd $HOME/.config/sxhkd/sxhkdrc.bspwm &
+pgrep -x 'sxhkd' || sxhkd $HOME/.config/sxhkd/sxhkdrc.bspwm &
+$HOME/.config/polybar/launch.sh
 
 # wal
 $HOME/.config/wal/applybspwm
