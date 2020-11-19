@@ -8,6 +8,8 @@ bspc config window_gap           5
 
 bspc config focus_follows_pointer true
 
+pgrep 'sxhkd' || sxhkd $HOME/.config/sxhkd/sxhkdrc.bspwm &
+
 # wal
 $HOME/.config/wal/applybspwm
 
@@ -20,9 +22,6 @@ bspc rule -a 'firefox:Toolkit' state=floating sticky=on
 
 # cursor to left
 xsetroot -cursor_name left_ptr &
-
-# run desknamer - restart it as weird looping if not
-pkill -f desknamer; desknamer 1>/dev/null &
 
 # swallowing
 export PIDSWALLOW_SWALLOW_COMMAND='bspc node $pwid --flag hidden=on'

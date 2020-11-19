@@ -1,0 +1,72 @@
+# nick's sxhkd config: BSPWM specific sxhkd binds
+
+# Focus/move ws
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+# Follow move ws
+super + shift + ctrl + {1-9,0}
+	bspc node -d '^{1-9,10}' --follow
+
+# Focus window/move
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# Quit
+super + shift + {_,control + }q
+	bspc node -{c,k}
+
+# Reload
+super + shift + F10
+	bspc wm -r
+
+# Fullscreen
+super + f
+	bspc node -t '~fullscreen'
+
+# Preselects
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+super + s
+	bspc node -p south
+# Cancel preselect
+super + ctrl + space
+	bspc node -p cancel
+# Preselect size
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+# Move to preselected
+super + m
+        bspc node -n last.!automatic
+
+# Rotate window on parent
+super + shift + m
+	bspc node @parent -R 90
+
+# Resize window
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0 || bspc node -z right -20 0, \
+				  bottom 0 20 || bspc node -z top 0 20,\
+				  top 0 -20 || bspc node -z bottom 0 -20,\
+				  right 20 0 || bspc node -z left 20 0}
+
+# Move floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Toggle float
+super + shift + space
+	bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
+
+# Change windows to next
+super + Tab
+	bspc node -f next.local
+super + shift + Tab
+	bspc node -f prev.local
+
+# bsp-layout
+super + grave
+	notify-send "bsp-layout (sxhkd)" "Current layout: $(bsp-layout get)"
+super + {y,shift + y,u,shift + u,control + u}
+	bsp-layout set {tiled,monocle,tall -- --master-size 0.6,wide -- --master-size 0.7,even}
+
+# vi:syntax=sxhkd

@@ -1,79 +1,13 @@
-# nick's sxhkd config
+# nick's sxhkd config: WM independent
 
 # reload sxhkd
 super + F12
 	pkill -USR1 -x sxhkd && notify-send "sxhkd" "Reloaded sxhkd bindings."
 # super + shift + F12 is relaunching the wm itself, handled in it
 
-# BSPWM
-# Focus/move ws
-super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
-# Follow move ws
-super + shift + ctrl + {1-9,0}
-	bspc node -d '^{1-9,10}' --follow
-
-# Focus window/move
-super + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
-
-# Quit
-super + shift + q
-	bspc node -c
-
-# Reload
-super + shift + F10
-	bspc wm -r
-
-# Fullscreen
-super + f
-	bspc node -t '~fullscreen'
-
-# Preselects
-super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
-super + s
-	bspc node -p south
-# Cancel preselect
-super + ctrl + space
-	bspc node -p cancel
-# Preselect size
-super + ctrl + {1-9}
-	bspc node -o 0.{1-9}
-# Move to preselected
-super + m
-        bspc node -n last.!automatic
-
-# Rotate window on parent
-super + shift + m
-	bspc node @parent -R 90
-
-# Resize window
-super + alt + {h,j,k,l}
-	bspc node -z {left -20 0 || bspc node -z right -20 0, \
-				  bottom 0 20 || bspc node -z top 0 20,\
-				  top 0 -20 || bspc node -z bottom 0 -20,\
-				  right 20 0 || bspc node -z left 20 0}
-
-# Move floating window
-super + {Left,Down,Up,Right}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
-
-# Toggle float
-super + shift + space
-	bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
-
-# Change layout monocle/tiled
-super + grave
-	bspc desktop -l next
-super + Tab
-	bspc node -f next.local
-super + shift + Tab
-	bspc node -f prev.local
-
-
-# --------------------------------
-# WM independent
+# hard force quit
+super + shift + alt + q
+	kill -9 `xdotool getwindowfocus getwindowpid`
 
 # lock
 super + Delete
@@ -100,9 +34,6 @@ super + alt + space
 	j4-dmenu-desktop
 super + w
 	$BROWSER
-# hard force quit
-super + shift + control + q
-	kill -9 `xdotool getwindowfocus getwindowpid`
 super + a
 	pavucontrol
 super + p
@@ -163,9 +94,9 @@ super + F3
 {_,shift + ,super + }XF86MonBrightness{Down,Up}
 	xbacklight {-dec 10,-dec 2,-set 0,-inc 10,-inc 2,-set 100}
 {_,shift + }XF86Audio{LowerVolume,RaiseVolume}
-	pactl set-sink-volume @DEFAULT_SINK@ {-5%,-1%,+5%,+1%}; kill -43 $(pidof dwmblocks)
+	pactl set-sink-volume @DEFAULT_SINK@ {-5%,-1%,+5%,+1%}
 XF86AudioMute
-	pactl set-sink-mute @DEFAULT_SINK@ toggle; kill -43 $(pidof dwmblocks)
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
 XF86AudioMicMute
 	pactl set-source-mute @DEFAULT_SOURCE@ toggle
 XF86Display
