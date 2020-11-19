@@ -18,7 +18,7 @@ unfocused = #C4C7C5
 [bar/main]
 monitor = ${env:MONITOR:HDMI-0}
 width = 100%
-height = 30
+height = 26
 fixed-center = false
 wm-restack = bspwm
 enable-ipc = true
@@ -34,7 +34,7 @@ font-0 = mono:size=10;1
 font-1 = Noto Color Emoji:style=Regular:scale=10;2
 font-2 = Symbols Nerd Font:size=10;1
 font-3 = NanumGothicCoding:size=10;1
-font-5 = Noto Sans CJK SC:size=8;1
+font-5 = WenQuanYi Zen Hei Mono:size=8;1
 font-4 = Noto Sans CJK JP:size=10;1
 
 modules-left = ${env:POLYBAR_MODULES_LEFT:bspwm xwindow}

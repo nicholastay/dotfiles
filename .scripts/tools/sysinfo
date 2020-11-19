@@ -63,3 +63,7 @@ ${c06}  ║██  ║ ${c10}processor ${f0}.... $c06$cpuspe
 ${c14}  ║  ██║ ${c10}memory ${f0}....... $c06$memuse
 ${c07}  ╚════╝
 EOF
+
+tput civis
+read a
+tput cnorm
