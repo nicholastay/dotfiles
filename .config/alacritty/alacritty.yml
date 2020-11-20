@@ -7,7 +7,11 @@ window:
         y: 3
 key_bindings:
     - { key: Escape, mode: Vi, action: ToggleViMode }
+    - { key: Insert, mods: Shift, action: Paste }
 mouse:
     hide_when_typing: true
 cursor:
     vi_mode_style: Block
+colors:
+    primary:
+        background: '0x060204'

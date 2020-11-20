@@ -57,7 +57,7 @@ set $white  #ffffff
 #                       BORDER		BACKGROUND	TEXT		INDICATOR   CHILD_BORDER
 client.focused		$focused_color		$focused_color		$black	$alt_color		$focused_color
 client.unfocused	$normal_color	$normal_color		$black		$alt_color		$normal_color
-client.focused_inactive		$focused_color		$focused_color		$black	$alt_color		$focused_color
+client.focused_inactive		$normal_color		$normal_color		$black	$alt_color		$normal_color
 client.urgent		$alertred	$alertred	$white		$alt_color		$alertred
 client.background $black
 
