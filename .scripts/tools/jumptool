@@ -14,7 +14,8 @@ s	sxhkd	$HOME/.config/sxhkd/sxhkdrc
 sb	sxhkd.bspwm	$HOME/.config/sxhkd/sxhkdrc.bspwm
 c	picom	$HOME/.config/picom.conf
 a	aliasrc	$HOME/.config/aliasrc
-i	inputrc	$HOME/.config/inputrc
+i	i3	$HOME/.config/i3/config
+I	inputrc	$HOME/.config/inputrc
 l	lf	$HOME/.config/lf/lfrc
 f	fontconfig	$HOME/.config/fontconfig/fonts.conf
 d	dunst	$HOME/.config/dunst/dunstrc

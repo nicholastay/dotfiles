@@ -8,18 +8,17 @@
 # i3-gaps gaps
 for_window [class="^.*"] border pixel 2
 gaps inner 5
-gaps outer 5
+gaps outer 2
 
 # Basic config
 set $mod Mod4
+set $alt Mod1
 floating_modifier $mod
 # Use Mouse+$mod to drag floating windows to their wanted position
-set $term --no-startup-id $TERMINAL
-font pango:Inconsolata 12
+font pango:mono 10
+
 # Don't wrap around when changing focus
 focus_wrapping no
-# Do not follow mouse
-focus_follows_mouse no
 
 for_window [instance="keepassxc"] floating enable
 for_window [instance="keepassxc"] sticky enable
@@ -36,45 +35,106 @@ for_window [instance="quickterm"] move scratchpad
 
 for_window [workspace=".*-f$"] floating enable
 
-# i3ws thingo
-exec --no-startup-id i3-ws --init
-
 # start bar
 exec --no-startup-id $HOME/.config/polybar/launch.sh
 
 # startup the quickterm
-exec --no-startup-id $term -name quickterm -e tmux
+#exec --no-startup-id $TERMINAL -n quickterm -e tmux
+
+exec --no-startup-id sxhkd
 
 
 # ------------ COLORS ----------------
 # set Xresources colors:
-set_from_resource $darkblack	color0  #000000
-set_from_resource $black	color8  #000000
-set_from_resource $darkred	color1  #000000
-set_from_resource $red		color9  #000000
-set_from_resource $darkgreen	color2  #000000
-set_from_resource $green	color10 #000000
-set_from_resource $darkyellow	color3  #000000
-set_from_resource $yellow	color11 #000000
-set_from_resource $darkblue	color4  #000000
-set_from_resource $blue		color12 #000000
-set_from_resource $darkmagenta	color5  #000000
-set_from_resource $magenta	color13 #000000
-set_from_resource $darkcyan	color6  #000000
-set_from_resource $cyan		color14 #000000
-set_from_resource $darkwhite	color7  #000000
-set_from_resource $white	color15 #000000
-set $transparent		#00000000
+set_from_resource $normal_color	color8  #000000
+set_from_resource $focused_color	color15  #000000
+set_from_resource $alt_color	color2  #000000
+set $transparent	#00000000
+set $alertred   #ff0000
+set $black  #000000
+set $white  #ffffff
 
 #                       BORDER		BACKGROUND	TEXT		INDICATOR   CHILD_BORDER
-client.focused		$magenta		$magenta		$white	$darkmagenta		$magenta
-client.unfocused	$transparent	$blue		$white		$darkblue		$darkblack
-client.focused_inactive	$transparent	$blue		$white		$darkblue		$darkblack
-client.urgent		$darkred	$darkred	$black		$darkred		$darkred
+client.focused		$focused_color		$focused_color		$black	$alt_color		$focused_color
+client.unfocused	$normal_color	$normal_color		$black		$alt_color		$normal_color
+client.focused_inactive		$focused_color		$focused_color		$black	$alt_color		$focused_color
+client.urgent		$alertred	$alertred	$white		$alt_color		$alertred
 client.background $black
 
-# --------------- i3 (very specific) BINDINGS --------------
-# Most are handled by sxhkd now.
+# --------------- i3 BINDINGS --------------
+# i3 Focus/Window mgmt
+# focus stuff
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+s split toggle
+# split in horizontal orientation
+bindsym $mod+semicolon split h
+# split in vertical orientation
+bindsym $mod+apostrophe split v
+
+bindsym $mod+y	layout split
+bindsym $mod+Shift+t	layout tabbed
+bindsym $mod+Ctrl+t	layout stacking
+
+bindsym $mod+Shift+q    kill
+bindsym $mod+f  fullscreen toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+# change focus between tiling / floating windows
+bindsym $mod+Ctrl+space focus mode_toggle
+
+# Workspace stuffs
+set $ws1 "一"
+set $ws2 "二"
+set $ws3 "三"
+set $ws4 "四"
+set $ws5 "五"
+set $ws6 "六"
+set $ws7 "七"
+set $ws8 "八"
+set $ws9 "九"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+
+# reload the configuration file
+bindsym $mod+Shift+F10 reload
+bindsym $mod+Control+F10 restart
+
+# Resize window setup
+bindsym $mod+$alt+h	exec --no-startup-id i3resize left
+bindsym $mod+$alt+j	exec --no-startup-id i3resize down
+bindsym $mod+$alt+k	exec --no-startup-id i3resize up
+bindsym $mod+$alt+l	exec --no-startup-id i3resize right
+
 # gaps - https://www.reddit.com/r/i3wm/comments/3xcvy0/help_with_code_to_toggle_i3_gaps/cy3izw0/
 set $mode_gaps Toggle gaps: (1) on (2) off (3) plus outer (4) minus outer (5) plus inner (6) minus inner
 bindsym $mod+Shift+z mode "$mode_gaps"

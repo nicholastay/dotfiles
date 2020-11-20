@@ -8,6 +8,9 @@ if pgrep -x dwm; then
 elif pgrep -x bspwm; then
 	refreshwm="bspc wm -r"
 	exitwm="bspc quit"
+elif pgrep -x i3; then
+	refreshwm="i3-msg reload"
+	exitwm="i3-msg exit"
 fi
 
 case "$(printf "shutdown\\nreboot\\nsuspend\\nrefresh\\nlogout" | dmenu -i -p "time to leave?")" in
