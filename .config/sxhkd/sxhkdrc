@@ -39,19 +39,19 @@ super + a
 super + p
 	keepassxc
 super + shift + p
-	$TERMINAL -n floater -g 120x34 -e htop
+	termfloat htop
 super + control + p
-	$TERMINAL -n floater -g 120x34 -e sudo powertop
+	termfloat sudo powertop
 super + alt + p
-	$TERMINAL -n floater -g 120x34 -e bashtop
+	termfloat bashtop
 super + shift + a
-	$TERMINAL -n floater -g 120x34 -e pulsemixer
+	termfloat pulsemixer
 super + shift + n
 	joplin-desktop
 super + control + n
 	p3x-onenote
 super + n
-	$TERMINAL -n floater -g 120x34 -e ncmpcpp
+	termfloat ncmpcpp
 super + {control,alt} + n
 	mpdshuffle{_, stop}
 super + shift + u
@@ -65,7 +65,7 @@ super + c
 super + shift + c
 	gnome-calculator
 super + control + c
-	$TERMINAL -n floater -g 120x34 -e octave
+	termfloat octave
 super + shift + o
 	libreoffice
 super + control + o
