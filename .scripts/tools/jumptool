@@ -43,6 +43,16 @@ H	overrides	$NARB_OVERRIDES"
 [ -f "$NARB_OVERRIDES/confs.$NARB_HOST" ] && confs="$confs\n$(cat $NARB_OVERRIDES/confs.$NARB_HOST)"
 [ -f "$NARB_OVERRIDES/dirs.$NARB_HOST" ] && dirs="$dirs\n$(cat $NARB_OVERRIDES/dirs.$NARB_HOST)"
 
+sel="$2"
+selector() {
+	if [ "$sel" = "fzf" ]; then
+		choice="$(echo "$1" | cut -d'	' -f 2 | fzf --prompt="$2: ")" || exit 1
+	else
+		choice="$(echo "$1" | cut -d'	' -f 2 | dmenu -i -p "$2")" || exit 1
+	fi
+	echo "$1" | awk -F'	' '$2 == "'"$choice"'" { print $3; exit; }'
+}
+
 case "$1" in
 	generate)
 		# term generate alias
@@ -57,16 +67,16 @@ case "$1" in
 		echo "$dirs" | awk -F'	' '{ print "hash -d " $2 "=" $3 }' > $HOME/.config/zshnameddirs
 		;;
 	config)
-		# dmenu pick config
-		choice="$(echo "$confs" | cut -d'	' -f 2 | dmenu -i -p "edit config?")" || exit 1
-		conf="$(echo "$confs" | awk -F'	' '$2 == "'"$choice"'" { print $3; exit; }')"
-		setsid $TERMINAL -e $EDITOR "$conf"
+		# pick config
+		conf="$(selector "$confs" "edit config?")"
+		[ -f "$conf" ] && \
+			{ [ "$sel" = "fzf" ] && $EDITOR "$conf" || setsid $TERMINAL -e $EDITOR "$conf" ;}
 		;;
 	dir)
-		# dmenu pick dir
-		choice="$(echo "$dirs" | cut -d'	' -f 2 | dmenu -i -p "open dir?")" || exit 1
-		dir="$(echo "$dirs" | awk -F'	' '$2 == "'"$choice"'" { print $3; exit; }')"
-		[ -d "$dir" ] && cd "$dir" && setsid $TERMINAL
+		# pick dir
+		dir="$(selector "$dirs" "jump to?")"
+		[ -d "$dir" ] && cd "$dir" && \
+			{ [ "$sel" = "fzf" ] && echo "$dir" || setsid $TERMINAL ;}
 		;;
 	*)
 		exit 1

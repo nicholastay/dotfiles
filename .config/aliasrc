@@ -92,6 +92,12 @@ alias txg="templateEdit general.tex"
 
 # Fuzzy find file -> vim
 vf() { fzf | xargs -r -I % $EDITOR % ;}
+# vf for scripts dir (subshell so no cd switch)
+vfs() { ( cd $HOME/.scripts && vf ) ;}
+# jumptool listings
+cdj() { d="$(jumptool dir fzf)" && cd "$d" ;}
+vfc() { jumptool config fzf ;}
+
 
 # Host-based include
 [ -f "$NARB_OVERRIDES/aliasrc.$NARB_HOST" ] && . "$NARB_OVERRIDES/aliasrc.$NARB_HOST"
