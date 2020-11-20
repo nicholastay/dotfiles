@@ -1,0 +1,95 @@
+# i3 config file (v4)
+
+# nick's i3 config
+
+
+
+# -------------- INITIAL SETUP -----------------
+# i3-gaps gaps
+for_window [class="^.*"] border pixel 2
+gaps inner 5
+gaps outer 5
+
+# Basic config
+set $mod Mod4
+floating_modifier $mod
+# Use Mouse+$mod to drag floating windows to their wanted position
+set $term --no-startup-id $TERMINAL
+font pango:Inconsolata 12
+# Don't wrap around when changing focus
+focus_wrapping no
+# Do not follow mouse
+focus_follows_mouse no
+
+for_window [instance="keepassxc"] floating enable
+for_window [instance="keepassxc"] sticky enable
+for_window [instance="gnome-calculator"] floating enable
+
+for_window [instance="floater"] floating enable
+for_window [instance="floater"] resize set 1200 650
+for_window [instance="floater"] move position center
+
+for_window [instance="quickterm"] floating enable
+for_window [instance="quickterm"] resize set 850 550
+for_window [instance="quickterm"] move position center
+for_window [instance="quickterm"] move scratchpad
+
+for_window [workspace=".*-f$"] floating enable
+
+# i3ws thingo
+exec --no-startup-id i3-ws --init
+
+# start bar
+exec --no-startup-id $HOME/.config/polybar/launch.sh
+
+# startup the quickterm
+exec --no-startup-id $term -name quickterm -e tmux
+
+
+# ------------ COLORS ----------------
+# set Xresources colors:
+set_from_resource $darkblack	color0  #000000
+set_from_resource $black	color8  #000000
+set_from_resource $darkred	color1  #000000
+set_from_resource $red		color9  #000000
+set_from_resource $darkgreen	color2  #000000
+set_from_resource $green	color10 #000000
+set_from_resource $darkyellow	color3  #000000
+set_from_resource $yellow	color11 #000000
+set_from_resource $darkblue	color4  #000000
+set_from_resource $blue		color12 #000000
+set_from_resource $darkmagenta	color5  #000000
+set_from_resource $magenta	color13 #000000
+set_from_resource $darkcyan	color6  #000000
+set_from_resource $cyan		color14 #000000
+set_from_resource $darkwhite	color7  #000000
+set_from_resource $white	color15 #000000
+set $transparent		#00000000
+
+#                       BORDER		BACKGROUND	TEXT		INDICATOR   CHILD_BORDER
+client.focused		$magenta		$magenta		$white	$darkmagenta		$magenta
+client.unfocused	$transparent	$blue		$white		$darkblue		$darkblack
+client.focused_inactive	$transparent	$blue		$white		$darkblue		$darkblack
+client.urgent		$darkred	$darkred	$black		$darkred		$darkred
+client.background $black
+
+# --------------- i3 (very specific) BINDINGS --------------
+# Most are handled by sxhkd now.
+# gaps - https://www.reddit.com/r/i3wm/comments/3xcvy0/help_with_code_to_toggle_i3_gaps/cy3izw0/
+set $mode_gaps Toggle gaps: (1) on (2) off (3) plus outer (4) minus outer (5) plus inner (6) minus inner
+bindsym $mod+Shift+z mode "$mode_gaps"
+mode "$mode_gaps" {
+    bindsym 1 mode "default", gaps inner all set 5, gaps outer all set 5
+    bindsym 2 mode "default", gaps inner all set 0, gaps outer all set 0
+    bindsym 3 mode "default", gaps outer current plus 5
+    bindsym 4 mode "default", gaps outer current minus 5
+    bindsym 5 mode "default", gaps inner current plus 5
+    bindsym 6 mode "default", gaps inner current minus 5
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+
+# Master+stack thingy
+# https://www.reddit.com/r/i3wm/comments/bgwz85/quickly_make_main_stack_and_side_windows_layout/ 
+bindsym $mod+Shift+o layout splitv; move left; resize grow right 10 px or 10 ppt; split v; layout stacking
