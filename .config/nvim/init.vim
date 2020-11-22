@@ -69,7 +69,17 @@ set number relativenumber
 
 set nohlsearch
 set splitbelow splitright " why isn't this the default?
+set scrolloff=6
 
+"   Colour scheme
+"   Always patch our overrides on scheme load
+"   https://github.com/junegunn/goyo.vim/issues/84#issuecomment-156299446
+function! s:transparent_bg_force()
+  hi! Normal ctermbg=NONE guibg=NONE
+  hi! LineNr ctermbg=NONE guibg=NONE
+  hi! StatusLine ctermbg=NONE ctermfg=DarkCyan cterm=NONE
+endfunction
+autocmd! ColorScheme afterglow call s:transparent_bg_force()
 colorscheme afterglow
 
 
@@ -95,6 +105,9 @@ let g:lightline = { 'colorscheme': 'jellybeans', }
 
 "  nerdtree
 map <leader>n :NERDTreeToggle<CR>
+
+"  use vimtex latex
+let g:tex_flavor = 'latex'
 
 " ----------------------
 "  Bindings
@@ -140,10 +153,3 @@ autocmd FileType tex nnoremap <F5> :w<Enter>:!latexmk<space>-pdf<space><c-r>%<En
 autocmd FileType tex nnoremap <S-F5> :w<Enter>:!latexmk<space>-xelatex<space><c-r>%<Enter>
 autocmd FileType tex nnoremap <F4> :w<Enter>:!texliveonfly<space>--terminal_only<space>-c<space>latexmk<space>-a<space>'-pdf'<space>%<Enter>
 autocmd FileType tex nnoremap <F6> :!$READER<space>%:r.pdf<space>&<CR><CR>
-
-
-" --------------------
-" Colour scheme transparency at the end!
-hi! Normal ctermbg=NONE guibg=NONE
-hi! LineNr ctermbg=NONE guibg=NONE
-hi! StatusLine ctermbg=NONE ctermfg=DarkCyan cterm=NONE

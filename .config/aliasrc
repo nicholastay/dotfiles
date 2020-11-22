@@ -10,10 +10,14 @@ alias cl="clear"
 
 
 # Some neat general util stuff
+alias cp='cp -iv'
+alias mv='mv -iv'
 alias ls='ls --color=auto --group-directories-first'
+alias lss='ls -shN'
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias ccat="highlight --out-format=ansi"
+alias ssh='TERM=xterm-256color ssh'
 
 # dotfiles management
 alias d="git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME"
@@ -28,6 +32,9 @@ alias r="ranger"
 alias l="lf"
 alias g="git"
 alias o="xdg-open"
+alias psg="ps aux | grep"
+alias mem="ps axch -o cmd:15,%mem --sort=-%mem | sed 10q"
+alias cpu="ps axch -o cmd:15,%cpu --sort=-%cpu | sed 10q"
 alias sdn="shutdown now"
 alias reb="reboot"
 alias mkp="mkdir -p"
@@ -114,13 +121,13 @@ _Z_DATA=$HOME/.local/share/z
 [ "$TERM" = "alacritty" ] && [ -r "$HOME/.cache/wal/sequences" ] && (cat $HOME/.cache/wal/sequences &)
 
 # tmux ssh rename
-if [ "$TERM" = "tmux-256color" ] && [ -n "$TMUX" ]; then
-	ssh() {
-		tmux rename-window "ssh($(echo $* | cut -d . -f 1))"
-		command ssh "$@"
-		tmux set-window-option automatic-rename "on" 1>/dev/null
-	}
-fi
+# if [ "$TERM" = "tmux-256color" ] && [ -n "$TMUX" ]; then
+# 	ssh() {
+# 		tmux rename-window "ssh($(echo $* | cut -d . -f 1))"
+# 		command ssh "$@"
+# 		tmux set-window-option automatic-rename "on" 1>/dev/null
+# 	}
+# fi
 
 # pidswallow thing
 if pgrep -fl 'pidswallow -gl' >/dev/null 2>&1; then

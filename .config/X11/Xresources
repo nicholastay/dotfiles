@@ -23,7 +23,7 @@ XTerm.translations: #override \
 Super <Key> minus: smaller-vt-font() \n\
 Super <Key> plus: larger-vt-font() \n\
 
-
+xscreensaver.newLoginCommand: 
 
 ! special
 *.foreground:   #ffffff
