@@ -36,7 +36,7 @@ for_window [instance="quickterm"] move scratchpad
 for_window [workspace=".*-f$"] floating enable
 
 # start bar
-exec --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # startup the quickterm
 #exec --no-startup-id $TERMINAL -n quickterm -e tmux
@@ -93,15 +93,15 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+Ctrl+space focus mode_toggle
 
 # Workspace stuffs
-set $ws1 "一"
-set $ws2 "二"
-set $ws3 "三"
-set $ws4 "四"
-set $ws5 "五"
-set $ws6 "六"
-set $ws7 "七"
-set $ws8 "八"
-set $ws9 "九"
+set $ws1 "1:一"
+set $ws2 "2:二"
+set $ws3 "3:三"
+set $ws4 "4:四"
+set $ws5 "5:五"
+set $ws6 "6:六"
+set $ws7 "7:七"
+set $ws8 "8:八"
+set $ws9 "9:九"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
