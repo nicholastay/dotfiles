@@ -40,7 +40,9 @@ case "$1" in
 
 	batw)
 		title=" Battery discharge"
-		msg="$(awk '{ print $1*10^-6 "W" }' /sys/class/power_supply/${BATTERY:-BAT0}/power_now)"
+		[ "$(cat /sys/class/power_supply/BAT0/status)" != "Discharging" ] && \
+			msg="Not discharging. Cannot get info." || \
+			msg="$(awk '{ print $1*10^-6 "W" }' /sys/class/power_supply/${BATTERY:-BAT0}/power_now)"
 		;;
 esac
 

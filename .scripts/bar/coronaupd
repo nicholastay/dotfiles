@@ -8,7 +8,7 @@ case "$1" in
 	showau) curl -s "https://corona-stats.online/AU?source=1" | less -r && exit ;;
 	*)
 		case "$BLOCK_BUTTON" in
-			1) $TERMINAL -n floater -g 165x35 -e $0 show ;;
+			1) termfloat $0 show ;;
 			2) $BROWSER "https://www.dhhs.vic.gov.au/victorian-coronavirus-covid-19-data" && exit ;;
 			3) $BROWSER "https://www.dhhs.vic.gov.au/victorian-coronavirus-covid-19-data" && exit ;;
 		esac

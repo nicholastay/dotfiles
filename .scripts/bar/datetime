@@ -1,2 +1,5 @@
 #!/bin/sh
+
+[ "$BLOCK_BUTTON" = "1" ] && nnotify time
+
 date +"%Y-%m-%d %a %H:%M"

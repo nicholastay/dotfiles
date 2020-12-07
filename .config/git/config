@@ -12,5 +12,6 @@
 	cm = commit -m
 	d = diff
 	cob = checkout -b
+	l = log
 [include]
 	path = ~/.config/git/user
