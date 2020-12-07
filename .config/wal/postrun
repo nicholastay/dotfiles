@@ -4,7 +4,7 @@ mkdir -p $HOME/.config/dunst
 ln -sf $HOME/.cache/wal/dunstrc $HOME/.config/dunst/dunstrc
 pkill dunst; dunst &
 
-pidof dwm >/dev/null && xdotool key super+F5
+[ "$NARB_WM" = "dwm" ] && xdotool key super+F5
 #pidof bspwm >/dev/null && bspc wm -r
 
 pidof bspwm >/dev/null && $HOME/.config/wal/applybspwm

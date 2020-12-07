@@ -54,8 +54,8 @@ super + n
 	termfloat ncmpcpp
 super + {control,alt} + n
 	mpdshuffle{_, stop}
-super + shift + u
-	usbguardmenu
+#super + shift + u
+#	usbguardmenu
 super + shift + m
 	thunderbird
 	#$TERMINAL -e neomutt
@@ -94,11 +94,11 @@ super + F3
 {_,shift + ,super + }XF86MonBrightness{Down,Up}
 	xbacklight {-dec 10,-dec 2,-set 0,-inc 10,-inc 2,-set 100}
 {_,shift + }XF86Audio{LowerVolume,RaiseVolume}
-	pactl set-sink-volume @DEFAULT_SINK@ {-5%,-1%,+5%,+1%}
+	pactl set-sink-volume @DEFAULT_SINK@ {-5%,-1%,+5%,+1%}; kill -43 $(pidof dwmblocks)
 XF86AudioMute
-	pactl set-sink-mute @DEFAULT_SINK@ toggle
+	pactl set-sink-mute @DEFAULT_SINK@ toggle; kill -43 $(pidof dwmblocks)
 XF86AudioMicMute
-	pactl set-source-mute @DEFAULT_SOURCE@ toggle
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle; kill -43 $(pidof dwmblocks)
 XF86Display
 	displayselect
 XF86ScreenSaver
