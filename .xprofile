@@ -48,3 +48,7 @@ caffeine &
 xscreensaver -no-splash &
 # Subscribe to systemd events to start lock
 #xss-lock -- xscreensaver-command -lock &
+
+
+# Host-based include
+[ -f "$NARB_OVERRIDES/xprofile.$NARB_HOST" ] && . "$NARB_OVERRIDES/xprofile.$NARB_HOST"

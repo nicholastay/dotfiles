@@ -22,6 +22,7 @@ d	dunst	$HOME/.config/dunst/dunstrc
 t	tmux	$HOME/.tmux.conf
 A	aliasrc-override	$NARB_OVERRIDES/aliasrc.$NARB_HOST
 P	profile-override	$NARB_OVERRIDES/profile.$NARB_HOST
+X	xprofile-override	$NARB_OVERRIDES/xprofile.$NARB_HOST
 J	jumptool	$HOME/.scripts/tools/jumptool
 Jc	confs-override	$NARB_OVERRIDES/confs.$NARB_HOST
 Jd	dirs-override	$NARB_OVERRIDES/dirs.$NARB_HOST"
