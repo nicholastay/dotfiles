@@ -12,18 +12,43 @@ St.alpha: 0.87
 
 
 ! Misc XTerm settings just as a fallback term
-XTerm.faceName: Terminus\ (TTF)
-XTerm.pixelSize: 16
-XTerm.renderFont: true
-XTerm.termName: xterm-256color
-XTerm.locale: true
+XTerm*faceName: xft:mono
+XTerm*faceSize: 12
+XTerm*renderFont: true
+XTerm*termName: xterm-256color
+XTerm*locale: true
+XTerm*utf8: 1
+XTerm*eightBitInput: false
+XTerm*eightBitControl: false
+XTerm*eightBitOutput: true
+XTerm*scrollBar: false
 
 ! Xterm font binds
-XTerm.translations: #override \
+XTerm*translations: #override \
 Super <Key> minus: smaller-vt-font() \n\
 Super <Key> plus: larger-vt-font() \n\
 
+! Xscreensaver theme/customise
+! Hide login button
 xscreensaver.newLoginCommand: 
+! Dialog
+xscreensaver.Dialog.foreground: #fefbf3
+xscreensaver.Dialog.background: #303641
+xscreensaver.Dialog.topShadowColor: #303641
+xscreensaver.Dialog.bottomShadowColor: #303641
+!xscreensaver.Dialog.Button.foreground: #fefbf3
+!xscreensaver.Dialog.Button.background: #4b5162
+xscreensaver.Dialog.Button.foreground: #303641
+xscreensaver.Dialog.Button.background: #303641
+! Inputs
+xscreensaver.Dialog.text.foreground: #fefbf3
+xscreensaver.Dialog.text.background: #383e49
+! Other label clears
+xscreensaver.dateFormat:
+xscreensaver.passwd.heading.label:
+xscreensaver.passwd.unlock.label:
+xscreensaver.passwd.body.label:
+
 
 ! special
 *.foreground:   #ffffff
