@@ -3,10 +3,16 @@
 
 
 # Exclusions
+# Allow dotfiles in ~, but don't allow folders starting with dot
+!.*
+.*/
+
 # Folders (and their subdirs)
 !/.config/
+
 !/.scripts/
 /.scripts/personal
+
 !/.local/
 /.local/*
 !/.local/narb/
@@ -14,24 +20,25 @@
 !/.local/share
 /.local/share/*
 !/.local/share/applications
+
 !/template/
 
 # Specific files
-!/.gitignore
-!/.xinitrc
-!/.xprofile
-!/.xscreensaver
-!/.xsession
-!/.zprofile
-!/.profile
-!/.bash_profile
-!/.bashrc
 !/readme.md
-!/.tmux.conf
-!/.latexmkrc
 
 
 # Ignore back again
+# Files
+/.config/wall.jpg
+/.config/zshnameddirs
+/.config/git/user
+/.config/ranger/shortcut.conf
+/.config/shortcutrc
+/.config/nvim/.netrwhist
+/.Xauthority
+/.xsession-errors
+/.viminfo
+# Folders
 /.config/naver-whale
 /.config/Caprine
 /.config/Joplin
