@@ -21,4 +21,4 @@ test $(find "$HOME/.cache/corona-stats" -mmin +360 2>/dev/null) && rm "$HOME/.ca
 [ ! -s "$HOME/.cache/corona-stats" ] && dl
 
 grab() { grep -B1 "$1" "$HOME/.cache/corona-stats" | sed 1q | tr -d '[:blank:],' | sed 's/<\/h4>//;s/<h4>//'; }
-echo "$(grab 'total cases')(+$(grab 'new cases<br>(last')),$(grab 'total lives lost')(+$(grab 'lives lost<br>(last'))"
+echo "$(grab 'total cases')(+$(grab 'cases acquired locally<br>(last')),$(grab 'total lives lost')(+$(grab 'lives lost<br>(last'))"
