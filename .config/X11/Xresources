@@ -9,6 +9,7 @@
 
 ! st settings
 St.alpha: 0.87
+St.font: mono:size=12:antialias=true:autohint=true;Noto Color Emoji:size=12:antialias=true:autohint=true;
 
 
 ! Misc XTerm settings just as a fallback term

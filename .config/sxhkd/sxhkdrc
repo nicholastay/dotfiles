@@ -27,7 +27,7 @@ super + e
 super + shift + e
 	sdmenu
 super + control + e
-	nautilus
+	pcmanfm
 super + space
 	dmenu_run
 super + alt + space

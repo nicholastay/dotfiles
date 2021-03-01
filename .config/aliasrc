@@ -7,6 +7,7 @@
 alias t="$TERMINAL"
 alias q="exit"
 alias cl="clear"
+alias sudo="doas "
 
 
 # Some neat general util stuff
@@ -38,8 +39,7 @@ alias cpu="ps axch -o cmd:15,%cpu --sort=-%cpu | sed 10q"
 alias sdn="shutdown now"
 alias reb="reboot"
 alias mkp="mkdir -p"
-alias sudo="sudo "
-alias sudoo="sudo -E "
+#alias sudoo="sudo -E "
 alias dr="dragon-drag-and-drop -x"
 alias rcp="rsync -vzrh --times --stats --progress --itemize-changes"
 alias usbgl="sudo usbguard list-devices -b"

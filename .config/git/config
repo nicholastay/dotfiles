@@ -15,3 +15,5 @@
 	l = log
 [include]
 	path = ~/.config/git/user
+[credential]
+	helper = /usr/lib/git-core/git-credential-libsecret
