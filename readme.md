@@ -18,9 +18,6 @@ $ d a ~/.config/...
 # Any other git operations
 $ d ...
 
-# To restore dconf settings
-$ dconf load / < ~/.local/narb/dconf.ini
-
 # To use texlive profile
 $ sudo /opt/texlive-installer/install-tl -init-from-profile ~/.local/narb/texlive.profile
 ```
