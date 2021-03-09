@@ -29,6 +29,7 @@
 
 # Ignore back again
 # Files
+/.config/wm
 /.config/wall.jpg
 /.config/zshnameddirs
 /.config/git/user
