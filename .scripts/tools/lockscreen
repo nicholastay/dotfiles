@@ -1,0 +1,5 @@
+#!/bin/sh
+
+hn="$(hostname)"
+msg=$(cat "$HOME/.local/narb/banner/$hn") || msg="$hn: locked"
+physlock -p "$msg"
