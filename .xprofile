@@ -33,10 +33,7 @@ killall -q redshift; redshift -l 37.8136:144.9631 -t 6500K:2700K & # f.lux style
 [ ! -s $HOME/.config/mpd/pid ] && mpd & # music
 ! pgrep -x "mpdscribble" && mpdscribble & # music last.fm
 
-# fcitx (zh/kr) ime
-export GTK_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
-export QT_IM_MODULE=fcitx
+# Input method (zh/kr)
 fcitx &
 
 # Locking
