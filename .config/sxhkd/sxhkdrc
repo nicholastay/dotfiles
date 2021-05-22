@@ -11,7 +11,7 @@ super + shift + alt + q
 
 # lock
 super + Delete
-	xscreensaver-command -lock
+	$HOME/.scripts/tools/lockscreen
 
 # reload polybar
 super + F11
@@ -37,7 +37,7 @@ super + w
 super + a
 	pavucontrol
 super + p
-	keepassxc
+	QT_SCALE_FACTOR=1.01 keepassxc
 super + shift + p
 	termfloat htop
 super + control + p
@@ -46,16 +46,16 @@ super + alt + p
 	termfloat bashtop
 super + shift + a
 	termfloat pulsemixer
-super + shift + n
+super + n
 	joplin-desktop
 super + control + n
 	p3x-onenote
-super + n
-	termfloat ncmpcpp
 super + {control,alt} + n
 	mpdshuffle{_, stop}
 #super + shift + u
 #	usbguardmenu
+super + m
+	termfloat ncmpcpp
 super + shift + m
 	thunderbird
 	#$TERMINAL -e neomutt
@@ -117,6 +117,8 @@ super + alt + shift + s
 	screenshot rect nosave
 super + control + shift + s
 	deepin-screenshot
+super + shift + v
+	wgvpn
 
 
 # Music controls
