@@ -5,5 +5,5 @@
 # Need set dbus uid here!!
 capacity="$(cat /sys/class/power_supply/BAT0/capacity)"
 [ "$capacity" -lt 25 ] && \
-	export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus && \
+	export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus && \
 	notify-send -u critical "Battery low" "Capacity remaining: $capacity%"
