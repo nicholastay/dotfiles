@@ -44,10 +44,11 @@ case "$1" in
 		;;
 
 	batw)
-		title=" Battery discharge"
-		[ "$(cat /sys/class/power_supply/BAT0/status)" != "Discharging" ] && \
-			msg="Not discharging. Cannot get info." || \
-			msg="$(awk '{ print $1*10^-6 "W" }' /sys/class/power_supply/${BATTERY:-BAT0}/power_now)"
+		title=" Battery"
+		batw_bat="/sys/class/power_supply/${BATTERY:-BAT0}"
+		[ "$(cat $batw_bat/status)" = "Discharging" ] &&
+			msg="$(awk '{a[NR]=$1} END { print "Current consumption: " a[1]*10^-6 "W\n" "Time left: ~" a[2]/a[1] "hrs\n(Note: Based on current power usage.)" }' $batw_bat/power_now $batw_bat/energy_now)" || \
+			msg="$(awk '{a[NR]=$1} END { print "Currently charging.\n" "Time to full: ~" (a[3]-a[2])/a[1] "hrs\n(Note: Based on current power input.)" }' $batw_bat/power_now $batw_bat/energy_now $batw_bat/energy_full)"
 		;;
 esac
 
