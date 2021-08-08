@@ -1,0 +1,8 @@
+#!/bin/sh
+
+wgiface="wg0"
+[ ! -z "$1" ] && wgiface="$1"
+
+systemctl is-active --quiet wg-quick@$wgiface && sudo -A systemctl stop wg-quick@$wgiface && notify-send "wg-vpn" "Brought DOWN $wgiface with wg-quick." && exit 0
+
+sudo -A systemctl start wg-quick@$wgiface && notify-send "wg-vpn" "Brought UP wg0 with wg-quick."

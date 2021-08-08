@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# ThinkPoint options
+# Faster scroll
+xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Inertia" 7
+# Slightly faster pointer
+xinput set-prop "TPPS/2 IBM TrackPoint" "Device Accel Constant Deceleration" 0.88
+
+#nm-applet &

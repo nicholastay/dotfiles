@@ -15,10 +15,10 @@ case "$1" in
 		;;
 esac
 
+statsfile="$HOME/.cache/corona-stats"
 # if file too old or doesnt exist (6hr)
 dl() { curl -s "https://www.dhhs.vic.gov.au/victorian-coronavirus-covid-19-data" | grep -A50 'lvn-body' > "$HOME/.cache/corona-stats" ;}
-test $(find "$HOME/.cache/corona-stats" -mmin +360 2>/dev/null) && rm "$HOME/.cache/corona-stats"
-[ ! -s "$HOME/.cache/corona-stats" ] && dl
+{ [ ! -s "$statsfile" ] || test $(find "$statsfile" -mmin +360 2>/dev/null) ;} && { dl || { echo "fail :("; rm "$statsfile" ; exit 1 ;} ;}
 
-grab() { grep -B1 "$1" "$HOME/.cache/corona-stats" | sed 1q | tr -d '[:blank:],' | sed 's/<\/h4>//;s/<h4>//'; }
+grab() { grep -B1 "$1" "$statsfile" | sed 1q | tr -d '[:blank:],' | sed 's/<\/h4>//;s/<h4>//'; }
 echo "$(grab 'total cases')(+$(grab 'cases acquired locally<br>(last')),$(grab 'total lives lost')(+$(grab 'lives lost<br>(last'))"
