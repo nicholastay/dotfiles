@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# Regular launch
+# Alacritty override to source colours and stuff...
+[ "$1" != "-float" ] && \
+	case "$TERMINAL" in
+		alacritty)
+			exec $TERMINAL -e $SHELL -i -c "$@" ;;
+		*)
+			exec $TERMINAL -e "$@" ;;
+	esac
+
+# Floating stuff
+# Different terminals have different ways to spawn with classnames, so...
+shift
+case "$TERMINAL" in
+	urxvt*)
+		exec $TERMINAL -name floater -e "$@" ;;
+	alacritty)
+		exec $TERMINAL --class=floater -e $SHELL -i -c "$@" ;;
+	*)
+		exec $TERMINAL -n floater -g 120x34 -e "$@" ;;
+esac

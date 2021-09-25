@@ -5,6 +5,8 @@ export PATH=$PATH:/usr/local/texlive/2020/bin/x86_64-linux:$HOME/.scripts/tools:
 export MANPATH=$MANPATH:/usr/local/texlive/2020/texmf-dist/doc/man:$HOME/.local/share/npm/share/man
 export INFOPATH=$MANPATH:/usr/local/texlive/2020/texmf-dist/doc/info
 
+export LC_TIME=zh_CN.UTF-8
+
 # Note for npm/nodejs
 # After install, config with `npm config set prefix "$HOME/.local/share/npm"`, so global
 # packages go within our .local path instead of having to sudo (bad)
@@ -16,7 +18,7 @@ export NARB_HOST="$(hostname -s)"
 # Programs
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
-export TERMINAL="st"
+export TERMINAL="alacritty"
 export BROWSER="firefox"
 export FILE="ranger"
 export READER="zathura"

@@ -2,6 +2,9 @@ background_opacity: 0.87
 font:
     size: 9
 window:
+    dimensions:
+        columns: 120
+        lines: 34
     padding:
         x: 3
         y: 3

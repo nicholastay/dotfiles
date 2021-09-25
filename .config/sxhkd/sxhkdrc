@@ -23,7 +23,7 @@ super + Return
 super + shift + Return
 	termdir
 super + e
-	$TERMINAL -e $FILE
+	termlaunch $FILE
 super + shift + e
 	sdmenu
 super + control + e
@@ -39,13 +39,13 @@ super + a
 super + p
 	QT_SCALE_FACTOR=1.01 keepassxc
 super + shift + p
-	termfloat htop
+	termlaunch -float htop
 super + control + p
-	termfloat sudo powertop
+	termlaunch -float sudo powertop
 super + alt + p
-	termfloat bashtop
+	termlaunch -float bashtop
 super + shift + a
-	termfloat pulsemixer
+	termlaunch -float pulsemixer
 super + n
 	joplin-desktop
 super + control + n
@@ -55,17 +55,17 @@ super + {control,alt} + n
 #super + shift + u
 #	usbguardmenu
 super + m
-	termfloat ncmpcpp
+	termlaunch -float ncmpcpp
 super + shift + m
 	thunderbird
-	#$TERMINAL -e neomutt
+	#termlaunch neomutt
 super + c
 	caprine
-	#$TERMINAL -e bc -l
+	#termlaunch bc -l
 super + shift + c
 	gnome-calculator
 super + control + c
-	termfloat octave
+	termlaunch -float octave
 super + shift + o
 	libreoffice
 super + control + o
