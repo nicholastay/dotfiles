@@ -9,16 +9,22 @@ case "$1" in
 	*)
 		case "$BLOCK_BUTTON" in
 			1) termfloat $0 show ;;
-			2) $BROWSER "https://www.dhhs.vic.gov.au/victorian-coronavirus-covid-19-data" && exit ;;
-			3) $BROWSER "https://www.dhhs.vic.gov.au/victorian-coronavirus-covid-19-data" && exit ;;
+			3) $BROWSER "https://www.coronavirus.vic.gov.au/victorian-coronavirus-covid-19-data" && exit ;;
 		esac
 		;;
 esac
 
 statsfile="$HOME/.cache/corona-stats"
+
+# helper grabber html random elements lol...
+grab() { grep -o '[0-9,][0-9,]*.\{65\}'"$1" /tmp/corona-stats-raw | cut -f1 -d'<' | tr -d ',' ;}
+
 # if file too old or doesnt exist (6hr)
-dl() { curl -s "https://www.dhhs.vic.gov.au/victorian-coronavirus-covid-19-data" | grep -A50 'lvn-body' > "$HOME/.cache/corona-stats" ;}
+dl() {
+	# get and parse...
+	curl -s "https://www.coronavirus.vic.gov.au/victorian-coronavirus-covid-19-data" | grep -A2 'rpl-main-content' > /tmp/corona-stats-raw \
+		&& echo "$(grab '>total cases')(+$(grab 'cases acquired locally')),$(grab 'total lives lost')(+$(grab 'lives lost (last 24'))" > "$statsfile"
+}
 { [ ! -s "$statsfile" ] || test $(find "$statsfile" -mmin +360 2>/dev/null) ;} && { dl || { echo "fail :("; rm "$statsfile" ; exit 1 ;} ;}
 
-grab() { grep -B1 "$1" "$statsfile" | sed 1q | tr -d '[:blank:],' | sed 's/<\/h4>//;s/<h4>//'; }
-echo "$(grab 'total cases')(+$(grab 'cases acquired locally<br>(last')),$(grab 'total lives lost')(+$(grab 'lives lost<br>(last'))"
+cat "$statsfile"
