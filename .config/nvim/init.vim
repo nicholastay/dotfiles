@@ -50,8 +50,11 @@ else
 endif
 let g:deoplete#enable_at_startup = 1
 
+Plug 'deoplete-plugins/deoplete-jedi'
+
 " More 'bloaty' plugins can go here...
 Plug 'ctrlpvim/ctrlp.vim' " Use ctrl+p for fuzzy files
+Plug 'jiangmiao/auto-pairs' " Pair quotes/brackets/etc automatically
 endif
 
 
@@ -131,6 +134,11 @@ let g:lightline#bufferline#show_number = 2
 "  use vimtex latex
 let g:tex_flavor = 'latex'
 
+" Tab complete
+if $NARB_NVIM_DEV != ""
+  inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+endif
+
 
 " ----------------------
 "  Bindings
@@ -198,6 +206,16 @@ nmap <Leader>e :e<space>
 " ctrl p buffers
 nmap <Leader>q :CtrlPBuffer<cr>
 nmap <Leader>z :ls<cr>
+
+" Move lines up/down with alt-j/k
+" https://vim.fandom.com/wiki/Moving_lines_up_or_down
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
 
 "  Read tex files properly
 autocmd BufRead,BufNewFile *.tex set filetype=tex
