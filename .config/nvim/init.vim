@@ -27,7 +27,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Colour scheme
 Plug 'danilo-augusto/vim-afterglow'
 
-" Some core things we want
+" Some core things we want (thanks tpope :^))
 Plug 'tpope/vim-commentary' " Commenting ('gcc')
 Plug 'tpope/vim-surround' " Quoting
 Plug 'tpope/vim-sleuth' " Indent autodetect
@@ -37,8 +37,22 @@ Plug 'tpope/vim-vinegar' " netrw improvements
 Plug 'itchyny/lightline.vim' " A light statusline
 Plug 'mengelbrecht/lightline-bufferline' " Buffers as tabs
 Plug 'junegunn/goyo.vim' " Nice centre thing
+
+" Let's try autocompletion...
+" ... but only load it if we are really doing dev (to avoid slow loads)
+if $NARB_NVIM_DEV != ""
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
+" More 'bloaty' plugins can go here...
 Plug 'ctrlpvim/ctrlp.vim' " Use ctrl+p for fuzzy files
-Plug 'lifepillar/vim-mucomplete' " autocompletion
+endif
 
 
 " Syntax stuff
@@ -47,6 +61,8 @@ Plug 'kovetskiy/sxhkd-vim'
 Plug 'lervag/vimtex'
 "Plug 'harenome/vim-mipssyntax'
 call plug#end()
+
+
 
 
 

@@ -28,6 +28,7 @@ alias d="git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME"
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
+alias vd="NARB_NVIM_DEV=1 nvim" # Launch with bloaty plugins
 alias e="$FILE"
 alias r="ranger"
 alias l="lf"
