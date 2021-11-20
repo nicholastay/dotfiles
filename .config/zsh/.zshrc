@@ -16,7 +16,7 @@ SAVEHIST=1000
 
 # Some misc options
 setopt auto_cd
-setopt share_history
+#setopt share_history
 setopt menu_complete
 setopt cdable_vars
 # Automatically push dirs to stack so we can quickly flip between dirs
@@ -58,7 +58,7 @@ bindkey -M menuselect '^j' vi-down-line-or-history
 zstyle ':completion:*' menu select
 eval "$(dircolors)"
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 autoload -Uz compinit && compinit -d "$HOME/.cache/zcompdump"
 
 
