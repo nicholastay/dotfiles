@@ -1,0 +1,10 @@
+#!/bin/sh
+
+echo "Trash list:"
+trash-list
+
+echo ""
+read -p "Really empty trash? [y/n] " yn
+case $yn in
+	[Yy]*) trash-empty && echo "Trash emptied."
+esac
