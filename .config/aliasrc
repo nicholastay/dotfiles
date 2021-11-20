@@ -85,6 +85,7 @@ alias ltc="latexmk -c"
 # Misc
 # Wireless force rescan for APs
 alias wscan="nmcli device wifi rescan"
+alias wreset="sudo sh -c 'rmmod iwldvm && sudo modprobe iwldvm'"
 
 
 # Template copier thing
