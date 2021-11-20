@@ -121,14 +121,8 @@ vfc() { jumptool config fzf ;}
 [ -f "$HOME/.config/shortcutrc" ] && . "$HOME/.config/shortcutrc"
 
 
-
-# Other bloat stuff :)
-# z util
-_Z_DATA=$HOME/.local/share/z
-[ -r "/usr/share/z/z.sh" ] && . /usr/share/z/z.sh
-
 # wal colors for alacritty
-[ "$TERM" = "alacritty" ] && [ -r "$HOME/.cache/wal/sequences" ] && (cat $HOME/.cache/wal/sequences &)
+[ "$TERM" = "alacritty" ] && [ ! -z "$NEX_USE_WAL" ] && [ -r "$HOME/.cache/wal/sequences" ] && (cat $HOME/.cache/wal/sequences &)
 
 # tmux ssh rename
 # if [ "$TERM" = "tmux-256color" ] && [ -n "$TMUX" ]; then
@@ -138,9 +132,3 @@ _Z_DATA=$HOME/.local/share/z
 # 		tmux set-window-option automatic-rename "on" 1>/dev/null
 # 	}
 # fi
-
-# pidswallow thing
-if pgrep -fl 'pidswallow -gl' >/dev/null 2>&1; then
-	[ -n "$DISPLAY" ]  && command -v xdo >/dev/null 2>&1 && xdo id > /tmp/term-wid-"$$"
-	trap "( rm -f /tmp/term-wid-"$$" )" EXIT HUP
-fi

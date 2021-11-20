@@ -51,7 +51,7 @@ bar {
 # set Xresources colors:
 set_from_resource $normal_color  color0  #555753
 set_from_resource $normal_alt    color8 #555753
-set_from_resource $focused_color color2  #eeeeec
+set_from_resource $focused_color color13 #eeeeec
 set_from_resource $alt_color     color3  #000000
 set $transparent #00000000
 set $alertred    #ff0000
