@@ -17,3 +17,10 @@
 	path = ~/.config/git/user
 [credential]
 	helper = /usr/lib/git-core/git-credential-libsecret
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[pull]
+	rebase = true
