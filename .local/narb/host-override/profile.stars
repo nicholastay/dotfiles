@@ -1,0 +1,2 @@
+export TRACKPOINT_NAME="TPPS/2 IBM TrackPoint"
+export TOUCHPAD_NAME="SynPS/2 Synaptics TouchPad"
