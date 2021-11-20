@@ -53,4 +53,4 @@ case "$1" in
 esac
 
 echo "$msg"
-notify-send "$title" "$msg" -h string:x-canonical-private-synchronous:narb-nnotify
+notify-send "$title" "$msg" -h string:x-canonical-private-synchronous:nex-notify

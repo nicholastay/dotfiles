@@ -15,7 +15,7 @@
 
 !/.local/
 /.local/*
-!/.local/narb/
+!/.local/nex/
 !/.local/bin
 !/.local/share
 /.local/share/*
@@ -29,7 +29,6 @@
 
 # Ignore back again
 # Files
-/.config/wm
 /.config/wall.jpg
 /.config/zshnameddirs
 /.config/git/user
@@ -39,6 +38,7 @@
 /.Xauthority
 /.xsession-errors
 /.viminfo
+/.lesshst
 # Folders
 /.config/naver-whale
 /.config/Caprine
@@ -50,3 +50,7 @@
 /.config/pulse
 /.config/nvim/autoload
 /.config/nvim/plugged
+/.config/Thunar
+/.config/dconf
+/.config/xfce4
+

@@ -2,13 +2,7 @@
 
 # nick's i3 config
 
-
-
 # -------------- INITIAL SETUP -----------------
-# i3-gaps gaps
-for_window [class="^.*"] border pixel 2
-gaps inner 5
-gaps outer 2
 
 # Basic config
 set $mod Mod4
@@ -35,29 +29,34 @@ for_window [instance="quickterm"] move scratchpad
 
 for_window [workspace=".*-f$"] floating enable
 
-# start bar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
 # startup the quickterm
 #exec --no-startup-id $TERMINAL -n quickterm -e tmux
 
-exec --no-startup-id sxhkd
+exec --no-startup-id picom -b
+exec_always --no-startup-id setwp
+exec_always --no-startup-id remapkb
+
+bar {
+	status_command i3status
+	position top
+	strip_workspace_numbers yes
+}
 
 
 # ------------ COLORS ----------------
 # set Xresources colors:
-set_from_resource $normal_color	color8  #000000
-set_from_resource $focused_color	color15  #000000
-set_from_resource $alt_color	color2  #000000
-set $transparent	#00000000
-set $alertred   #ff0000
-set $black  #000000
-set $white  #ffffff
+set_from_resource $normal_color  color0  #555753
+set_from_resource $focused_color color2  #eeeeec
+set_from_resource $alt_color     color3  #000000
+set $transparent #00000000
+set $alertred    #ff0000
+set $black       #000000
+set $white       #ffffff
 
 #                       BORDER		BACKGROUND	TEXT		INDICATOR   CHILD_BORDER
-client.focused		$focused_color		$focused_color		$black	$alt_color		$focused_color
-client.unfocused	$normal_color	$normal_color		$black		$alt_color		$normal_color
-client.focused_inactive		$normal_color		$normal_color		$black	$alt_color		$normal_color
+client.focused		$focused_color		$focused_color		$normal_color	$alt_color		$focused_color
+client.unfocused	$normal_color	$normal_color		$fg_color		$alt_color		$normal_color
+client.focused_inactive		$normal_color		$normal_color		$fg_color	$alt_color		$normal_color
 client.urgent		$alertred	$alertred	$white		$alt_color		$alertred
 client.background $black
 
@@ -91,6 +90,9 @@ bindsym $mod+f  fullscreen toggle
 bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+Ctrl+space focus mode_toggle
+
+bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus child
 
 # Workspace stuffs
 set $ws1 "1:一"
@@ -135,21 +137,48 @@ bindsym $mod+$alt+j	exec --no-startup-id i3resize down
 bindsym $mod+$alt+k	exec --no-startup-id i3resize up
 bindsym $mod+$alt+l	exec --no-startup-id i3resize right
 
-# gaps - https://www.reddit.com/r/i3wm/comments/3xcvy0/help_with_code_to_toggle_i3_gaps/cy3izw0/
-set $mode_gaps Toggle gaps: (1) on (2) off (3) plus outer (4) minus outer (5) plus inner (6) minus inner
-bindsym $mod+Shift+z mode "$mode_gaps"
-mode "$mode_gaps" {
-    bindsym 1 mode "default", gaps inner all set 5, gaps outer all set 5
-    bindsym 2 mode "default", gaps inner all set 0, gaps outer all set 0
-    bindsym 3 mode "default", gaps outer current plus 5
-    bindsym 4 mode "default", gaps outer current minus 5
-    bindsym 5 mode "default", gaps inner current plus 5
-    bindsym 6 mode "default", gaps inner current minus 5
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
 
+# --------------- APP BINDINGS --------------
+bindsym $mod+Return exec $TERMINAL
+bindsym $mod+space exec --no-startup-id dmenu_run
+bindsym $mod+$alt+space exec --no-startup-id i3-dmenu-desktop
 
-# Master+stack thingy
-# https://www.reddit.com/r/i3wm/comments/bgwz85/quickly_make_main_stack_and_side_windows_layout/ 
-bindsym $mod+Shift+o layout splitv; move left; resize grow right 10 px or 10 ppt; split v; layout stacking
+bindsym $mod+t exec --no-startup-id transset-df -m 0.87 -a
+
+bindsym $mod+w exec $BROWSER
+bindsym $mod+Shift+e exec --no-startup-id sdmenu
+bindsym $mod+Control+e exec thunar
+bindsym $mod+Control+a exec pavucontrol
+bindsym $mod+p exec keepassxc
+bindsym $mod+Shift+p exec termlaunch -float htop
+bindsym $mod+Control+p exec termlaunch -float sudo powertop
+bindsym $mod+n exec joplin-desktop
+bindsym $mod+Shift+c exec gnome-calculator
+bindsym $mod+Shift+o exec libreoffice
+bindsym $mod+Control+c exec obs
+bindsym $mod+d exec discord
+bindsym $mod+Shift+d exec --no-startup-id displayselect
+bindsym $mod+m exec evolution
+
+bindsym $mod+F2 exec --no-startup-id jumptool config
+bindsym $mod+Shift+F2 exec --no-startup-id jumptool dir
+bindsym $mod+F3 exec --no-startup-id launchpersonal
+
+bindsym XF86MonBrightnessDown exec --no-startup-id brightlight -p -d 5
+bindsym Shift+XF86MonBrightnessDown exec --no-startup-id brightlight -p -d 10
+bindsym XF86MonBrightnessUp exec --no-startup-id brightlight -p -i 5
+bindsym Shift+XF86MonBrightnessUp exec --no-startup-id brightlight -p -i 10
+
+bindsym XF86Display exec --no-startup-id displayselect
+bindsym XF86TouchpadToggle exec --no-startup-id touchpadtoggle
+
+bindsym $mod+Shift+m exec --no-startup-id mountmenu
+bindsym $mod+Control+m exec --no-startup-id umountmenu
+
+bindsym Print exec --no-startup-id screenshot
+bindsym Shift+Print exec --no-startup-id screenshot rect
+bindsym Control+Print exec --no-startup-id screenshot window
+
+bindsym $mod+Shift+v exec --no-startup-id wgvpn
+
+bindsym $mod+Delete exec --no-startup-id i3lock

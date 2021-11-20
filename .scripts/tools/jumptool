@@ -6,8 +6,8 @@ w	bspwm	$HOME/.config/bspwm/bspwmrc
 v	neovim	$HOME/.config/nvim/init.vim
 b	bash	$HOME/.bashrc
 z	zsh	$HOME/.config/zsh/.zshrc
-xr	xresources	$HOME/.config/X11/Xresources
-x	xprofile	$HOME/.xprofile
+xr	xresources	$HOME/.Xresources
+x	xinitrc	$HOME/.xinitrc
 p	profile	$HOME/.profile
 o	polybar	$HOME/.config/polybar/config
 s	sxhkd	$HOME/.config/sxhkd/sxhkdrc
@@ -20,12 +20,12 @@ l	lf	$HOME/.config/lf/lfrc
 f	fontconfig	$HOME/.config/fontconfig/fonts.conf
 d	dunst	$HOME/.config/dunst/dunstrc
 t	tmux	$HOME/.tmux.conf
-A	aliasrc-override	$NARB_OVERRIDES/aliasrc.$NARB_HOST
-P	profile-override	$NARB_OVERRIDES/profile.$NARB_HOST
-X	xprofile-override	$NARB_OVERRIDES/xprofile.$NARB_HOST
+A	aliasrc-override	$NEX_OVERRIDES/aliasrc.$NEX_HOST
+P	profile-override	$NEX_OVERRIDES/profile.$NEX_HOST
+X	xprofile-override	$NEX_OVERRIDES/xprofile.$NEX_HOST
 J	jumptool	$HOME/.scripts/tools/jumptool
-Jc	confs-override	$NARB_OVERRIDES/confs.$NARB_HOST
-Jd	dirs-override	$NARB_OVERRIDES/dirs.$NARB_HOST"
+Jc	confs-override	$NEX_OVERRIDES/confs.$NEX_HOST
+Jd	dirs-override	$NEX_OVERRIDES/dirs.$NEX_HOST"
 
 dirs="\
 c	cloud	$HOME/cloud
@@ -38,11 +38,11 @@ St	tools	$HOME/.scripts/tools
 Sb	bar	$HOME/.scripts/bar
 Sp	personal	$HOME/.scripts/personal
 t	template	$HOME/template
-N	narb	$HOME/.local/narb
-H	overrides	$NARB_OVERRIDES"
+N	nex	$HOME/.local/nex
+H	overrides	$NEX_OVERRIDES"
 
-[ -f "$NARB_OVERRIDES/confs.$NARB_HOST" ] && confs="$confs\n$(cat $NARB_OVERRIDES/confs.$NARB_HOST)"
-[ -f "$NARB_OVERRIDES/dirs.$NARB_HOST" ] && dirs="$dirs\n$(cat $NARB_OVERRIDES/dirs.$NARB_HOST)"
+[ -f "$NEX_OVERRIDES/confs.$NEX_HOST" ] && confs="$confs\n$(cat $NEX_OVERRIDES/confs.$NEX_HOST)"
+[ -f "$NEX_OVERRIDES/dirs.$NEX_HOST" ] && dirs="$dirs\n$(cat $NEX_OVERRIDES/dirs.$NEX_HOST)"
 
 sel="$2"
 selector() {

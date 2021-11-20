@@ -40,7 +40,7 @@ Plug 'junegunn/goyo.vim' " Nice centre thing
 
 " Let's try autocompletion...
 " ... but only load it if we are really doing dev (to avoid slow loads)
-if $NARB_NVIM_DEV != ""
+if $NEX_NVIM_DEV != ""
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -143,7 +143,7 @@ let g:lightline#bufferline#show_number = 2
 let g:tex_flavor = 'latex'
 
 " Tab complete
-if $NARB_NVIM_DEV != ""
+if $NEX_NVIM_DEV != ""
   inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 endif
 

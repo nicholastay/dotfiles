@@ -1,0 +1,53 @@
+! Misc XTerm settings just as a fallback term
+XTerm*faceName: xft:mono
+XTerm*faceSize: 12
+XTerm*renderFont: true
+XTerm*termName: xterm-256color
+XTerm*locale: true
+XTerm*utf8: 1
+XTerm*eightBitInput: false
+XTerm*eightBitControl: false
+XTerm*eightBitOutput: true
+XTerm*scrollBar: false
+! Xterm font binds
+XTerm*translations: #override \
+Super <Key> minus: smaller-vt-font() \n\
+Super <Key> plus: larger-vt-font() \n\
+
+
+! special
+*.foreground:   #e0e0e0
+*.background:   #14191e
+*.cursorColor:  #f2f2f2
+
+! black
+*.color0:       #16161c
+*.color8:       #5b5858
+
+! red
+*.color1:       #e95678
+*.color9:       #ec6a88
+
+! green
+*.color2:       #29d398
+*.color10:      #3fdaa4
+
+! yellow
+*.color3:       #fab795
+*.color11:      #fbc3a7
+
+! blue
+*.color4:       #26bbd9
+*.color12:      #3fc4de
+
+! magenta
+*.color5:       #ee64ac
+*.color13:      #f075b5
+
+! cyan
+*.color6:       #59e1e3
+*.color14:      #6be4e6
+
+! white
+*.color7:       #d5d8da
+*.color15:      #d5d8da

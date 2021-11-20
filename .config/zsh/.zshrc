@@ -2,7 +2,7 @@
 # idk what i'm doing so yeah.
 
 # Setup the prompt (PS1)
-PS1="%F{015}%n%f%F{243}@%f%F{176}%m%f%F{243}:%f%(5~|%-1~/…/%3~|%4~) » "
+PS1="%F{006}%n%f%F{243}@%f%F{013}%m%f%F{243}:%f%(5~|%-1~/…/%3~|%4~) » "
 
 [ "$TERM" = "linux" ] && PS1="%F{cyan}%n%f%F{white}@%f%F{magenta}%m%f%F{white}:%f%(5~|%-1~/…/%3~|%4~)$ "
 [ ! -z $SSH_CLIENT ] && PS1="(SSH) $PS1"
@@ -110,8 +110,9 @@ fi
 
 
 # Autosuggestion plugin
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null \
-	|| source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null # fedora
+# (first is Fedora location, second is Arch)
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null || \
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_STRATEGY=(completion history)
 bindkey '^K' autosuggest-execute
@@ -126,25 +127,11 @@ source $HOME/.config/zshnameddirs 2>/dev/null
 
 # Syntax highlighting plugin
 # Must be loaded last
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null \
-	|| source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null # fedora
-# Add some color changes from the default green (to lighter)
-ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=114,underline
-ZSH_HIGHLIGHT_STYLES[precommand]=fg=114,underline
-ZSH_HIGHLIGHT_STYLES[arg0]=fg=114
-
-
-# History substring search
-# Must be loaded after the syntax highlighting plugin
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh 2>/dev/null
-# Binds
-# Up/down arrows
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-# vi mode
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
-# Reset search formatting - magenta bg is too jarring
-# Instead just use a nice bold
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=bold
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=fg=red,bold
+# (first is Fedora location, second is Arch)
+[ "$TERM" != "linux" ] && \
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null || \
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null && \
+	# Add some color changes from the default green (to lighter)
+	ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=114,underline && \
+	ZSH_HIGHLIGHT_STYLES[precommand]=fg=114,underline && \
+	ZSH_HIGHLIGHT_STYLES[arg0]=fg=114

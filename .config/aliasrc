@@ -7,8 +7,6 @@
 alias t="$TERMINAL"
 alias q="exit"
 alias cl="clear"
-alias sudo="doas "
-
 
 # Some neat general util stuff
 alias cp='cp -iv'
@@ -28,7 +26,7 @@ alias d="git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME"
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
-alias vd="NARB_NVIM_DEV=1 nvim" # Launch with bloaty plugins
+alias vd="NEX_NVIM_DEV=1 nvim" # Launch with bloaty plugins
 alias e="$FILE"
 alias r="ranger"
 alias l="lf"
@@ -40,8 +38,9 @@ alias cpu="ps axch -o cmd:15,%cpu --sort=-%cpu | sed 10q"
 alias sdn="shutdown now"
 alias reb="reboot"
 alias mkp="mkdir -p"
-#alias sudoo="sudo -E "
-alias dr="dragon-drag-and-drop -x"
+alias sudo="sudo "
+alias sudoo="sudo -E "
+alias drag="dragon-drag-and-drop -x"
 alias rcp="rsync -vzrh --times --stats --progress --itemize-changes"
 alias usbgl="sudo usbguard list-devices -b"
 alias usbga="sudo usbguard allow-device"
@@ -57,6 +56,14 @@ jg() {
 # ranger_cd
 [ -f "$HOME/.config/ranger/shell_automatic_cd.sh" ] && . "$HOME/.config/ranger/shell_automatic_cd.sh" && alias ranger="ranger_cd"
 
+# Fedora
+# Package manager (dnf)
+alias di="sudo dnf install"
+alias dr="sudo dnf remove"
+alias dU="sudo dnf upgrade"
+alias rQ="rpm -qa"
+
+# Arch
 # Package manager (pacman)
 alias p="sudo pacman"
 alias pS="sudo pacman -S"
@@ -109,7 +116,7 @@ vfc() { jumptool config fzf ;}
 
 
 # Host-based include
-[ -f "$NARB_OVERRIDES/aliasrc.$NARB_HOST" ] && . "$NARB_OVERRIDES/aliasrc.$NARB_HOST"
+[ -f "$NEX_OVERRIDES/aliasrc.$NEX_HOST" ] && . "$NEX_OVERRIDES/aliasrc.$NEX_HOST"
 [ -f "$HOME/.config/shortcutrc" ] && . "$HOME/.config/shortcutrc"
 
 
