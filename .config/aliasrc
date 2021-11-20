@@ -44,6 +44,7 @@ alias drag="dragon-drag-and-drop -x"
 alias rcp="rsync -vzrh --times --stats --progress --itemize-changes"
 alias usbgl="sudo usbguard list-devices -b"
 alias usbga="sudo usbguard allow-device"
+alias pbcopy="xclip -selection clipboard"
 
 jg() {
 	jumptool generate && echo "Generated new jump aliases."

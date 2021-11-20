@@ -20,7 +20,7 @@ c13=$'\e[1;95m'
 c14=$'\e[1;96m'
 c15=$'\e[1;97m'
 
-f0=$'\e[1;30m'
+f0=$'\e[1;90m'
 f1=$'\e[1;37m'
 f2=$'\e[0;37m'
 
@@ -40,8 +40,8 @@ else
     systfn="none"
 fi
 
-pkgnum=$(pacman -Q|wc -l)
-birthd=$(sed -n '1s/^\[\([0-9-]*\).*$/\1/p' /var/log/pacman.log | tr - .)
+pkgnum=$(rpm -qa | wc -l) || pkgnum=$(pacman -Q|wc -l)
+birthd="$(rpm -q basesystem --qf '%{installtime:date}\n')" || birthd=$(sed -n '1s/^\[\([0-9-]*\).*$/\1/p' /var/log/pacman.log | tr - .)
 memuse=$(free -m | awk 'FNR==2 { print $3 " MiB / " $2 " MiB" }')
 
 

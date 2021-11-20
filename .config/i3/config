@@ -33,6 +33,7 @@ for_window [workspace=".*-f$"] floating enable
 #exec --no-startup-id $TERMINAL -n quickterm -e tmux
 
 exec --no-startup-id picom -b
+exec --no-startup-id light-locker
 exec_always --no-startup-id setwp
 exec_always --no-startup-id remapkb
 
@@ -46,6 +47,7 @@ bar {
 # ------------ COLORS ----------------
 # set Xresources colors:
 set_from_resource $normal_color  color0  #555753
+set_from_resource $normal_alt    color8 #555753
 set_from_resource $focused_color color2  #eeeeec
 set_from_resource $alt_color     color3  #000000
 set $transparent #00000000
@@ -55,8 +57,8 @@ set $white       #ffffff
 
 #                       BORDER		BACKGROUND	TEXT		INDICATOR   CHILD_BORDER
 client.focused		$focused_color		$focused_color		$normal_color	$alt_color		$focused_color
-client.unfocused	$normal_color	$normal_color		$fg_color		$alt_color		$normal_color
-client.focused_inactive		$normal_color		$normal_color		$fg_color	$alt_color		$normal_color
+client.unfocused	$normal_alt	$normal_color		$fg_color		$alt_color		$normal_color
+client.focused_inactive		$normal_alt		$normal_color		$fg_color	$alt_color		$normal_color
 client.urgent		$alertred	$alertred	$white		$alt_color		$alertred
 client.background $black
 
@@ -139,13 +141,14 @@ bindsym $mod+$alt+l	exec --no-startup-id i3resize right
 
 
 # --------------- APP BINDINGS --------------
-bindsym $mod+Return exec $TERMINAL
+bindsym $mod+Return exec --no-startup-id $TERMINAL
 bindsym $mod+space exec --no-startup-id dmenu_run
 bindsym $mod+$alt+space exec --no-startup-id i3-dmenu-desktop
 
 bindsym $mod+t exec --no-startup-id transset-df -m 0.87 -a
 
 bindsym $mod+w exec $BROWSER
+bindsym $mod+e exec --no-startup-id termlaunch $FILE
 bindsym $mod+Shift+e exec --no-startup-id sdmenu
 bindsym $mod+Control+e exec thunar
 bindsym $mod+Control+a exec pavucontrol
@@ -181,4 +184,4 @@ bindsym Control+Print exec --no-startup-id screenshot window
 
 bindsym $mod+Shift+v exec --no-startup-id wgvpn
 
-bindsym $mod+Delete exec --no-startup-id i3lock
+bindsym $mod+Delete exec --no-startup-id light-locker-command -l

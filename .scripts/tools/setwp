@@ -8,5 +8,5 @@ if [ -f "$1" ]; then
 	[ -d $HOME/.cache/thumbnails/neofetch ] && rm $HOME/.cache/thumbnails/neofetch/*.jpg 2>/dev/null
 fi
 
-hsetroot -cover "$wall"
+feh --bg-fill "$wall"
 command -v wal >/dev/null && wal -n -t -b "#060204" -i "$wall" -o $HOME/.config/wal/postrun

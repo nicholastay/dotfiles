@@ -1,6 +1,6 @@
 # nick's .profile
 
-export PATH=$PATH:/usr/local/texlive/2020/bin/x86_64-linux:$HOME/.scripts/tools:$HOME/.scripts/personal:$HOME/.scripts/thirdparty:$HOME/.local/share/npm/bin:$HOME/.local/bin
+export PATH=$HOME/.local/bin:$HOME/.scripts/personal:$HOME/.scripts/tools:$HOME/.scripts/thirdparty:$HOME/.local/share/npm/bin:/usr/local/texlive/2020/bin/x86_64-linux:$PATH
 
 export MANPATH=$MANPATH:/usr/local/texlive/2020/texmf-dist/doc/man:$HOME/.local/share/npm/share/man
 export INFOPATH=$MANPATH:/usr/local/texlive/2020/texmf-dist/doc/info
