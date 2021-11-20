@@ -13,10 +13,20 @@ elif pgrep -x i3; then
 	exitwm="i3-msg exit"
 fi
 
-case "$(printf "shutdown\\nreboot\\nsuspend\\nrefresh\\nlogout" | dmenu -i -p "time to leave?")" in
+if [ -d /usr/lib/systemd ]; then
+	suspendcmd="systemctl suspend-then-hibernate"
+	extraoptions="$extraoptions\nsuspend"
+
+	hibcmd="systemctl hibernate"
+	grep "resume=" /proc/cmdline >/dev/null 2>&1 \
+		&& extraoptions="$extraoptions\nhibernate"
+fi
+
+case "$(printf "shutdown\\nreboot$extraoptions\\nrefresh\\nlogout" | dmenu -i -p "time to leave?")" in
 	"shutdown") shutdown now ;;
 	"reboot") reboot ;;
-	"suspend") systemctl suspend ;;
+	"suspend") `echo $suspendcmd` ;;
+	"hibernate") `echo $hibcmd` ;;
 	"refresh") `echo $refreshwm` ;;
 	"logout") `echo $exitwm` ;;
 esac
