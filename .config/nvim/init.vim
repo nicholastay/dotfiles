@@ -109,6 +109,14 @@ autocmd BufWritePost *Xresources,*Xdefaults !xrdb -merge %
 
 set conceallevel=2
 
+"  Remember last position in editing file
+"  (:help last-position-jump)
+autocmd BufReadPost *
+  \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+  \ |   exe "normal! g`\""
+  \ | endif
+
+
 
 
 " ----------------------
@@ -219,6 +227,8 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 
 "  Read tex files properly
 autocmd BufRead,BufNewFile *.tex set filetype=tex
+
+autocmd BufRead,BufNewFile *.porth set filetype=porth
 
 
 
