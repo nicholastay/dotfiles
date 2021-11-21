@@ -40,18 +40,13 @@ exec_always --no-startup-id remapkb
 exec --no-startup-id nextcloud --background
 exec --no-startup-id redshift-gtk -l -37.8136:144.9631 -t 6500K:2700K
 
-bar {
-	status_command i3status
-	position top
-	strip_workspace_numbers yes
-}
-
 
 # ------------ COLORS ----------------
 # set Xresources colors:
 set_from_resource $normal_color  color0  #555753
-set_from_resource $normal_alt    color8 #555753
+set_from_resource $normal_alt    color8  #555753
 set_from_resource $focused_color color13 #eeeeec
+set_from_resource $bar_color     barColor #14191eee
 set_from_resource $alt_color     color3  #000000
 set $transparent #00000000
 set $alertred    #ff0000
@@ -64,6 +59,25 @@ client.unfocused	$normal_alt	$normal_color		$fg_color		$alt_color		$normal_color
 client.focused_inactive		$normal_alt		$normal_color		$fg_color	$alt_color		$normal_color
 client.urgent		$alertred	$alertred	$white		$alt_color		$alertred
 client.background $black
+
+
+bar {
+	font pango:mono, FontAwesome 10
+	position top
+	strip_workspace_numbers yes
+	i3bar_command i3bar -t
+	status_command i3status-rs
+
+	colors {
+		background $bar_color
+
+		# border background text
+		focused_workspace $focused_color $focused_color $normal_color
+       		active_workspace $normal_alt $bar_color $fg_color
+		inactive_workspace $normal_alt $bar_color $fg_color
+		urgent_workspace $alertred $red $white
+	}
+}
 
 # --------------- i3 BINDINGS --------------
 # i3 Focus/Window mgmt

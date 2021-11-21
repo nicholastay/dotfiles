@@ -1,5 +1,8 @@
 #!/bin/sh
 
+xrdb -merge $HOME/.cache/wal/xresource-i3
+i3-msg reload
+
 mkdir -p $HOME/.config/dunst
 ln -sf $HOME/.cache/wal/dunstrc $HOME/.config/dunst/dunstrc
 systemctl --user restart dunst

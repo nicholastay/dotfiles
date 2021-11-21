@@ -1,0 +1,35 @@
+[theme]
+name = "semi-native"
+
+[icons]
+name = "awesome"
+
+[[block]]
+block = "sound"
+headphones_indicator = true
+
+[[block]]
+block = "disk_space"
+path = "/"
+alias = "/"
+info_type = "used"
+alert_absolute = true
+interval = 20
+warning = 20.0
+alert = 10.0
+format = "{icon} {percentage}"
+
+[[block]]
+block = "networkmanager"
+on_click = "termfloat nmtui"
+ap_format = "{strength}"
+device_format = "{icon}{ap}"
+
+[[block]]
+block = "battery"
+
+[[block]]
+block = "time"
+interval = 5
+format = "%Y-%m-%d(%a) %p %I:%M"
+locale = "zh_CN"
