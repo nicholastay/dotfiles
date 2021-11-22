@@ -1,9 +1,19 @@
 #!/bin/sh
-xset r rate 200 50 # repeat rate
 
-# caps is escape
-# menu is superR
+# Repeat rate
+xset r rate 200 50
+
+# Caps is Escape
+# Menu is SuperR
 setxkbmap -option caps:escape -option altwin:menu_win
 
-# disable touchpad
+
+# Laptop-specific
+
+# Disable touchpad
 touchpadtoggle off silent
+
+# Trackpoint sens settings
+[ ! -z "$TRACKPOINT_NAME" ] \
+	&& xinput --set-prop "$TRACKPOINT_NAME" "libinput Accel Speed" 0.65 \
+	&& xinput --set-prop "$TRACKPOINT_NAME" "libinput Accel Profile Enabled" 0 1
