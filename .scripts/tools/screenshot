@@ -1,7 +1,7 @@
 #!/bin/sh
 
 sstype="$1" 
-[ -z "$sstype" ] && sstype="$(printf "rect\\nwindow\\nscreen" | dmenu -l 6 -i -p "screenshot type?")"
+[ -z "$sstype" ] && sstype="$(printf "rect\\nwindow\\nscreen\\nscreen (delay)" | dmenu -l 6 -i -p "screenshot type?")"
 
 case $sstype in
 	"rect")
@@ -13,6 +13,10 @@ case $sstype in
 		sswin="$(ps -p $(xdotool getactivewindow getwindowpid) -o comm=)"
 		;;
 	"screen")
+		sswin="screen"
+		;;
+	"screen (delay)")
+		ssargs="-d 3"
 		sswin="screen"
 		;;
 	*) exit ;;

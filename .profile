@@ -39,6 +39,11 @@ export FZF_DEFAULT_OPTS="--layout=reverse --height 85%"
 export _JAVA_AWT_WM_NONREPARENTING=1 # bspwm/dwm are nonreparenting
 export _JAVA_SETTINGS="-Dswing.aatext=TRUE -Dawt.useSystemAAFontSettings=on" # antialising for swing and default toolkit
 
+# non-English :)
+GTK_IM_MODULE=ibus
+QT_IM_MODULE=ibus
+XMODIFIERS=@im=ibus
+
 # Host-based include
 [ -f "$NEX_OVERRIDES/profile.$NEX_HOST" ] && . "$NEX_OVERRIDES/profile.$NEX_HOST"
 

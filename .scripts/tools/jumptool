@@ -2,16 +2,13 @@
 
 confs="\
 r	ranger	$HOME/.config/ranger/rc.conf
-w	bspwm	$HOME/.config/bspwm/bspwmrc
 v	neovim	$HOME/.config/nvim/init.vim
 b	bash	$HOME/.bashrc
 z	zsh	$HOME/.config/zsh/.zshrc
 xr	xresources	$HOME/.Xresources
 x	xinitrc	$HOME/.xinitrc
 p	profile	$HOME/.profile
-o	polybar	$HOME/.config/polybar/config
-s	sxhkd	$HOME/.config/sxhkd/sxhkdrc
-sb	sxhkd.bspwm	$HOME/.config/sxhkd/sxhkdrc.bspwm
+o	i3status-rust	$HOME/.config/i3status-rust/config.toml
 c	picom	$HOME/.config/picom.conf
 a	aliasrc	$HOME/.config/aliasrc
 i	i3	$HOME/.config/i3/config

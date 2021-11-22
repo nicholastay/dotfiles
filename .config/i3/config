@@ -37,6 +37,7 @@ exec --no-startup-id light-locker
 exec_always --no-startup-id setwp
 exec_always --no-startup-id remapkb
 
+exec --no-startup-id ibus-daemon -drxR
 exec --no-startup-id nextcloud --background
 exec --no-startup-id redshift-gtk -l -37.8136:144.9631 -t 6500K:2700K
 
@@ -189,6 +190,9 @@ bindsym Shift+XF86MonBrightnessDown exec --no-startup-id brightlight -p -d 10
 bindsym XF86MonBrightnessUp exec --no-startup-id brightlight -p -i 5
 bindsym Shift+XF86MonBrightnessUp exec --no-startup-id brightlight -p -i 10
 
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+
 bindsym XF86Display exec --no-startup-id displayselect
 bindsym XF86TouchpadToggle exec --no-startup-id touchpadtoggle
 
@@ -197,6 +201,7 @@ bindsym $mod+Control+m exec --no-startup-id umountmenu
 
 bindsym Print exec --no-startup-id screenshot
 bindsym Shift+Print exec --no-startup-id screenshot rect
+bindsym $mod+Shift+s exec --no-startup-id screenshot rect
 bindsym Control+Print exec --no-startup-id screenshot window
 
 bindsym $mod+Shift+v exec --no-startup-id wgvpn
