@@ -9,4 +9,4 @@ if [ -f "$1" ]; then
 fi
 
 feh --bg-fill "$wall"
-command -v wal >/dev/null && [ ! -z $NEX_USE_WAL ] && wal -n -t -b "#060204" -i "$wall" -o $HOME/.config/wal/postrun
+command -v wal >/dev/null && [ ! -z $NEX_USE_WAL ] && wal -n -t -i "$wall" -o $HOME/.config/wal/postrun

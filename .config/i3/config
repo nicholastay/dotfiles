@@ -71,6 +71,7 @@ bar {
 
 	colors {
 		background $bar_color
+		statusline $focused_color
 
 		# border background text
 		focused_workspace $focused_color $focused_color $normal_color
