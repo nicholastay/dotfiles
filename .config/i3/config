@@ -100,7 +100,7 @@ bindsym $mod+semicolon split h
 # split in vertical orientation
 bindsym $mod+apostrophe split v
 
-bindsym $mod+y	layout split
+bindsym $mod+t	layout default
 bindsym $mod+Shift+t	layout tabbed
 bindsym $mod+Ctrl+t	layout stacking
 
@@ -162,9 +162,9 @@ bindsym $mod+$alt+l	exec --no-startup-id i3resize right
 # --------------- APP BINDINGS --------------
 bindsym $mod+Return exec --no-startup-id $TERMINAL
 bindsym $mod+space exec --no-startup-id dmenu_run
-bindsym $mod+$alt+space exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+y exec --no-startup-id i3-dmenu-desktop
 
-bindsym $mod+t exec --no-startup-id transset-df -m 0.87 -a
+#bindsym $mod+t exec --no-startup-id transset-df -m 0.87 -a
 
 bindsym $mod+w exec $BROWSER
 bindsym $mod+e exec --no-startup-id termlaunch $FILE

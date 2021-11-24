@@ -62,6 +62,7 @@ jg() {
 alias di="sudo dnf install"
 alias dr="sudo dnf remove"
 alias dU="sudo dnf upgrade"
+alias ds="dnf search"
 alias rQ="rpm -qa"
 
 # Arch

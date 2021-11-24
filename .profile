@@ -1,6 +1,9 @@
 # nick's .profile
 
-export PATH=$HOME/.local/bin:$HOME/.scripts/personal:$HOME/.scripts/tools:$HOME/.scripts/thirdparty:$HOME/.local/share/npm/bin:/usr/local/texlive/2020/bin/x86_64-linux:$PATH
+# PATH: have my stuff shadow over any local binaries,
+# ... but for flatpak, whatever lol (I really don't want to use them when possible)
+export PATH=$HOME/.local/bin:$HOME/.scripts/personal:$HOME/.scripts/tools:$HOME/.scripts/thirdparty:$HOME/.local/share/npm/bin:/usr/local/texlive/2020/bin/x86_64-linux:$PATH:/var/lib/flatpak/exports/bin
+
 
 export MANPATH=$MANPATH:/usr/local/texlive/2020/texmf-dist/doc/man:$HOME/.local/share/npm/share/man
 export INFOPATH=$MANPATH:/usr/local/texlive/2020/texmf-dist/doc/info
