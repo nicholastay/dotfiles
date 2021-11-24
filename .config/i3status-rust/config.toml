@@ -5,6 +5,11 @@ name = "native"
 name = "awesome"
 
 [[block]]
+block = "custom"
+command = "echo 😷\"$($HOME/.scripts/bar/coronaupd)\""
+interval = 300
+
+[[block]]
 block = "sound"
 headphones_indicator = true
 
@@ -18,18 +23,21 @@ interval = 20
 warning = 20.0
 alert = 10.0
 format = "{icon} {percentage}"
+on_click = "nnotify disk /"
 
 [[block]]
 block = "networkmanager"
-on_click = "termfloat nmtui"
+on_click = "termlaunch -float nmtui"
 ap_format = "{strength}"
 device_format = "{icon}{ap}"
 
 [[block]]
 block = "battery"
+on_click = "termlaunch -float sudo powertop"
 
 [[block]]
 block = "time"
 interval = 5
-format = "%Y-%m-%d(%a) %p %I:%M"
+format = "%x(%a) %p %I:%M"
 locale = "zh_CN"
+on_click = "nnotify time"
