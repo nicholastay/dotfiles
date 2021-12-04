@@ -34,6 +34,9 @@
    backup-directory-alist
     '(("." . "~/.emacs.d/saves/")))
 
+(setq auto-save-file-name-transforms
+  `((".*" "~/.emacs.d/autosaves/" t)))
+
 
 ;; Packages setup
 ;; MELPA repo
@@ -95,6 +98,9 @@
 (evil-global-set-key 'normal (kbd "SPC 2") 'split-window-below)
 (evil-global-set-key 'normal (kbd "SPC 3") 'split-window-right)
 (evil-global-set-key 'normal (kbd "SPC r") 'recentf-open-files)
+(evil-global-set-key 'normal (kbd "SPC C") 'flymake-show-buffer-diagnostics)
+(evil-global-set-key 'normal (kbd "SPC i") 'eglot-code-action-quickfix)
+(evil-global-set-key 'normal (kbd "SPC I") 'eglot-code-actions)
 (evil-global-set-key 'normal (kbd "g c") 'comment-or-uncomment-region)
 
 (unless (package-installed-p 'evil-surround)
@@ -140,8 +146,8 @@
 (setq company-minimum-prefix-length 0)
 (global-company-mode t)
 
-(define-key company-active-map [tab] 'company-complete)
-(define-key company-active-map (kbd "TAB") 'company-complete)
+(define-key company-active-map [tab] 'company-complete-selection)
+(define-key company-active-map (kbd "TAB") 'company-complete-selection)
 
 ;; For the box with icons that pops up
 (unless (package-installed-p 'company-box)
@@ -157,10 +163,15 @@
 
 ;; Eldoc
 (global-eldoc-mode t)
+(unless (package-installed-p 'eldoc-box)
+  (package-install 'eldoc-box))
+(require 'eldoc-box)
+
 
 ;; LSP
 (unless (package-installed-p 'eglot)
   (package-install 'eglot))
+(add-hook 'eglot--managed-mode-hook #'eldoc-box-hover-at-point-mode t)
 
 ;; Autocomplete backends
 ;; Python
