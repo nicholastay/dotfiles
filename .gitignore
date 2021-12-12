@@ -23,6 +23,11 @@
 
 !/template/
 
+!/.emacs.d*/
+/.emacs.d*/*
+!/.emacs.d*/*.el
+/.emacs.d*/.*.el
+
 # Specific files
 !/readme.md
 
