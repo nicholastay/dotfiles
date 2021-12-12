@@ -69,6 +69,8 @@
 (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
 (setq evil-want-keybinding nil)
 (setq evil-want-C-u-scroll t)
+(setq evil-vsplit-window-right t)
+(setq evil-split-window-below t)
 
 (require 'evil)
 
@@ -101,6 +103,7 @@
 (evil-global-set-key 'normal (kbd "SPC C") 'flymake-show-buffer-diagnostics)
 (evil-global-set-key 'normal (kbd "SPC i") 'eglot-code-action-quickfix)
 (evil-global-set-key 'normal (kbd "SPC I") 'eglot-code-actions)
+(evil-global-set-key 'normal (kbd "SPC c") 'compile)
 (evil-global-set-key 'normal (kbd "g c") 'comment-or-uncomment-region)
 
 (unless (package-installed-p 'evil-surround)
