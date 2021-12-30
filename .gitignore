@@ -27,6 +27,7 @@
 /.emacs.d*/*
 !/.emacs.d*/*.el
 /.emacs.d*/.*.el
+!/.doom.d/
 
 # Specific files
 !/readme.md

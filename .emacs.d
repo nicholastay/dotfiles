@@ -1,1 +1,1 @@
-.emacs.d.lite
+.emacs.d.doom
