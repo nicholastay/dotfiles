@@ -1,0 +1,218 @@
+# Nick's sway config
+# Migrated and edited i3 one.
+
+# -------------- INITIAL SETUP -----------------
+
+# Basic config
+set $mod Mod4
+set $alt Mod1
+floating_modifier $mod
+# Use Mouse+$mod to drag floating windows to their wanted position
+font mono 10
+
+# Don't wrap around when changing focus
+focus_wrapping no
+
+for_window [app_id="floater"] floating enable
+for_window [app_id="floater"] resize set 1200 650
+for_window [app_id="floater"] move position center
+
+for_window [workspace=".*-f$"] floating enable
+
+# Wallpaper
+output "*" bg $HOME/.config/wall.jpg fill
+
+# Keyboard rebinds
+input "type:keyboard" {
+	# Caps = escape
+	xkb_options caps:escape
+	# Repeat delay/rate
+	repeat_delay 150
+	repeat_rate 75
+}
+
+# Touchpad gesture stuff
+input "type:touchpad" {
+	drag enabled
+	tap enabled
+	natural_scroll enabled
+	click_method clickfinger
+}
+
+
+# Autostart
+exec --no-startup-id nm-applet --indicator
+exec --no-startup-id dunst
+
+
+# ------------ COLORS ----------------
+# set Xresources colors:
+#set_from_resource $normal_color  color0  #555753
+#set_from_resource $normal_alt    color8  #555753
+#set_from_resource $focused_color color13 #eeeeec
+#set_from_resource $bar_color     barColor #14191eee
+#set_from_resource $alt_color     color3  #000000
+set $normal_color   #16161c
+set $normal_alt     #5b5858
+set $focused_color  #f075b5
+set $bar_color      #14191edd
+set $alt_color      #fab795
+set $transparent #00000000
+set $alertred    #ff0000
+set $black       #000000
+set $white       #ffffff
+set $fg_color #e0e0e0
+set $red $alertred
+
+#                       BORDER		BACKGROUND	TEXT		INDICATOR   CHILD_BORDER
+client.focused		$focused_color		$focused_color		$normal_color	$alt_color		$focused_color
+client.unfocused	$normal_alt	$normal_color		$fg_color		$alt_color		$normal_color
+client.focused_inactive		$normal_alt		$normal_color		$fg_color	$alt_color		$normal_color
+client.urgent		$alertred	$alertred	$white		$alt_color		$alertred
+client.background $black
+
+
+bar {
+	font pango:mono, FontAwesome 10
+	position top
+	strip_workspace_numbers yes
+	status_command i3status-rs
+
+	colors {
+		background $bar_color
+		statusline $focused_color
+
+		# border background text
+		focused_workspace $focused_color $focused_color $normal_color
+       		active_workspace $normal_alt $bar_color $fg_color
+		inactive_workspace $normal_alt $bar_color $fg_color
+		urgent_workspace $alertred $red $white
+	}
+}
+
+# --------------- i3 BINDINGS --------------
+# i3 Focus/Window mgmt
+# focus stuff
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+s split toggle
+# split in horizontal orientation
+bindsym $mod+semicolon split h
+# split in vertical orientation
+bindsym $mod+apostrophe split v
+
+bindsym $mod+t	layout default
+bindsym $mod+Shift+t	layout tabbed
+bindsym $mod+Ctrl+t	layout stacking
+
+bindsym $mod+Shift+q    kill
+bindsym $mod+f  fullscreen toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+# change focus between tiling / floating windows
+bindsym $mod+Ctrl+space focus mode_toggle
+
+bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus child
+
+# Workspace stuffs
+set $ws1 "1:一"
+set $ws2 "2:二"
+set $ws3 "3:三"
+set $ws4 "4:四"
+set $ws5 "5:五"
+set $ws6 "6:六"
+set $ws7 "7:七"
+set $ws8 "8:八"
+set $ws9 "9:九"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+
+# reload the configuration file
+bindsym $mod+Shift+F10 reload
+bindsym $mod+Control+F10 restart
+
+# Resize window setup
+bindsym $mod+$alt+h	exec --no-startup-id i3resize left
+bindsym $mod+$alt+j	exec --no-startup-id i3resize down
+bindsym $mod+$alt+k	exec --no-startup-id i3resize up
+bindsym $mod+$alt+l	exec --no-startup-id i3resize right
+
+
+# --------------- APP BINDINGS --------------
+bindsym $mod+Return exec --no-startup-id $TERMINAL
+bindsym $mod+space exec --no-startup-id dmenu_run
+
+bindsym $mod+w exec $BROWSER
+bindsym $mod+e exec --no-startup-id termlaunch $FILE
+bindsym $mod+Shift+e exec --no-startup-id sdmenu
+bindsym $mod+Control+e exec dolphin
+bindsym $mod+Control+a exec pavucontrol
+bindsym $mod+p exec keepassxc
+bindsym $mod+Shift+p exec termlaunch -float htop
+bindsym $mod+Control+p exec termlaunch -float sudo powertop
+bindsym $mod+n exec joplin-desktop
+bindsym $mod+Shift+c exec gnome-calculator
+bindsym $mod+Shift+o exec libreoffice
+bindsym $mod+Control+c exec obs
+bindsym $mod+d exec discord
+bindsym $mod+Shift+d exec --no-startup-id displayselect
+bindsym $mod+m exec evolution
+
+bindsym $mod+F2 exec --no-startup-id jumptool config
+bindsym $mod+Shift+F2 exec --no-startup-id jumptool dir
+bindsym $mod+F3 exec --no-startup-id launchpersonal
+
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+bindsym Shift+XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym Shift+XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
+
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+#bindsym XF86Display exec --no-startup-id displayselect
+#bindsym XF86TouchpadToggle exec --no-startup-id touchpadtoggle
+
+bindsym $mod+Shift+m exec --no-startup-id mountmenu
+bindsym $mod+Control+m exec --no-startup-id umountmenu
+
+bindsym Print exec --no-startup-id screenshot
+bindsym Shift+Print exec --no-startup-id screenshot rect
+bindsym $mod+Shift+s exec --no-startup-id screenshot rect
+bindsym Control+Print exec --no-startup-id screenshot window
+
+bindsym $mod+Shift+v exec --no-startup-id wgvpn
+
+#bindsym $mod+Delete exec --no-startup-id light-locker-command -l

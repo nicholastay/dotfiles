@@ -1,35 +1,70 @@
 #!/bin/sh
 
+# Sway bits lifted from https://github.com/swaywm/sway/blob/master/contrib/grimshot
+
 sstype="$1" 
 [ -z "$sstype" ] && sstype="$(printf "rect\\nwindow\\nscreen\\nscreen (delay)" | dmenu -l 6 -i -p "screenshot type?")"
 
+[ "$DESKTOP_SESSION" = "sway" ] && swayfocused=$(swaymsg -t get_tree | jq -r 'recurse(.nodes[]?, .floating_nodes[]?) | select(.focused)')
 case $sstype in
 	"rect")
-		ssargs="-s"
-		sswin="$(ps -p $(xdotool getactivewindow getwindowpid) -o comm=)"
+		if [ "$DESKTOP_SESSION" != "sway" ]; then
+			ssargs="-s"
+			sswin="$(ps -p $(xdotool getactivewindow getwindowpid) -o comm=)"
+		else
+			wlgeom=$(slurp -d)
+			[ -z "$wlgeom" ] && exit # cancelled selection
+			sswin="$(echo "$swayfocused"  | jq -r '.app_id')"
+		fi
 		;;
 	"window")
-		ssargs="-i $(xdotool getactivewindow)"
-		sswin="$(ps -p $(xdotool getactivewindow getwindowpid) -o comm=)"
+		if [ "$DESKTOP_SESSION" != "sway" ]; then
+			ssargs="-i $(xdotool getactivewindow)"
+			sswin="$(ps -p $(xdotool getactivewindow getwindowpid) -o comm=)"
+		else
+			wlgeom="$(echo "$swayfocused" | jq -r '.rect | "\(.x),\(.y) \(.width)x\(.height)"')"
+			sswin="$(echo "$swayfocused"  | jq -r '.app_id')"
+		fi
 		;;
 	"screen")
 		sswin="screen"
 		;;
 	"screen (delay)")
-		ssargs="-d 3"
+		ssdelay=3
 		sswin="screen"
 		;;
 	*) exit ;;
 esac
+[ -z $ssdelay ] && ssdelay=0.1
 
 # cleanse window name
 sswin="$(echo "$sswin" | sed -e 's/[^A-Za-z0-9._-]/_/g')"
 
 if [ "$2" = "nosave" ]; then
-	maim --delay=0.1 --hidecursor $ssargs | xclip -selection clipboard -t image/png && notify-send "Screenshot ($sstype)" "Screenshot copied to clipboard."
+	if [ "$DESKTOP_SESSION" != "sway" ]; then
+		maim --delay=$ssdelay --hidecursor $ssargs | xclip -selection clipboard -t image/png
+	else
+		sleep $ssdelay
+		if [ ! -z "$wlgeom" ]; then
+			grim -g "$wlgeom" - | wl-copy
+		else
+			grim - | wl-copy
+		fi
+	fi
+	[ $? = 0 ] && notify-send "Screenshot ($sstype)" "Screenshot copied to clipboard."
 else
-	p="$HOME/screenshots/"
+	p="$HOME/Screenshots/"
 	f="$(date '+%y%m%d-%H%M%S')-$sswin-$sstype.png"
 	pf="$p$f"
-	maim --delay=0.1 --hidecursor $ssargs "$pf" && xclip -selection clipboard -t image/png -i "$pf" && notify-send "Screenshot ($sstype)" "Screenshot $f copied to clipboard, and saved to folder."
+	if [ "$DESKTOP_SESSION" != "sway" ]; then
+		maim --delay=$ssdelay --hidecursor $ssargs "$pf" && xclip -selection clipboard -t image/png -i "$pf" 
+	else
+		sleep $ssdelay
+		if [ ! -z "$wlgeom" ]; then
+			grim -g "$wlgeom" "$pf" && wl-copy < "$pf"
+		else
+			grim "$pf" && wl-copy < "$pf"
+		fi
+	fi
+	[ $? = 0 ] && notify-send "Screenshot ($sstype)" "Screenshot $f copied to clipboard, and saved to folder."
 fi

@@ -6,6 +6,8 @@
 	case "$TERMINAL" in
 		alacritty)
 			exec $TERMINAL -e $SHELL -i -c "$*" ;;
+		foot)
+			exec $TERMINAL "$@" ;;
 		*)
 			exec $TERMINAL -e "$@" ;;
 	esac
@@ -18,6 +20,8 @@ case "$TERMINAL" in
 		exec $TERMINAL -name floater -e "$@" ;;
 	alacritty)
 		exec $TERMINAL --class=floater -e $SHELL -i -c "$*" ;;
+	foot)
+		exec $TERMINAL --app-id=floater "$@" ;;
 	*)
 		exec $TERMINAL -n floater -g 120x34 -e "$@" ;;
 esac

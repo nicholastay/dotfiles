@@ -12,6 +12,7 @@ o	i3status-rust	$HOME/.config/i3status-rust/config.toml
 c	picom	$HOME/.config/picom.conf
 a	aliasrc	$HOME/.config/aliasrc
 i	i3	$HOME/.config/i3/config
+s	sway	$HOME/.config/sway/config
 I	inputrc	$HOME/.config/inputrc
 l	lf	$HOME/.config/lf/lfrc
 f	fontconfig	$HOME/.config/fontconfig/fonts.conf

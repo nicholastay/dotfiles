@@ -5,9 +5,11 @@
 [ -z "$1" ] && echo "No direction provided" && exit 1
 distanceStr="2 px or 2 ppt"
 
+[ -z "$WAYLAND_DISPLAY" ] && prog="i3-msg" || prog="swaymsg"
+
 moveChoice() {
-  i3-msg resize "$1" "$2" "$distanceStr" | grep '"success":true' || \
-    i3-msg resize "$3" "$4" "$distanceStr"
+  $prog resize "$1" "$2" "$distanceStr" | grep '"success":true' || \
+    $prog resize "$3" "$4" "$distanceStr"
 }
 
 case $1 in

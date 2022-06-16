@@ -2,15 +2,18 @@
 
 pgrep -x dmenu && exit
 
-if pgrep -x dwm; then
+if pgrep -x i3; then
+	refreshwm="i3-msg reload"
+	exitwm="i3-msg exit"
+elif pgrep -x sway; then
+	refreshwm="swaymsg reload"
+	exitwm="swaymsg exit"
+elif pgrep -x dwm; then
 	refreshwm="kill -HUP $(pidof -s dwm)" 
 	exitwm="kill -TERM $(pidof -s dwm)"
 elif pgrep -x bspwm; then
 	refreshwm="bspc wm -r"
 	exitwm="bspc quit"
-elif pgrep -x i3; then
-	refreshwm="i3-msg reload"
-	exitwm="i3-msg exit"
 fi
 
 if [ -d /usr/lib/systemd ]; then

@@ -17,14 +17,24 @@ export LC_TIME=zh_CN.UTF-8
 export NEX_OVERRIDES="$HOME/.local/nex/host-override"
 export NEX_HOST="$(hostname -s)"
 
+# cannot check WAYLAND_DISPLAY as it is not ready yet at login
+[ -z $NEX_WAYLAND ] && [ "$DESKTOP_SESSION" = "sway" ] && export NEX_WAYLAND=1
+
 # Programs
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
-export TERMINAL="alacritty"
 export BROWSER="firefox"
-export FILE="ranger"
+[ "$DESKTOP_SESSION" != "plasma" ] && export FILE="ranger" || export FILE="dolphin"
 export READER="zathura"
-export STATUSBAR="polybar"
+if [ -z "$NEX_WAYLAND" ]; then
+	export TERMINAL="alacritty"
+	export STATUSBAR="polybar"
+else
+	export TERMINAL="foot"
+
+	# For QT apps to come up with the same theme as KDE (presumably breeze dark?)
+	export QT_QPA_PLATFORMTHEME=kde
+fi
 
 # Home dotfiles cleanup
 export INPUTRC="$HOME/.config/inputrc"
@@ -51,8 +61,12 @@ XMODIFIERS=@im=ibus
 [ -f "$NEX_OVERRIDES/profile.$NEX_HOST" ] && . "$NEX_OVERRIDES/profile.$NEX_HOST"
 
 
-# startx if tty1 and no wm
-[ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ] && exec startx 2&> $HOME/.xoutput
+# startx if tty1 and no wm and no dm
+if [ -z $DISPLAY ] && [ "$XDG_SESSION_TYPE" = "tty" ] && [ "$(tty)" = "/dev/tty1" ]; then
+	[ -z $NEX_WAYLAND ] \
+		&& exec startx 2&> $HOME/.xoutput
+		|| exec sway 2&> $HOME/.wloutput
+fi
 
 # swap caps on tty if allowed
 sudo -n loadkeys $HOME/.local/nick/ttymaps.kmap 2>/dev/null
