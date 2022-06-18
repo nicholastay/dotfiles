@@ -44,7 +44,11 @@ alias drag="dragon-drop -x"
 alias rcp="rsync -vzrh --times --stats --progress --itemize-changes"
 alias usbgl="sudo usbguard list-devices -b"
 alias usbga="sudo usbguard allow-device"
-alias pbcopy="xclip -selection clipboard"
+if [ -z "$WAYLAND_DISPLAY" ]; then
+	alias pbcopy="xclip -selection clipboard"
+else
+	alias pbcopy="wl-copy"
+fi
 
 jg() {
 	jumptool generate && echo "Generated new jump aliases."
