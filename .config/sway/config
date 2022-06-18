@@ -41,8 +41,8 @@ input "type:touchpad" {
 
 
 # Autostart
-exec --no-startup-id nm-applet --indicator
-exec --no-startup-id dunst
+exec nm-applet --indicator
+exec dunst
 # f.lux-style thing, Melbourne coords
 exec wlsunset -l -37.8136 -L 144.9631 -T 6500 -t 3800
 
@@ -171,19 +171,19 @@ bindsym $mod+Shift+F10 reload
 bindsym $mod+Control+F10 restart
 
 # Resize window setup
-bindsym $mod+$alt+h	exec --no-startup-id i3resize left
-bindsym $mod+$alt+j	exec --no-startup-id i3resize down
-bindsym $mod+$alt+k	exec --no-startup-id i3resize up
-bindsym $mod+$alt+l	exec --no-startup-id i3resize right
+bindsym $mod+$alt+h	exec i3resize left
+bindsym $mod+$alt+j	exec i3resize down
+bindsym $mod+$alt+k	exec i3resize up
+bindsym $mod+$alt+l	exec i3resize right
 
 
 # --------------- APP BINDINGS --------------
-bindsym $mod+Return exec --no-startup-id $TERMINAL
-bindsym $mod+space exec --no-startup-id dmenu_run
+bindsym $mod+Return exec $TERMINAL
+bindsym $mod+space exec dmenu_run
 
 bindsym $mod+w exec $BROWSER
-bindsym $mod+e exec --no-startup-id termlaunch $FILE
-bindsym $mod+Shift+e exec --no-startup-id sdmenu
+bindsym $mod+e exec termlaunch $FILE
+bindsym $mod+Shift+e exec sdmenu
 bindsym $mod+Control+e exec dolphin
 bindsym $mod+Control+a exec pavucontrol
 bindsym $mod+p exec keepassxc
@@ -194,35 +194,35 @@ bindsym $mod+Shift+c exec gnome-calculator
 bindsym $mod+Shift+o exec libreoffice
 bindsym $mod+Control+c exec obs
 bindsym $mod+d exec discord
-bindsym $mod+Shift+d exec --no-startup-id displayselect
+bindsym $mod+Shift+d exec displayselect
 bindsym $mod+m exec evolution
 bindsym $mod+Shift+f exec easyeffects
 
-bindsym $mod+F2 exec --no-startup-id jumptool config
-bindsym $mod+Shift+F2 exec --no-startup-id jumptool dir
-bindsym $mod+F3 exec --no-startup-id launchpersonal
+bindsym $mod+F2 exec jumptool config
+bindsym $mod+Shift+F2 exec jumptool dir
+bindsym $mod+F3 exec launchpersonal
 
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
-bindsym Shift+XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
-bindsym Shift+XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym Shift+XF86MonBrightnessDown exec brightnessctl set 10%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym Shift+XF86MonBrightnessUp exec brightnessctl set +10%
 
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-#bindsym XF86Display exec --no-startup-id displayselect
-#bindsym XF86TouchpadToggle exec --no-startup-id touchpadtoggle
+#bindsym XF86Display exec displayselect
+#bindsym XF86TouchpadToggle exec touchpadtoggle
 
-bindsym $mod+Shift+m exec --no-startup-id mountmenu
-bindsym $mod+Control+m exec --no-startup-id umountmenu
+bindsym $mod+Shift+m exec mountmenu
+bindsym $mod+Control+m exec umountmenu
 
-bindsym Print exec --no-startup-id screenshot
-bindsym Shift+Print exec --no-startup-id screenshot rect
-bindsym $mod+Shift+s exec --no-startup-id screenshot rect
-bindsym Control+Print exec --no-startup-id screenshot window
+bindsym Print exec screenshot
+bindsym Shift+Print exec screenshot rect
+bindsym $mod+Shift+s exec screenshot rect
+bindsym Control+Print exec screenshot window
 
-bindsym $mod+Shift+v exec --no-startup-id wgvpn
+bindsym $mod+Shift+v exec wgvpn
 
-bindsym $mod+Delete exec --no-startup-id swaylock
+bindsym $mod+Delete exec swaylock
