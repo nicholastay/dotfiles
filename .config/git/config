@@ -1,22 +1,65 @@
+[include]
+	path = ~/.config/git/user
 [alias]
-	c = commit
 	p = push
+	pu = push -u
+	puo = "!git push -u origin \"$(git branch --show-current)\""
+	pf = push --force-with-lease
+	pff = push -f
+	pl = pull --recurse-submodules
+	plo = pull
+	f = fetch
+	fo = fetch origin
 	s = status
 	su = status --untracked-files=normal
 	sua = status -u
+	st = stash
+	stm = stash -m
+	stp = stash pop
+	stpp = "!git stash pop \"$(git stash list | fzf | cut -d ':' -f 1)\""
+	stl = stash list
+	stD = stash drop
+	sts = "!git stash show -p stash@{$1} #"
+	stss = "!git stash show -p \"$(git stash list | fzf | cut -d ':' -f 1)\""
+	r = remote
 	rv = remote -v
+	rb = rebase
+	rbi = rebase -i
+	rbd = rebase development
+	rbm = rebase master
 	a = add
 	aa = add .
+	ap = add -p
 	co = checkout
-	cam = commit -a -m
-	cm = commit -m
-	d = diff
+	coo = "!git checkout \"$(git for-each-ref --format='%(refname:short)' refs/heads/ | fzf)\""
 	cob = checkout -b
+	cod = checkout development
+	com = checkout master
+	cot = checkout --track
+	cott = "!git checkout --track \"$(git for-each-ref --format='%(refname:short)' refs/remotes/ | fzf)\""
+	c = commit
+	ca = commit -a
+	cm = commit -m
+	cam = commit -a -m
+	camd = commit --amend
+	d = diff
+	dc = diff --cached
 	l = log
-[include]
-	path = ~/.config/git/user
-[credential]
-	helper = /usr/lib/git-core/git-credential-libsecret
+	m = merge
+	md = merge development
+	mm = merge master
+	rl = reflog
+	res = restore --staged
+	ress = restore
+	b = branch
+	br = branch --remote
+	bD = branch -D
+	bDD = "!git branch -D \"$(git for-each-ref --format='%(refname:short)' refs/heads/ | fzf)\""
+	chp = cherry-pick
+	cl = clone --recurse-submodules
+	cll = clone
+[core]
+	excludesfile = $HOME/.config/git/gitignore
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
