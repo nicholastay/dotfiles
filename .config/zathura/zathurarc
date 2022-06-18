@@ -7,7 +7,6 @@ map R rotate
 map = zoom in
 map S toggle_statusbar
 map I feedkeys ":info<Return>"
-map <F2> feedkeys ":exec transset-df -m 0.85 -a<Return><C-r>"
 
 set window-title-basename true
 set selection-clipboard clipboard
@@ -15,3 +14,8 @@ set statusbar-home-tilde true
 set guioptions vh
 
 #set recolor true
+
+# transparent bg
+set default-bg rgba(20,25,30,0.86)
+# full transparent on recolor so it goes through to the transparency bg
+set recolor-lightcolor rgba(0,0,0,0)
