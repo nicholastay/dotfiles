@@ -8,5 +8,9 @@ if [ -f "$1" ]; then
 	[ -d $HOME/.cache/thumbnails/neofetch ] && rm $HOME/.cache/thumbnails/neofetch/*.jpg 2>/dev/null
 fi
 
-feh --bg-fill "$wall"
-command -v wal >/dev/null && [ ! -z $NEX_USE_WAL ] && wal -n -t -i "$wall" -o $HOME/.config/wal/postrun
+if [ "$DESKTOP_SESSION" = "sway" ]; then
+	swaymsg 'output "*" bg '"$wall"' fill'
+else
+	feh --bg-fill "$wall"
+	command -v wal >/dev/null && [ ! -z $NEX_USE_WAL ] && wal -n -t -i "$wall" -o $HOME/.config/wal/postrun
+fi
