@@ -21,7 +21,7 @@
 /.local/share/*
 !/.local/share/applications
 
-!/template/
+!/Templates/
 
 !/.emacs.d*/
 /.emacs.d*/*
