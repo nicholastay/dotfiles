@@ -32,8 +32,8 @@ if [ -z "$NEX_WAYLAND" ]; then
 else
 	export TERMINAL="foot"
 
-	# For QT apps to come up with the same theme as KDE (presumably breeze dark?)
-	export QT_QPA_PLATFORMTHEME=kde
+	# For QT apps to theme properly - make sure qt5ct installed
+	[ "$DESKTOP_SESSION" != "plasma" ] && export QT_QPA_PLATFORMTHEME=qt5ct
 fi
 
 # Home dotfiles cleanup
@@ -53,9 +53,9 @@ export _JAVA_AWT_WM_NONREPARENTING=1 # bspwm/dwm are nonreparenting
 export _JAVA_SETTINGS="-Dswing.aatext=TRUE -Dawt.useSystemAAFontSettings=on" # antialising for swing and default toolkit
 
 # non-English :)
-GTK_IM_MODULE=ibus
-QT_IM_MODULE=ibus
-XMODIFIERS=@im=ibus
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
 
 # Host-based include
 [ -f "$NEX_OVERRIDES/profile.$NEX_HOST" ] && . "$NEX_OVERRIDES/profile.$NEX_HOST"

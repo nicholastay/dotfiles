@@ -53,6 +53,17 @@ exec swayidle -w \
 	before-sleep swaylock \
 	lock swaylock
 
+# GTK theme needs to be set here for some reason...
+# https://github.com/swaywm/sway/issues/4323
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+	gsettings set $gnome-schema gtk-theme 'Breeze'
+	gsettings set $gnome-schema color-scheme 'prefer-dark'
+	gsettings set $gnome-schema icon-theme 'breeze-dark'
+	gsettings set $gnome-schema cursor-theme 'breeze-dark'
+	gsettings set $gnome-schema font-name 'Sans 10'
+}
+
 
 # ------------ COLORS ----------------
 # set Xresources colors:
@@ -86,6 +97,9 @@ bar {
 	position top
 	strip_workspace_numbers yes
 	status_command i3status-rs
+
+	# tray (not sure if needed)
+	icon_theme breeze-dark
 
 	colors {
 		background $bar_color
