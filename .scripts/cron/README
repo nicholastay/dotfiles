@@ -1,0 +1,11 @@
+Usually cron scripts stored in here. Will fill this file with the crontab rules that should go in `crontab -e`.
+
+---
+
+But there is a low battery warning script that can be called with crontab (`* * * * * $HOME/.scripts/cron/lowbat`), or preferably with udev so it uses ACPI events instead.
+
+```
+# in /etc/udev/rules.d/99-lowbat.rules
+# (replace username if needed)
+SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-9]", RUN+="/usr/bin/su nick -c /home/nick/.scripts/cron/lowbat"
+```
