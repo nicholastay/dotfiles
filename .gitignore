@@ -56,6 +56,7 @@
 /.config/pulse
 /.config/nvim/autoload
 /.config/nvim/plugged
+/.config/nvim/plugin
 /.config/Thunar
 /.config/dconf
 /.config/xfce4

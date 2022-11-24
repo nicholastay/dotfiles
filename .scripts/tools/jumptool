@@ -2,7 +2,7 @@
 
 confs="\
 r	ranger	$HOME/.config/ranger/rc.conf
-v	neovim	$HOME/.config/nvim/init.vim
+v	neovim	$HOME/.config/nvim/init.lua
 b	bash	$HOME/.bashrc
 z	zsh	$HOME/.config/zsh/.zshrc
 xr	xresources	$HOME/.Xresources

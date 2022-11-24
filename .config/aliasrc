@@ -26,12 +26,12 @@ alias d="git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME"
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
-alias vd="NEX_NVIM_DEV=1 nvim" # Launch with bloaty plugins
 alias e="$FILE"
 alias r="ranger"
 alias l="lf"
 alias g="git"
 alias o="xdg-open"
+alias open="setsid xdg-open"
 alias psg="ps aux | grep"
 alias mem="ps axch -o cmd:15,%mem --sort=-%mem | sed 10q"
 alias cpu="ps axch -o cmd:15,%cpu --sort=-%cpu | sed 10q"
@@ -95,10 +95,16 @@ alias tli="sudo tlmgr install"
 alias ltp="latexmk -pdf"
 alias ltc="latexmk -c"
 
+
 # Misc
 # Wireless force rescan for APs
 alias wscan="nmcli device wifi rescan"
 alias wreset="sudo sh -c 'rmmod iwldvm && sudo modprobe iwldvm'"
+
+# OpenMPI (Uni FIT3143)
+# This loads the dev environment, ready to use commands including 'mpirun'
+# Fedora: `dnf install openmpi openmpi-devel libomp libomp-devel`
+alias mpiload="module load mpi/openmpi-x86_64"
 
 
 # Template copier thing

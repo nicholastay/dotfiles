@@ -43,7 +43,6 @@ export LESSHISTFILE="-"
 export RXVT_SOCKET="$HOME/.cache/urxvtd"
 export WGETRC="$HOME/.config/wget/wgetrc"
 export ZDOTDIR="$HOME/.config/zsh"
-export VIMINIT=":source $HOME/.config/nvim/init.vim"
 export CARGO_HOME="$HOME/.local/share/cargo"
 
 # Tool configs
@@ -64,7 +63,7 @@ export XMODIFIERS=@im=ibus
 # startx if tty1 and no wm and no dm
 if [ -z $DISPLAY ] && [ "$XDG_SESSION_TYPE" = "tty" ] && [ "$(tty)" = "/dev/tty1" ]; then
 	[ -z $NEX_WAYLAND ] \
-		&& exec startx 2&> $HOME/.xoutput
+		&& exec startx 2&> $HOME/.xoutput \
 		|| exec sway 2&> $HOME/.wloutput
 fi
 
