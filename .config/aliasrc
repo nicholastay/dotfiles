@@ -12,17 +12,28 @@ alias q="exit"
 alias cp="cp -iv"
 alias mv="mv -iv"
 alias rm="rm -Iv"
-alias ls="ls --color=auto --group-directories-first"
 alias ll="ls -lh"
 alias la="ls -lah"
 alias lsd="ls -d"
 alias sudo="sudo "
 alias ag="rg -S"
-
+alias tree="tree -C"
 
 # Utility colours
+alias ls="ls --color=auto --group-directories-first"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
+
+# macOS coreutils shenans
+if [ ! -z "$NT_IS_MACOS" ]; then
+	command -v gls >/dev/null \
+		&& alias ls="gls --color=always --group-directories-first" \
+		|| alias ls="ls -G"
+	command -v gawk >/dev/null && alias awk="gawk"
+	command -v gsed >/dev/null && alias sed="gsed"
+	command -v gpaste >/dev/null && alias paste="gpaste"
+	command -v ggrep >/dev/null && alias grep="ggrep"
+fi
 
 # dotfiles management
 alias d="git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME"
@@ -32,6 +43,7 @@ alias d="git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME"
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
+alias vimdiff="nvim -d"
 
 alias g="git"
 
@@ -47,10 +59,12 @@ alias r="ranger"
 alias mem="ps axch -o cmd:15,%mem --sort=-%mem | sed 10q"
 alias cpu="ps axch -o cmd:15,%cpu --sort=-%cpu | sed 10q"
 alias qr="qrencode -t ansiutf8"
+alias tn1="tail -n+1 -v"
 
 alias drag="dragon-drop -x"
 alias rcp="rsync -vzrh --times --stats --progress --itemize-changes"
 alias ccat="highlight --out-format=ansi"
+alias kif="kinit -f"
 
 if [ -z "$WAYLAND_DISPLAY" ]; then
 	alias pbcopy="xclip -selection clipboard"
@@ -58,6 +72,16 @@ else
 	alias pbcopy="wl-copy"
 fi
 alias pbc="pbcopy"
+
+# Folder quick-jump-into-a-1depth-subdir tech
+folder_fzf_cd() {
+	basedir="$1"
+	shift
+	[ -z "$1" ] && cd "$basedir" && return  # nothing = instant jump to basedir
+	[ "$1" = "-" ] && 1=""  # provide '-' to not instant jump
+	x="$(cd "$basedir" && fd . --exact-depth 1 --type d --path-separator '' | fzf -0 -1 -e -q "$*" --preview "ls --color=always {}")"
+	[ ! -z "$x" ] && cd "$basedir/$x" || echo "[WARN] Not found"
+}
 
 # ranger_cd
 [ -f "$HOME/.config/ranger/shell_automatic_cd.sh" ] && . "$HOME/.config/ranger/shell_automatic_cd.sh" && alias ranger="ranger_cd"
@@ -81,6 +105,18 @@ alias rQ="rpm -qa"
 alias wscan="nmcli device wifi rescan"
 alias wreset="sudo sh -c 'rmmod iwldvm && sudo modprobe iwldvm'"
 
+# macOS shortcuts
+if [ ! -z "$NT_IS_MACOS" ]; then
+	alias flushdns="dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+
+	# Packages
+	alias bI="brew install"
+	alias bIc="brew install --cask"
+	alias bR="brew uninstall"
+	alias bU="brew upgrade"
+	alias bQ="brew list"
+	alias bQc="brew list --cask"
+fi
 
 # Utility functions
 # Template copier thing - Copy a template and edit it.

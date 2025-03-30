@@ -18,6 +18,11 @@ export NT_OVERRIDES="$HOME/.local/ntay/overrides/$NT_HOST"
 # cannot check WAYLAND_DISPLAY as it is not ready yet at login
 [ "$DESKTOP_SESSION" = "sway" ] && export NT_IS_WAYLAND=1
 
+# detect macos for scripts to leverage
+case "$OSTYPE" in
+	"darwin"*) export NT_IS_MACOS=1 ;;
+esac
+
 # For QT apps to theme properly - make sure qt5ct installed
 [ "$DESKTOP_SESSION" != "plasma" ] && export QT_QPA_PLATFORMTHEME=qt5ct
 
