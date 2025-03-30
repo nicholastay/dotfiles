@@ -9,11 +9,14 @@ export PATH=$HOME/.local/bin:$HOME/.scripts/personal:$HOME/.scripts/tools:$HOME/
 # ... but for flatpak, whatever lol (I really don't want to use them when possible)
 export PATH=$PATH:/var/lib/flatpak/exports/bin
 
-# for fun
-export LC_TIME=zh_CN.UTF-8
-
-[ -z "$NT_HOST" ] && export NT_HOST="$(hostname -s)"
+# overrides system: just pull $NT_OVERRIDES/<file> for a good customised time
+export NT_HOST="$(hostname -s)"
+# set 'forced' file to 'act' as another host. useful for e.g. work laptop -> set as 'work'
+[ -f "$HOME/.local/ntay/overrides/_forced" ] && export NT_HOST="$(cat $HOME/.local/ntay/overrides/_forced)"
 export NT_OVERRIDES="$HOME/.local/ntay/overrides/$NT_HOST"
+# (alternative: pull _current for apps that can't substitute. or symlink into this if we ALWAYS expect an override;
+#    i.e. cannot #include, must have a full file. maybe can script with evalfile/envsubst)
+[ ! -e "$HOME/.local/ntay/overrides/_current" ] && ln -s "$NT_OVERRIDES" "$HOME/.local/ntay/overrides/_current"
 
 # cannot check WAYLAND_DISPLAY as it is not ready yet at login
 [ "$DESKTOP_SESSION" = "sway" ] && export NT_IS_WAYLAND=1
