@@ -96,6 +96,12 @@ local plugins = {
 		end,
 	},
 
+	-- Multicursors
+	-- (sorry vim purists, but when it's helpful it's really helpful lol)
+	-- [also sorry nvim lua enjoyers, i didn't like multicursors.nvim...]
+	"mg979/vim-visual-multi",
+
+
 	-- ----------------
 	-- Below will be the "IDE bloat level"
 
@@ -109,14 +115,6 @@ local plugins = {
 			vim.o.timeoutlen = 300
 		end,
 		opts = {},
-	},
-
-	-- Multicursors
-	-- (sorry vim purists, but when it's helpful it's really helpful lol)
-	-- [also sorry nvim lua enjoyers, i didn't like multicursors.nvim...]
-	{
-		"mg979/vim-visual-multi",
-		enabled = is_ide_bloat,
 	},
 
 	-- LSP "fun"
