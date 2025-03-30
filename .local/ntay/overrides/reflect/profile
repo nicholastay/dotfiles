@@ -1,0 +1,1 @@
+export NT_USE_WAL=1

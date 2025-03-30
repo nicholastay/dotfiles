@@ -3,26 +3,49 @@
 
 
 # Exclusions
+
 # Allow dotfiles in ~, but don't allow folders starting with dot
 !.*
 .*/
 
-# Folders (and their subdirs)
+# .config - too many in more workstation/kde envs / work
+# ...so we will manually whitelist here
 !/.config/
+/.config/*
+# folders
+!/.config/dunst/
+!/.config/fcitx5/
+!/.config/fontconfig/
+!/.config/foot/
+!/.config/git/
+!/.config/i3status-rust/
+!/.config/kitty/
+!/.config/mpv/
+!/.config/MusicBrainz/
+!/.config/nvim/
+!/.config/ranger/
+/.config/ranger/shortcut.conf
+!/.config/sway/
+!/.config/swaylock/
+!/.config/wireplumber/
+!/.config/zathura/
+# files
+!/.config/aliasrc/
+!/.config/inputrc/
+!/.config/mimeapps.list/
+!/.config/user-dirs.dirs/
 
+# Scripts - include subpaths except our private
 !/.scripts/
 /.scripts/personal
 /.scripts/thirdparty
 
+# .local - can add more as we go
 !/.local/
 /.local/*
-!/.local/nex/
 !/.local/ntay/
-!/.local/bin
-!/.local/share
-/.local/share/*
-!/.local/share/applications
 
+# Specific folders
 !/Templates/
 
 # Specific files
@@ -30,31 +53,14 @@
 
 
 # Ignore back again
-# Files
-/.config/wall.jpg
-/.config/zshnameddirs
-/.config/git/user
-/.config/ranger/shortcut.conf
-/.config/shortcutrc
-/.config/nvim/.netrwhist
-/.Xauthority
-/.xsession-errors
-/.viminfo
-/.lesshst
-# Folders
-/.config/naver-whale
-/.config/google-chrome
-/.config/Caprine
-/.config/Joplin
-/.config/Nextcloud
-/.config/configstore
-/.config/joplin-desktop
-/.config/ibus
-/.config/pulse
-/.config/nvim/autoload
-/.config/nvim/plugged
-/.config/nvim/plugin
-/.config/Thunar
-/.config/dconf
-/.config/xfce4
+.Xauthority
+.xsession-errors
+.viminfo
+.lesshst
+.DS_Store
+.*_history
+.*_logout
+*.swo
+*.swp
+/.gtkrc*
 
