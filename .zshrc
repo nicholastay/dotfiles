@@ -59,7 +59,7 @@ autoload -Uz compinit
 for dump in $HOME/.cache/zcompdump(N.mh+24); do
 	compinit -d "$HOME/.cache/zcompdump"
 done
-compinit -C
+compinit -C -d "$HOME/.cache/zcompdump"
 
 
 # Use vim keys
