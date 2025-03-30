@@ -132,8 +132,8 @@ vfc() { jumptool config fzf ;}
 [ -f "$HOME/.config/shortcutrc" ] && . "$HOME/.config/shortcutrc"
 
 
-# wal colors for alacritty
-[ "$TERM" = "alacritty" ] && [ ! -z "$NEX_USE_WAL" ] && [ -r "$HOME/.cache/wal/sequences" ] && (cat $HOME/.cache/wal/sequences &)
+# wal colors
+[ ! -z "$NEX_USE_WAL" ] && [ -r "$HOME/.cache/wal/sequences" ] && (cat $HOME/.cache/wal/sequences &)
 
 # tmux ssh rename
 # if [ "$TERM" = "tmux-256color" ] && [ -n "$TMUX" ]; then
