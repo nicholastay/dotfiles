@@ -18,5 +18,5 @@ ranger_cd() {
     if chosen_dir="$(cat -- "$temp_file")" && [ -n "$chosen_dir" ] && [ "$chosen_dir" != "$PWD" ]; then
         cd -- "$chosen_dir"
     fi
-    rm -f -- "$temp_file"
+    \rm -f -- "$temp_file"
 }
