@@ -1,43 +1,46 @@
 [theme]
-name = "native"
+theme = "native"
 
 [icons]
-name = "awesome"
+icons = "awesome4"
 
-[[block]]
-block = "custom"
-command = "echo 😷\"$($HOME/.scripts/bar/coronaupd)\""
-interval = 300
+# [[block]]
+# block = "custom"
+# command = "echo 😷\"$($HOME/.scripts/bar/coronaupd)\""
+# interval = 300
 
 [[block]]
 block = "sound"
 headphones_indicator = true
 
-[[block]]
-block = "disk_space"
-path = "/"
-alias = "/"
-info_type = "used"
-alert_absolute = true
-interval = 20
-warning = 20.0
-alert = 10.0
-format = "{icon} {percentage}"
-on_click = "nnotify disk /"
+# [[block]]
+# block = "disk_space"
+# path = "/"
+# alias = "/"
+# info_type = "used"
+# alert_absolute = true
+# interval = 20
+# warning = 20.0
+# alert = 10.0
+# format = "$icon $percentage"
+# on_click = "nnotify disk /"
 
 [[block]]
-block = "networkmanager"
-on_click = "termlaunch -float nmtui"
-ap_format = "{strength}"
-device_format = "{icon}{ap}"
+block = "net"
+#on_click = "termlaunch -float nmtui"
+#ap_format = "$strength"
+#device_format = "$icon$ap"
+format = " $icon {$signal_strength $ssid $frequency|Wired}"
 
 [[block]]
 block = "battery"
-on_click = "termlaunch -float sudo powertop"
+#on_click = "termlaunch -float sudo powertop"
+format = " $icon $percentage {$time |}"
 
 [[block]]
 block = "time"
 interval = 5
-format = "%x(%a) %p %I:%M"
-locale = "zh_CN"
-on_click = "nnotify time"
+#locale = "zh_CN"
+#on_click = "nnotify time"
+[block.format]
+full = " $icon $timestamp.datetime(f:'%x(%a) %H:%M', l:zh_CN) "

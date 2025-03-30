@@ -1,6 +1,7 @@
 #!/bin/sh
 
 confs="\
+s	ssh	$HOME/.ssh/config
 r	ranger	$HOME/.config/ranger/rc.conf
 v	neovim	$HOME/.config/nvim/init.lua
 b	bash	$HOME/.bashrc
@@ -11,8 +12,8 @@ p	profile	$HOME/.profile
 o	i3status-rust	$HOME/.config/i3status-rust/config.toml
 c	picom	$HOME/.config/picom.conf
 a	aliasrc	$HOME/.config/aliasrc
-i	i3	$HOME/.config/i3/config
-s	sway	$HOME/.config/sway/config
+i3	i3	$HOME/.config/i3/config
+i	sway	$HOME/.config/sway/config
 I	inputrc	$HOME/.config/inputrc
 l	lf	$HOME/.config/lf/lfrc
 f	fontconfig	$HOME/.config/fontconfig/fonts.conf

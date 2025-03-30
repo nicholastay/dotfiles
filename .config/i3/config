@@ -38,7 +38,7 @@ exec_always --no-startup-id setwp
 exec_always --no-startup-id remapkb
 
 exec --no-startup-id ibus-daemon -drxR
-exec --no-startup-id nextcloud --background
+#exec --no-startup-id nextcloud --background
 exec --no-startup-id redshift-gtk -l -37.8136:144.9631 -t 6500K:2700K
 
 

@@ -13,11 +13,16 @@ font mono 10
 # Don't wrap around when changing focus
 focus_wrapping no
 
-for_window [app_id="floater"] floating enable
-for_window [app_id="floater"] resize set 1200 650
-for_window [app_id="floater"] move position center
+for_window [app_id=".*-floater$"] floating enable
+for_window [app_id=".*-floater$"] resize set 780 480
+for_window [app_id=".*-floater$"] move position center
+
+for_window [app_id="org.gnome.Calculator"] floating enable
+for_window [app_id="org.gnome.Calculator"] resize set 360 465
 
 for_window [workspace=".*-f$"] floating enable
+
+for_window [shell="xwayland"] title_format "[X] %title"
 
 # Wallpaper
 output "*" bg $HOME/.config/wall.jpg fill
@@ -27,7 +32,7 @@ input "type:keyboard" {
 	# Caps = escape
 	xkb_options caps:escape
 	# Repeat delay/rate
-	repeat_delay 150
+	repeat_delay 250
 	repeat_rate 75
 }
 
@@ -43,6 +48,9 @@ input "type:touchpad" {
 # Autostart
 exec nm-applet --indicator
 exec dunst
+#exec nextcloud --background
+exec /usr/libexec/kdeconnectd
+exec kdeconnect-indicator
 # f.lux-style thing, Melbourne coords
 exec wlsunset -l -37.8136 -L 144.9631 -T 6500 -t 3800
 
@@ -195,6 +203,9 @@ bindsym $mod+$alt+l	exec i3resize right
 bindsym $mod+Return exec $TERMINAL
 bindsym $mod+space exec dmenu_run
 
+bindsym $mod+Shift+Return exec termdir
+bindsym $mod+Control+Return exec termlaunch -float
+
 bindsym $mod+w exec $BROWSER
 bindsym $mod+e exec termlaunch $FILE
 bindsym $mod+Shift+e exec sdmenu
@@ -223,7 +234,7 @@ bindsym Shift+XF86MonBrightnessUp exec brightnessctl set +10%
 
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+#bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 #bindsym XF86Display exec displayselect

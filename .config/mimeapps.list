@@ -5,9 +5,9 @@ inode/directory=ranger.desktop;
 application/postscript=org.pwmt.zathura.desktop;
 application/pdf=org.pwmt.zathura.desktop;
 application/epub=org.pwmt.zathura.desktop;
-image/png=sxiv.desktop;
-image/jpeg=sxiv.desktop;
-image/gif=sxiv.desktop;
+image/png=imv.desktop;
+image/jpeg=imv.desktop;
+image/gif=imv.desktop;
 x-scheme-handler/http=firefox.desktop
 x-scheme-handler/https=firefox.desktop
 x-scheme-handler/ftp=firefox.desktop
@@ -20,6 +20,7 @@ application/xhtml+xml=firefox.desktop
 application/x-extension-xhtml=firefox.desktop
 application/x-extension-xht=firefox.desktop
 video/mp4=mpv.desktop
+x-scheme-handler/mailto=userapp-Evolution-N6AEY1.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox.desktop;
@@ -34,3 +35,4 @@ application/xhtml+xml=firefox.desktop;
 application/x-extension-xhtml=firefox.desktop;
 application/x-extension-xht=firefox.desktop;
 video/mp4=mpv.desktop;
+x-scheme-handler/mailto=userapp-Evolution-N6AEY1.desktop;

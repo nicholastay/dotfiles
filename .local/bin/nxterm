@@ -1,1 +1,2 @@
-/usr/bin/alacritty
+#!/bin/sh
+exec "$TERMINAL" "$@"
