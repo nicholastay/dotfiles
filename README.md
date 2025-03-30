@@ -19,13 +19,6 @@ $ d a ~/.config/...
 $ d ...
 ```
 
-## Extras
-
-```
-# To use texlive profile
-$ sudo /opt/texlive-installer/install-tl -init-from-profile ~/.local/nex/texlive.profile
-```
-
 ## Licence
 
 `SPDX-License-Identifier: BSD-2-Clause`

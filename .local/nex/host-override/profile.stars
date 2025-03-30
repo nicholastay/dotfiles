@@ -1,4 +1,0 @@
-export TRACKPOINT_NAME="TPPS/2 IBM TrackPoint"
-export TOUCHPAD_NAME="SynPS/2 Synaptics TouchPad"
-
-export NEX_USE_WAL=1

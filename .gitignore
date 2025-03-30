@@ -17,6 +17,7 @@
 !/.local/
 /.local/*
 !/.local/nex/
+!/.local/ntay/
 !/.local/bin
 !/.local/share
 /.local/share/*
