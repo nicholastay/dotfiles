@@ -4,9 +4,7 @@ My dotfiles. Probably bad to use, constant WIP for myself.
 
 Using git bare repo.
 
-I now use the Fedora 35 i3 spin.
-
-Alternatively, if installing from a base Arch system, [NARB](https://github.com/nicholastay/narb) can be used to bootstrap this installation.
+I am on Fedora 41 with sway installed.
 
 ```
 $ git clone --bare https://github.com/nicholastay/dotfiles.git ~/.dotfiles.git
@@ -19,7 +17,15 @@ $ d a ~/.config/...
 
 # Any other git operations
 $ d ...
+```
 
+## Extras
+
+```
 # To use texlive profile
 $ sudo /opt/texlive-installer/install-tl -init-from-profile ~/.local/nex/texlive.profile
 ```
+
+## Licence
+
+`SPDX-License-Identifier: BSD-2-Clause`

@@ -12,6 +12,7 @@
 
 !/.scripts/
 /.scripts/personal
+/.scripts/thirdparty
 
 !/.local/
 /.local/*
@@ -23,14 +24,8 @@
 
 !/Templates/
 
-!/.emacs.d*/
-/.emacs.d*/*
-!/.emacs.d*/*.el
-/.emacs.d*/.*.el
-!/.doom.d/
-
 # Specific files
-!/readme.md
+!/README.md
 
 
 # Ignore back again
@@ -47,6 +42,7 @@
 /.lesshst
 # Folders
 /.config/naver-whale
+/.config/google-chrome
 /.config/Caprine
 /.config/Joplin
 /.config/Nextcloud
