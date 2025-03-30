@@ -1,65 +1,71 @@
 #!/bin/sh
 
-# Nick's aliases for shells
-# Here we go...
+#
+# nick's shell aliases
+#
+
 
 # General shell
-alias t="$TERMINAL"
 alias q="exit"
-alias cl="clear"
 
-# Some neat general util stuff
-alias cp='cp -iv'
-alias mv='mv -iv'
-alias ls='ls --color=auto --group-directories-first'
-alias lss='ls -shN'
+# General utility
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -Iv"
+alias ls="ls --color=auto --group-directories-first"
+alias ll="ls -lh"
+alias la="ls -lah"
+alias lsd="ls -d"
+alias sudo="sudo "
+alias ag="rg -S"
+
+
+# Utility colours
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
-alias ccat="highlight --out-format=ansi"
-alias ssh='TERM=xterm-256color ssh'
 
 # dotfiles management
 alias d="git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME"
 
-# Shortcuts for program + option
-# General
+
+# Shortcuts
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
+
+alias g="git"
+
+alias srcb="source $HOME/.bashrc"
+alias srcz="source $HOME/.zshrc"
+alias srcp="source $HOME/.profile"
+alias srca="source $HOME/.config/aliasrc"
+alias srca="source $HOME/.config/shortcutrc"
+
 alias e="$FILE"
 alias r="ranger"
-alias l="lf"
-alias g="git"
-alias o="xdg-open"
-alias open="setsid xdg-open"
-alias psg="ps aux | grep"
+
 alias mem="ps axch -o cmd:15,%mem --sort=-%mem | sed 10q"
 alias cpu="ps axch -o cmd:15,%cpu --sort=-%cpu | sed 10q"
-alias sdn="shutdown now"
-alias reb="reboot"
-alias mkp="mkdir -p"
-alias sudo="sudo "
-alias sudoo="sudo -E "
+alias qr="qrencode -t ansiutf8"
+
 alias drag="dragon-drop -x"
 alias rcp="rsync -vzrh --times --stats --progress --itemize-changes"
-alias usbgl="sudo usbguard list-devices -b"
-alias usbga="sudo usbguard allow-device"
+alias ccat="highlight --out-format=ansi"
+
 if [ -z "$WAYLAND_DISPLAY" ]; then
 	alias pbcopy="xclip -selection clipboard"
 else
 	alias pbcopy="wl-copy"
 fi
+alias pbc="pbcopy"
 
-jg() {
-	jumptool generate && echo "Generated new jump aliases."
-	. $HOME/.config/shortcutrc && echo "Reloaded shell shortcut aliases."
-	ps -p $$ 2>/dev/null | grep -q zsh && source $HOME/.config/zshnameddirs && echo "Reloaded zsh named dirs."
-}
-
-# lf with cd
-[ -f "$HOME/.config/lf/lfcd" ] && . "$HOME/.config/lf/lfcd" && alias lf="lfcd"
 # ranger_cd
 [ -f "$HOME/.config/ranger/shell_automatic_cd.sh" ] && . "$HOME/.config/ranger/shell_automatic_cd.sh" && alias ranger="ranger_cd"
+
+# yt-dlp nice defaults
+alias ytaudio='yt-dlp --extractor-args "youtube:player_client=default,ios" -x --audio-format mp3 --embed-thumbnail --embed-metadata'
+alias ytd='yt-dlp --extractor-args "youtube:player_client=default,ios" --embed-chapters --embed-subs --sponsorblock-mark default --sub-lang "en.*,ja.*,ko.*,zh.*" --sub-format="ass/srt/best" --merge-output-format mkv'
+
 
 # Fedora
 # Package manager (dnf)
@@ -69,46 +75,15 @@ alias dU="sudo dnf upgrade"
 alias ds="dnf search"
 alias rQ="rpm -qa"
 
-# Arch
-# Package manager (pacman)
-alias p="sudo pacman"
-alias pS="sudo pacman -S"
-alias pR="sudo pacman -R"
-alias pU="sudo pacman -Syu"
-alias pQ="pacman -Q"
-# yay (AUR)
-alias y="yay"
-alias yS="yay -S"
-alias yR="yay -R"
-alias yU="yay -Syu"
 
-# Service management
-alias s="systemctl"
-#alias ss="sudo systemctl"
-alias sst="systemctl status"
-alias ssr="sudo systemctl restart"
-alias sus="systemctl --user status"
-alias sur="systemctl --user restart"
-
-# (La)TeX
-alias tli="sudo tlmgr install"
-alias ltp="latexmk -pdf"
-alias ltc="latexmk -c"
-
-
-# Misc
+# Misc laptop
 # Wireless force rescan for APs
 alias wscan="nmcli device wifi rescan"
 alias wreset="sudo sh -c 'rmmod iwldvm && sudo modprobe iwldvm'"
 
-# OpenMPI (Uni FIT3143)
-# This loads the dev environment, ready to use commands including 'mpirun'
-# Fedora: `dnf install openmpi openmpi-devel libomp libomp-devel`
-alias mpiload="module load mpi/openmpi-x86_64"
 
-
-# Template copier thing
-# Copy a template and edit it.
+# Utility functions
+# Template copier thing - Copy a template and edit it.
 templateEdit() {
 	[ ! -f "$2" ] && cp "$HOME/template/$1" "$2"
 	$EDITOR "$2"
@@ -122,24 +97,62 @@ alias txg="templateEdit general.tex"
 vf() { fzf | xargs -r -I % $EDITOR % ;}
 # vf for scripts dir (subshell so no cd switch)
 vfs() { ( cd $HOME/.scripts && vf ) ;}
-# jumptool listings
-cdj() { d="$(jumptool dir fzf)" && cd "$d" ;}
-vfc() { jumptool config fzf ;}
+
+# nohup/disown no output combo opener
+nh() {
+	nohup "$@" >/dev/null 2>&1 &
+	disown
+}
+# Open with xdg-open handler in background
+alias open="nh xdg-open"
+alias reveal="nh dolphin --select --new-window"
+
+# timestamps with any decimal points/guessed precision (ns/ms/etc)
+ts() {
+	[ -z "$1" ] && { gdate +%s%N | sed 's/./&./10'; return; }
+	gdate -d "@$(echo "$1" | sed '/^[0-9]\{10\}\([0-9]\{3\}\)\{1,3\}$/ s/./&./10')"
+}
+
+# Timezone helpers with things i usually interact with
+alias tjp="TZ=Asia/Tokyo "
+alias tkr="TZ=Asia/Seoul "
+alias thk="TZ=Asia/Hong_Kong "
+alias tchi="TZ=America/Chicago "
+alias tutc="TZ=UTC "
+
+# 'pipelining' utils e.g. `docker ps -a | skip 1 | col 1 |:: docker rm _`
+# from: https://news.ycombinator.com/item?id=38769352
+alias ::='sed "$ s/\n$//" | xargs -I_ --'
+col() { eval "awk '{ print \$$1 }'" ;}
+skip() { tail -n +$(($1 + 1)) ;}
+take() { head -n $1 ;}
+# my own scuffed takes lol
+dcol() { eval "awk -F$2 '{ print \$$1 }'" ;}
+replace() { tr "$1" "$2" | sed "s/$2\$//" ;}
+commas() { replace "\n" "," ;}
+piped() { replace "\n" "|" ;}
+appendl() { sed "s&\$&$1&" ;}
+prependl() { sed "s&^&$1&" ;}
+listify() { sed 's/^/ - /' ;}
+# not the best implementation, but quick hack for lines of things -> sql IN
+tuples() { sed "s/$/',/;s/^/'/" | sed -z 's/\n/ /g;s/^/(/;s/, $/)\n/' ;}
+path1() { dcol 1 '/' ;}
+
+# Show JSON if interactive, or Pipe through
+showjson() { [ -t 1 ] && { jq -C | less -R ;} || cat ;}
+
+# curl silently, but also display the url while at it (intended for easy get only)
+curllog() {
+	echo "[INFO] $1" >&2
+	curl -s "$1"
+}
 
 
 # Host-based include
 [ -f "$NT_OVERRIDES/aliasrc" ] && . "$NT_OVERRIDES/aliasrc"
 [ -f "$HOME/.config/shortcutrc" ] && . "$HOME/.config/shortcutrc"
-
+# (non-checked-in work secrets)
+[ -f "$NT_OVERRIDES/aliasrc.work" ] && . "$NT_OVERRIDES/aliasrc.work" 2>/dev/null 
 
 # wal colors
 [ ! -z "$NT_USE_WAL" ] && [ -r "$HOME/.cache/wal/sequences" ] && (cat $HOME/.cache/wal/sequences &)
-
-# tmux ssh rename
-# if [ "$TERM" = "tmux-256color" ] && [ -n "$TMUX" ]; then
-# 	ssh() {
-# 		tmux rename-window "ssh($(echo $* | cut -d . -f 1))"
-# 		command ssh "$@"
-# 		tmux set-window-option automatic-rename "on" 1>/dev/null
-# 	}
-# fi

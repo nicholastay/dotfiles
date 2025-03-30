@@ -223,10 +223,6 @@ bindsym $mod+Shift+d exec displayselect
 bindsym $mod+m exec evolution
 bindsym $mod+Shift+f exec easyeffects
 
-bindsym $mod+F2 exec jumptool config
-bindsym $mod+Shift+F2 exec jumptool dir
-bindsym $mod+F3 exec launchpersonal
-
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym Shift+XF86MonBrightnessDown exec brightnessctl set 10%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
@@ -247,7 +243,5 @@ bindsym Print exec screenshot
 bindsym Shift+Print exec screenshot rect
 bindsym $mod+Shift+s exec screenshot rect
 bindsym Control+Print exec screenshot window
-
-bindsym $mod+Shift+v exec wgvpn
 
 bindsym $mod+Delete exec swaylock

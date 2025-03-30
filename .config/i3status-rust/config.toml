@@ -4,11 +4,6 @@ theme = "native"
 [icons]
 icons = "awesome4"
 
-# [[block]]
-# block = "custom"
-# command = "echo 😷\"$($HOME/.scripts/bar/coronaupd)\""
-# interval = 300
-
 [[block]]
 block = "sound"
 headphones_indicator = true

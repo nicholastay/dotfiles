@@ -12,7 +12,7 @@ PS1="%F{006}%n%f%F{243}@%f%F{013}%m%f%F{243}:%f%(5~|%-1~/…/%3~|%4~) » "
 
 # Simplify prompt in some cases...
 # ... linux TTY (zsh is our default shell, annoying if gets in way of debug).
-[ "$TERM" = "linux" ] && PS1="%F{cyan}%n%f%F{white}@%f%F{magenta}%m%f%F{white}:%f%(5~|%-1~/…/%3~|%4~)$ "
+[ "$TERM" = "linux" ] && PS1="%F{cyan}%n%f%F{white}@%f%F{magenta}%m%f%F{white}:%f%(5~|%-1~/…/%3~|%4~)$ " && LC_TIME=en_AU.UTF-8
 # ... SSH.
 [ ! -z $SSH_CLIENT ] && PS1="(SSH) $PS1"
 
@@ -142,22 +142,23 @@ function xterm_title_preexec () {
 	print -Pn -- '\e]2;' && print -n -- "${(q)1}\a"
 	[[ "$TERM" == 'screen'* ]] && { print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-}:\005{B}%~\005{-} %# ' && print -n -- "${(q)1}\e\\"; }
 }
-if [[ "$TERM" == (screen*|xterm*|rxvt*|tmux*|putty*|konsole*|gnome*|st*|alacritty*|foot*) ]]; then
-	add-zsh-hook -Uz precmd xterm_title_precmd
-	add-zsh-hook -Uz preexec xterm_title_preexec
-fi
+add-zsh-hook -Uz precmd xterm_title_precmd
+add-zsh-hook -Uz preexec xterm_title_preexec
+
+# fzf - fuzzy finding in ctrl+r,ctrl+t,alt+c
+source /usr/share/fzf/shell/key-bindings.zsh 2>/dev/null
 
 # Autosuggestion plugin
-[ "$TERM" != "linux" ] && \
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+[ "$TERM" != "linux" ] && source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_STRATEGY=(completion history)
 bindkey '^K' autosuggest-execute
 
 # Syntax highlighting plugin
-# Must be loaded last
+# Must be loaded last - don't override colouring in tty
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null && \
 [ "$TERM" != "linux" ] && \
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null && { \
+{ \
 	# Add some color changes from the default green (to lighter)
 	ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=114,underline && \
 	ZSH_HIGHLIGHT_STYLES[precommand]=fg=114,underline && \
