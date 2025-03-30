@@ -4,9 +4,6 @@
 # idk what i'm doing so yeah, let's have some fun :)
 #
 
-# Load .profile explicitly (it's annoying each time)
-source $HOME/.profile
-
 # Setup the prompt (PS1)
 PS1="%F{006}%n%f%F{243}@%f%F{013}%m%f%F{243}:%f%(5~|%-1~/…/%3~|%4~) » "
 

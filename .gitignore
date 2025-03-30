@@ -29,6 +29,7 @@
 !/.config/swaylock/
 !/.config/wireplumber/
 !/.config/zathura/
+!/.config/zsh
 # files
 !/.config/aliasrc/
 !/.config/inputrc/

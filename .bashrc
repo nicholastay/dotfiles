@@ -1,9 +1,6 @@
 # Nick's .bashrc
 # Pretty lean, not much really to configure
 
-# Load .profile explicitly (it's annoying each time)
-source $HOME/.profile
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 

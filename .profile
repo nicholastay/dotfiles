@@ -59,4 +59,4 @@ export _JAVA_SETTINGS="-Dswing.aatext=TRUE -Dawt.useSystemAAFontSettings=on" # a
 
 
 # swap caps on tty if allowed
-sudo -n loadkeys $HOME/.local/ntay/ttymaps.kmap 2>/dev/null
+[ "$TERM" = "linux" ] && sudo -n loadkeys $HOME/.local/ntay/ttymaps.kmap 2>/dev/null

@@ -7,7 +7,7 @@ r	ranger	$HOME/.config/ranger/rc.conf
 v	neovim	$HOME/.config/nvim
 vi	neovim-init	$HOME/.config/nvim/init.lua
 b	bash	$HOME/.bashrc
-z	zsh	$HOME/.zshrc
+z	zsh	$HOME/.config/zsh/.zshrc
 p	profile	$HOME/.profile
 i	sway	$HOME/.config/sway/config
 o	i3status-rust	$HOME/.config/i3status-rust/config.toml
