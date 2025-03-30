@@ -128,12 +128,12 @@ vfc() { jumptool config fzf ;}
 
 
 # Host-based include
-[ -f "$NEX_OVERRIDES/aliasrc.$NEX_HOST" ] && . "$NEX_OVERRIDES/aliasrc.$NEX_HOST"
+[ -f "$NT_OVERRIDES/aliasrc" ] && . "$NT_OVERRIDES/aliasrc"
 [ -f "$HOME/.config/shortcutrc" ] && . "$HOME/.config/shortcutrc"
 
 
 # wal colors
-[ ! -z "$NEX_USE_WAL" ] && [ -r "$HOME/.cache/wal/sequences" ] && (cat $HOME/.cache/wal/sequences &)
+[ ! -z "$NT_USE_WAL" ] && [ -r "$HOME/.cache/wal/sequences" ] && (cat $HOME/.cache/wal/sequences &)
 
 # tmux ssh rename
 # if [ "$TERM" = "tmux-256color" ] && [ -n "$TMUX" ]; then

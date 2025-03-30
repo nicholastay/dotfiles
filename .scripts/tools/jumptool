@@ -3,53 +3,42 @@
 confs="\
 s	ssh	$HOME/.ssh/config
 r	ranger	$HOME/.config/ranger/rc.conf
-v	neovim	$HOME/.config/nvim/init.lua
+v	neovim	$HOME/.config/nvim
 b	bash	$HOME/.bashrc
-z	zsh	$HOME/.config/zsh/.zshrc
-xr	xresources	$HOME/.Xresources
-x	xinitrc	$HOME/.xinitrc
+z	zsh	$HOME/.zshrc
 p	profile	$HOME/.profile
-o	i3status-rust	$HOME/.config/i3status-rust/config.toml
-c	picom	$HOME/.config/picom.conf
-a	aliasrc	$HOME/.config/aliasrc
-i3	i3	$HOME/.config/i3/config
 i	sway	$HOME/.config/sway/config
+o	i3status-rust	$HOME/.config/i3status-rust/config.toml
+a	aliasrc	$HOME/.config/aliasrc
 I	inputrc	$HOME/.config/inputrc
-l	lf	$HOME/.config/lf/lfrc
 f	fontconfig	$HOME/.config/fontconfig/fonts.conf
 d	dunst	$HOME/.config/dunst/dunstrc
 t	tmux	$HOME/.tmux.conf
-A	aliasrc-override	$NEX_OVERRIDES/aliasrc.$NEX_HOST
-P	profile-override	$NEX_OVERRIDES/profile.$NEX_HOST
-X	xprofile-override	$NEX_OVERRIDES/xprofile.$NEX_HOST
+A	aliasrc-override	$NT_OVERRIDES/aliasrc
+P	profile-override	$NT_OVERRIDES/profile
 J	jumptool	$HOME/.scripts/tools/jumptool
-Jc	confs-override	$NEX_OVERRIDES/confs.$NEX_HOST
-Jd	dirs-override	$NEX_OVERRIDES/dirs.$NEX_HOST"
+Jc	confs-override	$NT_OVERRIDES/confs
+Jd	dirs-override	$NT_OVERRIDES/dirs"
 
 dirs="\
-c	cloud	$HOME/cloud
-d	dev	$HOME/dev
-D	downloads	$HOME/downloads
-u	uni	$HOME/uni
+c	cloud	$HOME/Nextcloud
+d	dev	$HOME/Dev
+D	downloads	$HOME/Downloads
 C	config	$HOME/.config
-S	scripts	$HOME/.scripts
-St	tools	$HOME/.scripts/tools
+s	scripts	$HOME/.scripts
 Sb	bar	$HOME/.scripts/bar
 Sp	personal	$HOME/.scripts/personal
-t	template	$HOME/template
-N	nex	$HOME/.local/nex
-H	overrides	$NEX_OVERRIDES"
+t	tools	$HOME/.scripts/tools
+T	template	$HOME/template
+N	ntaylocal	$HOME/.local/ntay
+O	overrides	$NT_OVERRIDES"
 
-[ -f "$NEX_OVERRIDES/confs.$NEX_HOST" ] && confs="$confs\n$(cat $NEX_OVERRIDES/confs.$NEX_HOST)"
-[ -f "$NEX_OVERRIDES/dirs.$NEX_HOST" ] && dirs="$dirs\n$(cat $NEX_OVERRIDES/dirs.$NEX_HOST)"
+[ -f "$NT_OVERRIDES/jumptool_confs" ] && confs="$confs\n$(cat $NT_OVERRIDES/jumptool_confs)"
+[ -f "$NT_OVERRIDES/jumptool_dirs" ] && dirs="$dirs\n$(cat $NT_OVERRIDES/jumptool_dirs)"
 
 sel="$2"
 selector() {
-	if [ "$sel" = "fzf" ]; then
-		choice="$(echo "$1" | cut -d'	' -f 2 | fzf --prompt="$2: ")" || exit 1
-	else
-		choice="$(echo "$1" | cut -d'	' -f 2 | dmenu -i -p "$2")" || exit 1
-	fi
+	choice="$(echo "$1" | cut -d'	' -f 2 | fzf --prompt="$2: ")" || exit 1
 	echo "$1" | awk -F'	' '$2 == "'"$choice"'" { print $3; exit; }'
 }
 
@@ -63,21 +52,19 @@ case "$1" in
 		: > $HOME/.config/ranger/shortcut.conf
 		echo "$confs" | awk -F'	' '{ print "map C" $1 " cd " $3 }' >> $HOME/.config/ranger/shortcut.conf
 		echo "$dirs" | awk -F'	' '{ print "map g" $1 " cd " $3 }' >> $HOME/.config/ranger/shortcut.conf
-		# zsh named dirs
-		echo "$dirs" | awk -F'	' '{ print "hash -d " $2 "=" $3 }' > $HOME/.config/zshnameddirs
 		;;
 	config)
 		# pick config
 		conf="$(selector "$confs" "edit config?")"
-		{ [ "$sel" = "fzf" ] && $EDITOR "$conf" || setsid $TERMINAL -e $EDITOR "$conf" ;}
+		$EDITOR "$conf"
 		;;
 	dir)
 		# pick dir
 		dir="$(selector "$dirs" "jump to?")"
-		[ -d "$dir" ] && cd "$dir" && \
-			{ [ "$sel" = "fzf" ] && echo "$dir" || setsid $TERMINAL ;}
+		[ -d "$dir" ] && cd "$dir" && echo "$dir"
 		;;
 	*)
+		echo "usage: $0 <generate|config|dir>"
 		exit 1
 		;;
 esac
