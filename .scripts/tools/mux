@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# usage: mux [cmds...]
+
+cmds=( 'new-session' )
+for x in "$@"; do cmds+=( "$x" ';' 'select-layout' 'tiled' ';' 'split-window' ); done
+tmux "${cmds[@]:0:${#cmds[@]}-1}"
