@@ -189,6 +189,3 @@ curllog() {
 [ -f "$HOME/.config/shortcutrc" ] && . "$HOME/.config/shortcutrc"
 # (non-checked-in work secrets)
 [ -f "$NT_OVERRIDES/aliasrc.work" ] && . "$NT_OVERRIDES/aliasrc.work" 2>/dev/null 
-
-# wal colors
-[ ! -z "$NT_USE_WAL" ] && [ -r "$HOME/.cache/wal/sequences" ] && (cat $HOME/.cache/wal/sequences &)

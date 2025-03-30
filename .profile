@@ -27,6 +27,7 @@ esac
 [ "$DESKTOP_SESSION" != "plasma" ] && export QT_QPA_PLATFORMTHEME=qt5ct
 
 # Programs
+export TERMINAL="kitty"
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
 export BROWSER="firefox"

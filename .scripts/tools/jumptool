@@ -15,7 +15,8 @@ a	aliasrc	$HOME/.config/aliasrc
 I	inputrc	$HOME/.config/inputrc
 f	fontconfig	$HOME/.config/fontconfig/fonts.conf
 d	dunst	$HOME/.config/dunst/dunstrc
-t	tmux	$HOME/.tmux.conf
+k	kitty	$HOME/.config/kitty/kitty.conf
+T	tmux	$HOME/.tmux.conf
 A	aliasrc-override	$NT_OVERRIDES/aliasrc
 P	profile-override	$NT_OVERRIDES/profile
 J	jumptool	$HOME/.scripts/tools/jumptool
