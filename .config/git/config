@@ -67,3 +67,5 @@
 	smudge = git-lfs smudge -- %f
 [pull]
 	rebase = true
+[commit]
+	verbose = true
