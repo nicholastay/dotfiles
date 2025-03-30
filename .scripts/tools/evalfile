@@ -1,0 +1,11 @@
+#!/bin/bash
+
+[ -z "$1" ] && echo "usage: $0 <file to eval text>" && exit 1
+
+file="$1"
+
+# https://stackoverflow.com/a/12422379/1322463
+eval "cat <<EOF
+$(<$file)
+EOF
+" 2> /dev/null
