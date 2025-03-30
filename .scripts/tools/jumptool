@@ -2,6 +2,7 @@
 
 confs="\
 s	ssh	$HOME/.ssh/config
+g	git	$HOME/.config/git/config
 r	ranger	$HOME/.config/ranger/rc.conf
 v	neovim	$HOME/.config/nvim
 vi	neovim-init	$HOME/.config/nvim/init.lua

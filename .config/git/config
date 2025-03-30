@@ -1,5 +1,8 @@
+[user]
+	name = Nicholas Tay
+	email = nick@windblume.net
 [include]
-	path = ~/.config/git/user
+	path = config.work
 [alias]
 	p = push
 	pu = push -u
@@ -59,7 +62,9 @@
 	cl = clone --recurse-submodules
 	cll = clone
 [core]
-	excludesfile = $HOME/.config/git/gitignore
+	excludesfile = ~/.config/git/gitignore
+[init]
+	defaultBranch = master
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
@@ -69,3 +74,13 @@
 	rebase = true
 [commit]
 	verbose = true
+[difftool]
+	prompt = false
+[diff]
+	tool = nvimdiff
+[difftool "nvimdiff"]
+	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[pretty]
+	onelinedetail = %C(bold red)%h %Creset%s %C(bold green)%aN %C(bold blue)(%ar)%Creset%C(yellow)%d%Creset
+[http]
+	emptyAuth = true
