@@ -42,7 +42,6 @@ export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export LESSHISTFILE="-"
 export RXVT_SOCKET="$HOME/.cache/urxvtd"
 export WGETRC="$HOME/.config/wget/wgetrc"
-export ZDOTDIR="$HOME/.config/zsh"
 export CARGO_HOME="$HOME/.local/share/cargo"
 
 # Tool configs
