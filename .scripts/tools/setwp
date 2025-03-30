@@ -5,13 +5,8 @@ wall="$HOME/.config/wall.jpg"
 if [ -f "$1" ]; then
 	cp -f "$1" "$wall"
 	[ -d $HOME/.cache/wal ] && rm $HOME/.cache/wal/schemes/*__config_wall_jpg*.json
-	[ -d $HOME/.cache/thumbnails/neofetch ] && rm $HOME/.cache/thumbnails/neofetch/*.jpg 2>/dev/null
 fi
 
-if [ "$DESKTOP_SESSION" = "sway" ]; then
-	swaymsg 'output "*" bg '"$wall"' fill'
-else
-	feh --bg-fill "$wall"
-fi
+swaymsg 'output "*" bg '"$wall"' fill'
 
-command -v wal >/dev/null && [ ! -z $NEX_USE_WAL ] && wal -n -t -i "$wall" --cols16 darken
+command -v wal >/dev/null && [ ! -z $NT_USE_WAL ] && wal -n -t -i "$wall" --cols16 darken

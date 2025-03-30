@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# mainly used in ranger for interactive confirm empty
+
 echo "Trash list:"
 trash-list
 

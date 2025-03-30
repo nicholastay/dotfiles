@@ -1,6 +1,8 @@
 #!/bin/sh
+
 # This script was made by `goferito` on Github.
-# Some cleanup by Luke.
+# Some cleanup by Luke Smith
+# Modified for sway by ntay
 
 [ -z "$1" ] && echo "No direction provided" && exit 1
 distanceStr="2 px or 2 ppt"

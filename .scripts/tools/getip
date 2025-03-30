@@ -1,6 +1,10 @@
 #!/bin/sh
 
-[ ! -z "$WLAN_IFACE" ] && WLAN_IFACE="wlp3s0"
-ip="$(ip a s dev "$WLAN_IFACE" | awk '/inet / { print $2 }' | sed 's/\/.*//')"
-[ "$2" = "notify" ] && notify-send "IP address ($1)" "$ip"
+ip="(unknown)"
+if [ "$1" = "pub" ]; then
+	_ip="$(dig +short myip.opendns.com @resolver1.opendns.com -4)" && ip="$_ip"
+else
+	_ip="$(ip -j route show default | jq -r 'first | .prefsrc')" && ip="$_ip"
+fi
+
 echo "$ip"

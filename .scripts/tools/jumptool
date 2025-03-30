@@ -4,6 +4,7 @@ confs="\
 s	ssh	$HOME/.ssh/config
 r	ranger	$HOME/.config/ranger/rc.conf
 v	neovim	$HOME/.config/nvim
+vi	neovim-init	$HOME/.config/nvim/init.lua
 b	bash	$HOME/.bashrc
 z	zsh	$HOME/.zshrc
 p	profile	$HOME/.profile
@@ -21,16 +22,16 @@ Jc	confs-override	$NT_OVERRIDES/confs
 Jd	dirs-override	$NT_OVERRIDES/dirs"
 
 dirs="\
-c	cloud	$HOME/Nextcloud
+C	cloud	$HOME/Nextcloud
 d	dev	$HOME/Dev
 D	downloads	$HOME/Downloads
-C	config	$HOME/.config
+c	config	$HOME/.config
 s	scripts	$HOME/.scripts
 Sb	bar	$HOME/.scripts/bar
 Sp	personal	$HOME/.scripts/personal
 t	tools	$HOME/.scripts/tools
 T	template	$HOME/template
-N	ntaylocal	$HOME/.local/ntay
+ln	ntaylocal	$HOME/.local/ntay
 O	overrides	$NT_OVERRIDES"
 
 [ -f "$NT_OVERRIDES/jumptool_confs" ] && confs="$confs\n$(cat $NT_OVERRIDES/jumptool_confs)"
@@ -56,7 +57,7 @@ case "$1" in
 	config)
 		# pick config
 		conf="$(selector "$confs" "edit config?")"
-		$EDITOR "$conf"
+		[ -e "$conf" ] && $EDITOR "$conf"
 		;;
 	dir)
 		# pick dir

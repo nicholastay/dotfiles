@@ -1,9 +1,0 @@
-#!/bin/sh
-
-hn="$(hostname)"
-msg=$(cat "$HOME/.local/nex/banner/$hn") || msg="$hn"
-msg="
-[System Locked]
-$msg
-"
-physlock -p "$msg"

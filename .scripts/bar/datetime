@@ -1,6 +1,0 @@
-#!/bin/sh
-
-[ "$BLOCK_BUTTON" = "1" ] && nnotify time
-[ "$BLOCK_BUTTON" = "3" ] && nnotify cal
-
-LC_TIME=zh_CN.UTF-8 date +"%x (%a) %H:%M"

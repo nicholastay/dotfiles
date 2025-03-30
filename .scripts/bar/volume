@@ -1,5 +1,0 @@
-#!/bin/sh
-
-[ "$BLOCK_BUTTON" = "1" ] && pactl set-sink-mute @DEFAULT_SINK@ toggle
-
-pamixer --get-mute >/dev/null && echo "-" || pamixer --get-volume
