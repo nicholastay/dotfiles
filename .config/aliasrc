@@ -44,6 +44,7 @@ alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
 alias vimdiff="nvim -d"
+alias vv="NT_NVIM_IDE=1 nvim"
 
 alias g="git"
 

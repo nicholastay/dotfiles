@@ -62,14 +62,22 @@
 
 
 # Ignore back again
+# Ignore system
 .Xauthority
 .xsession-errors
 .viminfo
 .lesshst
-.DS_Store
 .*_history*
 .*_logout
 *.swo
 *.swp
 /.gtkrc*
-
+.netrc
+# Ignore cringe
+.pypirc
+.npmrc
+.condarc
+# Ignore macOS
+.DS_Store
+.CFUserTextEncoding
+.localized
