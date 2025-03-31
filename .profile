@@ -16,7 +16,7 @@ export NT_HOST="$(hostname -s)"
 export NT_OVERRIDES="$HOME/.local/ntay/overrides/$NT_HOST"
 # (alternative: pull _current for apps that can't substitute. or symlink into this if we ALWAYS expect an override;
 #    i.e. cannot #include, must have a full file. maybe can script with evalfile/envsubst)
-[ ! -e "$HOME/.local/ntay/overrides/_current" ] && ln -s "$NT_OVERRIDES" "$HOME/.local/ntay/overrides/_current"
+[ ! -e "$HOME/.local/ntay/overrides/_current" ] && ln -sf "$NT_OVERRIDES" "$HOME/.local/ntay/overrides/_current"
 
 # cannot check WAYLAND_DISPLAY as it is not ready yet at login
 [ "$DESKTOP_SESSION" = "sway" ] && export NT_IS_WAYLAND=1
@@ -50,6 +50,9 @@ export CARGO_HOME="$HOME/.local/share/cargo"
 # Tool configs
 export SUDO_ASKPASS="$HOME/.scripts/tools/dpass"
 export FZF_DEFAULT_OPTS="--layout=reverse --height 85%"
+# LS colours
+command -v dircolors >/dev/null && eval "$(dircolors)"
+command -v gdircolors >/dev/null && eval "$(gdircolors)"  # macOS
 
 # Java nonsense
 export _JAVA_SETTINGS="-Dswing.aatext=TRUE -Dawt.useSystemAAFontSettings=on" # antialising for swing and default toolkit

@@ -38,7 +38,7 @@ local plugins = {
 		priority = 1000,
 		config = function()
 			require("catppuccin").setup({
-				flavour = os.getenv("NT_NVIM_CATPPUCCIN") or "mocha",
+				flavour = os.getenv("NT_LIGHT") and "latte" or "mocha",
 				transparent_background = true,
 			})
 			vim.cmd.colorscheme "catppuccin"

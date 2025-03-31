@@ -1,0 +1,25 @@
+# Additional key utils
+brew "subversion"
+
+# Engineering
+brew "k9s"
+brew "krew"
+brew "kubernetes-cli"
+
+# Additional nice utils
+brew "the_silver_searcher"
+brew "yq"
+
+# Dev
+brew "node"
+brew "openjdk"
+brew "pyenv"
+brew "pyenv-virtualenv"
+brew "python-tk"
+
+# Random UI app
+brew "aerial"
+cask "microsoft-remote-desktop"
+cask "openlens"
+cask "postman"
+cask "visual-studio-code"

@@ -1,0 +1,51 @@
+tap "homebrew/core"
+tap "homebrew/cask"
+tap "homebrew/bundle"
+tap "nicholastay/tap"
+
+
+# Key utilities
+brew "bash"
+brew "fzf"
+brew "git"
+brew "htop"
+brew "jq"
+brew "neovim"
+brew "tree"
+brew "tmux"
+brew "sk"
+brew "fd"
+
+# Dev
+brew "go"
+brew "python"
+
+# macOS UI apps
+cask "firefox"
+cask "iterm2"
+cask "keepassxc"
+cask "via"
+
+# macOS UI tools
+cask "hiddenbar"
+cask "unnaturalscrollwheels"
+cask "alt-tab"
+cask "easy-move-plus-resize"
+cask "rectangle"
+
+# Nice utilities
+brew "zsh-autosuggestions"
+brew "zsh-completions"
+brew "zsh-syntax-highlighting"
+brew "atuin"
+brew "imagemagick"
+brew "mtr"
+brew "ranger"
+brew "rlwrap"
+brew "passgen"
+
+# GNU variant tools (nice to have via 'g' prefix)
+brew "coreutils"
+brew "diffutils"
+brew "gnu-sed"
+brew "grep"

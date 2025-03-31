@@ -4,8 +4,8 @@
 # idk what i'm doing so yeah, let's have some fun :)
 #
 
-# Setup the prompt (PS1)
-PS1="%F{006}%n%f%F{243}@%f%F{013}%m%f%F{243}:%f%(5~|%-1~/…/%3~|%4~) » "
+# Setup the prompt (PS1) - override possibility for extras so more is set below
+NT_PROMPT_BASE="%F{006}%n%f%F{243}@%f%F{013}%m%f%F{243}:%f%(5~|%-1~/…/%3~|%4~)"
 
 # Simplify prompt in some cases...
 # ... linux TTY (zsh is our default shell, annoying if gets in way of debug).
@@ -48,7 +48,6 @@ setopt EXTENDED_HISTORY
 # ZSH Completion
 # Use menu driven tab completion
 zstyle ':completion:*' menu select
-eval "$(dircolors)"
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 # Speed up compinit by only checking once a day
@@ -58,6 +57,13 @@ for dump in $HOME/.cache/zcompdump(N.mh+24); do
 done
 compinit -C -d "$HOME/.cache/zcompdump"
 
+# macOS: Add brew as a spot to also search
+[ ! -z "$NT_IS_MACOS" ] && {
+	# Completion via brew
+	if type brew &>/dev/null; then
+	    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+	fi
+}
 
 # Use vim keys
 bindkey -v
@@ -142,11 +148,26 @@ function xterm_title_preexec () {
 add-zsh-hook -Uz precmd xterm_title_precmd
 add-zsh-hook -Uz preexec xterm_title_preexec
 
-# fzf - fuzzy finding in ctrl+r,ctrl+t,alt+c
-source /usr/share/fzf/shell/key-bindings.zsh 2>/dev/null
+# fzf - fuzzy finding in ctrl+r(non-atuin),ctrl+t,alt+c
+{
+	source /usr/share/fzf/shell/key-bindings.zsh 2>/dev/null || \
+	{ command -v fzf >/dev/null && eval "$(fzf --zsh)" ;} # macOS... for now
+}
+
+# atuin - use if it's installed for better sqlite completion :)
+# (init below fzf so we take the key back)
+command -v atuin >/dev/null && {
+	# Use sqlite history via atuin, but no up arrow pls
+	eval "$(atuin init zsh --disable-up-arrow)"
+	# Don't register atuin first because it will hallucinate hard before real completions
+	ZSH_AUTOSUGGEST_STRATEGY=(completion atuin history)
+}
 
 # Autosuggestion plugin
-[ "$TERM" != "linux" ] && source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+[ "$TERM" != "linux" ] && {
+	source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null \
+	|| source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+}
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_STRATEGY=(completion history)
 bindkey '^K' autosuggest-execute
@@ -157,14 +178,20 @@ source $HOME/.config/aliasrc
 # Load overrides
 source $NT_OVERRIDES/zshrc 2>/dev/null
 
+# Finalise prompt after overrides
+PROMPT="$NT_PROMPT_BASE$NT_PROMPT_EXTRA%f » "
 
 # Syntax highlighting plugin
 # Must be loaded last - don't override colouring in tty
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null && \
+{
+	source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null \
+	|| source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+} && \
 [ "$TERM" != "linux" ] && \
-{ \
+[ -z "$NT_LIGHT" ] && \
+{
 	# Add some color changes from the default green (to lighter)
-	ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=114,underline && \
-	ZSH_HIGHLIGHT_STYLES[precommand]=fg=114,underline && \
+	ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=114,underline
+	ZSH_HIGHLIGHT_STYLES[precommand]=fg=114,underline
 	ZSH_HIGHLIGHT_STYLES[arg0]=fg=114
 }

@@ -18,6 +18,7 @@
 !/.config/fontconfig/
 !/.config/foot/
 !/.config/git/
+/.config/git/config.work
 !/.config/i3status-rust/
 !/.config/kitty/
 !/.config/mpv/
@@ -48,6 +49,11 @@
 /.local/ntay/overrides/_forced
 /.local/ntay/overrides/_current
 
+# macOS
+!/Library/
+/Library/*
+!/Library/KeyBindings/
+
 # Specific folders
 !/Templates/
 
@@ -61,7 +67,7 @@
 .viminfo
 .lesshst
 .DS_Store
-.*_history
+.*_history*
 .*_logout
 *.swo
 *.swp
