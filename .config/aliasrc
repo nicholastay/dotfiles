@@ -12,8 +12,7 @@ alias q="exit"
 alias cp="cp -iv"
 alias mv="mv -iv"
 alias rm="rm -Iv"
-alias ll="ls -lh"
-alias la="ls -lah"
+alias ll="ls -lah"
 alias lsd="ls -d"
 alias sudo="sudo "
 alias ag="rg -S"
@@ -173,19 +172,17 @@ listify() { sed 's/^/ - /' ;}
 # not the best implementation, but quick hack for lines of things -> sql IN
 tuples() { sed "s/$/',/;s/^/'/" | sed -z 's/\n/ /g;s/^/(/;s/, $/)\n/' ;}
 path1() { dcol 1 '/' ;}
+prepend() { cat <(echo "$1") - ;}
 
 # Show JSON if interactive, or Pipe through
 showjson() { [ -t 1 ] && { jq -C | less -R ;} || cat ;}
 
 # curl silently, but also display the url while at it (intended for easy get only)
 curllog() {
-	echo "[INFO] $1" >&2
+	echo "[DEBUG] $1" >&2
 	curl -s "$1"
 }
 
-
-# Host-based include
-[ -f "$NT_OVERRIDES/aliasrc" ] && . "$NT_OVERRIDES/aliasrc"
 [ -f "$HOME/.config/shortcutrc" ] && . "$HOME/.config/shortcutrc"
-# (non-checked-in work secrets)
-[ -f "$NT_OVERRIDES/aliasrc.work" ] && . "$NT_OVERRIDES/aliasrc.work" 2>/dev/null 
+# Host-based include
+[ -f "$NT_OVERRIDES/aliasrc" ] && . "$NT_OVERRIDES/aliasrc" 2>/dev/null

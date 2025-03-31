@@ -151,6 +151,13 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_STRATEGY=(completion history)
 bindkey '^K' autosuggest-execute
 
+
+# Load our common aliases
+source $HOME/.config/aliasrc
+# Load overrides
+source $NT_OVERRIDES/zshrc 2>/dev/null
+
+
 # Syntax highlighting plugin
 # Must be loaded last - don't override colouring in tty
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null && \
@@ -161,9 +168,3 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/nul
 	ZSH_HIGHLIGHT_STYLES[precommand]=fg=114,underline && \
 	ZSH_HIGHLIGHT_STYLES[arg0]=fg=114
 }
-
-
-# Load our common aliases
-source $HOME/.config/aliasrc
-# Load overrides
-source $NT_OVERRIDES/zshrc 2>/dev/null
