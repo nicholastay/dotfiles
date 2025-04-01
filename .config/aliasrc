@@ -17,6 +17,8 @@ alias lsd="ls -d"
 alias sudo="sudo "
 alias ag="rg -S"
 alias tree="tree -C"
+# could use `kitten ssh`, but don't want to send arbitrary stuff to servers by default
+[ "$TERM" = "xterm-kitty" ] && alias ssh="TERM=xterm-256color ssh"
 
 # Utility colours
 alias ls="ls --color=auto --group-directories-first"
