@@ -4,7 +4,7 @@ wall="$HOME/.config/wall.jpg"
 
 if [ -f "$1" ]; then
 	cp -f "$1" "$wall"
-	[ -d $HOME/.cache/wal ] && rm $HOME/.cache/wal/schemes/*__config_wall_jpg*.json
+	[ -d $HOME/.cache/wal ] && rm -r $HOME/.cache/wal
 fi
 
 swaymsg 'output "*" bg '"$wall"' fill'

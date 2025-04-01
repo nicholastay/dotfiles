@@ -13,20 +13,6 @@ font mono 10
 # Don't wrap around when changing focus
 focus_wrapping no
 
-for_window [app_id=".*-floater$"] floating enable
-for_window [app_id=".*-floater$"] resize set 780 480
-for_window [app_id=".*-floater$"] move position center
-
-for_window [app_id="org.gnome.Calculator"] floating enable
-for_window [app_id="org.gnome.Calculator"] resize set 360 465
-
-for_window [workspace=".*-f$"] floating enable
-
-for_window [shell="xwayland"] title_format "[X] %title"
-
-# Wallpaper
-output "*" bg $HOME/.config/wall.jpg fill
-
 # Keyboard rebinds
 input "type:keyboard" {
 	# Caps = escape
@@ -44,8 +30,8 @@ input "type:touchpad" {
 	click_method clickfinger
 }
 
+# --------- AUTOSTART --------------
 
-# Autostart
 exec nm-applet --indicator
 exec dunst
 #exec nextcloud --background
@@ -61,6 +47,61 @@ exec swayidle -w \
 	before-sleep swaylock \
 	lock swaylock
 
+# -------- WINDOW RULES ---------
+
+for_window [app_id=".*-floater$"] floating enable
+for_window [app_id=".*-floater$"] resize set 780 480
+for_window [app_id=".*-floater$"] move position center
+
+for_window [app_id="org.gnome.Calculator"] floating enable
+for_window [app_id="org.gnome.Calculator"] resize set 360 465
+
+for_window [workspace=".*-f$"] floating enable
+
+for_window [shell="xwayland"] title_format "[X] %title"
+
+
+# ------------ STYLING ----------------
+
+# Wallpaper
+output "*" bg $HOME/.config/wall.jpg fill
+
+# Standard Good Colours (pink with dark)
+# Define it in this way so wal can shadow, if exists
+set $color0     #16161c
+set $color8     #5b5858
+set $color13    #f075b5
+set $background #14191e
+set $color3     #fab795
+
+# wal include, if exists, to shadow above
+include ~/.cache/wal/colors-sway
+
+set $normal_color   $color0
+set $normal_alt     $color8
+set $focused_color  $color13
+set $bar_color      $backgrounddd
+set $alt_color      $color3
+
+set $transparent    #00000000
+set $alertred       #ff0000
+set $black          #000000
+set $white          #ffffff
+set $fg_color       #e0e0e0
+set $red            $alertred
+
+
+# Pull any overrides
+include $NT_OVERRIDES/sway
+
+
+#                       BORDER		BACKGROUND	TEXT		INDICATOR   CHILD_BORDER
+client.focused          $focused_color $focused_color   $normal_color   $alt_color  $focused_color
+client.unfocused        $normal_alt    $normal_color    $fg_color       $alt_color  $normal_color
+client.focused_inactive $normal_alt    $normal_color    $fg_color       $alt_color  $normal_color
+client.urgent           $alertred      $alertred        $white          $alt_color  $alertred
+client.background $background
+
 # GTK theme needs to be set here for some reason...
 # https://github.com/swaywm/sway/issues/4323
 set $gnome-schema org.gnome.desktop.interface
@@ -72,33 +113,7 @@ exec_always {
 	gsettings set $gnome-schema font-name 'Sans 10'
 }
 
-
-# ------------ COLORS ----------------
-# set Xresources colors:
-#set_from_resource $normal_color  color0  #555753
-#set_from_resource $normal_alt    color8  #555753
-#set_from_resource $focused_color color13 #eeeeec
-#set_from_resource $bar_color     barColor #14191eee
-#set_from_resource $alt_color     color3  #000000
-set $normal_color   #16161c
-set $normal_alt     #5b5858
-set $focused_color  #f075b5
-set $bar_color      #14191edd
-set $alt_color      #fab795
-set $transparent #00000000
-set $alertred    #ff0000
-set $black       #000000
-set $white       #ffffff
-set $fg_color #e0e0e0
-set $red $alertred
-
-#                       BORDER		BACKGROUND	TEXT		INDICATOR   CHILD_BORDER
-client.focused		$focused_color		$focused_color		$normal_color	$alt_color		$focused_color
-client.unfocused	$normal_alt	$normal_color		$fg_color		$alt_color		$normal_color
-client.focused_inactive		$normal_alt		$normal_color		$fg_color	$alt_color		$normal_color
-client.urgent		$alertred	$alertred	$white		$alt_color		$alertred
-client.background $black
-
+# -------------- BAR -------------------
 
 bar {
 	font pango:mono, FontAwesome 10
@@ -122,6 +137,7 @@ bar {
 }
 
 # --------------- i3 BINDINGS --------------
+
 # i3 Focus/Window mgmt
 # focus stuff
 bindsym $mod+h focus left
@@ -200,6 +216,7 @@ bindsym $mod+$alt+l	exec i3resize right
 
 
 # --------------- APP BINDINGS --------------
+
 bindsym $mod+Return exec $TERMINAL
 bindsym $mod+space exec dmenu_run
 
