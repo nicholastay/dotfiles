@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# curl silently, but also display args (best intended for easy get only)
+
+echo "[DEBUG] $*" >&2
+exec curl -s "$@"

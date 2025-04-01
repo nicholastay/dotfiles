@@ -181,12 +181,6 @@ prepend() { cat <(echo "$1") - ;}
 # Show JSON if interactive, or Pipe through
 showjson() { [ -t 1 ] && { jq -C | less -R ;} || cat ;}
 
-# curl silently, but also display the url while at it (intended for easy get only)
-curllog() {
-	echo "[DEBUG] $1" >&2
-	curl -s "$1"
-}
-
 [ -f "$HOME/.config/shortcutrc" ] && . "$HOME/.config/shortcutrc"
 # Host-based include
 [ -f "$NT_OVERRIDES/aliasrc" ] && . "$NT_OVERRIDES/aliasrc" 2>/dev/null
