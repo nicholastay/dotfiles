@@ -26,6 +26,11 @@ case "$OSTYPE" in
 	"darwin"*) export NT_IS_MACOS=1 ;;
 esac
 
+[ ! -z "$NT_IS_MACOS" ] && {
+	[ -d "/opt/homebrew" ] && eval $(/opt/homebrew/bin/brew shellenv)
+	export PATH="${HOMEBREW_PREFIX}/opt/openssl/bin:$PATH"
+}
+
 # For QT apps to theme properly - make sure qt5ct installed
 [ "$DESKTOP_SESSION" != "plasma" ] && export QT_QPA_PLATFORMTHEME=qt5ct
 

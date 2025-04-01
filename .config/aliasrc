@@ -51,10 +51,10 @@ alias vv="NT_NVIM_IDE=1 nvim"
 alias g="git"
 
 alias srcb="source $HOME/.bashrc"
-alias srcz="source $HOME/.zshrc"
+alias srcz="source $HOME/.config/.zshrc"
 alias srcp="source $HOME/.profile"
 alias srca="source $HOME/.config/aliasrc"
-alias srca="source $HOME/.config/shortcutrc"
+alias srcs="source $HOME/.config/shortcutrc"
 
 alias e="$FILE"
 alias r="ranger"

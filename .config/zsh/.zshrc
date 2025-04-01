@@ -95,7 +95,7 @@ bindkey '^[[1;3D' backward-word
 bindkey '^[b' backward-word # iterm
 bindkey '^[[1;3C' forward-word
 bindkey '^[f' forward-word # iterm
-bindkey '\e^?' backward-delete-word # iterm
+bindkey '^[^H' backward-delete-word # iterm - 'send hex codes: 0x1b 0x08' on alt+bksp
 # Move
 bindkey '^B' backward-char
 bindkey '^F' forward-char
