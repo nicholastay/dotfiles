@@ -49,7 +49,8 @@ export CARGO_HOME="$HOME/.local/share/cargo"
 
 # Tool configs
 export SUDO_ASKPASS="$HOME/.scripts/tools/dpass"
-export FZF_DEFAULT_OPTS="--layout=reverse --height 85%"
+export FZF_DEFAULT_OPTS="--layout=reverse --height=85%"
+[ ! -z "$NT_LIGHT" ] && export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=light"
 # LS colours
 command -v dircolors >/dev/null && eval "$(dircolors)"
 command -v gdircolors >/dev/null && eval "$(gdircolors)"  # macOS
