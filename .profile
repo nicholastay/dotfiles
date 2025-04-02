@@ -5,7 +5,7 @@
 #
 
 # PATH: have my stuff shadow over any local binaries,
-export PATH=$HOME/.local/bin:$HOME/.scripts/personal:$HOME/.scripts/tools:$HOME/.scripts/thirdparty:$PATH
+export PATH=$HOME/.local/bin:$HOME/.scripts/personal:$HOME/.scripts/tools:$HOME/.scripts/guitools:$HOME/.scripts/thirdparty:$PATH
 # ... but for flatpak, whatever lol (I really don't want to use them when possible)
 export PATH=$PATH:/var/lib/flatpak/exports/bin
 
@@ -53,7 +53,7 @@ export LESSHISTFILE="-"
 export CARGO_HOME="$HOME/.local/share/cargo"
 
 # Tool configs
-export SUDO_ASKPASS="$HOME/.scripts/tools/dpass"
+export SUDO_ASKPASS="$HOME/.scripts/guitools/dpass"
 export FZF_DEFAULT_OPTS="--layout=reverse --height=85%"
 [ ! -z "$NT_LIGHT" ] && export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=light"
 # LS colours
