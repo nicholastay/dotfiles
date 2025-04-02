@@ -4,6 +4,16 @@ VERBOSE=0
 [ "$1" = "-v" ] && VERBOSE=1
 [ "$1" = "-vv" ] && VERBOSE=2
 
+[ ! -z "$NT_IS_MACOS" ] && {
+	# for fetching network interface info, like name, mac easily in json. doesn't regard extra things like tunnels up though
+	sp=$(system_profiler -json SPNetworkDataType | jq '.SPNetworkDataType[] | {name: ._name, interface, ip: (.IPv4.Addresses?|first), mac: (.Ethernet["MAC Address"])}')
+	# scutil --nwi : only gives active ones, no good API otherwise. join here to assume UP. ifconfig always says UP. maybe can find better source?
+	nwi=$(scutil --nwi | awk '/IPv4 network interface information/ { start=1; next; } !start { next } !$0 || /flags/ { if (iface) print "{\"interface\":\""iface"\",\"ip\":\""addr"\",\"status\":\"UP\"}"; } !$0 { exit } /flags/ { iface=$1 } /address/ { addr=$3 }')
+
+	echo "$sp$nwi" | jq -rs 'group_by(.interface) | .[] | add | [.interface, (.status//"?"), (.ip//"-"), (.mac//"-"), (.name//"?")] | @tsv' | column -t -s $'\t'
+	exit 0
+}
+
 # vverbose=no filter
 filter="true"
 # verbose=hide dockers,lo ifaces
