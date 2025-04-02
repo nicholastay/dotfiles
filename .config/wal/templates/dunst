@@ -1,0 +1,5 @@
+[urgency_normal]
+    background = "{color13}"
+    foreground = "{color0}"
+    frame_color = "{color8}"
+# vim: ft=cfg
