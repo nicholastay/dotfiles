@@ -27,6 +27,8 @@ dirs="\
 C	cloud	$HOME/Nextcloud
 d	dev	$HOME/Dev
 D	downloads	$HOME/Downloads
+w	wallpapers	$HOME/Wallpapers
+p	pictures	$HOME/Pictures
 c	config	$HOME/.config
 s	scripts	$HOME/.scripts
 Sb	bar	$HOME/.scripts/bar
