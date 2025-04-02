@@ -9,9 +9,12 @@ if [ "$1" = "-float" ]; then
 		urxvt*) termargs=$(echo -name floater) ;;
 		alacritty) termargs='-class=floater' ;;
 		foot) termargs='--app-id=foot-floater' ;;
+		kitty) termargs=$(echo --app-id kitty-floater) ;;
 		*) termargs=$(echo -n floater -g 120x34) ;;
 	esac
 fi
 
-# ... then we launch in login shell to ensure settings are all loaded too
-exec $TERMINAL $termargs -e $SHELL -i -c "$*"
+# Interactive shell to ensure settings loaded, in case
+[ ! -z "$1" ] && set -- -e $SHELL -i -c "$*"
+
+exec $TERMINAL $termargs "$@"
