@@ -1,0 +1,14 @@
+#!/bin/sh
+
+VERBOSE=0
+[ "$1" = "-v" ] && VERBOSE=1
+[ "$1" = "-vv" ] && VERBOSE=2
+
+# vverbose=no filter
+filter="true"
+# verbose=hide dockers,lo ifaces
+[ "$VERBOSE" -lt 2 ] && filter="$filter and (.ifname|test(\"^veth|^lo$|^br-|^docker\")|not)"
+# standard=also hide downed
+[ "$VERBOSE" -lt 1 ] && filter="$filter and (.operstate == \"UP\")"
+
+ip -j addr | jq -r '.[] | (first(.addr_info[] | select(.family == "inet"))//null) as $inet | select('"$filter"') | (if $inet then $inet.local + "/" + ($inet.prefixlen|tostring) else "-" end) as $ip | [.ifname, .operstate, $ip, .address] | @tsv' | column -t

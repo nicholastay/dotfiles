@@ -58,7 +58,7 @@ done
 compinit -C -d "$HOME/.cache/zcompdump"
 
 # macOS: Add brew as a spot to also search
-[ ! -z "$NT_IS_MACOS" ] && {
+[ "$NT_OS" = "darwin" ] && {
 	# Completion via brew
 	if type brew &>/dev/null; then
 	    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH

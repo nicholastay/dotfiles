@@ -26,7 +26,7 @@ alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 
 # macOS coreutils shenans
-if [ ! -z "$NT_IS_MACOS" ]; then
+if [ "$NT_OS" = "darwin" ]; then
 	command -v gls >/dev/null \
 		&& alias ls="gls --color=always --group-directories-first" \
 		|| alias ls="ls -G"
@@ -109,7 +109,7 @@ alias wscan="nmcli device wifi rescan"
 alias wreset="sudo sh -c 'rmmod iwldvm && sudo modprobe iwldvm'"
 
 # macOS shortcuts
-if [ ! -z "$NT_IS_MACOS" ]; then
+if [ "$NT_OS" = "darwin" ]; then
 	alias flushdns="dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 
 	# Packages

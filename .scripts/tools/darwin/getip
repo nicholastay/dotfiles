@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -e
+
+# using ifconfig instead of ipconfig because could be a tunnel (VPN)...
+iface="$(route -n get default | sed -n 's/.*interface: \(.*\)/\1/p')"
+echo "[DEBUG] interface: $iface"
+ifconfig "$iface" | sed -n 's/.*inet \([0-9\.]*\) .*/\1/p'

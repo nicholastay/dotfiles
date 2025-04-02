@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ip -j route show default | jq -r 'first | .prefsrc'

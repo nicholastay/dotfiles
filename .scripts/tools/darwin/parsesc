@@ -2,7 +2,7 @@
 
 # objective: parse scutil dictionary output
 # usage: pipe it in
-# example: `echo 'show State:/Network/Global/DNS' | scutil | macparsesc | jq`
+# example: `echo 'show State:/Network/Global/DNS' | scutil | parsesc | jq`
 
 sed -E 's/^[[:space:]]*//;s/(^| : )<(array|dictionary)> \{$/\1\{/' | awk -F' : ' '
 	needtrail && $0 != "}" { print "," }
