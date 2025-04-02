@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# objective: parse scutil dictionary output
+# usage: pipe it in
+# example: `echo 'show State:/Network/Global/DNS' | scutil | macparsesc | jq`
+
+sed -E 's/^[[:space:]]*//;s/(^| : )<(array|dictionary)> \{$/\1\{/' | awk -F' : ' '
+	needtrail && $0 != "}" { print "," }
+
+	{ needtrail=0; prev=$0 }
+	$0 == "{" { print; next }
+	$2 == "{" { print "\"" $1 "\" : {"; next }
+
+	{ needtrail=1; }
+	$0 == "}" { print; next }
+	{ print "\"" $1 "\": \"" $2 $3 $4 $5 "\"" }
+'
