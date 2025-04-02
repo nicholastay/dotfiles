@@ -8,34 +8,38 @@ icons = "awesome4"
 block = "sound"
 headphones_indicator = true
 
-# [[block]]
-# block = "disk_space"
-# path = "/"
-# alias = "/"
-# info_type = "used"
-# alert_absolute = true
-# interval = 20
-# warning = 20.0
-# alert = 10.0
-# format = "$icon $percentage"
-# on_click = "nnotify disk /"
+[[block]]
+block = "disk_space"
+path = "/"
+info_type = "used"
+format = " $icon $percentage "
+[[block.click]]
+button = "left"
+cmd = "nnotify disk /"
 
 [[block]]
 block = "net"
-#on_click = "termlaunch -float nmtui"
-#ap_format = "$strength"
-#device_format = "$icon$ap"
-format = " $icon {$signal_strength $ssid $frequency|Wired}"
+#format = " $icon {$signal_strength $ssid $frequency|Wired}"
+format = " $icon {$signal_strength $ip $frequency|Wired} "
+[[block.click]]
+button = "left"
+cmd = "termlaunch -float nmtui"
 
 [[block]]
 block = "battery"
-#on_click = "termlaunch -float sudo powertop"
 format = " $icon $percentage {$time |}"
+[[block.click]]
+button = "left"
+cmd = "termlaunch -float sudo powertop"
 
 [[block]]
 block = "time"
 interval = 5
-#locale = "zh_CN"
-#on_click = "nnotify time"
 [block.format]
 full = " $icon $timestamp.datetime(f:'%x(%a) %H:%M', l:zh_CN) "
+[[block.click]]
+button = "left"
+cmd = "nnotify time"
+[[block.click]]
+button = "right"
+cmd = "nnotify cal"

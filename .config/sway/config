@@ -50,7 +50,7 @@ exec swayidle -w \
 # -------- WINDOW RULES ---------
 
 for_window [app_id=".*-floater$"] floating enable
-for_window [app_id=".*-floater$"] resize set 780 480
+for_window [app_id=".*-floater$"] resize set 870 540
 for_window [app_id=".*-floater$"] move position center
 
 for_window [app_id="org.gnome.Calculator"] floating enable

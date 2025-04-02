@@ -15,7 +15,7 @@ case "$1" in
 	time)
 		title="🕒 Date/Times"
 		tz_format="+%x(%a) %p %H:%M"
-		tzs="Asia/Seoul Asia/Hong_Kong America/Los_Angeles America/New_York"
+		tzs="Asia/Tokyo Asia/Hong_Kong America/Chicago America/Los_Angeles America/New_York"
 		msg="Local: $(date "$tz_format")"
 		for tz in $tzs
 		do
