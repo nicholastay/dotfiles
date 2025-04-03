@@ -69,12 +69,15 @@ alias rcp="rsync -vzrh --times --stats --progress --itemize-changes"
 alias ccat="highlight --out-format=ansi"
 alias kif="kinit -f"
 
-if [ -z "$WAYLAND_DISPLAY" ]; then
-	alias pbcopy="xclip -selection clipboard"
-else
-	alias pbcopy="wl-copy"
-fi
 alias pbc="pbcopy"
+# Basically emulating some mac behaviours, lol
+[ "$NT_OS" != "darwin" ] && {
+	alias pbcopy="wl-copy"
+	# Open with xdg-open handler in background
+	alias open="nh xdg-open"
+	# Directory in gui (TODO: detect kde/sway/merge into open autodetect?)
+	alias reveal="nh dolphin --select --new-window"
+}
 
 # Folder quick-jump-into-a-1depth-subdir tech
 folder_fzf_cd() {
@@ -142,9 +145,6 @@ nh() {
 	nohup "$@" >/dev/null 2>&1 &
 	disown
 }
-# Open with xdg-open handler in background
-alias open="nh xdg-open"
-alias reveal="nh dolphin --select --new-window"
 
 # timestamps with any decimal points/guessed precision (ns/ms/etc)
 ts() {

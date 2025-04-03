@@ -25,7 +25,8 @@ export NT_OVERRIDES="$HOME/.local/ntay/overrides/$NT_HOST"
 #    i.e. cannot #include, must have a full file. maybe can script with evalfile/envsubst)
 [ ! -e "$HOME/.local/ntay/overrides/_current" ] && ln -sf "$NT_OVERRIDES" "$HOME/.local/ntay/overrides/_current"
 
-[ ! -z "$NT_IS_MACOS" ] && {
+# macOS extras
+[ "$NT_OS" = "darwin" ] && {
 	[ -d "/opt/homebrew" ] && eval $(/opt/homebrew/bin/brew shellenv)
 	export PATH="${HOMEBREW_PREFIX}/opt/openssl/bin:$PATH"
 }
