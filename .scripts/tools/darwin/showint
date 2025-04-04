@@ -1,8 +1,65 @@
 #!/bin/sh
 
-# for fetching network interface info, like name, mac easily in json. doesn't regard extra things like tunnels up though
-sp=$(system_profiler -json SPNetworkDataType | jq '.SPNetworkDataType[] | {name: ._name, interface, ip: (.IPv4.Addresses?|first), mac: (.Ethernet["MAC Address"])}')
-# scutil --nwi : only gives active ones, no good API otherwise. join here to assume UP. ifconfig always says UP. maybe can find better source?
-nwi=$(scutil --nwi | awk '/IPv4 network interface information/ { start=1; next; } !start { next } !$0 || /flags/ { if (iface) print "{\"interface\":\""iface"\",\"ip\":\""addr"\",\"status\":\"UP\"}"; } !$0 { exit } /flags/ { iface=$1 } /address/ { addr=$3 }')
+VERBOSE=0
+[ "$1" = "-v" ] && VERBOSE=1
+[ "$1" = "-vv" ] && VERBOSE=2
+[ "$1" = "-vvv" ] && VERBOSE=3
 
-echo "$sp$nwi" | jq -rs 'group_by(.interface) | .[] | add | [(.status//"?"), .interface, (.mac//"-"), (.ip//"-"), (.name//"?")] | @tsv' | column -t -s $'\t'
+# NOTE: Some of this feels like we should just be writing a C app, lol
+
+# ifconfig: seemingly only easy way to fetch all iface with ip/mac?
+ifc="$(ifconfig -a -f inet:cidr | awk -v OFS='\t' '
+	/: flags=/ {
+		iface=substr($1, 0, length($1)-1);  # remove colon
+		ifs[iface];
+		next;
+	}
+
+	$1 == "inet" { ip[iface]=$2; next; }
+	$1 == "ether" { mac[iface]=$2; next; }
+	$1 == "status:" { status[iface]=$2; next; }
+
+	END { for (i in ifs) print 1, i, ip[i], mac[i], status[i] }
+')"
+
+# fetch friendly names
+nshr="$(networksetup -listallhardwareports | awk -F ': ' -v OFS='\t' '
+	$1 == "Hardware Port" { name=$2 }
+	$1 == "Device" { print 2, $2, name }
+')"
+
+# (some extra unplugged devices not in ifconfig?)
+[ $VERBOSE -gt 2 ] && sp="$(system_profiler -json SPNetworkDataType | jq -r '.SPNetworkDataType[] | [3, .interface, ._name] | @tsv')"
+
+# filter build on verbosity for awk if
+# vvverbose=no filter, even show special unplugged info
+filter="1"
+# vverbose=hide sp stuff, only ifconfig
+[ $VERBOSE -lt 3 ] && filter="$filter && i in ifc"
+# verbose=+hide things with no ip and no status
+[ $VERBOSE -lt 2 ] && filter="$filter && (i in ip || i in status)"
+
+# NOTE: [hmm...]
+# standard=+hide down, lo/awdl (but show ?+IP otherwise because that could be vpn)
+#[ $VERBOSE -lt 1 ] && filter="$filter && !(i ~ /^lo|^awdl/) && (status[i] == \"active\" || (i not in status && i in ip))"
+# standard=as scutil, as some devices say up, some like vpn don't really, can tell is kinda via this?
+[ $VERBOSE -lt 1 ] \
+	&& up="$(scutil --nwi | sed -n 's/Network interfaces: \(.*\)/\1/p' | tr ' ' '|')" \
+	&& filter="$filter && (i ~ /$up/)"
+
+echo "$ifc\n$nshr\n$sp" | awk -F'\t' -v OFS='\t' '
+	$1 == "1" { ifs[$2]; ifc[$2]; if ($3) ip[$2]=$3; if ($4) mac[$2]=$4; if ($5) status[$2]=$5; next; }
+	$1 == "2" { ifs[$2]; if ($3) name[$2]=$3; next; }
+	$1 == "3" { ifs[$2]; if ($3) name[$2]=$3; next; }
+	END {
+		for (i in ifs) {
+			if (!('"$filter"')) continue;
+
+			if (status[i] == "active") s="up";
+			else if (status[i] == "inactive") s="down";
+			else s="?";
+
+			print s, i, mac[i]?mac[i]:"-", ip[i]?ip[i]:"-", name[i];
+		}
+	}
+' | column -t -s $'\t'
