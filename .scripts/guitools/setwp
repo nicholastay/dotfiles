@@ -9,4 +9,4 @@ fi
 
 swaymsg 'output "*" bg '"$wall"' fill'
 
-command -v wal >/dev/null && [ ! -z $NT_USE_WAL ] && wal -n -t -i "$wall" --cols16 darken
+command -v wal >/dev/null && [ ! -z $NT_USE_WAL ] && wal -n -t -i "$wall" --cols16 darken -o $HOME/.config/wal/postrun
