@@ -57,7 +57,6 @@ export CARGO_HOME="$HOME/.local/share/cargo"
 # Tool configs
 export SUDO_ASKPASS="$HOME/.scripts/guitools/dpass"
 export FZF_DEFAULT_OPTS="--layout=reverse --height=85%"
-[ ! -z "$NT_LIGHT" ] && export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=light"
 # LS colours
 command -v dircolors >/dev/null && eval "$(dircolors)"
 command -v gdircolors >/dev/null && eval "$(gdircolors)"  # macOS
@@ -68,6 +67,8 @@ export _JAVA_SETTINGS="-Dswing.aatext=TRUE -Dawt.useSystemAAFontSettings=on" # a
 # Host-based include
 [ -f "$NT_OVERRIDES/profile" ] && . "$NT_OVERRIDES/profile"
 
+# Light theme flipbacks (has to come after override to have loaded env)
+[ ! -z "$NT_LIGHT" ] && export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=light"
 
 # swap caps on tty if allowed
 [ "$TERM" = "linux" ] && sudo -n loadkeys $HOME/.local/ntay/ttymaps.kmap 2>/dev/null
