@@ -1,6 +1,6 @@
 #!/bin/sh
 
-curllog https://ipinfo.io/ip
+echo $(curllog https://ipinfo.io/ip)
 
 # some firewalls block :(
 #dig +short myip.opendns.com @resolver1.opendns.com -4

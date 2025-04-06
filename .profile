@@ -13,7 +13,9 @@ esac
 
 # PATH: have my stuff shadow over any local binaries,
 export PATH=$HOME/.local/bin:$HOME/.scripts/personal:$HOME/.scripts/tools/$NT_OS:$HOME/.scripts/tools:$HOME/.scripts/guitools:$HOME/.scripts/thirdparty:$PATH
-# ... but for flatpak, whatever lol (I really don't want to use them when possible)
+# additional local install packages
+export PATH=$HOME/go/bin:$PATH
+# ... but for flatpak, etc, whatever lol (I really don't want to use them when possible)
 export PATH=$PATH:/var/lib/flatpak/exports/bin
 
 # overrides system: just pull $NT_OVERRIDES/<file> for a good customised time
