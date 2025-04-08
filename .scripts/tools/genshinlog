@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Genshin import wish link retriever for e.g. paimon.moe tool
+# https://gist.github.com/nicholastay/4a8f8bb9b85c628d7a124dad998cdba4
+
+GENSHIN_INSTALL_DIR="$HOME/.var/app/com.usebottles.bottles/data/bottles/bottles/Genshin/drive_c/Program Files/Genshin Impact"
+
+latest_cache="$(find "$GENSHIN_INSTALL_DIR"'/Genshin Impact game/GenshinImpact_Data/webCaches' -maxdepth 1 -type d -name '2.*' | sort | tail -1)"
+
+echo "Extracting from: $latest_cache"
+echo ""
+grep -aoP 'https://public-operation-hk4e-sg.hoyoverse.com/.+?/getGachaLog.+?&game_biz=hk4e_global' "$latest_cache/Cache/Cache_Data/data_2" | tail -1 | tee /dev/tty | wl-copy
+echo ""
+echo "Copied to clipboard"

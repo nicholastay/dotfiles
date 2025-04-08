@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Export playlist from quodlibet to a m3u-kind-of format (just list of paths, relative, assuming playlists save to a subdir 'Playlists' next to the 'base' music dir)
+
+QL_PLAYLIST_PATH="$HOME/.config/quodlibet/playlists"
+BASE_MUSIC_PATH="/mnt/data/Music"
+
+[ -z "$1" ] && echo "Provide a playlist names or simply 'ALL'" && exit 1
+
+xs=$@
+[ "$1" = "ALL" ] && xs=$(cd "$QL_PLAYLIST_PATH" && find . -type f -name '*.xspf' -exec basename {} .xspf ';')
+
+for x in $xs; do
+	PLAYLIST_PATH="$QL_PLAYLIST_PATH/$x.xspf"
+	[ ! -f "$PLAYLIST_PATH" ] && echo "Invalid playlist: $x" && exit 1
+	OUTPUT_PATH="$BASE_MUSIC_PATH/Playlists/$x.m3u"
+
+	echo "Converting: $PLAYLIST_PATH"
+	xq -x /playlist/trackList/track/location "$PLAYLIST_PATH" | sed "s|^file://||;s|^${BASE_MUSIC_PATH}|..|" | python3 -c "import sys; from urllib.parse import unquote; print(unquote(sys.stdin.read()));" > "$OUTPUT_PATH"
+	echo "Written to: $OUTPUT_PATH"
+done
