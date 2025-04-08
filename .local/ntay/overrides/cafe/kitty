@@ -1,0 +1,4 @@
+include ${HOME}/.config/kitty/theme-kaolin-aurora.conf
+
+font_size 12
+background_opacity 0.97
