@@ -1,17 +1,13 @@
 # Additional key utils
 brew "subversion"
+brew "atuin"
 
 # Engineering
 brew "k9s"
 brew "krew"
 brew "kubernetes-cli"
 
-# Additional nice utils
-brew "the_silver_searcher"
-brew "yq"
-
 # Dev
-brew "node"
 brew "openjdk"
 brew "pyenv"
 brew "pyenv-virtualenv"
