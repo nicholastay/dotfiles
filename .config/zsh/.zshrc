@@ -151,7 +151,7 @@ add-zsh-hook -Uz preexec xterm_title_preexec
 # fzf - fuzzy finding in ctrl+r(non-atuin),ctrl+t,alt+c
 {
 	source /usr/share/fzf/shell/key-bindings.zsh 2>/dev/null || \
-	{ command -v fzf >/dev/null && eval "$(fzf --zsh)" ;} # macOS... for now
+	source /opt/homebrew/opt/fzf/shell/key-bindings.zsh 2>/dev/null
 }
 
 # atuin - use if it's installed for better sqlite completion :)
