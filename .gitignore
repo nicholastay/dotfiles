@@ -52,6 +52,8 @@
 !/.local/ntay/
 /.local/ntay/overrides/_forced
 /.local/ntay/overrides/_current
+/.local/ntay/shadow/*
+!/.local/ntay/shadow/.gitkeep
 
 # macOS
 !/Library/

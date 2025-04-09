@@ -26,6 +26,7 @@ export NT_OVERRIDES="$HOME/.local/ntay/overrides/$NT_HOST"
 # (alternative: pull _current for apps that can't substitute. or symlink into this if we ALWAYS expect an override;
 #    i.e. cannot #include, must have a full file. maybe can script with evalfile/envsubst)
 [ ! -e "$HOME/.local/ntay/overrides/_current" ] && ln -sf "$NT_OVERRIDES" "$HOME/.local/ntay/overrides/_current"
+export NT_SHADOW="$HOME/.local/ntay/shadow"
 
 # macOS extras
 [ "$NT_OS" = "darwin" ] && {
@@ -66,6 +67,8 @@ export _JAVA_SETTINGS="-Dswing.aatext=TRUE -Dawt.useSystemAAFontSettings=on" # a
 
 # Host-based include
 [ -f "$NT_OVERRIDES/profile" ] && . "$NT_OVERRIDES/profile"
+# Private includes
+[ -f "$NT_SHADOW/profile" ] && . "$NT_SHADOW/profile"
 
 # Light theme flipbacks (has to come after override to have loaded env)
 [ ! -z "$NT_LIGHT" ] && export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=light"
