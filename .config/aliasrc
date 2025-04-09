@@ -79,6 +79,8 @@ alias pbc="pbcopy"
 	alias reveal="nh dolphin --select --new-window"
 }
 
+alias t="timestamp"
+
 # Folder quick-jump-into-a-1depth-subdir tech
 folder_fzf_cd() {
 	basedir="$1"
@@ -144,12 +146,6 @@ vfs() { ( cd $HOME/.scripts && vf ) ;}
 nh() {
 	nohup "$@" >/dev/null 2>&1 &
 	disown
-}
-
-# timestamps with any decimal points/guessed precision (ns/ms/etc)
-ts() {
-	[ -z "$1" ] && { gdate +%s%N | sed 's/./&./10'; return; }
-	gdate -d "@$(echo "$1" | sed '/^[0-9]\{10\}\([0-9]\{3\}\)\{1,3\}$/ s/./&./10')"
 }
 
 # Timezone helpers with things i usually interact with
