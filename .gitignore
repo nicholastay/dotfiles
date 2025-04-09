@@ -16,6 +16,7 @@
 !/.config/dunst/
 !/.config/fcitx5/
 !/.config/fontconfig/
+/.config/fontconfig/fonts.conf
 !/.config/foot/
 !/.config/git/
 /.config/git/config.work
