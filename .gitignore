@@ -23,7 +23,6 @@
 !/.config/i3status-rust/
 !/.config/kitty/
 !/.config/mpv/
-!/.config/MusicBrainz/
 !/.config/nvim/
 !/.config/ranger/
 /.config/ranger/shortcut.conf
@@ -33,6 +32,9 @@
 !/.config/zathura/
 !/.config/zsh
 !/.config/wal/
+!/.config/emacs/
+/.config/emacs/*
+!/.config/emacs/init.el
 # files
 !/.config/aliasrc/
 !/.config/inputrc/
@@ -65,6 +67,8 @@
 
 # Ignore back again
 # Ignore system
+*~*
+*#*
 .Xauthority
 .xsession-errors
 .viminfo
@@ -75,6 +79,8 @@
 *.swp
 /.gtkrc*
 .netrc
+.directory
+.fedora.upn
 # Ignore cringe
 .pypirc
 .npmrc
@@ -83,3 +89,5 @@
 .DS_Store
 .CFUserTextEncoding
 .localized
+# Ignore misc
+.require_update
