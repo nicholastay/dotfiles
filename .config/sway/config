@@ -32,6 +32,9 @@ input "type:touchpad" {
 
 # --------- AUTOSTART --------------
 
+# Propagate back up wayland vars
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
 exec nm-applet --indicator
 exec dunst
 #exec nextcloud --background
