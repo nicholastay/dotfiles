@@ -1,5 +1,8 @@
 #!/bin/bash
 
+cleanup() { tput cnorm ; exit 0 ; }
+trap cleanup int
+
 clear
 
 c00=$'\e[0;30m'
@@ -33,7 +36,7 @@ if [ -n "$DISPLAY" ] || [ -n "$WAYLAND_DISPLAY" ]; then
     [ -n "$WAYLAND_DISPLAY" ] && wmname=$DESKTOP_SESSION || wmname=$(wmctrl -m | grep -i name | awk '{print $2}')
     #termfn=$(xrdb -query | awk '/URxvt.font/ {print $2}' | sed 's/xft://;s/:pixelsize//;s/=/\ /')
     termfn=$(fc-match monospace | sed 's/.*: "\([^"]*\).*"/\1/')
-    termfn=$(fc-match sans | sed 's/.*: "\([^"]*\).*"/\1/')
+    systfn=$(fc-match sans | sed 's/.*: "\([^"]*\).*"/\1/')
 else
     wmname="none"
     termfn="none"
@@ -66,4 +69,4 @@ EOF
 
 tput civis
 read a
-tput cnorm
+cleanup
