@@ -51,15 +51,10 @@
 !/.local/ntay/
 /.local/ntay/overrides/_forced
 /.local/ntay/overrides/_current
-/.local/ntay/shadow/*
-!/.local/ntay/shadow/.gitkeep
-
-# macOS
-!/Library/
-/Library/*
-!/Library/KeyBindings/
+/.local/ntay/shadow/
 
 # Specific folders
+# (Note: can use `git add -f` if just one-off)
 !/Templates/
 
 # Specific files
