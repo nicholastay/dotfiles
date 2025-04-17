@@ -1,6 +1,10 @@
 #!/bin/sh
 
-echo $(curllog https://ipinfo.io/ip)
+if [ "$1" = "-v" ]; then
+	curllog https://ipinfo.io | jq .
+else
+	echo $(curllog https://ipinfo.io/ip)
 
-# some firewalls block :(
-#dig +short myip.opendns.com @resolver1.opendns.com -4
+	# some firewalls block :(
+	#dig +short myip.opendns.com @resolver1.opendns.com -4
+fi
