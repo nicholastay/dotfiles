@@ -1,0 +1,7 @@
+[Added Associations]
+video/mp4=mpv.desktop;
+x-scheme-handler/mailto=org.gnome.Evolution.desktop;
+
+[Default Applications]
+video/mp4=mpv.desktop;
+x-scheme-handler/mailto=org.gnome.Evolution.desktop;

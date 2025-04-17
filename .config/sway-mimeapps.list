@@ -20,7 +20,7 @@ application/xhtml+xml=firefox.desktop
 application/x-extension-xhtml=firefox.desktop
 application/x-extension-xht=firefox.desktop
 video/mp4=mpv.desktop
-x-scheme-handler/mailto=userapp-Evolution-N6AEY1.desktop
+x-scheme-handler/mailto=org.gnome.Evolution.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox.desktop;
@@ -35,4 +35,4 @@ application/xhtml+xml=firefox.desktop;
 application/x-extension-xhtml=firefox.desktop;
 application/x-extension-xht=firefox.desktop;
 video/mp4=mpv.desktop;
-x-scheme-handler/mailto=userapp-Evolution-N6AEY1.desktop;
+x-scheme-handler/mailto=org.gnome.Evolution.desktop;

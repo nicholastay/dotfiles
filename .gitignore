@@ -37,8 +37,8 @@
 # files
 !/.config/aliasrc/
 !/.config/inputrc/
-!/.config/mimeapps.list/
-!/.config/user-dirs.dirs/
+!/.config/user-dirs.dirs
+!/.config/*mimeapps.list
 
 # Scripts - include subpaths except our private
 !/.scripts/
