@@ -71,16 +71,21 @@ local plugins = {
 			require("mini.pairs").setup()
 
 			-- Tabline
-			require("mini.tabline").setup({ })
-
-			-- Move line/block around in visual mode with alt-hjkl
-			require("mini.move").setup()
+			require("mini.tabline").setup()
 
 			-- Keep tapping f/t jumps
 			require("mini.jump").setup()
-			
-			-- Starter
-			require("mini.starter").setup()
+
+			-- File browser
+			require("mini.files").setup()
+			vim.keymap.set("n", "<C-o>", MiniFiles.open, { desc = "File Browser", })
+
+			-- Use [] brackets with e.g. 'f' for nextfile/prevfile
+			require("mini.bracketed").setup()
+
+			-- 'Pick' popup (like telescope)
+			require("mini.pick").setup()
+			vim.keymap.set("n", "<C-t>", MiniPick.builtin.files, { desc = "Pick Files", })
 		end,
 	},
 
@@ -146,6 +151,22 @@ local plugins = {
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = event.buf, desc = "Hover (LSP)", })
 				end,
 			})
+
+			vim.diagnostic.config({
+				--virtual_text = false,
+				signs = true,
+			})
+
+			-- diagnostics in the line number gutter
+			vim.opt.signcolumn = 'number'
+
+			-- diagnostic at bottom if exist https://www.reddit.com/r/neovim/comments/11ikg49/comment/jazebu4/
+			vim.keymap.set("n", "<Leader>d", function()
+				vim.diagnostic.setloclist({ open = false }) -- don't open and focus
+				local window = vim.api.nvim_get_current_win()
+				vim.cmd.lwindow() -- open+focus loclist if has entries, else close -- this is the magic toggle command
+				--vim.api.nvim_set_current_win(window) -- restore focus to window you were editing (delete this if you want to stay in loclist)
+			end, { buffer = bufnr, desc = "Show Diagnostics" })
 		end,
 	},
 
@@ -159,6 +180,7 @@ local plugins = {
 			"hrsh7th/cmp-path",
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
 		},
 		config = function()
 			local cmp = require("cmp")
@@ -167,6 +189,9 @@ local plugins = {
 			luasnip.config.setup({})
 
 			cmp.setup({
+				experimental = {
+					ghost_text = true,
+				},
 				snippet = {
 					expand = function(args)
 						luasnip.lsp_expand(args.body)
@@ -203,6 +228,7 @@ local plugins = {
 				}),
 				sources = {
 					{ name = "nvim_lsp" },
+					{ name = "nvim_lsp_signature_help" },
 					{ name = "buffer", max_item_count = 5 },
 					{ name = "path", max_item_count = 3 },
 					{ name = "luasnip", max_item_count = 3 },
