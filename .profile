@@ -56,7 +56,7 @@ export LESSHISTFILE="-"
 export CARGO_HOME="$HOME/.local/share/cargo"
 
 # Tool configs
-export SUDO_ASKPASS="$HOME/.scripts/guitools/dpass"
+[ "$NT_OS" = "linux" ] && export SUDO_ASKPASS="$HOME/.scripts/guitools/dpass"
 export FZF_DEFAULT_OPTS="--layout=reverse --height=85%"
 # LS colours
 command -v dircolors >/dev/null && eval "$(dircolors)"

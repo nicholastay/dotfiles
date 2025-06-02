@@ -79,8 +79,6 @@ alias pbc="pbcopy"
 	alias reveal="nh dolphin --select --new-window"
 }
 
-alias t="timestamp"
-
 # Folder quick-jump-into-a-1depth-subdir tech
 folder_fzf_cd() {
 	basedir="$1"
@@ -155,6 +153,10 @@ alias thk="TZ=Asia/Hong_Kong "
 alias tchi="TZ=America/Chicago "
 alias tutc="TZ=UTC "
 
+alias t="timestamp"
+alias jpt="tjp timestamp"
+alias chit="tch timestamp"
+
 # 'pipelining' utils e.g. `docker ps -a | skip 1 | col 1 |:: docker rm _`
 # from: https://news.ycombinator.com/item?id=38769352
 alias ::='sed "$ s/\n$//" | xargs -I_ --'
@@ -176,6 +178,13 @@ prepend() { cat <(echo "$1") - ;}
 
 # Show JSON if interactive, or Pipe through
 showjson() { [ -t 1 ] && { jq -C | less -R ;} || cat ;}
+
+# retryer
+retry() {
+	local backoff=1
+	[ "$1" = "-n" ] && shift && backoff="$1" && shift
+	while ! "$@"; do sleep "$backoff"; done
+}
 
 [ -f "$HOME/.config/shortcutrc" ] && . "$HOME/.config/shortcutrc"
 # Host-based include

@@ -3,3 +3,4 @@
 *.swp
 .\#*
 \#*\#
+.flattened-pom.xml
