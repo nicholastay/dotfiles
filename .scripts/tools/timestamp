@@ -8,6 +8,19 @@ command -v gdate >/dev/null && d=gdate
 
 if [ -z "$1" ]; then
 	$d +%s%N | sed 's/./&./10'
-else
+elif [ "$1" = "." ]; then
+	# sometimes i guess shorter than just 'date' to invoke
+	$d
+elif echo "$1" | grep -qE '^[0-9.]+$'; then
+	# given timestamp -> human
 	$d -d "@$(echo "$1" | sed '/^[0-9]\{10\}\([0-9]\{3\}\)\{1,3\}$/ s/./&./10')"
+else
+	# just pass it in, e.g. 2025-05-08T13:00:00+09:00 format
+	if [ "$2" = "." ]; then
+		# to human
+		$d -d "$1"
+	else
+		# default -> timestamp
+		$d -d "$1" +%s%N | sed 's/./&./10'
+	fi
 fi

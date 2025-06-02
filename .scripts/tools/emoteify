@@ -1,0 +1,8 @@
+#!/bin/sh
+
+[ -z "$2" ] && echo 'usage: emoteify <input> <output>' && exit 1
+
+in=$1; shift
+out=$1; shift
+
+magick "$in" -coalesce -resize 128x128 -background none -gravity center -extent 128x128 "$@" "$out"

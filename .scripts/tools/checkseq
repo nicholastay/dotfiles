@@ -1,0 +1,6 @@
+#!/bin/sh
+exec awk '
+	NR == 1 { c=$0; f=0; t=0; next }
+	{ c++; t++; if ($0 != c) { print "[WARN] MISSING: "c" - reset count to next seq: "$0; c=$0; f++ } }
+	END { if (f == 0) { print "[INFO] OK - no missing seq, "t" seq checked" } else { print "[ERROR] FAIL - total "f" missing of "t" seq checked" } }
+'

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# usage: sshs [hosts...]
+
+cmds=( )
+for x in "$@"; do cmds+=( "ssh $x" ); done
+mux "${cmds[@]}"
