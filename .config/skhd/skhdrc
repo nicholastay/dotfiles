@@ -1,0 +1,5 @@
+.load "../../.local/ntay/overrides/_current/skhdrc"
+
+cmd - return : osascript -e "tell application \"iTerm2\" to activate create window with default profile"
+
+cmd + ctrl - r : skhd --reload
