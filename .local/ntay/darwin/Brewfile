@@ -17,6 +17,7 @@ brew "tmux"
 brew "fd"
 brew "ripgrep"
 brew "ncdu"
+brew "jackielii/tap/skhd-zig"
 
 # Dev
 brew "node"
@@ -30,7 +31,7 @@ cask "bitwarden"
 cask "iina"
 
 # macOS UI tools
-cask "hiddenbar"
+cask "jordanbaird-ice"
 cask "unnaturalscrollwheels"
 cask "alt-tab"
 cask "easy-move-plus-resize"

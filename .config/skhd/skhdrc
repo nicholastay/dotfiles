@@ -1,5 +1,9 @@
 .load "../../.local/ntay/overrides/_current/skhdrc"
 
-cmd - return : osascript -e "tell application \"iTerm2\" to activate create window with default profile"
+alt - return : osascript -e "tell application \"iTerm2\" to activate create window with default profile"
+
+alt - w : open -na Firefox.app
+alt - e : open ~
 
 cmd + ctrl - r : skhd --reload
+cmd + ctrl + shift - r : pkill skhd
