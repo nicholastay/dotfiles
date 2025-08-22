@@ -1,0 +1,49 @@
+#!/bin/sh
+
+# The Bottle-O
+# For all your Wine wrapper script needs
+#
+# - Simple wrapper can do env var set up and just launch with sane ux
+#   - If user wants to launch wine util, easy e.g. `./wrapper winecfg`
+#   - If user wants to launch exe in same game folder, relative is default e.g. `./wrapper gameconfig.exe`
+# - Customise Bottle-O itself with env vars too
+# - User can global set BOTTLEO_RUNTIME default to use, else default is system wine
+#   - Wrapper script can then force another one by setting
+# - Automatically tries to pull in dxvk
+#
+# Simplest script just has `bottleo launch <prefix> <full path to game exe> "$@"`
+# Although probably you want to export some more env vars before invoking.
+
+[ -z "$BOTTLEO_BASE" ] && BOTTLEO_BASE=$HOME/.local/wine
+BOTTLEO_PREFIXES=$BOTTLEO_BASE/prefix
+BOTTLEO_RUNTIMES=$BOTTLEO_BASE/runtime
+
+cmd="$1"; shift
+case "$cmd" in
+	launch)
+		[ -z "$1" ] && echo '[ERROR] prefix must be provided' >&2 && exit 1
+		prefix="$1"; shift
+		export WINEPREFIX="$BOTTLEO_PREFIXES/$prefix"
+
+		# dxvk copied in system32
+		export WINEDLLOVERRIDES="d3d8,d3d9,d3d10core,d3d11,dxgi=n;$WINEDLLOVERRIDES"
+
+		[ -z "$1" ] && echo '[ERROR] default exe must be provided' >&2 && exit 1
+		default="$1"; shift
+		cd "$(dirname "$default")"
+		[ -z "$1" ] && set -- "$default"
+
+		wine="wine64"
+		winename="system wine"
+		[ ! -z "$BOTTLEO_RUNTIME" ] && wine="$BOTTLEO_RUNTIMES/$BOTTLEO_RUNTIME/bin/wine" && winename="$BOTTLEO_RUNTIME"
+
+		echo "[INFO] Bottle-O: '$1' via '$winename' @ '$prefix'..."
+		exec $wine "$@"
+		;;
+	*)
+		echo "[ERROR] invalid argument to bottle-o"
+		echo "Usage: bottleo ..."
+		echo "    launch <prefix> <default exe> <user override ...>"
+		exit 1
+		;;
+esac
