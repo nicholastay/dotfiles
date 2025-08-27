@@ -17,6 +17,8 @@ f	fontconfig	$HOME/.config/fontconfig/fonts.conf
 d	dunst	$HOME/.config/dunst/dunstrc
 k	kitty	$HOME/.config/kitty/kitty.conf
 T	tmux	$HOME/.tmux.conf
+S	skhd	$HOME/.config/skhd/skhdrc
+W	aerospaceWm	$HOME/.config/aerospace/aerospace.toml
 A	aliasrc-override	$NT_OVERRIDES/aliasrc
 P	profile-override	$NT_OVERRIDES/profile
 J	jumptool	$HOME/.scripts/tools/jumptool
