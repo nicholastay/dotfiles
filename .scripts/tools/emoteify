@@ -1,8 +1,9 @@
 #!/bin/sh
 
-[ -z "$2" ] && echo 'usage: emoteify <input> <output>' && exit 1
+[ -z "$1" ] && echo 'usage: emoteify <input> <output>' && exit 1
 
 in=$1; shift
-out=$1; shift
+[ -z "$1" ] && { out="$(basename "$in" | sed 's/\.gif$//').emote.gif"; } || { out=$1; shift; }
 
+echo "generating: $out"
 magick "$in" -coalesce -resize 128x128 -background none -gravity center -extent 128x128 "$@" "$out"
