@@ -1,7 +1,12 @@
-alt - m : open -a Mattermost.app
-cmd - k [
-	"Mattermost" ~
-	* : sendkeys send -a Mattermost.Desktop --targeted --activate -i 0.2 -c '<c:k:command>'
+.blacklist [
+	"Windows App"
+	"HP RGS Receiver"
 ]
 
-alt - o : open -a 'Microsoft Outlook.app'
+alt - m : @toggle_app("Mattermost")
+cmd - k [
+	"Mattermost" ~
+]
+	* : sendkeys send -a Mattermost.Desktop --targeted --activate -i 0.2 -c '<c:k:command>'
+
+alt - o : @toggle_app("Microsoft Outlook.app")
