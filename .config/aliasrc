@@ -186,6 +186,10 @@ retry() {
 	while ! "$@"; do sleep "$backoff"; done
 }
 
+clock() { watch -tcn1 'date "+%H:%M:%S" | toilet -F metal -F border -f mono9'; reset; }
+
 [ -f "$HOME/.config/shortcutrc" ] && . "$HOME/.config/shortcutrc"
 # Host-based include
+[ -f "$NT_SHADOW/aliasrc" ] && . "$NT_SHADOW/aliasrc" 2>/dev/null
+# Private include
 [ -f "$NT_OVERRIDES/aliasrc" ] && . "$NT_OVERRIDES/aliasrc" 2>/dev/null

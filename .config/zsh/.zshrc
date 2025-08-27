@@ -174,10 +174,12 @@ ZSH_AUTOSUGGEST_STRATEGY=(completion history)
 bindkey '^K' autosuggest-execute
 
 
-# Load our common aliases
-source $HOME/.config/aliasrc
 # Load overrides
 source $NT_OVERRIDES/zshrc 2>/dev/null
+# Private overrides
+source $NT_SHADOW/zshrc 2>/dev/null
+# Load our common aliases
+source $HOME/.config/aliasrc
 
 # Finalise prompt after overrides
 PROMPT="$NT_PROMPT_BASE$NT_PROMPT_EXTRA%f » "
