@@ -187,6 +187,7 @@ retry() {
 }
 
 clock() { watch -tcn1 'date "+%H:%M:%S" | toilet -F metal -F border -f mono9'; reset; }
+kdebounce() { kquitapp5 plasmashell && kstart5 plasmashell; }
 
 [ -f "$HOME/.config/shortcutrc" ] && . "$HOME/.config/shortcutrc"
 # Host-based include

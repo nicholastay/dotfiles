@@ -1,7 +1,9 @@
 [Added Associations]
 video/mp4=mpv.desktop;
+video/x-matroska=mpv.desktop;
 x-scheme-handler/mailto=org.gnome.Evolution.desktop;
 
 [Default Applications]
 video/mp4=mpv.desktop;
+video/x-matroska=mpv.desktop;
 x-scheme-handler/mailto=org.gnome.Evolution.desktop;
