@@ -154,8 +154,11 @@ alias tchi="TZ=America/Chicago "
 alias tutc="TZ=UTC "
 
 alias t="timestamp"
-alias jpt="tjp timestamp"
-alias chit="tch timestamp"
+alias jst="TZ=Asia/Tokyo timestamp"
+alias kst="TZ=Asia/Seoul timestamp"
+alias hkt="TZ=Asia/Hong_Kong timestamp"
+alias ct="TZ=America/Chicago timestamp"
+alias utc="TZ=UTC timestamp"
 
 # 'pipelining' utils e.g. `docker ps -a | skip 1 | col 1 |:: docker rm _`
 # from: https://news.ycombinator.com/item?id=38769352
@@ -168,6 +171,7 @@ dcol() { eval "awk -F$2 '{ print \$$1 }'" ;}
 replace() { tr "$1" "$2" | sed "s/$2\$//" ;}
 commas() { replace "\n" "," ;}
 piped() { replace "\n" "|" ;}
+spaced() { replace "\n" " " ;}
 appendl() { sed "s&\$&$1&" ;}
 prependl() { sed "s&^&$1&" ;}
 listify() { sed 's/^/ - /' ;}

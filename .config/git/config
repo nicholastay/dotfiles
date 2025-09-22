@@ -61,6 +61,10 @@
 	chp = cherry-pick
 	cl = clone --recurse-submodules
 	cll = clone
+	bs = bisect
+	bsg = bisect good
+	bsb = bisect bad
+	bss = bisect skip
 [core]
 	excludesfile = ~/.config/git/gitignore
 [init]
