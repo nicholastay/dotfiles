@@ -6,8 +6,10 @@
 d=date
 command -v gdate >/dev/null && d=gdate
 
+uline() { [ -t 1 ] && sed $'s/./&\033[4;39m/10;s/$/\033[0m/' || cat; }
+
 if [ -z "$1" ]; then
-	$d +%s%N | sed $'s/./&\033[4;39m/10;s/$/\033[0m/'
+	$d +%s%N | uline
 elif [ "$1" = "." ]; then
 	# sometimes i guess shorter than just 'date' to invoke
 	$d
@@ -21,6 +23,6 @@ else
 		$d -d "$1"
 	else
 		# default -> timestamp
-		$d -d "$1" +%s%N | sed $'s/./&\033[4;39m/10;s/$/\033[0m/'
+		$d -d "$1" +%s%N | uline
 	fi
 fi
