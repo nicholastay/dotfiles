@@ -56,6 +56,8 @@ for dump in $HOME/.cache/zcompdump(N.mh+24); do
 	compinit -d "$HOME/.cache/zcompdump"
 done
 compinit -C -d "$HOME/.cache/zcompdump"
+# Complete also allows selecting .* (hidden files) - only add in compoptions instead of setopt so it doesn't affect globs of '*'.
+_comp_options+=(globdots)
 
 # macOS: Add brew as a spot to also search
 [ "$NT_OS" = "darwin" ] && {
