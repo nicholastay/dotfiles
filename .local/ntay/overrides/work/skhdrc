@@ -1,12 +1,13 @@
 .blacklist [
-	"Windows App"
 	"HP RGS Receiver"
 ]
+
+.define toggle_app : open -a "{{1}}" || osascript -e 'tell app "{{1}}" to quit'
 
 alt - m : @toggle_app("Mattermost")
 cmd - k [
 	"Mattermost" ~
-]
 	* : sendkeys send -a Mattermost.Desktop --targeted --activate -i 0.2 -c '<c:k:command>'
+]
 
-alt - o : @toggle_app("Microsoft Outlook.app")
+alt - o : @toggle_app("Microsoft Outlook")
