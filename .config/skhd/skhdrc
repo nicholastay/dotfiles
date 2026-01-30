@@ -1,9 +1,14 @@
-.load "../../.local/ntay/overrides/_current/skhdrc"
+.blacklist [
+	"Windows App"
+]
+
+.define toggle_app : open -a "{{1}}" || osascript -e 'tell app "{{1}}" to quit'
 
 alt - return : osascript -e "tell application \"iTerm2\" to activate create window with default profile"
 
-alt - w : open -na Firefox.app
-alt - e : open ~
+alt - w : @toggle_app("Firefox")
 
 cmd + ctrl - r : skhd --reload
 cmd + ctrl + shift - r : pkill skhd
+
+.load "../../.local/ntay/overrides/_current/skhdrc"
