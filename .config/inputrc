@@ -43,6 +43,22 @@ set keymap vi-insert
 "\e[A": history-search-backward
 "\e[B": history-search-forward
 Control-l: clear-screen
+
+# set some emacs stuff back
+set keymap vi-insert
+"\C-a": beginning-of-line
+"\C-e": end-of-line
+"\C-k": kill-line
+"\C-u": unix-line-discard
+"\C-w": unix-word-rubout
+"\ef": forward-word
+"\e[1;3C": forward-word
+"\eb": backward-word
+"\e[1;3D": backward-word
+"\ed": kill-word
+"\e\177": backward-kill-word
+"\e\b":   backward-kill-word
+"\e\C-?": backward-kill-word
 $endif
 
 # no beep
