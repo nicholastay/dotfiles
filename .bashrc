@@ -9,7 +9,13 @@ PS1="\[\033[38;5;6m\]\u\[$(tput sgr0)\]\[\033[38;5;243m\]@\[$(tput sgr0)\]\[\033
 
 [ ! -z $SSH_CLIENT ] && PS1="(SSH) $PS1"
 
-export HISTFILE="$HOME/.local/share/bash_history"
+HISTFILE="$HOME/.local/share/bash_history"
+HISTSIZE=10000000
+HISTFILESIZE=10000000
+# don't overwrite each other
+shopt -s histappend
+# write immediately but don't re-read from other sessions
+PROMPT_COMMAND='history -a'
 
 # cd by name only is ok
 shopt -s autocd
