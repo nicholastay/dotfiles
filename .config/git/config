@@ -10,8 +10,12 @@
 	puo = "!git push -u origin \"$(git branch --show-current)\""
 	pf = push --force-with-lease
 	pff = push -f
+	# pushGerrit
+	pG = "!git push HEAD:refs/for/\"$(git master)\""
 	pl = pull --recurse-submodules
 	plo = pull
+	# fetch and reset hard into head
+	plR = "!git fetch origin \"$(git rev-parse --abbrev-ref HEAD)\" && git reset --hard origin/\"$(git rev-parse --abbrev-ref HEAD)\""
 	f = fetch
 	fo = fetch origin
 	s = status
