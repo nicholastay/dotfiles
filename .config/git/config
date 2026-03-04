@@ -4,6 +4,7 @@
 [include]
 	path = config.work
 [alias]
+	master = "!git symbolic-ref refs/remotes/origin/HEAD | sed 's|^refs/remotes/origin/||'"
 	p = push
 	pu = push -u
 	puo = "!git push -u origin \"$(git branch --show-current)\""
@@ -29,7 +30,7 @@
 	rb = rebase
 	rbi = rebase -i
 	rbd = rebase development
-	rbm = rebase master
+	rbm = "!git rebase \"$(git master)\""
 	a = add
 	aa = add .
 	ap = add -p
@@ -37,7 +38,7 @@
 	coo = "!git checkout \"$(git for-each-ref --format='%(refname:short)' refs/heads/ | fzf)\""
 	cob = checkout -b
 	cod = checkout development
-	com = checkout master
+	com = "!git checkout \"$(git master)\""
 	cot = checkout --track
 	cott = "!git checkout --track \"$(git for-each-ref --format='%(refname:short)' refs/remotes/ | fzf)\""
 	c = commit
@@ -50,7 +51,7 @@
 	l = log
 	m = merge
 	md = merge development
-	mm = merge master
+	mm = "!git merge \"$(git master)\""
 	rl = reflog
 	res = restore --staged
 	ress = restore
