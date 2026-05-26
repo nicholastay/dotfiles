@@ -88,3 +88,4 @@
 .localized
 # Ignore misc
 .require_update
+.steam*

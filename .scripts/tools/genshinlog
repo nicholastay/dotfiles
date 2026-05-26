@@ -3,7 +3,7 @@
 # Genshin import wish link retriever for e.g. paimon.moe tool
 # https://gist.github.com/nicholastay/4a8f8bb9b85c628d7a124dad998cdba4
 
-GENSHIN_INSTALL_DIR="$HOME/.var/app/com.usebottles.bottles/data/bottles/bottles/Genshin/drive_c/Program Files/Genshin Impact"
+[ -z "$GENSHIN_INSTALL_DIR" ] && echo 'ERROR: No $GENSHIN_INSTALL_DIR set!' && exit 1
 
 latest_cache="$(find "$GENSHIN_INSTALL_DIR"'/Genshin Impact game/GenshinImpact_Data/webCaches' -maxdepth 1 -type d -name '2.*' | sort | tail -1)"
 

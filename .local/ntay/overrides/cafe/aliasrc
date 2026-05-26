@@ -1,0 +1,2 @@
+export BOTTLEO_RUNTIME=wine-10.19-staging-tkg-amd64
+export GENSHIN_INSTALL_DIR="$HOME/.var/app/com.valvesoftware.Steam/data/Steam/steamapps/compatdata/2514100325/pfx/drive_c/Program Files"
