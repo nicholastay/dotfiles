@@ -28,7 +28,7 @@ alias diff="diff --color=auto"
 # macOS coreutils shenans
 if [ "$NT_OS" = "darwin" ]; then
 	command -v gls >/dev/null \
-		&& alias ls="gls --color=always --group-directories-first" \
+		&& alias ls="gls --color=auto --group-directories-first" \
 		|| alias ls="ls -G"
 	command -v gawk >/dev/null && alias awk="gawk"
 	command -v gsed >/dev/null && alias sed="gsed"

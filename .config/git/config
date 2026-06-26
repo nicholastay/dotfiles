@@ -11,7 +11,7 @@
 	pf = push --force-with-lease
 	pff = push -f
 	# pushGerrit
-	pG = "!git push HEAD:refs/for/\"$(git master)\""
+	pG = "!git push origin HEAD:refs/for/\"$(git master)\""
 	pl = pull --recurse-submodules
 	plo = pull
 	# fetch and reset hard into head

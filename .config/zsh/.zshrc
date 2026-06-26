@@ -9,9 +9,9 @@ NT_PROMPT_BASE="%F{006}%n%f%F{243}@%f%F{013}%m%f%F{243}:%f%(5~|%-1~/…/%3~|%4~)
 
 # Simplify prompt in some cases...
 # ... linux TTY (zsh is our default shell, annoying if gets in way of debug).
-[ "$TERM" = "linux" ] && PS1="%F{cyan}%n%f%F{white}@%f%F{magenta}%m%f%F{white}:%f%(5~|%-1~/…/%3~|%4~)$ " && LC_TIME=en_AU.UTF-8
+[ "$TERM" = "linux" ] && NT_PROMPT_BASE="%F{cyan}%n%f%F{white}@%f%F{magenta}%m%f%F{white}:%f%(5~|%-1~/…/%3~|%4~)$ " && LC_TIME=en_AU.UTF-8
 # ... SSH.
-[ ! -z $SSH_CLIENT ] && PS1="(SSH) $PS1"
+[ ! -z $SSH_CLIENT ] && NT_PROMPT_BASE="(SSH) $NT_PROMPT_BASE"
 
 
 # Historys
