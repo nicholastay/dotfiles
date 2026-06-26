@@ -19,7 +19,8 @@ export PATH=$HOME/go/bin:$PATH
 export PATH=$PATH:/var/lib/flatpak/exports/bin
 
 # overrides system: just pull $NT_OVERRIDES/<file> for a good customised time
-export NT_HOST="$(hostname -s)"
+export NT_RAW_HOST="$(hostname -s)"
+export NT_HOST="$NT_RAW_HOST"
 # set 'forced' file to 'act' as another host. useful for e.g. work laptop -> set as 'work'
 [ -f "$HOME/.local/ntay/overrides/_forced" ] && export NT_HOST="$(cat $HOME/.local/ntay/overrides/_forced)"
 export NT_OVERRIDES="$HOME/.local/ntay/overrides/$NT_HOST"
@@ -27,6 +28,10 @@ export NT_OVERRIDES="$HOME/.local/ntay/overrides/$NT_HOST"
 #    i.e. cannot #include, must have a full file. maybe can script with evalfile/envsubst)
 [ ! -e "$HOME/.local/ntay/overrides/_current" ] && ln -sf "$NT_OVERRIDES" "$HOME/.local/ntay/overrides/_current"
 export NT_SHADOW="$HOME/.local/ntay/shadow"
+
+# host cksum based colour for SSH distinct view
+NT_HOST_COLOUR_POOL=(125 126 127 132 133 161 168 169)
+export NT_HOST_COLOUR=$NT_HOST_COLOUR_POOL[$(( $(echo "$NT_RAW_HOST" | cksum | cut -d' ' -f1) % $#NT_HOST_COLOUR_POOL + 1 ))]
 
 # macOS extras
 [ "$NT_OS" = "darwin" ] && {

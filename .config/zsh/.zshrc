@@ -5,7 +5,7 @@
 #
 
 # Setup the prompt (PS1) - override possibility for extras so more is set below
-NT_PROMPT_BASE="%F{006}%n%f%F{243}@%f%F{013}%m%f%F{243}:%f%(5~|%-1~/…/%3~|%4~)"
+NT_PROMPT_BASE="%F{006}%n%f%F{243}@%f%F{${NT_HOST_COLOUR:-013}}%m%f%F{243}:%f%(5~|%-1~/…/%3~|%4~)"
 
 # Simplify prompt in some cases...
 # ... linux TTY (zsh is our default shell, annoying if gets in way of debug).
