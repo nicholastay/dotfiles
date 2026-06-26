@@ -44,7 +44,7 @@ export NT_HOST_COLOUR=$NT_HOST_COLOUR_POOL[$(( $(echo "$NT_RAW_HOST" | cksum | c
 
 # Programs
 export TERMINAL="kitty"
-export EDITOR="nvim"
+command -v nvim >/dev/null && export EDITOR="nvim" || export EDITOR="vim"
 export VISUAL="$EDITOR"
 export BROWSER="firefox"
 export FILE="ranger"

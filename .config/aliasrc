@@ -42,9 +42,9 @@ alias d="git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME"
 
 
 # Shortcuts
-alias v="nvim"
-alias vi="nvim"
-alias vim="nvim"
+alias v="$EDITOR"
+alias vi="$EDITOR"
+alias vim="$EDITOR"
 alias vimdiff="nvim -d"
 alias vv="NT_NVIM_IDE=1 nvim"
 
