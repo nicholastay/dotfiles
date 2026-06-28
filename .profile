@@ -34,7 +34,7 @@ NT_HOST_COLOUR_POOL=(126 127 132 133 168 169)
 export NT_HOST_COLOUR=$NT_HOST_COLOUR_POOL[$(( $(echo "$NT_RAW_HOST" | cksum | cut -d' ' -f1) % $#NT_HOST_COLOUR_POOL + 1 ))]
 
 # macOS extras
-[ "$NT_OS" = "darwin" ] && {
+[ "$NT_OS" = "darwin" ] && [ ! -d "/nix" ] && {
 	[ -d "/opt/homebrew" ] && eval $(/opt/homebrew/bin/brew shellenv)
 	export PATH="${HOMEBREW_PREFIX}/opt/openssl/bin:$PATH"
 }
