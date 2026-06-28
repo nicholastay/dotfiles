@@ -30,7 +30,7 @@ export NT_OVERRIDES="$HOME/.local/ntay/overrides/$NT_HOST"
 export NT_SHADOW="$HOME/.local/ntay/shadow"
 
 # host cksum based colour for SSH distinct view
-NT_HOST_COLOUR_POOL=(125 126 127 132 133 161 168 169)
+NT_HOST_COLOUR_POOL=(126 127 132 133 168 169)
 export NT_HOST_COLOUR=$NT_HOST_COLOUR_POOL[$(( $(echo "$NT_RAW_HOST" | cksum | cut -d' ' -f1) % $#NT_HOST_COLOUR_POOL + 1 ))]
 
 # macOS extras

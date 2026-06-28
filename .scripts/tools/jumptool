@@ -38,6 +38,7 @@ Sp	personal	$HOME/.scripts/personal
 t	tools	$HOME/.scripts/tools
 T	template	$HOME/template
 ln	ntaylocal	$HOME/.local/ntay
+n	nix	$HOME/.local/ntay/nix
 O	overrides	$NT_OVERRIDES"
 
 [ -f "$NT_OVERRIDES/jumptool_confs" ] && confs="$confs\n$(cat $NT_OVERRIDES/jumptool_confs)"

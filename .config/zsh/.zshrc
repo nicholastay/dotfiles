@@ -166,9 +166,10 @@ command -v atuin >/dev/null && {
 	ZSH_AUTOSUGGEST_STRATEGY=(completion atuin history)
 }
 
-# Autosuggestion plugin
+# Autosuggestion plugin (standard linux | nix | homebrew)
 [ "$TERM" != "linux" ] && {
 	source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null \
+	|| source /run/current-system/sw/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null \
 	|| source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 }
 ZSH_AUTOSUGGEST_USE_ASYNC=1
@@ -186,10 +187,11 @@ source $HOME/.config/aliasrc
 # Finalise prompt after overrides
 PROMPT="$NT_PROMPT_BASE$NT_PROMPT_EXTRA%f » "
 
-# Syntax highlighting plugin
+# Syntax highlighting plugin (standard linux | nix | homebrew)
 # Must be loaded last - don't override colouring in tty
 {
 	source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null \
+	|| source /run/current-system/sw/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null \
 	|| source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 } && \
 [ "$TERM" != "linux" ] && \
