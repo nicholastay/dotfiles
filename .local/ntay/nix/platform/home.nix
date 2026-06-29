@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
+let
+  isDarwin = pkgs.stdenv.isDarwin;
+in
 {
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -47,4 +50,9 @@
 
     # TODO: My very own 'passgen' !
   ];
+
+  # macOS DefaultKeyBinding - uncook home/end to be like Win start/end-line
+  home.file."Library/KeyBindings/DefaultKeyBinding.dict" = lib.mkIf pkgs.stdenv.isDarwin {
+    source = ../files/darwin/DefaultKeyBinding.dict;
+  };
 }
