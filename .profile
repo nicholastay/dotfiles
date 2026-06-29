@@ -34,9 +34,9 @@ NT_HOST_COLOUR_POOL=(126 127 132 133 168 169)
 export NT_HOST_COLOUR=$NT_HOST_COLOUR_POOL[$(( $(echo "$NT_RAW_HOST" | cksum | cut -d' ' -f1) % $#NT_HOST_COLOUR_POOL + 1 ))]
 
 # macOS extras
-[ "$NT_OS" = "darwin" ] && [ ! -d "/nix" ] && {
-	[ -d "/opt/homebrew" ] && eval $(/opt/homebrew/bin/brew shellenv)
-	export PATH="${HOMEBREW_PREFIX}/opt/openssl/bin:$PATH"
+[ "$NT_OS" = "darwin" ] && {
+	# Use brew as worst-case (nix pref)
+	export PATH=$PATH:/opt/homebrew/bin
 }
 
 # For QT apps to theme properly - make sure qt5ct installed
@@ -80,3 +80,7 @@ export _JAVA_SETTINGS="-Dswing.aatext=TRUE -Dawt.useSystemAAFontSettings=on" # a
 
 # swap caps on tty if allowed
 [ "$TERM" = "linux" ] && sudo -n loadkeys $HOME/.local/ntay/ttymaps.kmap 2>/dev/null
+
+# Nix
+source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh 2>/dev/null
+source /etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh 2>/dev/null
