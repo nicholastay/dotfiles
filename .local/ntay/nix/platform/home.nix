@@ -55,4 +55,11 @@ in
   home.file."Library/KeyBindings/DefaultKeyBinding.dict" = lib.mkIf pkgs.stdenv.isDarwin {
     source = ../files/darwin/DefaultKeyBinding.dict;
   };
+
+  # TODO: hack for zsh plugins to work before migrating rc into home-manager
+  #       REMOVE upon HM
+  home.file = {
+    ".local/nix/zsh-autosuggestions".source = "${pkgs.zsh-autosuggestions}";
+    ".local/nix/zsh-syntax-highlighting".source = "${pkgs.zsh-syntax-highlighting}";
+  };
 }

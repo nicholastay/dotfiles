@@ -169,7 +169,7 @@ command -v atuin >/dev/null && {
 # Autosuggestion plugin (standard linux | nix | homebrew)
 [ "$TERM" != "linux" ] && {
 	source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null \
-	|| source /etc/profiles/per-user/$USER/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null \
+	|| source $HOME/.local/nix/zsh-autosuggestions/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null \
 	|| source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 }
 ZSH_AUTOSUGGEST_USE_ASYNC=1
@@ -191,7 +191,7 @@ PROMPT="$NT_PROMPT_BASE$NT_PROMPT_EXTRA%f » "
 # Must be loaded last - don't override colouring in tty
 {
 	source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null \
-	|| source /etc/profiles/per-user/$USER/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null \
+	|| source $HOME/.local/nix/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null \
 	|| source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 } && \
 [ "$TERM" != "linux" ] && \
