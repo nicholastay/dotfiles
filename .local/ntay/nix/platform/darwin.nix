@@ -62,6 +62,17 @@ in
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
 
+  # Auto optimise the store - default is daily in early morning
+  # (since it uses launchd-style config, it will "catchup" on next wakeup if sleeping)
+  # Manual: $ nix-store --optimise
+  nix.optimise.automatic = true;
+  # Auto cleanup the old generations - same default early morning schedule
+  # Manual: $ nix-collect-garbage <options> (-d for all generations)
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 21d";
+  };
+
   # Touch ID for sudo
   security.pam.services.sudo_local.touchIdAuth = true;
 
