@@ -143,8 +143,20 @@ in
       #   "/System/Applications/System Settings.app"
       # ];
       persistent-others = [
-        "${homeDir}/Documents/Screenshots"
-        "${homeDir}/Downloads"
+        {
+          folder = {
+            path = "${homeDir}/Documents/Screenshots";
+            showas = "fan";
+            arrangement = "date-modified";
+          };
+        }
+        {
+          folder = {
+            path = "${homeDir}/Downloads";
+            showas = "fan";
+            arrangement = "date-modified";
+          };
+        }
       ];
     };
 
