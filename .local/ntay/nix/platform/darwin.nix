@@ -176,6 +176,17 @@ in
       location = "${homeDir}/Documents/Screenshots";
     };
 
+    CustomSystemPreferences = {
+      # Not in a module for now in nix-darwin
+      # https://github.com/nix-darwin/nix-darwin/issues/1716
+      "/Library/Preferences/SystemConfiguration/com.apple.airport.preferences" = {
+        # Ask to join networks = Off
+        JoinModeFallback = [ "DoNothing" ];
+        # Ask to join hotspots = Never
+        AutoHotspotMode = "Never";
+      };
+    };
+
     CustomUserPreferences = {
       NSGlobalDomain = {
         AppleAccentColor = 6;  # Pink accent
@@ -212,6 +223,12 @@ in
 
       # Don't reopen stuff when I shutdown/logoff
       "com.apple.loginwindow".TALLogoutSavesState = false;
+
+      "com.apple.desktopservices" = {
+        # no pesky .DS_Store on remote
+        DSDontWriteNetworkStores = true;
+        DSDontWriteUSBStores = true;
+      };
     };
 
     universalaccess = {
