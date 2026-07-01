@@ -5,8 +5,8 @@ in
 {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  # TODO: Modularise to be 'base' (headless essentials), 'gui(?)', 'macos'
   environment.systemPackages = with pkgs; [
+    coreutils  # gls, gcp, gcat, ... - replace macOS BSD defaults with these we usually use
     gnused
     gnugrep
     gawk
