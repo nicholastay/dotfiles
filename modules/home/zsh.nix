@@ -20,11 +20,7 @@
     syntaxHighlighting.enable = true;
 
     initContent = ''
-      PROMPT="%F{006}%n%f%F{243}@%f%F{013}%m%f%F{243}:%f%(5~|%-1~/…/%3~|%4~)%f » "
-      # ... SSH prefix.
-      [ ! -z $SSH_CLIENT ] && PROMPT="(SSH) $PROMPT"
-
-      bindkey '^K' autosuggest-execute
+      source ${../../files/zsh/basic.zsh}
     '';
   };
 
