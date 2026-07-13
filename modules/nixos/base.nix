@@ -1,4 +1,4 @@
-{ self, lib, pkgs, user, homePath, hostName, ... }:
+{ self, lib, pkgs, homePath, hostName, ... }:
 {
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
@@ -17,13 +17,6 @@
   networking.firewall.enable = true;
 
   time.timeZone = lib.mkDefault "Australia/Sydney";
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${user} = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    home = homePath;
-  };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

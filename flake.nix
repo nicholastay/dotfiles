@@ -87,6 +87,10 @@
       user = "nick";
       modules = [
         ./modules/nixos/sshd.nix
+        ./modules/nixos/develop.nix
+      ];
+      homeModules = [
+        ./modules/home/develop.nix
       ];
     };
 
