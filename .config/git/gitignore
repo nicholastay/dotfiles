@@ -1,8 +1,0 @@
-*~
-.DS_Store
-*.swp
-.\#*
-\#*\#
-.flattened-pom.xml
-.claude
-.vscode

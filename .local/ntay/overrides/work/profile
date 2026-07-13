@@ -1,3 +1,0 @@
-# general settings for work
-export NT_LIGHT=1
-export NT_NVIM_IDE=1
