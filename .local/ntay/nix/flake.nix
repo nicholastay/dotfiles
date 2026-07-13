@@ -13,8 +13,9 @@
 
   outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager }:
   let
-    darwinBase = import ./platform/darwin.nix;
-    homeBase   = import ./platform/home.nix;
+    darwinBase = import ./modules/darwin/base.nix;
+    homeBase   = import ./modules/home/base.nix;
+    nixosBase  = import ./modules/nixos/base.nix;
 
     mkDarwin = { user, self, homePath ? "/Users/${user}", modules ? [], homeModules ? [] }:
       nix-darwin.lib.darwinSystem {
@@ -34,7 +35,23 @@
         ] ++ modules;
       };
 
-    mkHome = { user, system ? "x86_64-linux", homePath ? "/Users/${user}", modules ? [] }:
+    mkNixos = { user, self, hostName, homePath ? "/home/${user}", modules ? [], homeModules ? [] }:
+      nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit self user homePath hostName; };
+        modules = [
+          nixosBase
+          ./hosts/${hostName}/configuration.nix
+          ./hosts/${hostName}/hardware-configuration.nix
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs    = true;
+            home-manager.useUserPackages  = true;
+            home-manager.extraSpecialArgs = { inherit user homePath; };
+            home-manager.users.${user}.imports = [ homeBase ] ++ homeModules;
+          }
+        ] ++ modules;
+      };
+
+    mkHome = { user, system ? "x86_64-linux", homePath ? "/home/${user}", modules ? [] }:
       home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         extraSpecialArgs = { inherit user homePath; };
@@ -50,15 +67,32 @@
   {
     darwinModules.base = darwinBase;
     homeModules.base   = homeBase;
+    nixosModules.base  = nixosBase;
     lib.mkDarwin       = mkDarwin;
     lib.mkHome         = mkHome;
+    lib.mkNixos        = mkNixos;
+
 
     # System + home, integrated (one rebuild):
-    # $ darwin-rebuild build --flake .#mac-base
+    # --- Darwin ---
+    # $ darwin-rebuild switch --flake .#mac-base
     darwinConfigurations."mac-base" = mkDarwin { user = "nick"; inherit self; };
+
+    # --- NixOS ---
+    # $ nixos-rebuild switch --flake .#lumine
+    nixosConfigurations."lumine" = mkNixos {
+      # sandbox VM
+      inherit self;
+      hostName = "lumine";
+      user = "nick";
+      modules = [
+        ./modules/nixos/sshd.nix
+      ];
+    };
+
 
     # Home only, standalone (no nix-darwin):
     # $ home-manager switch --flake .#nick@home-base
-    homeConfigurations."nick@home-base" = mkHome { user = "nick"; };
+    homeConfigurations."nick@home-base" = mkHome { user = "nick"; inherit self; };
   };
 }
