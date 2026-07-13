@@ -1,4 +1,7 @@
 { pkgs, config, lib, ... }:
+let
+  passgen = pkgs.callPackage ../../pkgs/passgen/package.nix { };
+in
 {
   imports = [
     ./zsh.nix
@@ -10,7 +13,7 @@
     fzf
     fd
 
-    # TODO: My very own 'passgen' !
+    passgen
   ];
 
   programs.fzf = {
