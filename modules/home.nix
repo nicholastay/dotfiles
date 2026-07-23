@@ -25,7 +25,7 @@ in
     home.shellAliases = {
       g = "git";
       sudo = "sudo ";  # tab completion / alias expansion
-      v = "$EDITOR";
+      v = "nvim";
       ag = "rg";  # muscle memory will be the death of me
       rg = "rg -S";
     };

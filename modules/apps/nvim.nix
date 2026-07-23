@@ -2,16 +2,24 @@
 {
   flake.homeModules.nvim = { pkgs, lib, config, ... }:
   {
-    programs.neovim = {
+    imports = [ inputs.nvf.homeManagerModules.default ];
+
+    programs.nvf = {
       enable = true;
+
       defaultEditor = true;
-    };
 
-    home.shellAliases = {
-      vi = "nvim";
-      vim = "nvim";
-    };
+      settings.vim = {
+        viAlias = true;
+        vimAlias = true;
 
-    # TODO: choose how to link in lua config
+        binds.whichKey.enable = true;
+
+        lsp.enable = true;
+        treesitter.enable = true;
+
+        languages.nix.enable = true;
+      };
+    };
   };
 }

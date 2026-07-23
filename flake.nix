@@ -14,6 +14,9 @@
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
 
     import-tree.url = "github:denful/import-tree";
+
+    nvf.url = "github:NotAShelf/nvf";
+    nvf.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake
