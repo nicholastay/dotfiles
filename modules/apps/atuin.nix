@@ -1,6 +1,7 @@
-{ pkgs, config, lib, ... }:
+{ self, inputs, ... }:
 {
-  config = lib.mkIf config.programs.atuin.enable {
+  flake.homeModules.atuin = { pkgs, lib, config, ... }:
+  {
     programs.atuin.flags = [ "--disable-up-arrow" ];
     programs.atuin.settings = {
       auto_sync = false;
