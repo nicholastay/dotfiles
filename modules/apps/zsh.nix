@@ -18,7 +18,7 @@
       syntaxHighlighting.enable = true;
 
       initContent = ''
-	source ${../../files/zsh/basic.zsh}
+        source ${../../files/zsh/basic.zsh}
       '';
     };
   };

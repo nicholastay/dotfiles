@@ -22,16 +22,16 @@
       imports = [
         (inputs.import-tree ./modules)
         
-	# TODO: ? - is this how you are meant to do it so it's mergeable like darwin/nixos?
-	(
-	  { lib, ...}:
-	  {
-	    options.flake.homeModules = lib.mkOption {
-	      type = lib.types.lazyAttrsOf lib.types.raw;
-	      default = { };
-	    };
-	  }
-	)
+        # TODO: ? - is this how you are meant to do it so it's mergeable like darwin/nixos?
+        (
+          { lib, ...}:
+          {
+            options.flake.homeModules = lib.mkOption {
+              type = lib.types.lazyAttrsOf lib.types.raw;
+              default = { };
+            };
+          }
+        )
       ];
       systems = [ "x86_64-linux" "aarch64-darwin" ];
       perSystem = { config, pkgs, ... }: {
