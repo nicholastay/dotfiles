@@ -18,6 +18,8 @@ in
       moreutils
       jq
       tree
+
+      self.packages.${pkgs.stdenv.hostPlatform.system}.passgen
     ];
 
     home.shellAliases = {
